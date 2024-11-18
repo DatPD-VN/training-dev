@@ -41,43 +41,31 @@ const InputItem = () => {
     // headers.append("Authorization", `Bearer ${token}`);
 
     var requestOptions = {
-        mode: 'no-cors',
-        credentials: 'include',
-        headers: headers,
+      mode: "no-cors",
+      credentials: "include",
+      headers: headers,
     };
 
     async function getData() {
-      const url = "http://127.0.0.1:8000/admin/APIusers/";
+      const url = "http://127.0.0.1:8000/api/admin/APIusers/";
 
       try {
-        const response = await axios.get(url, requestOptions)
-        console.log(response);
+        const response = await axios.get(url, requestOptions);
+        // console.log(response.data);
+        setShowTaskData(response.data);
+        console.log(showTaskData);
         if (!response.ok) {
           throw new Error(`Response status: ${response.status}`);
         }
 
-        const json = await response.json();
-        console.log(json);
+        // const json = await response.json();
+        // console.log(json);
       } catch (error) {
         console.error(error.message);
       }
     }
 
     getData();
-
-    // await axios
-    //   .get("http://127.0.0.1:8000/admin/APIusers/", requestOptions)
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    //   .finally(function () {
-    //     // always executed
-    //   });
   };
 
   const addItem = () => {
@@ -132,7 +120,7 @@ const InputItem = () => {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-    };
+    };ư
     fetch(
       `${process.env.REACT_APP_API_URL}/api/user/todos/${id}`,
       requestOptions
@@ -202,9 +190,9 @@ const InputItem = () => {
 
   const isLoggedIn = sessionStorage.getItem("isLoggedIn");
   //   console.log(isLoggedIn);
-  if (!isLoggedIn) {
-    return nagative("/login");
-  }
+  //   if (!isLoggedIn) {
+  //     return nagative("/login");
+  //   }
 
   return (
     <Container className="themed-container mt-5" fluid="sm">

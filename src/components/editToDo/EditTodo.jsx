@@ -6,15 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-// import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#F2AA4CFF",
-//     },
-//   },
-// });
 
 const EditTodo = ({
   editTaskDataModal,

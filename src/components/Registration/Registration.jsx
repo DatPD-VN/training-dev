@@ -2,18 +2,13 @@ import React, { useState } from "react";
 // import { TextField, Button } from "@material-ui/core";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import { LockKeyhole } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
-import "./RegistrationStyle.scss";
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 
-// const theme = createTheme({
-//   status: {
-//     danger: orange[500],
-//   },
-// });
+
 
 
 const Registration = () => {
@@ -112,14 +107,14 @@ const Registration = () => {
 
   return (
     <Container className="themed-container mt-2" fluid="sm">
-      <div className="text-center">
-        <i className="fa fa-2x fa-lock" aria-hidden="true"></i>
-        <div className="text-color">Signup</div>
+      <div className="flex flex-col items-center text-orange-500 mt-10 ">
+      <LockKeyhole  />
+        <div className="text-orange-500">Signup</div>
         <div className="hr"></div>
       </div>
       <div >
-        <div className="flex flex-col justify-cente space-y-5 mb-5 signup-wrapper">
-          <div className="">
+        <div className="flex  justify-center items-center space-x-5 mb-5 w-[85%] mx-auto my-0 mt-[5%]">
+          <div className="flex-1">
             <TextField
               error={error}
               name="first_name"
@@ -134,7 +129,7 @@ const Registration = () => {
               helperText={errMsgFirstName}
             />
           </div>
-          <div className="">
+          <div className="flex-1">
             <TextField
               error={error}
               name="last_name"
@@ -148,7 +143,7 @@ const Registration = () => {
             />
           </div>
         </div>
-        <div className="signup-wrapper">
+        <div className="w-[85%] mx-auto my-0 mt-[5%] space-y-4">
           <TextField
             error={error}
             name="phone"
@@ -177,7 +172,7 @@ const Registration = () => {
             onChange={onChangeHandler}
             helperText={errMsgEmail}
           />
-          <div className="show-hide-pwd-wrapper">
+          <div className="relative ">
             <TextField
               error={error}
               name="password"
@@ -199,9 +194,9 @@ const Registration = () => {
           >
             SIGN UP
           </Button>
-          <p className="already-txt ml-5">
+          <p className="text-xs  ml-5 text-yellow-500 text-right mt-[-30px]">
             Already have an account?
-            <Link to="/login" className="sign-in-txt">
+            <Link to="/login" className=" text-yellow-500 font-bold">
               Sign In
             </Link>
           </p>

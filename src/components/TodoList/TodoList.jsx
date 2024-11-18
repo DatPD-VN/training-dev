@@ -32,13 +32,15 @@ const TodoList = ({
   }
 
   return (
-    <ul className="list-group my-2 flex flex-col items-center justify-center">
+    <ul className="list-group my-2 flex flex-col items-center justify-start ">
       <h3 className="text-capitalize text-2xl ">Todo List </h3>
-      <div className="d-flex justify-content-between mb-5">
+      <div className="flex justify-content-between mb-5">
         Task and Description
       </div>
-      {taskData}
-      <button color="danger" onClick={clearList} className="bg-red-600 py-2 px-72 rounded-md ">
+      <div className="flex flex-col items-start justify-center">
+        {taskData}
+      </div>
+      <button color="danger" onClick={clearList} className="bg-red-600 py-2 px-52 rounded-md mt-10 mb-24 text-white ">
         Clear all
       </button>
       <p className="text-danger">{todoDeleteMsg}</p>
