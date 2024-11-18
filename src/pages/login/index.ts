@@ -1,5 +1,5 @@
 import { TUseLoginProps } from "./types";
 
-export const UseLogin = (props: TUseLoginProps) => {
+export const UseLogin = () => {
   console.log("index");
 };
