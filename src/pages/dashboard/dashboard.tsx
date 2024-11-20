@@ -55,15 +55,16 @@ const Dashboard: FC = () => {
                 <li className={styles.list}> <a href="">Ốp lưng</a>  </li>
                 <li className={styles.list}> <a href="">Áo khoác</a>  </li>
                 <li className={styles.list}> <a href="">Gấu Bông</a>  </li>
-                <li className={styles.list}> <a href="">Dép</a> </li>
-                <li className={styles.list}> <a href="">Dép</a> </li>
-                <li className={styles.list}> <a href="">Dép</a> </li>
-                <li className={styles.list}> <a href="">Dép</a> </li>
-                <li className={styles.list}> <a href="">Dép</a> </li>
+                <li className={styles.list}> <a href="">Chân Váy</a> </li>
+                <li className={styles.list}> <a href="">Váy Nữ</a> </li>
+                <li className={styles.list}> <a href="">Kẹp Tóc </a> </li>
+                <li className={styles.list}> <a href="">Giày Cao Gót</a> </li>
+                <li className={styles.list}> <a href="">Áo</a> </li>
+                <li className={styles.list}> <a href="">Quần Ống Rộng</a> </li>
             </div>
           </div>
           <div className={styles.headerBottomRight}>
-            <ShoppingCart  className={styles.headerBottomRightIcon}/>
+            <ShoppingCart size={30}  className={styles.headerBottomRightIcon}/>
           </div>
         </div>
       </header>
