@@ -3,127 +3,104 @@
 .textItem {
   color: $textDefault;
 }
-.container{
-  height: 100vh;
-  width: 20px;
-}
+
 .header {
+  height: auto ;
+  padding: 0px 56px 5px;
+  background-color: red;
+
+}
+.headerTop {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 56px;
+  justify-content: end;
 
 }
-.text2xl {
-  font-size: 24px;
-  line-height: 32px;
-}
-.headerRight {
-    font-size: 14px ;
-    line-height: 20px;    
-    color: red;
-    cursor: pointer;
-
-}
-
-.headerRight:hover {
- text-decoration: underline;
-}
-
-.content {
-  position: relative;
-  background-color: rgb(255 75 0);
-  width: 100%;
-  height: 100%;
-  padding-top: 56px;
-}
-.wapper {
-  height: auto;
-  width: 33%;
-  margin: 0px auto;
+.divTagTop {
   display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 4px;
-  padding: 32px;
-  position: relative;
-}
-
-
-.input {
-  padding: 12px;
-  font-size: 14px ;
-  line-height: 20px;  
-  border-radius: 4px;
-  border: 1px solid gray ;
-  margin: 10px 0;
-}
-
-.wapperTTT {
-  margin: 16px 0;
- 
-}
-.wapperBlock {
-  margin: 6px 0;
-  display: flex;
-  color: slategray;
   align-items: center;
   justify-content: center;
-}
-.buttonSubmit {
+  font-size: 18px;
   color: white;
-  padding: 12px 0px;
-  width: 100%;
-  border-radius: 4px;
-  background-color: rgb(244 0 0);
-  font-weight: 500;
-  text-align: center;
+  margin: 0px 10px;
+}
+.divTagTop:hover {
+  opacity: 0.9;
+}
+.divTagTopA:hover {
+  text-decoration: none;
   cursor: pointer;
-}
-.buttonSubmitPass {
-  text-align: left;
-  color: blue;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-  margin-top: 8px;
-}
-.buttonSubmitPass:hover {
-  text-decoration: underline;
-}
-.wapprerStyle{
   display: flex;
-  color: slategray;
-  align-items: center;
-  justify-content: center;
-  margin: 32px 0;
 }
-.wFull {
-  width: 100%;
-}
-.wapprerStyleSpan {
-  margin: 0 16px;
-}
-.styleIcon {
-  font-size: 12px;
-  cursor: pointer;
-}
-.wapperButton {
-  flex: 1 1 0;
+.divTagTopA {
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  border: 1px solid slategray ;
-  border-radius: 4px;
-  padding: 8px 16px;
-  margin: 0 12px;
 }
 
-.button {
-  color: red;
+.divTagTopIcon {
+  width: 18px;
+  color: white;
+}
+.divTagTopATitle {
+  font-size: 14px;
+  color: white;
+  margin: 0px 6px;
+}
+.headerBottom {
+  display: flex;
+  margin: 10px 0 0 0;
+  align-items: center;
+  
+}
+.headerBottomLeft {
+  width: 66%;
+  flex: 1 0 0;
+}
+.headerBottomRight {
+  width: 33%;
+}
+.divInput {
+  width: 100%;
+  position: relative;
+}
+.input {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 2px  ;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+.inputIcon {
+  padding: 8px 20px;
+  background-color: red;
   cursor: pointer;
-  text-align: center;
-  font-weight: 500;
-  margin: 16px 0;
+  width: 20px; 
+  border-radius: 4px ;
+  position: absolute;
+   top: 3px;
+   right: 5px;
+   color: white;
+}
+.DivList {
+  display: flex;
+}
+
+.list {
+  margin: 9px 15px 12px 0px;
+  list-style: none;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}
+.list a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.headerBottomRightIcon {
+  color: white;
+  cursor: pointer;
 }
