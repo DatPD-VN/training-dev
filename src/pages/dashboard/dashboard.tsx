@@ -6,32 +6,32 @@ import { Bell ,ShieldQuestion,Globe ,ChevronDown    } from "lucide-react";
 const Dashboard: FC = () => {
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <div>
           <div >
             <a href="">
-              <Bell />{" "}
+              <Bell />
               <p>Thông Báo </p>
             </a>
           </div>
           <div >
             <a href="">
-              <ShieldQuestion />{" "}
+              <ShieldQuestion />
               <p>Hỗ Trợ </p>
             </a>
           </div>
           <div >
             <a href="">
-              <Globe />{" "}
+              <Globe />
               <p>Tiếng Việt </p>
-              <ChevronDown />{" "}
+              <ChevronDown />
 
             </a>
           </div>
           <div >
             <a href="">
               <p>Đăng Ký </p>
-              <Bell />{" "}
+              <Bell />
             </a>
           </div>
           <div >
@@ -40,7 +40,7 @@ const Dashboard: FC = () => {
           <div >
             <a href="">
               <p>Đăng Nhập </p>
-              <Bell />{" "}
+              <Bell />
             </a>
           </div>
         </div>

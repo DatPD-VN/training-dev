@@ -24,11 +24,14 @@ const Login: FC = () => {
                 name="email"
                 className={styles.input}
                 value={email}
+                autoComplete="false"
                 onChange={(e) => {
                   handleChange("email", e.target.value);
                 }}
               />
-              {!!error && <div className={styles.errorInput}>{error.email}</div>}
+              {!!error && (
+                <div className={styles.errorInput}>{error.email}</div>
+              )}
 
               <input
                 placeholder="Mật Khẩu"
@@ -41,10 +44,12 @@ const Login: FC = () => {
                   handleChange("password", e.target.value);
                 }}
               />
-              {!!error && <div className={styles.errorInput}>{error.password}</div>}
+              {!!error && (
+                <div className={styles.errorInput}>{error.password}</div>
+              )}
               <div className={styles.wapperTTT}>
                 <button
-                  type="submit"
+                  type="button"
                   onClick={handleSubmit}
                   disabled={isDisabled}
                   className={

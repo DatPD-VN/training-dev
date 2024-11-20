@@ -7,7 +7,7 @@ import { Dashboard } from "../pages/dashboard";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
-const baseTitle = "D6-Training";  
+const baseTitle = "D6-Training";
 
 const SuspenseWrapper: FC<{ children: React.ReactNode }> = ({ children }) => (
   <Suspense>{children}</Suspense>
