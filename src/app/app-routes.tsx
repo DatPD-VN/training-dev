@@ -2,6 +2,8 @@ import { FC, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import AppInit from "./AppInit";
 import { Login } from "../pages/login/login";
+import { RessetPass } from "../pages/resetPass/resetPass";
+import { Dashboard } from "../pages/dashboard";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -20,6 +22,16 @@ const appRoutes: {
     path: baseRoute("login"),
     title: `${baseTitle} | Login`,
     Component: Login,
+  },
+  {
+    path: baseRoute("ressetPass"),
+    title: `${baseTitle} | RessetPass`,
+    Component: RessetPass,
+  },
+  {
+    path: baseRoute("dashboard"),
+    title: `${baseTitle} | Dashboard`,
+    Component: Dashboard,
   },
 ];
 
