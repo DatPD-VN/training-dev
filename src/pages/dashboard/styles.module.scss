@@ -1,0 +1,378 @@
+@use "abstracts/index" as *;
+
+.textItem {
+  color: $textDefault;
+}
+
+.header {
+  height: auto;
+  padding: 0px 56px 5px;
+  background-color: red;
+}
+.headerTop {
+  display: flex;
+  justify-content: end;
+}
+.divTagTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
+  margin: 0px 10px;
+}
+.divTagTop:hover {
+  opacity: 0.9;
+}
+.divTagTopA:hover {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+}
+.divTagTopA {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divTagTopIcon {
+  width: 18px;
+  color: white;
+}
+.divTagTopATitle {
+  font-size: 14px;
+  color: white;
+  margin: 0px 6px;
+}
+.headerBottom {
+  display: flex;
+  height: 100px;
+  margin: 10px 40px 0 40px;
+  align-items: center;
+}
+.headerBottomLeft {
+  width: 60%;
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  overflow: hidden;
+}
+.headerBottomLogo {
+  width: 20%;
+  display: flex;
+  align-items: start;
+
+}
+.headerBottomLogoDiv {
+  
+  height: 90px;
+  width: 170px;
+  fill: #fff;
+}
+
+.headerBottomRight {
+  width:20%;
+}
+.divInput {
+  width: 100%;
+  position: relative;
+}
+.input {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+.inputIcon {
+  padding: 8px 20px;
+  background-color: red;
+  cursor: pointer;
+  width: 20px;
+  border-radius: 2px;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  color: white;
+}
+.DivList {
+  display: flex;
+ 
+}
+
+.list {
+  margin: 9px 15px 12px 0px;
+  list-style: none;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}
+.list a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  
+}
+.headerBottomRightIcon {
+  color: white;
+  cursor: pointer;
+  width: 80px;
+}
+
+.contaiter {
+  height: auto;
+  padding: 20px 56px;
+}
+.divItem {
+  box-sizing: border-box;
+  height: max-content;
+  border: 1px solid transparent;
+  width: 100%;
+  border-radius: 2px;
+  transition-duration: 100ms;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+.divItemWrapper:hover .divItemHover {
+  display: block;
+  z-index: 2;
+}
+
+.divItemHover {
+  position: absolute;
+  display: none;
+  transform: translateY(100%);
+  bottom: 0;
+  color: white;
+  width: 100%;
+  padding: 5px 0px;
+  background-color: rgb(247, 103, 47);
+  font-size: 13px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.divItemWrapper {
+  padding: 0 7px;
+  width: 16.6%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  position: relative;
+} 
+.divItemWrapperHover {
+  position: relative;
+
+}
+.divImg {
+  width: 100%;
+  position: relative;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.divItem:hover {
+  border: 1px solid red;
+  cursor: pointer;
+  border-radius: 2px;
+  
+}
+.img {
+  width: 100%;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+.divItemSaleOff {
+  position: absolute;
+  color: red;
+  padding: 2px;
+  background-color: rgb(245, 185, 185);
+  top: 2px;
+  right: 3px;
+  font-size: 12px;
+}
+.logoVoucher {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 4px;
+}
+.divItemTitle {
+  font-size: 13px;
+  text-align: left;
+  padding: 4px 10px 0 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+}
+
+.Voucher {
+  color: white;
+  padding: 2px 4px;
+  background-color: rgb(248, 177, 46);
+  width: fit-content;
+  font-size: 12px;
+  margin: 10px 0px 10px 10px;
+}
+.VoucherHidden {
+  color: white;
+  padding: 2px 4px;
+  width: fit-content;
+  font-size: 12px;
+  background-color: rgb(248, 177, 46);
+  margin: 10px 0px 10px 10px;
+  visibility: hidden;
+}
+
+.WarpVoucher {
+  position: relative;
+}
+
+.TitleVoucher:first {
+  width: 10px;
+  position: absolute;
+}
+
+.TitleVoucher:end {
+  width: 10px;
+  position: absolute;
+}
+
+.Price {
+  color: red;
+  text-align: left;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 10px 0;
+}
+.headerWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.IconPrice {
+  font-size: 12px;
+  margin-right: 5px;
+}
+.FooterContainer {
+  display: flex;
+  align-items: start;
+}
+.FooterDiv {
+  width: 20%;
+  text-align: left;
+}
+.FooterTitle {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 25px;
+
+}
+.FooterUl {
+  text-align: left;
+  font-size: 13px;
+  padding-left: 0px;
+}
+
+.Footerlist {
+  list-style: none;
+  margin: 10px 0;
+  color: rgb(72, 80, 88);
+}
+footer {
+  padding: 30px 56px 5px;
+  background-color: #fbfbfb;
+
+}
+.FooterLogoDiv {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0px;
+}
+.FooterLogo {
+  list-style: none;
+  padding: 5px 0;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.FooterIcon {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+  
+}
+.FooterIcon img {
+  margin-right: 10px;
+}
+.FooterLogoLeft {
+  flex: 1 1 0;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  
+
+}
+.FooterLogoLeft img {
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.FooterLogoRight {
+  flex: 1 1 0;
+  display: flex ;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+}
+.FooterLogoRight img {
+  margin: 2px 0;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+hr {
+  margin: 20px 0;
+}
+
+.Footerdescription {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(66, 61, 88);
+  font-size: 13px;
+}
+.FooterdescriptionRight {
+  display: flex;
+  align-items: center;
+}
+.FooterdescriptionRight li {
+  list-style: none;
+  padding: 0px 7px;
+  border-right-width: 1px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: rgb(105, 104, 104);
+  border-style: solid;
+}
+.FooterdescriptionRightList {
+  list-style: none;
+  padding: 0px 7px;
+  border-right-width: 0px !important;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: rgb(105, 104, 104);
+  border-style: solid;
+}
