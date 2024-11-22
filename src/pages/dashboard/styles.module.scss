@@ -5,15 +5,13 @@
 }
 
 .header {
-  height: auto ;
+  height: auto;
   padding: 0px 56px 5px;
   background-color: red;
-
 }
 .headerTop {
   display: flex;
   justify-content: end;
-
 }
 .divTagTop {
   display: flex;
@@ -49,9 +47,8 @@
 }
 .headerBottom {
   display: flex;
-  margin: 10px 0 0 0;
+  margin: 10px 40px 0 40px;
   align-items: center;
-  
 }
 .headerBottomLeft {
   width: 66%;
@@ -68,7 +65,7 @@
   width: 100%;
   padding: 15px;
   font-size: 15px;
-  border-radius: 2px  ;
+  border-radius: 2px;
   border: none;
   outline: none;
   box-sizing: border-box;
@@ -77,12 +74,12 @@
   padding: 8px 20px;
   background-color: red;
   cursor: pointer;
-  width: 20px; 
-  border-radius: 4px ;
+  width: 20px;
+  border-radius: 2px;
   position: absolute;
-   top: 3px;
-   right: 5px;
-   color: white;
+  top: 3px;
+  right: 5px;
+  color: white;
 }
 .DivList {
   display: flex;
@@ -104,4 +101,124 @@
   color: white;
   cursor: pointer;
   width: 80px;
+}
+
+.contaiter {
+  height: auto;
+  padding: 20px 56px;
+}
+.divItem {
+  box-sizing: border-box;
+  height: max-content;
+  border: 1px solid transparent;
+  width: 100%;
+  border-radius: 2px;
+  transition-duration: 100ms;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+.divItemWrapper:hover .divItemHover {
+  display: block;
+}
+
+.divItemHover {
+  position: absolute;
+  display: none;
+  transform: translateY(100%);
+  bottom: 0;
+  color: white;
+  width: 100%;
+  padding: 5px 0px;
+  background-color: rgb(247, 103, 47);
+  font-size: 13px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.divItemWrapper {
+  padding: 0 7px;
+  width: 16.6%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  position: relative;
+} 
+.divItemWrapperHover {
+  position: relative;
+
+}
+.divImg {
+  width: 100%;
+  position: relative;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.divItem:hover {
+  border: 1px solid red;
+  cursor: pointer;
+  border-radius: 2px;
+  
+}
+.img {
+  width: 100%;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+.divItemSaleOff {
+  position: absolute;
+  color: red;
+  padding: 2px;
+  background-color: rgb(245, 185, 185);
+  top: 2px;
+  right: 3px;
+  font-size: 12px;
+}
+.logoVoucher {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 4px;
+}
+.divItemTitle {
+  font-size: 13px;
+  text-align: left;
+  padding: 4px 10px;
+}
+
+.Voucher {
+  color: white;
+  padding: 2px 4px;
+  background-color: rgb(248, 177, 46);
+  width: fit-content;
+  font-size: 12px;
+  margin: 10px 0px 10px 10px;
+}
+
+.WarpVoucher {
+  position: relative;
+}
+
+.TitleVoucher:first {
+  width: 10px;
+  position: absolute;
+}
+
+.TitleVoucher:end {
+  width: 10px;
+  position: absolute;
+}
+
+.Price {
+  color: red;
+  text-align: left;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 10px 0;
+}
+.headerWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.IconPrice {
+  font-size: 12px;
+  margin-right: 5px;
 }
