@@ -47,15 +47,34 @@
 }
 .headerBottom {
   display: flex;
+  height: 100px;
   margin: 10px 40px 0 40px;
   align-items: center;
 }
 .headerBottomLeft {
-  width: 66%;
+  width: 60%;
   flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  overflow: hidden;
 }
+.headerBottomLogo {
+  width: 20%;
+  display: flex;
+  align-items: start;
+
+}
+.headerBottomLogoDiv {
+  
+  height: 90px;
+  width: 170px;
+  fill: #fff;
+}
+
 .headerBottomRight {
-  width: 33%;
+  width:20%;
 }
 .divInput {
   width: 100%;
@@ -83,6 +102,7 @@
 }
 .DivList {
   display: flex;
+ 
 }
 
 .list {
@@ -96,6 +116,8 @@
   color: white;
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
+  
 }
 .headerBottomRightIcon {
   color: white;
@@ -118,6 +140,7 @@
 }
 .divItemWrapper:hover .divItemHover {
   display: block;
+  z-index: 2;
 }
 
 .divItemHover {
@@ -181,7 +204,11 @@
 .divItemTitle {
   font-size: 13px;
   text-align: left;
-  padding: 4px 10px;
+  padding: 4px 10px 0 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .Voucher {
@@ -191,6 +218,15 @@
   width: fit-content;
   font-size: 12px;
   margin: 10px 0px 10px 10px;
+}
+.VoucherHidden {
+  color: white;
+  padding: 2px 4px;
+  width: fit-content;
+  font-size: 12px;
+  background-color: rgb(248, 177, 46);
+  margin: 10px 0px 10px 10px;
+  visibility: hidden;
 }
 
 .WarpVoucher {
@@ -221,4 +257,122 @@
 .IconPrice {
   font-size: 12px;
   margin-right: 5px;
+}
+.FooterContainer {
+  display: flex;
+  align-items: start;
+}
+.FooterDiv {
+  width: 20%;
+  text-align: left;
+}
+.FooterTitle {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 25px;
+
+}
+.FooterUl {
+  text-align: left;
+  font-size: 13px;
+  padding-left: 0px;
+}
+
+.Footerlist {
+  list-style: none;
+  margin: 10px 0;
+  color: rgb(72, 80, 88);
+}
+footer {
+  padding: 30px 56px 5px;
+  background-color: #fbfbfb;
+
+}
+.FooterLogoDiv {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0px;
+}
+.FooterLogo {
+  list-style: none;
+  padding: 5px 0;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.FooterIcon {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+  
+}
+.FooterIcon img {
+  margin-right: 10px;
+}
+.FooterLogoLeft {
+  flex: 1 1 0;
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+  
+
+}
+.FooterLogoLeft img {
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.FooterLogoRight {
+  flex: 1 1 0;
+  display: flex ;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+}
+.FooterLogoRight img {
+  margin: 2px 0;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+hr {
+  margin: 20px 0;
+}
+
+.Footerdescription {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(66, 61, 88);
+  font-size: 13px;
+}
+.FooterdescriptionRight {
+  display: flex;
+  align-items: center;
+}
+.FooterdescriptionRight li {
+  list-style: none;
+  padding: 0px 7px;
+  border-right-width: 1px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: rgb(105, 104, 104);
+  border-style: solid;
+}
+.FooterdescriptionRightList {
+  list-style: none;
+  padding: 0px 7px;
+  border-right-width: 0px !important;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: rgb(105, 104, 104);
+  border-style: solid;
 }

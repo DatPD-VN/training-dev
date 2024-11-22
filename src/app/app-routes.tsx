@@ -29,8 +29,8 @@ const appRoutes: {
     Component: RessetPass,
   },
   {
-    path: baseRoute("dashboard"),
-    title: `${baseTitle} | Dashboard`,
+    path: baseRoute("Products"),
+    title: `${baseTitle} | Products`,
     Component: Dashboard,
   },
 ];
