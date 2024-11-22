@@ -1,8 +1,5 @@
 import { FC } from "react";
-import { Facebook } from "lucide-react";
-import { Volleyball } from "lucide-react";
 import { Undo2 } from 'lucide-react';
-
 import styles from "./styles.module.scss";
 
 
