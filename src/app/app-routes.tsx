@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import AppInit from "./AppInit";
 import { Login } from "../pages/login/login";
 import { RessetPass } from "../pages/resetPass/resetPass";
-import { Dashboard } from "../pages/dashboard";
+import { Dashboard } from "../pages/product";
+import DetailProduct from "../pages/product/detailProduct";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -32,6 +33,11 @@ const appRoutes: {
     path: baseRoute("Products"),
     title: `${baseTitle} | Products`,
     Component: Dashboard,
+  },
+  {
+    path: baseRoute("DetailProduct"),
+    title: `${baseTitle} | DetailProduct`,
+    Component: DetailProduct,
   },
 ];
 
