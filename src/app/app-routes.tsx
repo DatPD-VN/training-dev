@@ -5,6 +5,7 @@ import { Login } from "../pages/login/login";
 import { RessetPass } from "../pages/resetPass/resetPass";
 import { Dashboard } from "../pages/product";
 import DetailProduct from "../pages/product/detailProduct";
+import { RecoilRoot } from 'recoil';
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -35,28 +36,30 @@ const appRoutes: {
     Component: Dashboard,
   },
   {
-    path: baseRoute("DetailProduct"),
+    path: baseRoute("Products/DetailProduct"),
     title: `${baseTitle} | DetailProduct`,
     Component: DetailProduct,
   },
 ];
 
 const AppRoutes: FC = () => (
-  <SuspenseWrapper>
-    <Routes>
-      {appRoutes.map(({ path, title, Component }) => (
-        <Route
-          key={path}
-          path={path}
-          element={
-            <AppInit title={title}>
-              <Component />
-            </AppInit>
-          }
-        />
-      ))}
-    </Routes>
-  </SuspenseWrapper>
+  <RecoilRoot>
+    <SuspenseWrapper>
+      <Routes>
+        {appRoutes.map(({ path, title, Component }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <AppInit title={title}>
+                <Component />
+              </AppInit>
+            }
+          />
+        ))}
+      </Routes>
+    </SuspenseWrapper>
+  </RecoilRoot>
 );
 
 export default AppRoutes;
