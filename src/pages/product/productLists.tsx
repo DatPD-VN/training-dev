@@ -8,14 +8,13 @@ import { Footer } from "../../layouts/footer/footer";
 
 const Dashboard: FC = () => {
   const navigate = useNavigate();
-  const newList = useRecoilValue(newListState);
-
+  const newList : Array<string> = useRecoilValue(newListState);
   return (
     <>
       <Header/>
       <section className={styles.contaiter}>
         <div className={styles.headerWrapper}>
-          {newList.map((item, index) => (
+          {newList.map((item : any, index:any) => (
             <div key={index} className={styles.divItemWrapper} onClick={() => {navigate("DetailProduct",{ 
               state :{
                 id : item.id

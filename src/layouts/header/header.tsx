@@ -10,14 +10,14 @@ import {
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
 import { useRecoilValue } from "recoil";
-import { countCartState } from "../../recoil/listCart";
+import { countCartState } from "../../recoil/listCart.js";
 import { useNavigate } from "react-router-dom";
 
 
 
 const Header: FC = () => {
   const navigate = useNavigate();
-  const countCart = useRecoilValue(countCartState);
+  const countCart : any = useRecoilValue(countCartState);
   return <>
   <header className={styles.header}>
         <div className={styles.headerTop}>

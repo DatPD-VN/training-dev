@@ -15,14 +15,20 @@ export const addCartState = selector({
         return list;
     },
     set: ({ get, set }, item) => {
-
+        const {quanlity} = item;
         const list = get(listCartState);
         const check = list.find(itemlist => itemlist.id === item.id)
         
         if (check) {
-            const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : itemDetail.quanlity + 1} : itemDetail  )
-            set(listCartState, [...newTodo]);
-            return
+            if (quanlity === 1) {
+                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + 1} : itemDetail  )
+                set(listCartState, [...newTodo]);
+                return
+            } else {
+                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + parseInt(quanlity)} : itemDetail  )
+                set(listCartState, [...newTodo]);
+                return
+            }
         } else {
             const newTodo =item ;
             set(listCartState, [...list, newTodo]);
@@ -56,11 +62,11 @@ export const handleCartState = selector({
 
         switch (handle) {
             case 'tang':
-                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : itemDetail.quanlity + 1} : itemDetail  )
+                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + 1} : itemDetail  )
                 set(listCartState, [...newTodo]);
               break;
             case 'giam':
-                let neTodo =list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : Math.max(1,itemDetail.quanlity - 1)} : itemDetail  ) ;
+                let neTodo =list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : Math.max(1,parseInt(itemDetail.quanlity) - 1)} : itemDetail  ) ;
                 set(listCartState, [...neTodo]);
               break;
             default:

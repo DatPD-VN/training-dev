@@ -9,15 +9,15 @@ import { addCartState ,totalCartState ,delCartState ,handleCartState } from "../
 import { Header } from "../../layouts/header/header";
 
 const Cart: FC = () => {
-  const cart = useRecoilValue(addCartState);
-  const totalCart = useRecoilValue(totalCartState);
+  const cart : Array<string> = useRecoilValue(addCartState);
+  const totalCart : any = useRecoilValue(totalCartState);
   const delCart = useSetRecoilState(delCartState);
   const handleCart = useSetRecoilState(handleCartState);
-  const hadleDel = (id) => () => {
+  const hadleDel = (id : any) => () => {
     delCart(id);
   }
   
-  const hadleCase = (handle , item) => () => {
+  const hadleCase = (handle : any , item : any) => () => {
     let handleDetail = {handle , item}
     handleCart(handleDetail);
   }
@@ -51,7 +51,7 @@ const Cart: FC = () => {
             <div className={`${styles.NavWrapTitle} ${styles.div13}`}>Thao tác</div>
           </div>
           {/* Item */}
-          {cart.map((item, index) => (
+          {cart.map((item : any, index : any) => (
             <section key={index} className={styles.itemWrap}>
               <div className={`${styles.itemWrapInput} ${styles.div5}`}>
                 <input type="checkbox"  />

@@ -12,17 +12,17 @@ import { toast } from 'react-toastify';
 
 function DetailProduct() {
   const location = useLocation();
-  const newList = useRecoilValue(newListState);
+  const newList : Array<string> = useRecoilValue(newListState);
   const addCart = useSetRecoilState(addCartState);
   const { id } = location.state;
-  const product = newList.filter((item) => item.id === id);
+  const product = newList.filter((item : any) => item.id === id);
   
-  const handleClick = (item) => () => {
-    const qtt = document.querySelectorAll('#textbox_id')[0].value;
+  const handleClick = (item : any) => () => {
+    const qtt   = document.querySelectorAll('#textbox_id')[0].value ;
     let wrapItem = {...item , quanlity : qtt}
     addCart(wrapItem);
     toast.success(' Thêm Thành Công!', {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -32,11 +32,11 @@ function DetailProduct() {
       theme: "light",
       });
   };
-  const handleAdd = (item) => () => {
+  const handleAdd = (item : any) => () => {
     let wrapItem = {...item , quanlity : 1}
     addCart(wrapItem);
     toast.success(' Thêm Thành Công!', {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -59,7 +59,7 @@ function DetailProduct() {
     <>
       <Header />
       <section className={styles.DetailProductContainerWrap}>
-        {product.map((item, index) => (
+        {product.map((item : any, index : any) => (
           <div className={styles.DetailProductContainer} key={index}>
             <div className={styles.DetailProductLeft}>
               <div className={styles.DetailProductLeftImg}>
