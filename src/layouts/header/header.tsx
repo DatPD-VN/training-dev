@@ -11,9 +11,12 @@ import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
 import { useRecoilValue } from "recoil";
 import { countCartState } from "../../recoil/listCart";
+import { useNavigate } from "react-router-dom";
+
 
 
 const Header: FC = () => {
+  const navigate = useNavigate();
   const countCart = useRecoilValue(countCartState);
   return <>
   <header className={styles.header}>
@@ -53,7 +56,9 @@ const Header: FC = () => {
         </div>
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
-            <div className={styles.headerBottomLogoDiv}>
+            <div onClick={() => {
+              navigate("/training-dev/ec/Products")
+            }} className={styles.headerBottomLogoDiv}>
               <Logo/>
             </div>
           </div>
@@ -94,7 +99,7 @@ const Header: FC = () => {
             </div>
           </div>
           <div className={styles.headerBottomRight}>
-            <div className={styles.headerBottomRightIconDiv}>
+            <div onClick={() => {navigate('/training-dev/ec/Cart')}} className={styles.headerBottomRightIconDiv}>
               <ShoppingCart size={30} className={styles.headerBottomRightIcon} />
               <div className={styles.headerBottomRightIconDivCount}>{countCart}</div>
             </div>

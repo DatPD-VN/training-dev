@@ -5,25 +5,55 @@ import NoPlus from "../../icon/noPlus";
 import { useLocation } from "react-router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { newListState } from "../../recoil/listState";
-import { addCartState ,countCartState } from "../../recoil/listCart";
+import { addCartState  } from "../../recoil/listCart";
 import { Header } from "../../layouts/header/header";
 import { Footer } from "../../layouts/footer/footer";
+import { toast } from 'react-toastify';
 
 function DetailProduct() {
   const location = useLocation();
   const newList = useRecoilValue(newListState);
-  const cart = useRecoilValue(addCartState);
-  const countCart = useRecoilValue(countCartState);
   const addCart = useSetRecoilState(addCartState);
   const { id } = location.state;
   const product = newList.filter((item) => item.id === id);
-
+  
   const handleClick = (item) => () => {
-    addCart(item);
+    const qtt = document.querySelectorAll('#textbox_id')[0].value;
+    let wrapItem = {...item , quanlity : qtt}
+    addCart(wrapItem);
+    toast.success(' Thêm Thành Công!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  };
+  const handleAdd = (item) => () => {
+    let wrapItem = {...item , quanlity : 1}
+    addCart(wrapItem);
+    toast.success(' Thêm Thành Công!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
   };
 
-  console.log(cart)
-  console.log(countCart)
+  const handlePlus = () => {
+    document.querySelectorAll('#textbox_id')[0].value = parseInt(document.querySelectorAll('#textbox_id')[0].value) + 1
+  }
+  const handleNoPlus = () => {
+    document.querySelectorAll('#textbox_id')[0].value = Math.max(1 ,parseInt(document.querySelectorAll('#textbox_id')[0].value) - 1)
+  }
+
 
   return (
     <>
@@ -213,11 +243,11 @@ function DetailProduct() {
               <div className={styles.DetailProductTitle}>
                 <div className={styles.DetailProductRightTitle}>Số Lượng</div>
                 <div className={styles.DetailProductDivAmount}>
-                  <button>
+                  <button onClick={() => {handleNoPlus()}}>
                     <NoPlus />
                   </button>
-                  <input type="number" defaultValue={1} min={1} name="" id="" />
-                  <button>
+                  <input type="number" defaultValue={1} min={1}  name="" id="textbox_id" />
+                  <button onClick={() => {handlePlus()}}>
                     <Plus />
                   </button>
                 </div>
@@ -238,7 +268,7 @@ function DetailProduct() {
                 </div>
                 <div
                   className={styles.DetailProductBuy}
-                  onClick={handleClick(item)}
+                  onClick={handleAdd(item)}
                 >
                   Mua Hàng
                 </div>
