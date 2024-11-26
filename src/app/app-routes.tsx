@@ -6,6 +6,7 @@ import { RessetPass } from "../pages/resetPass/resetPass";
 import { Dashboard } from "../pages/product";
 import DetailProduct from "../pages/product/detailProduct";
 import { RecoilRoot } from 'recoil';
+import { Cart } from "../pages/cart/cart";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -39,6 +40,11 @@ const appRoutes: {
     path: baseRoute("Products/DetailProduct"),
     title: `${baseTitle} | DetailProduct`,
     Component: DetailProduct,
+  },
+  {
+    path: baseRoute("Cart"),
+    title: `${baseTitle} | Cart`,
+    Component: Cart,
   },
 ];
 

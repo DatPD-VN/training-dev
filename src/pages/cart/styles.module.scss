@@ -1,0 +1,328 @@
+@use "abstracts/index" as *;
+
+.textItem {
+  color: $textDefault;
+}
+.container{
+  height: 100vh;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 56px;
+  background-color: white;
+  
+}
+.headerWrapLeft {
+  color: $primary;
+  border-left: 1px;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: $primary;
+  border-style: solid;
+  flex: 1 1 0;
+  div {
+    width: max-content;
+    text-align: left;
+    margin-left: 30px;
+    font-size: 18px;
+  }
+}
+.headerWrapRight {
+  flex: 1 1 0;
+  width: 100%;
+  border: 1px solid $primary;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 37px;
+  input {
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    border: none;
+  }
+  .headerWrapRigthSearchDiv {
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background: $primary;
+    color: white;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+.bodyWrap {
+  padding: 20px 56px;
+}
+.div5 {
+  width: 5%;
+}
+.div40 {
+  width: 40%;
+}
+.div13 {
+  width: 13.75%;
+}
+.NavWrap {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  font-size: 15px;
+
+  .NavWrapInput {
+      input {
+
+      }
+  }
+  .NavWrapTitleProduct {
+    text-align: left;
+  }
+  .NavWrapTitle {
+    color: gray;
+  }
+}
+.itemWrap {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px;
+  background-color: white;
+  font-size: 15px;
+  margin: 10px 0;
+  .itemWrapper {
+    padding: 5px;
+    border: 1px solid #f9ebeb;
+    display: flex;
+    align-items: center;
+  }
+  .itemWrapInfo {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+    }
+    .itemWrapInfoTitle {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        padding-right: 20px;
+        text-align: left;
+        width: 90%;
+        overflow: hidden;
+      }
+      img {
+        width:  200px;
+        height: 20px;
+        margin: 10px 0 ;
+      }
+    }
+    .itemWrapSelet {
+      font-size: 13px;
+      color: gray;
+      select {
+        font-size: 13px;
+        outline: none;
+        border: none;
+        color: gray;
+      }
+    }
+  }
+}
+
+.itemWrapInfoPrice {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .itemWrapInfoPriceOld {
+    color: gray;
+    text-decoration: line-through;
+    margin: 0 5px;
+    display: flex;
+    align-items: start;
+    
+    span {
+      font-size: 10px;
+    }
+  }
+  .itemWrapInfoPriceNew {
+    display: flex;
+    align-items: start;
+    
+    span {
+      font-size: 10px;
+    }
+  }
+}
+.itemWrapAmount{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .DetailProductDivAmount {
+    display: flex;
+    align-items: center;
+  }
+  .DetailProductDivAmount button{
+    width: 32px;
+    height: 32px;
+    outline: none;  
+    padding: 0px 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .09);
+    cursor: pointer;
+  }
+  .DetailProductDivAmount input {
+    width: 50px;
+    height: 30px;
+    padding: 0px ;
+    border: 1px solid rgba(0, 0, 0, .09);;
+    text-align: center  ;
+  }
+}
+.itemWrapTotalPrice {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  font-size: 14px;
+  color: $primary;
+  span {
+    font-size: 10px;
+  }
+}
+.itemWrapHandle {
+  font-size: 14px;
+  cursor: pointer;
+  .itemWrapHandleDiv {
+    color: $primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.footerWrap {
+  padding: 25px 0;
+  background-color: white;
+  font-size: 15px;
+  margin: 10px 0; 
+  .footerWrapTop {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: dashed;
+    border-color: rgba(0, 0, 0, .09);
+    padding: 0 30px;
+    padding-bottom: 20px;
+    .footerWrapTopVoucher {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      margin-right: 200px;
+      span {
+        margin: 0 10px;
+      }
+      
+    }
+    a {
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+  .footerWrapMiddle {
+    display: flex;
+    align-items: center;  
+    justify-content: end;
+    padding: 10px 30px;
+    .footerWrapMiddleWrap {
+      display: flex;
+      align-items: center;
+      margin-right: 200px;
+      .footerWrapMiddleInput {
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        outline: none;
+      }
+      .footerWrapMiddleIcon {
+        opacity: 0.5;
+      }
+      .footerWrapMiddleShoppe {
+        font-size: 14px;
+        margin: 0 5px;
+        color: rgba(128, 128, 128, 0.39);
+      }
+      .footerWrapMiddleSelect {
+        margin: 0 10px;
+        color: rgba(128, 128, 128, 0.664);
+      }
+    }
+    .footerWrapMiddlePriceVoucher {
+       display: flex;
+       align-items: start;
+      opacity: 0.5;
+      span {
+        font-size: 10px;
+      }
+    }
+  }
+  .footerWrapBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    padding-top: 50px;
+    .footerWrapBottomLeft {
+      display: flex;
+      align-items: center;
+      input {
+        margin: 0 10px;
+      }
+      span {
+        margin: 0 15px;
+      }
+    }
+    .footerWrapBottomRight {
+      display: flex;
+      align-items: center;
+      .footerWrapBottomRightPriceTotal {
+        font-size: 20px;
+        display: flex;
+        align-items: start;
+        margin: 0 15px;
+        color: $primary;
+        span {
+          font-size: 12px;
+        }
+      }
+      .footerWrapBottomRightButton {
+        color: white;
+        background-color: $primary;
+        border: none;
+        padding: 10px 50px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .footerWrapBottomRightButton:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
