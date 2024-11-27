@@ -1,0 +1,23 @@
+@use "abstracts/index" as *;
+
+.textItem {
+  color: $textDefault;
+}
+.detailProductLeftImg {
+  width: 100%;
+}
+
+.detailProductLeftSmall {
+  display: flex;
+}
+.detailProductLeftSmall img {
+  width: 20%;
+  margin: 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.detailProductLeftSmall img:hover {
+  border: 1px solid rgb(241, 74, 74);
+}

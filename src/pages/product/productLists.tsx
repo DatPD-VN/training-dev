@@ -40,16 +40,16 @@ const Dashboard: FC = () => {
                   <div className={styles.divItemTitle}>{item.titleProduct}</div>
 
                   {item.isVoucher && (
-                    <div className={styles.Voucher}>{item.voucherProduct} </div>
+                    <div className={styles.voucher}>{item.voucherProduct} </div>
                   )}
                   {!item.isVoucher && (
-                    <div className={styles.VoucherHidden}>
+                    <div className={styles.voucherHidden}>
                       {item.voucherProduct}
                     </div>
                   )}
 
-                  <div className={styles.Price}>
-                    <span className={styles.IconPrice}>₫</span>
+                  <div className={styles.price}>
+                    <span className={styles.iconPrice}>₫</span>
                     {item.priceProduct}
                   </div>
                 </div>

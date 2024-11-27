@@ -41,15 +41,15 @@ const Cart: FC = () => {
           </div>
         </header>
         <div  className={styles.bodyWrap}>
-          <div   className={styles.NavWrap}>
-            <div  className={`${styles.NavWrapInput} ${styles.div5}`}>
+          <div   className={styles.navWrap}>
+            <div  className={`${styles.navWrapInput} ${styles.div5}`}>
               <input type="checkbox" name="" id="" />
             </div>
-            <div className={`${styles.NavWrapTitleProduct} ${styles.div40}`}>Sản Phẩm</div>
-            <div className={`${styles.NavWrapTitle} ${styles.div13}`}>Đơn Giá</div>
-            <div className={`${styles.NavWrapTitle} ${styles.div13}`}>Số Lượng</div>
-            <div className={`${styles.NavWrapTitle} ${styles.div13}`}>Số Tiền </div>
-            <div className={`${styles.NavWrapTitle} ${styles.div13}`}>Thao tác</div>
+            <div className={`${styles.navWrapTitleProduct} ${styles.div40}`}>Sản Phẩm</div>
+            <div className={`${styles.navWrapTitle} ${styles.div13}`}>Đơn Giá</div>
+            <div className={`${styles.navWrapTitle} ${styles.div13}`}>Số Lượng</div>
+            <div className={`${styles.navWrapTitle} ${styles.div13}`}>Số Tiền </div>
+            <div className={`${styles.navWrapTitle} ${styles.div13}`}>Thao tác</div>
           </div>
           {/* Item */}
           {cart.map((item : any, index : any) => (
@@ -68,7 +68,7 @@ const Cart: FC = () => {
                     alt=""
                   />
                 </div>
-                <div className={`${styles.itemWrapSelet}`}>
+                <div className={`${styles.itemWrapSelect}`}>
                 <span>Phân Loại Hàng:</span>
                 <select>
                   <option value="M">M1 MIC DẢI BOX</option>

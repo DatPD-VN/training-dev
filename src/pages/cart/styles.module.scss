@@ -69,22 +69,22 @@
 .div13 {
   width: 13.75%;
 }
-.NavWrap {
+.navWrap {
   display: flex;
   align-items: center;
   padding: 15px 30px;
   background-color: white;
   font-size: 15px;
 
-  .NavWrapInput {
+  .navWrapInput {
       input {
 
       }
   }
-  .NavWrapTitleProduct {
+  .navWrapTitleProduct {
     text-align: left;
   }
-  .NavWrapTitle {
+  .navWrapTitle {
     color: gray;
   }
 }
@@ -129,7 +129,7 @@
         margin: 10px 0 ;
       }
     }
-    .itemWrapSelet {
+    .itemWrapSelect {
       font-size: 13px;
       color: gray;
       select {
