@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import React, { FC } from "react";
+import React from "react";
 import { TImage } from "./types";
 
 
