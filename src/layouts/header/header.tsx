@@ -41,7 +41,7 @@ const Header: FC = () => {
             </a>
           </div>
           <div className={styles.divTagTop}>
-            <a href="" className={styles.divTagTopA}>
+            <a href="/training-dev/ec/login" className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Ký </p>
             </a>
           </div>
@@ -49,7 +49,7 @@ const Header: FC = () => {
             <p style={{ color: "white" }}>| </p>
           </div>
           <div className={styles.divTagTop}>
-            <a href=" " className={styles.divTagTopA}>
+            <a href="/training-dev/ec/login " className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Nhập </p>
             </a>
           </div>

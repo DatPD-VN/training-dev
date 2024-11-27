@@ -59,7 +59,7 @@ const Login: FC = () => {
                   ĐĂNG NHẬP
                 </button>
                 {!!error && <div className={styles.error}>{error.Error}</div>}
-                <p className={styles.buttonSubmitPass}>Quên mật khẩu</p>
+                <p className={styles.buttonSubmitPass}><a href="/training-dev/ec/ressetPass">Quên mật khẩu</a></p>
               </div>
               <div className={styles.wapperBlock}>
                 <hr className={styles.wFull} />

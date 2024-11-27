@@ -95,7 +95,7 @@
   text-align: center;
   cursor: pointer;
 }
-.buttonSubmitPass {
+.buttonSubmitPass  {
   text-align: left;
   color: blue;
   font-size: 14px;
@@ -103,7 +103,10 @@
   cursor: pointer;
   margin-top: 8px;
 }
-.buttonSubmitPass:hover {
+.buttonSubmitPass a {
+  text-decoration: none;
+}
+.buttonSubmitPass a:hover {
   text-decoration: underline;
 }
 .wapprerStyle{
