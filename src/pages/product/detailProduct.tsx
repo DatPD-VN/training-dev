@@ -4,24 +4,26 @@ import Plus from "../../icon/plus";
 import NoPlus from "../../icon/noPlus";
 import { useLocation } from "react-router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { newListState } from "../../recoil/listState";
-import { addCartState  } from "../../recoil/listCart";
 import { Header } from "../../layouts/header/header";
 import { Footer } from "../../layouts/footer/footer";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { addCartState, newListState } from "../../recoil";
 
 function DetailProduct() {
   const location = useLocation();
-  const newList : Array<string> = useRecoilValue(newListState);
+  const newList = useRecoilValue(newListState);
   const addCart = useSetRecoilState(addCartState);
   const { id } = location.state;
-  const product = newList.filter((item : any) => item.id === id);
-  
-  const handleClick = (item : any) => () => {
-    const qtt   = document.querySelectorAll('#textbox_id')[0].value ;
-    let wrapItem = {...item , quanlity : qtt}
+  const product = newList.filter((item: any) => item.id === id);
+
+  const handleClick = (item: any) => () => {
+    const qtt = (document.querySelectorAll("input")[1] as HTMLInputElement);
+    console.log(qtt.value)
+    let quanlity = qtt.value
+    console.log(quanlity)
+    let wrapItem = { ...item, quanlity : quanlity };
     addCart(wrapItem);
-    toast.success(' Thêm Thành Công!', {
+    toast.success(" Thêm Thành Công!", {
       position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -30,12 +32,12 @@ function DetailProduct() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      });
+    });
   };
-  const handleAdd = (item : any) => () => {
-    let wrapItem = {...item , quanlity : 1}
+  const handleAdd = (item: any) => () => {
+    let wrapItem = { ...item, quanlity: 1 };
     addCart(wrapItem);
-    toast.success(' Thêm Thành Công!', {
+    toast.success(" Thêm Thành Công!", {
       position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -44,22 +46,23 @@ function DetailProduct() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      });
+    });
   };
 
   const handlePlus = () => {
-    document.querySelectorAll('#textbox_id')[0].value = parseInt(document.querySelectorAll('#textbox_id')[0].value) + 1
-  }
+    const qtt = (document.querySelectorAll("input")[1] as HTMLInputElement);
+     (qtt.value)  = (parseInt(qtt.value) + 1).toString();
+  };
   const handleNoPlus = () => {
-    document.querySelectorAll('#textbox_id')[0].value = Math.max(1 ,parseInt(document.querySelectorAll('#textbox_id')[0].value) - 1)
-  }
-
+    const qtt = (document.querySelectorAll("input")[1] as HTMLInputElement);
+    (qtt.value)  = (parseInt(qtt.value) - 1).toString();
+  };
 
   return (
     <>
       <Header />
       <section className={styles.DetailProductContainerWrap}>
-        {product.map((item : any, index : any) => (
+        {product.map((item: any, index: any) => (
           <div className={styles.DetailProductContainer} key={index}>
             <div className={styles.DetailProductLeft}>
               <div className={styles.DetailProductLeftImg}>
@@ -243,11 +246,25 @@ function DetailProduct() {
               <div className={styles.DetailProductTitle}>
                 <div className={styles.DetailProductRightTitle}>Số Lượng</div>
                 <div className={styles.DetailProductDivAmount}>
-                  <button onClick={() => {handleNoPlus()}}>
+                  <button
+                    onClick={() => {
+                      handleNoPlus();
+                    }}
+                  >
                     <NoPlus />
                   </button>
-                  <input type="number" defaultValue={1} min={1}  name="" id="textbox_id" />
-                  <button onClick={() => {handlePlus()}}>
+                  <input
+                    type="number"
+                    defaultValue={1}
+                    min={1}
+                    name=""
+                    id="textbox_id"
+                  />
+                  <button
+                    onClick={() => {
+                      handlePlus();
+                    }}
+                  >
                     <Plus />
                   </button>
                 </div>

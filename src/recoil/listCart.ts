@@ -1,8 +1,8 @@
 import { atom, selector } from 'recoil';
 
-const defaultData =  [];
+const defaultData : Array<string> =  [];
 
-const listCartState = atom({
+const listCartState : any = atom({
     key: 'listCart',
     default: defaultData,
 });
@@ -14,18 +14,18 @@ export const addCartState = selector({
         const list = get(listCartState);
         return list;
     },
-    set: ({ get, set }, item) => {
-        const {quanlity} = item;
-        const list = get(listCartState);
-        const check = list.find(itemlist => itemlist.id === item.id)
+    set: ({ get, set }, item : any) => {
+        const { quanlity } = item;
+        const list : any = get(listCartState);
+        const check = list.find((itemlist:any) => itemlist.id === item.id)
         
         if (check) {
             if (quanlity === 1) {
-                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + 1} : itemDetail  )
+                const newTodo = list.map((itemDetail: any) => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + 1} : itemDetail  )
                 set(listCartState, [...newTodo]);
                 return
             } else {
-                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + parseInt(quanlity)} : itemDetail  )
+                const newTodo = list.map((itemDetail: any) => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + parseInt(quanlity)} : itemDetail  )
                 set(listCartState, [...newTodo]);
                 return
             }
@@ -44,8 +44,8 @@ export const delCartState = selector({
         return list;
     },
     set: ({ get, set }, id) => {
-        const list = get(listCartState);
-        const newTodo = list.filter(item => item.id !== id) ;
+        const list : any = get(listCartState);
+        const newTodo = list.filter((item: any) => item.id !== id) ;
         set(listCartState, [ ...newTodo]);
     },
 });
@@ -56,17 +56,17 @@ export const handleCartState = selector({
         const list = get(listCartState);
         return list;
     },
-    set: ({ get, set }, data) => {
+    set: ({ get, set }, data : any) => {
         const {handle ,item} = data;
-        const list = get(listCartState);
+        const list : any = get(listCartState);
 
         switch (handle) {
             case 'tang':
-                const newTodo = list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + 1} : itemDetail  )
+                const newTodo = list.map((itemDetail: any) => itemDetail.id === item.id ? {...itemDetail , quanlity : parseInt(itemDetail.quanlity) + 1} : itemDetail  )
                 set(listCartState, [...newTodo]);
               break;
             case 'giam':
-                let neTodo =list.map(itemDetail => itemDetail.id === item.id ? {...itemDetail , quanlity : Math.max(1,parseInt(itemDetail.quanlity) - 1)} : itemDetail  ) ;
+                let neTodo =list.map((itemDetail: any) => itemDetail.id === item.id ? {...itemDetail , quanlity : Math.max(1,parseInt(itemDetail.quanlity) - 1)} : itemDetail  ) ;
                 set(listCartState, [...neTodo]);
               break;
             default:
@@ -80,11 +80,11 @@ export const handleCartState = selector({
 export const countCartState = selector({
     key: 'countCart',
     get: ({ get }) => {
-        const list = get(listCartState);
+        const list : any = get(listCartState);
         return list.length;
     },
     set: ({ get, set }, item) => {
-        const list = get(listCartState);
+        const list : any = get(listCartState);
         const newTodo = {
         item
         };
@@ -94,14 +94,14 @@ export const countCartState = selector({
 export const totalCartState = selector({
     key: 'totalcart',
     get: ({ get }) => {
-        const list = get(listCartState);
-        const totalCart = list.reduce((total,item) => {
+        const list : any = get(listCartState);
+        const totalCart = list.reduce((total :any,item : any) => {
             return total + item.priceProduct * item.quanlity;
-        },0 )
+        },0 )   
         return totalCart;
     },
     set: ({ get, set }, item) => {
-        const list = get(listCartState);
+        const list : any = get(listCartState);
         const newTodo = {
         item
         };

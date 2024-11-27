@@ -5,12 +5,13 @@ import styles from "./styles.module.scss";
 import Plus from "../../icon/plus";
 import NoPlus from "../../icon/noPlus";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { addCartState ,totalCartState ,delCartState ,handleCartState } from "../../recoil/listCart";
+import { addCartState ,totalCartState ,delCartState ,handleCartState,countCartState } from "../../recoil";
 import { Header } from "../../layouts/header/header";
 
 const Cart: FC = () => {
-  const cart : Array<string> = useRecoilValue(addCartState);
+  const cart : any  = useRecoilValue(addCartState);
   const totalCart : any = useRecoilValue(totalCartState);
+  const countCart : any = useRecoilValue(countCartState);
   const delCart = useSetRecoilState(delCartState);
   const handleCart = useSetRecoilState(handleCartState);
   const hadleDel = (id : any) => () => {
@@ -138,7 +139,7 @@ const Cart: FC = () => {
                 <span className={styles.footerWrapBottomLeftSave}>Lưu vào mục Đã thích</span>
               </div>
               <div className={styles.footerWrapBottomRight}>
-                <span className={styles.footerWrapBottomRightTotal}>Tổng thanh toán (0 Sản phẩm):</span>
+                <span className={styles.footerWrapBottomRightTotal}>Tổng thanh toán ({countCart} Sản phẩm):</span>
                 <div className={styles.footerWrapBottomRightPriceTotal}><span>₫</span> {(totalCart.toLocaleString('it-IT'))}
                 </div>
                 <button type="button" className={styles.footerWrapBottomRightButton}>Mua Hàng</button>

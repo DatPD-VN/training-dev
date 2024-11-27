@@ -10,7 +10,7 @@ import {
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
 import { useRecoilValue } from "recoil";
-import { countCartState } from "../../recoil/listCart.js";
+import { countCartState } from "../../recoil";
 import { useNavigate } from "react-router-dom";
 
 

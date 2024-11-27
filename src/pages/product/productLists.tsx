@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
 import { useRecoilValue } from 'recoil';
-import { newListState } from '../../recoil/listState';
+import { newListState } from '../../recoil';
 import {  useNavigate } from "react-router"
 import { Header } from "../../layouts/header/header";
 import { Footer } from "../../layouts/footer/footer";

@@ -144,27 +144,27 @@ const defaultData =  [
     },
   ];
 
-const listTodoState = atom({
+const listTodoState : any  = atom({
     key: 'listTodo',
-    default: defaultData,
+    default: defaultData ,
 });
 
 
 export const newListState = selector({
     key: 'newList',
     get: ({ get }) => {
-        const list = get(listTodoState);
+        const list : any  = get(listTodoState);
         return list;
     },
     set: ({ get, set }, newValue) => {
-        const list = get(listTodoState);
+        const list : any =  get(listTodoState);
         const newTodo = {
         id: new Date().getTime(),
         content: newValue,
         status: 'new',
         };
 
-        set(listTodoState, [...list, newTodo]);
+        set(listTodoState , [...list, newTodo]);
     },
 });
 
