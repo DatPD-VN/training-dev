@@ -1,11 +1,13 @@
 import { FC } from "react";
 import { Undo2 } from 'lucide-react';
-
+import {  useNavigate } from "react-router"
 import styles from "./styles.module.scss";
 
 
 
 const RessetPass: FC = () => {
+  const navigate = useNavigate();
+
   return <>
   <section className={styles.container}>
         <div className={styles.header}>
@@ -16,7 +18,7 @@ const RessetPass: FC = () => {
         </div>
         <section className={styles.content}>
           <div className={styles.wapper} >
-            <Undo2 className={styles.styleIcon}/>
+            <Undo2 onClick={() => {navigate("/training-dev/ec/Products")}} className={styles.styleIcon}/>
             <h1 className={styles.text2xl}>Đặt lại mật khẩu </h1>
             <input
               type="text"

@@ -1,0 +1,115 @@
+@use "abstracts/index" as *;
+
+.footerContainer {
+  display: flex;
+  align-items: start;
+}
+.footerDiv {
+  width: 20%;
+  text-align: left;
+}
+.footerTitle {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+.footerUl {
+  text-align: left;
+  font-size: 13px;
+  padding-left: 0px;
+}
+
+.footerlist {
+  list-style: none;
+  margin: 10px 0;
+  color: rgb(72, 80, 88);
+}
+footer {
+  padding: 30px 56px 5px;
+  background-color: #fbfbfb;
+}
+.footerLogoDiv {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0px;
+}
+.footerLogo {
+  list-style: none;
+  padding: 5px 0;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.footerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+}
+.footerIcon img {
+  margin-right: 10px;
+}
+.footerLogoLeft {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footerLogoLeft img {
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.footerLogoRight {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+}
+.footerLogoRight img {
+  margin: 2px 0;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+hr {
+  margin: 20px 0;
+}
+
+.footerdescription {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(66, 61, 88);
+  font-size: 13px;
+}
+.footerdescriptionRight {
+  display: flex;
+  align-items: center;
+}
+.footerdescriptionRight li {
+  list-style: none;
+  padding: 0px 7px;
+  border-right-width: 1px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: rgb(105, 104, 104);
+  border-style: solid;
+}
+.footerdescriptionRightList {
+  list-style: none;
+  padding: 0px 7px;
+  border-right-width: 0px !important;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-color: rgb(105, 104, 104);
+  border-style: solid;
+}
