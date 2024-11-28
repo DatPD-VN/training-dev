@@ -50,7 +50,7 @@ const Dashboard: FC = () => {
 
                   <div className={styles.price}>
                     <span className={styles.iconPrice}>₫</span>
-                    {item.priceProduct}
+                    {(item.priceProduct.toLocaleString('it-IT'))}
                   </div>
                 </div>
                 <div className={styles.divItemHover}>Tìm sản phẩm tương tự</div>

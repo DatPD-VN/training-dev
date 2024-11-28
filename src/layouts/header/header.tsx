@@ -104,6 +104,11 @@ const Header: FC = () => {
               <div className={styles.headerBottomRightIconDivCount}>{countCart}</div>
             </div>
           </div>
+          <div className={styles.headerBottomRightDivImg}>
+            <div onClick={() => {navigate('/training-dev/ec/Cart')}} className={styles.headerBottomRightIconDiv}>
+              <img src="https://down-vn.img.susercontent.com/file/vn-11134226-7ras8-m18dlgfhrbq4f8_tn" alt=""  className={styles.headerBottomRightImg}/>
+            </div>
+          </div>
         </div>
       </header>
   </>;

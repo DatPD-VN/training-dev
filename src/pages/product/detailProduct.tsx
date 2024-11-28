@@ -1,5 +1,16 @@
 import styles from "./styles.module.scss";
-import { Heart } from "lucide-react";
+import mobile from "./mobile.module.scss";
+import {
+  ArrowLeft,
+  ChevronDown,
+  ChevronRight,
+  Ellipsis,
+  Heart,
+  MapPin,
+  ShieldCheck,
+  ShoppingCart,
+  Truck,
+} from "lucide-react";
 import Plus from "../../icon/plus";
 import NoPlus from "../../icon/noPlus";
 import { useLocation } from "react-router";
@@ -8,10 +19,12 @@ import { Header } from "../../layouts/header/header";
 import { Footer } from "../../layouts/footer/footer";
 import { addCartState, newListState } from "../../recoil";
 import { Toast } from "../../Common";
-import { ImageItem } from "../../components/imageItem/imageItem"
+import { ImageItem } from "../../components/imageItem/imageItem";
+import { useMediaQuery } from "react-responsive";
+import { FeedBack } from "../../components/feedback/feedBack";
 
 function DetailProduct() {
-  
+  const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
   const location = useLocation();
   const newList = useRecoilValue(newListState);
   const addCart = useSetRecoilState(addCartState);
@@ -19,9 +32,9 @@ function DetailProduct() {
   const product = newList.filter((item: any) => item.id === id);
 
   const handleClick = (item: any) => () => {
-    const qtt = (document.querySelector("#textbox_id") as HTMLInputElement);
-    let quanlity = qtt.value
-    let wrapItem = { ...item, quanlity : quanlity };
+    const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
+    let quanlity = qtt.value;
+    let wrapItem = { ...item, quanlity: quanlity };
     addCart(wrapItem);
     Toast();
   };
@@ -32,18 +45,19 @@ function DetailProduct() {
   };
 
   const handlePlus = () => {
-    const qtt = (document.querySelector("#textbox_id") as HTMLInputElement);
-     (qtt.value)  = (parseInt(qtt.value) + 1).toString();
+    const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
+    qtt.value = (parseInt(qtt.value) + 1).toString();
   };
   const handleNoPlus = () => {
-    const qtt = (document.querySelector("#textbox_id") as HTMLInputElement);
-    (qtt.value)  = (parseInt(qtt.value) - 1).toString();
+    const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
+    qtt.value = (parseInt(qtt.value) - 1).toString();
   };
 
   return (
     <>
-      <Header />
-      <section className={styles.detailProductContainerWrap}>
+      {/* <Header /> */}
+
+      {/* <section className={styles.detailProductContainerWrap}>
         {product.map((item: any, index: any) => (
           <div className={styles.detailProductContainer} key={index}>
             <div className={styles.detailProductLeft}>
@@ -248,7 +262,228 @@ function DetailProduct() {
             </div>
           </div>
         ))}
+      </section> */}
+      <section className={mobile.containerDetail}>
+        <header className={mobile.headerWrap}>
+          <div className={mobile.headerWrapLeft}>
+             <ArrowLeft size={25} />
+          </div>
+          <div className={mobile.headerWrapMiddle}>
+            Sáp vuốt tóc BluMaan Styling Meraki (sáp tê giác) tạo kiểu giữ nếp
+            cả ngày, không bết Minh Anh Hair Store
+          </div>
+          <div className={mobile.headerWrapRight}>
+            <div className={mobile.headerWrapRightCart}>
+              <ShoppingCart size={23} />
+              <div className={mobile.headerWrapRightCartAmount}>1</div>
+            </div>
+            <div className={mobile.headerWrapRightEllipsis}>
+              <Ellipsis  size={23}/>
+            </div>
+          </div>
+        </header>
+        <div className={mobile.imgProductWrap}>
+          <div className={mobile.imgProduct}>
+            <img
+              className={mobile.imgProductWrapMain}
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzgiw8bdfuj1c0.webp"
+              alt=""
+            />
+            <img
+              className={mobile.imgProductWrapVoucher}
+              src="https://down-vn.img.susercontent.com/file/vn-11134258-7ras8-m2w9lkghn9h62b"
+              alt=""
+            />
+          </div>
+          <p>2 phân loại có sẵn</p>
+          <div className={mobile.imgProductWrapSelect}>
+            <img
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzgip241agf5e5@resize_w264_nl.webp"
+              alt=""
+            />
+            <img
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzgipe7xkkel4c@resize_w264_nl.webp"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className={mobile.flashSale}>
+          <img src="https://deo.shopeemobile.com/shopee/shopee-mobilemall-live-sg/productdetailspage/8dbf303bff17e5d41618.svg" alt="" />
+        </div>
+        <div className={mobile.priceWrap}>
+          <div className={mobile.priceWrapInfo}>
+            <div className={mobile.priceWrapMain}>
+              <div className={mobile.priceWrapMainNew}>
+                <span className="">₫</span>
+                <p className="">9.000</p>
+              </div>
+              <div className={mobile.priceWrapMainOld}>
+                <span className="">₫</span>
+                <p className="">129.000</p>
+              </div>
+            </div>
+            <div className={mobile.heartDiv}>
+              <span>4,3k Đã bán</span>
+              <Heart  size={18}/>
+            </div>  
+          </div>
+          <div className={mobile.priceWrapVoucher}>
+            <div>Mua tối thiểu ₫100k để được giảm ₫3k</div>
+            <ChevronRight size={18} />
+          </div>
+        </div>
+        <div className={mobile.titleProduct}>
+          
+          <p className={mobile.titleProductMain}>
+          <span className={mobile.titleProductHeart}>Yêu thích </span>
+            Sáp vuốt tóc BluMaan Styling Meraki (sáp tê giác) tạo kiểu giữ nếp
+            cả ngày, không bết Minh Anh Hair Store
+          </p>
+        </div>
+        <div className={mobile.shipWrap}>
+          <div className={mobile.shipWrapLeft}>
+            <Truck size={15} color="#61f5a1"/>
+            <div  className={mobile.shipWrapLeftInfo}>
+              <p>Nhận từ 1 Th12 - 2 Th12, phí giao ₫0</p>
+              <p>Tặng Voucher ₫15.000 nếu đơn giao sau thời gian trên.</p>
+            </div>
+          </div>
+          <div className={mobile.shipWrapRight}>
+            <ChevronRight  size={15}/>
+          </div>
+        </div>
+        <div className={mobile.shipTimeWrap}>
+          <div className={mobile.shipTime}>
+            <ShieldCheck size={15} color="red" />
+            <div>
+              <p>Trả hàng miễn phí 15 ngày</p>
+            </div>
+          </div>
+          <div className={mobile.shipTimeWrapRight}>
+            <ChevronRight  size={15}/>
+          </div>
+        </div>
+        <div className={mobile.infoShopWrapper}>
+          <div className={mobile.infoShopWrap}>
+            <div className={mobile.infoShop}>
+              <div className={mobile.infoShopWrapper}>
+                <div className={mobile.infoShopWrapperLeft}>
+                  <img
+                    src="https://down-vn.img.susercontent.com/file/4ad311e72dd00622dfa2da623b3a7961_tn"
+                    alt=""
+                  />
+                  <span>Yêu thích</span>
+                </div>
+                <div className={mobile.infoShopWrapperRight}>
+                  <p className={mobile.infoShopWrapperRightName}>Minh Anh Hair Store 19</p>
+                  <p className={mobile.infoShopWrapperRightInfo}>Online 16 phút trước</p>
+                  <div className={mobile.infoShopWrapperRightAddress}>
+                    <MapPin size={12} /> <span>Hà Nội</span>
+                  </div>
+                </div>
+                <button>Xem Shop</button>
+              </div>
+            </div>
+            <div className={mobile.infoSocial}>
+              <div className={mobile.infoSocialDiv}>
+                <span>129</span>
+                Sản phẩm
+              </div>
+              <div className={mobile.infoSocialDiv}>
+                <span>129</span>
+                Đánh giá
+              </div>
+              <div className={mobile.infoSocialDiv}>
+                <span>129</span>
+                Phản hồi Chat
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <section>
+          <div>
+            <div>Chi tiết sản phẩm</div>
+            <div>
+              Số lượng hàng khuyến mãi,Số sản phẩm còn lại <ChevronRight />
+            </div>
+          </div>
+          <div>
+            <p>Mô tả sản phẩm</p>
+            <p>
+              Sáp vuốt tóc BluMaan Styling Meraki (sáp tê giác) tạo kiểu giữ nếp
+              cả ngày, không bết Minh Anh Hair Store BluMaan Styling Meraki Tê
+              Giác là một sản phẩm tạo kiểu tóc hoàn hảo, được thực hiện bởi Joe
+              và cộng đồng Blumaan. Hỗ trợ mạnh mẽ mái tóc của bạn cả ngày,
+              không có gì có thể ngăn cản kiểu tóc của bạn trong các hoạt động
+              hàng ngày. Styling Meraki có một kết thúc mờ, trông như thể không
+              có gì trong mái tóc của bạn, tạo cho bạn một cái nhìn tự nhiên
+              Công dụng BluMaan Styling Meraki: - Giữ nếp cực kỳ cao ( High Hold
+              ) - Hoàn thiện mờ ( Matte finish ) - Trong sáp có thành phần bảo
+              vệ tóc khỏi nhiệt độ cao của máy sấy. - Chất sáp mềm dễ dàng tạo
+              kiểu khi vuốt nếp - Không bóng, không bết, - Dễ dàng tạo kiểu lại
+              khi đội mũ bảo hiểm - Dễ gội đầu sau khi sử dụng, không bị rít tóc
+              - Sản phẩm có chất giữ ẩm và dưỡng tóc - Phù hợp với mọi loại tóc
+              ***THÀNH PHẦN: Nước (aqua), Petrolatum, Cera Microcristallina,
+              Paraffinum Liquidum, Ozokerite, Stearic Acid, Phenyl Trimethicone,
+              Kaolin, Silica, Metha Piperita Oil, Parfum, Linalool. D-limonene,
+              Illicium Verum Fruit Oil. Cl77499/Iron Oxides, Tribehenin,
+              Oleylalcohol, Lanolin, Lanolin Alcohol. Sản phẩm không sử dụng
+              chất bảo quản (No Parabens) #sapvuottoc #sapvuottocnam
+              #waxvuottocnam #gomsapvuottocnam #xapvuottoc #taokieutoc
+              #giuneptoc #sapvuottockho #saptocnam #keosapvuottoc #blumaan
+              #blumaantegiac #blumaannguavan #blumaankhidot
+            </p>
+          </div>
+          <div>
+            <div>
+              Xem Thêm
+              <ChevronDown />
+            </div>
+          </div>
+        </section>
+        <section>
+          <div>
+            <div>
+              <div>
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
+                  alt=""
+                />
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
+                  alt=""
+                />
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
+                  alt=""
+                />
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
+                  alt=""
+                />
+                <img
+                  src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
+                  alt=""
+                />
+              </div>
+              <p>ĐÁNH GIÁ SẢN PHẨM</p>
+              <div>
+                <span>5.0/5</span>
+                <span>(17 Đánh Giá)</span>
+              </div>
+            </div>
+            <div>
+              Xem Tất Cả <ChevronRight/>
+            </div>
+          </div>
+          <FeedBack/>
+          <div>
+            Xem Tất Cả (17) <ChevronRight/>
+          </div>
+        </section>
       </section>
+
       <Footer />
     </>
   );

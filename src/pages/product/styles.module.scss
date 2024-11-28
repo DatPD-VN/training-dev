@@ -233,7 +233,39 @@
   font-size: 12px;
   margin-right: 5px;
 }
+
+@media (max-width: 1024px) {
+  .divItemWrapper {
+    padding: 0 7px;
+    width: 25%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .contaiter {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 800px) {
+  .divItemWrapper {
+    padding: 0 7px;
+    width: 50%;
+    margin-bottom: 20px;
+    position: relative;
+  }
+ .divItemTitle {
+  font-size: 16px;
+ }
+ .price {
+  font-size: 16px;
+ }
+ 
+}
 // detailProducts
+
+
+
 
 .detailProductContainer {
   margin: 20px 64px;
@@ -285,7 +317,7 @@
   margin-left: 10px;
 }
 .detailProductLeftBottomShareIcon {
-  background-position: "0 -100%";
+  background-position-y:-100% ;
   background-color: initial;
   background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
   background-size: 100%;
@@ -312,7 +344,7 @@
   width: 25px;
 }
 .detailProductLeftBottomShareIcon3 {
-  background-position: "0 -300%";
+  background-position-y:-300% ;
   background-color: initial;
   background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
   background-size: 100%;
@@ -326,7 +358,7 @@
   width: 25px;
 }
 .detailProductLeftBottomShareIcon4 {
-  background-position: "0 -400%";
+  background-position-y:-400% ;
   background-color: initial;
   background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
   background-size: 100%;
@@ -627,4 +659,68 @@
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+ .detailProductLeftBottom {
+  margin: 20px 0 ;
+  padding: 0px;
+  font-size: 12px;
+  width: 100%;
+
+ }
+ .detailProductLeftBottomFavourite {
+  justify-content: end;
+  font-size: 11px;
+  margin-top: 20px;
+ }
+
+ .detailProductLeftBottomShareIcon {
+  height: 18px;
+  width: 18px;
+ }
+ .detailProductLeftBottomShareIcon2 {
+  width: 18px;
+  height: 18px;
+ }
+ .detailProductLeftBottomShareIcon3 {
+  width: 18px;
+  height: 18px;
+ }
+ .detailProductLeftBottomShareIcon4 {
+  width: 18px;
+  height: 18px;
+ }
+ .detailProductLeftBottom {
+  flex-direction: column;
+ }
+ .detailProductRightTitleProduct {
+  font-size: 14px;
+ }
+ .detailProductRightInfomation {
+  font-size: 10px;
+ }
+ .detailProductRightTitle {
+  font-size: 11px;
+  text-align: left;
+ }
+ .detailProductTitle {
+  margin: 10px 0;
+ }
+ .detailProductPrice {
+  margin-bottom: 20px;
+ }
+ .detailProductRefund ,.detailProductRefundFree {
+  font-size: 12px;
+ }
+ .detailProductRightVoucher {
+  font-size: 11px;
+ }
+ .detailProductShipTop span , .detailProductShipBottom span ,.detailProductShipBot span {
+  font-size: 11px;
+ }
+ .detailProductShipBottom select ,.detailProductShipBot select {
+  font-size: 11px;
+ }
 }

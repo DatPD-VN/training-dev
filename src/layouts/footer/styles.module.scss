@@ -18,6 +18,11 @@
   font-size: 13px;
   padding-left: 0px;
 }
+.footerUlNet {
+  text-align: center;
+  font-size: 13px;
+  padding-left: 0px;
+}
 
 .footerlist {
   list-style: none;
@@ -51,6 +56,16 @@ footer {
   margin-bottom: 10px;
 }
 .footerIcon img {
+  margin-right: 10px;
+}
+
+.footerIconNet {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+}
+.footerIconNet img {
   margin-right: 10px;
 }
 .footerLogoLeft {
@@ -112,4 +127,52 @@ hr {
   border-bottom-width: 0px;
   border-color: rgb(105, 104, 104);
   border-style: solid;
+}
+
+
+@media (max-width: 1024px) {
+  footer {
+    padding: 30px 10px 5px;
+  }
+  .footerUl {
+    font-size: 11px;
+  }
+  .footerUlNet {
+    font-size: 11px;
+  }
+  .footerTitle {
+    font-size: 11px;
+  }
+  .footerLogo {
+    padding: 0px 1px;
+  }
+  .footerLogo img {
+    width: 30px;
+    height: 20px;
+  }
+  .footerIcon {
+    flex-direction: column;
+  }
+  .footerIcon img {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+  .footerdescription {
+    font-size: 10px;
+  }
+  .footerdescriptionRight {
+    width: 50%;
+  }
+}
+
+@media (max-width: 800px) {
+  .footerDiv {
+    width: 33.3%;
+  }
+  .footerIcon {
+    align-items: start;
+  }
+  .footerdescription {
+    display: none;
+  }
 }

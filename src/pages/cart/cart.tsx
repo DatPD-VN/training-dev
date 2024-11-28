@@ -90,7 +90,7 @@ const Cart: FC = () => {
                   <button onClick={hadleCase("giam" ,item)}>
                     <NoPlus />
                   </button>
-                  <input type="number"  min={1} defaultValue={1} value={item.quanlity} name="" id="" />
+                  <input type="number"  min={1} value={item.quanlity} name="" id="" />
                   <button onClick={hadleCase("tang",item)}>
                     <Plus />
                   </button>

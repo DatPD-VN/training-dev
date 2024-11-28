@@ -3,7 +3,7 @@
 .textItem {
   color: $textDefault;
 }
-.container{
+.container {
   height: 100vh;
   width: 100%;
   background-color: #f5f5f5;
@@ -14,7 +14,6 @@
   align-items: center;
   padding: 20px 56px;
   background-color: white;
-  
 }
 .headerWrapLeft {
   color: $primary;
@@ -77,9 +76,8 @@
   font-size: 15px;
 
   .navWrapInput {
-      input {
-
-      }
+    input {
+    }
   }
   .navWrapTitleProduct {
     text-align: left;
@@ -124,9 +122,9 @@
         overflow: hidden;
       }
       img {
-        width:  200px;
+        width: 200px;
         height: 20px;
-        margin: 10px 0 ;
+        margin: 10px 0;
       }
     }
     .itemWrapSelect {
@@ -153,7 +151,7 @@
     margin: 0 5px;
     display: flex;
     align-items: start;
-    
+
     span {
       font-size: 10px;
     }
@@ -161,13 +159,13 @@
   .itemWrapInfoPriceNew {
     display: flex;
     align-items: start;
-    
+
     span {
       font-size: 10px;
     }
   }
 }
-.itemWrapAmount{
+.itemWrapAmount {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,22 +176,22 @@
       outline: none;
     }
   }
-  .DetailProductDivAmount button{
+  .DetailProductDivAmount button {
     width: 32px;
     height: 32px;
-    outline: none;  
+    outline: none;
     padding: 0px 10px;
     background-color: transparent;
     outline: none;
-    border: 1px solid rgba(0, 0, 0, .09);
+    border: 1px solid rgba(0, 0, 0, 0.09);
     cursor: pointer;
   }
   .DetailProductDivAmount input {
     width: 50px;
     height: 30px;
-    padding: 0px ;
-    border: 1px solid rgba(0, 0, 0, .09);;
-    text-align: center  ;
+    padding: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    text-align: center;
   }
 }
 .itemWrapTotalPrice {
@@ -215,13 +213,16 @@
     align-items: center;
     justify-content: center;
   }
+  span:hover {
+    color: $primary;
+  }
 }
 
 .footerWrap {
   padding: 25px 0;
   background-color: white;
   font-size: 15px;
-  margin: 10px 0; 
+  margin: 10px 0;
   position: sticky;
   bottom: 0px;
   .footerWrapTop {
@@ -233,7 +234,7 @@
     border-right: 0px;
     border-left: 0px;
     border-style: dashed;
-    border-color: rgba(0, 0, 0, .09);
+    border-color: rgba(0, 0, 0, 0.09);
     padding: 0 30px;
     padding-bottom: 20px;
     .footerWrapTopVoucher {
@@ -244,7 +245,6 @@
       span {
         margin: 0 10px;
       }
-      
     }
     a {
       font-size: 14px;
@@ -253,7 +253,7 @@
   }
   .footerWrapMiddle {
     display: flex;
-    align-items: center;  
+    align-items: center;
     justify-content: end;
     padding: 10px 30px;
     .footerWrapMiddleWrap {
@@ -280,8 +280,8 @@
       }
     }
     .footerWrapMiddlePriceVoucher {
-       display: flex;
-       align-items: start;
+      display: flex;
+      align-items: start;
       opacity: 0.5;
       span {
         font-size: 10px;
@@ -330,5 +330,109 @@
         opacity: 0.8;
       }
     }
+  }
+}
+
+@media (max-width: 1100px) {
+  .headerWrapLeft div {
+    font-size: 16px;
+  }
+  .headerWrapRight input {
+    padding: 7px;
+    font-size: 13px;
+  }
+  .headerWrapRight {
+    height: 30px;
+  }
+  .headerWrapRigthSearchDiv svg {
+    width: 18px;
+    height: 18px;
+  }
+  .navWrapTitleProduct {
+    font-size: 13px;
+  }
+  .navWrapTitle {
+    font-size: 13px;
+  }
+  .footerWrapTopVoucher span {
+    font-size: 12px;
+  }
+  .footerWrapTop a {
+    font-size: 12px;
+  }
+  .footerWrapMiddle {
+    font-size: 13px;
+  }
+  .footerWrapMiddleShoppe {
+    font-size: 12px;
+  }
+  .footerWrapBottom {
+    font-size: 12px;
+  }
+  .footerWrap
+    .footerWrapBottom
+    .footerWrapBottomRight
+    .footerWrapBottomRightPriceTotal {
+    font-size: 16px;
+  }
+  .footerWrap
+    .footerWrapBottom
+    .footerWrapBottomRight
+    .footerWrapBottomRightButton {
+    padding: 7px 23px;
+    font-size: 12px;
+  }
+
+  .footerWrap .footerWrapMiddle .footerWrapMiddleWrap .footerWrapMiddleInput {
+    width: 15px;
+    height: 15px;
+  }
+  .itemWrap .itemWrapInfo {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+  }
+  .itemWrap .itemWrapInfo .itemWrapInfoTitle img {
+    width: 124px;
+    height: 16px;
+    margin: 10px 0;
+  }
+  .itemWrap .itemWrapInfo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 8px;
+  }
+  .itemWrap .itemWrapInfo .itemWrapSelect {
+    font-size: 10px;
+    color: gray;
+  }
+  .itemWrap
+    .itemWrapInfo
+    .itemWrapSelect
+    select {
+      font-size: 10px;
+  }
+  .itemWrapInfoPrice {
+    font-size: 11px;
+  }
+  .itemWrapHandle {
+    font-size: 11px;
+  }
+
+  .itemWrapTotalPrice {
+    font-size: 11px;
+  }
+  .itemWrapAmount .DetailProductDivAmount button {
+    width: 21px;
+    height: 21px;
+    padding: 0px 5px;
+  }
+  .itemWrapAmount .DetailProductDivAmount input {
+    width: 31px;
+    height: 19px;
+    font-size: 11px;
+  }
+  .bodyWrap {
+    padding: 20px 11px;
   }
 }

@@ -1,0 +1,288 @@
+@use "abstracts/index" as *;
+
+.containerDetail {
+    box-sizing: border-box;
+}
+.headerWrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+.headerWrapLeft {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    padding-left: 15px;
+}
+.headerWrapMiddle {
+    flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    font-size: 18px;
+    padding: 0 15px;
+    overflow: hidden;
+}
+.headerWrapRight {
+    display: flex;
+    align-items: center;
+}
+.headerWrapRightCart {
+    position: relative;
+    color: $primary;
+}
+.headerWrapRightCartAmount {
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    color: white;
+    background-color: $primary;
+    border-radius: 100%;
+    padding: 2px 5px;
+    font-size: 12px;
+}
+.headerWrapRightEllipsis {
+    color: $primary;
+    margin-left: 25px;
+    padding-right: 15px;
+}
+.imgProduct {
+    position: relative;
+}
+.imgProductWrapMain {
+    width: 100%;
+}
+.imgProductWrapVoucher {
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+    left: 0px;
+}
+.imgProductWrap p {
+    text-align: left;
+    font-size: 14px;
+    color: gray;
+    margin: 10px 0;
+    margin-left: 10px;
+}
+.imgProductWrapSelect {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+.imgProductWrapSelect img {
+    cursor: pointer;
+    width: 7%;
+    border-radius: 5px;
+    margin: 0 5px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.flashSale {
+    background-color: $primary;
+    padding: 5px;
+    padding-left: 20px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+.priceWrap {
+    background-color: #fff2ee;
+    padding: 20px 10px;
+    .priceWrapVoucher {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        padding: 10px 10px 0 10px;
+        color: gray;
+        div {
+            color: $primary;
+            padding: 2px;
+            border: 1px solid $primary;
+            font-size: 12px;
+        }
+    }
+    .priceWrapInfo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .priceWrapMain {
+        display: flex;
+        align-items: center;
+    }
+    .heartDiv {
+        display: flex;
+        align-items: center;
+        color: gray;
+    }
+    .heartDiv span {
+        margin-right: 10px;
+        color: black;
+        font-size: 14px;
+    }
+    .priceWrapMainNew {
+        display: flex;
+        align-items: start;
+        color: $primary;
+        margin: 0 10px;
+    }
+    .priceWrapMainNew p {
+        font-size: 27px;
+    }
+    .priceWrapMainNew span {
+        font-size: 13px;
+    }
+    .priceWrapMainOld {
+        color: gray;
+        display: flex;
+        align-items: start;
+        text-decoration: line-through;
+        margin-right:10px;
+    }
+    .priceWrapMainOld p {
+        font-size: 18px;
+    }
+    .priceWrapMainOld span {
+        font-size: 12px;
+    }
+}
+.titleProduct {
+    padding: 15px;
+    .titleProductHeart {
+        color: white;
+        background-color: $primary;
+        padding: 3px;
+        border-radius: 3px;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+    .titleProductMain {
+        text-align: left;
+        font-size: 16px;
+        line-height: 20px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+.shipWrap {
+    padding: 15px;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: solid;
+    border-color: rgba(128, 128, 128, 0.24);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .shipWrapLeft {
+        display: flex;
+        align-items: start;
+    }
+    .shipWrapLeftInfo {
+        text-align: left;
+        line-height: 20px;
+        margin-left: 10px;
+        font-size: 14px;
+    }
+    .shipWrapLeftInfo p:first-child {
+        font-size: 16px;
+    }
+}
+.shipTimeWrap {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .shipTimeWrapRight {
+        color: gray;
+    }
+    .shipTime {
+        display: flex;
+        align-items: center;
+    }
+    .shipTime div {
+        margin-left: 10px;
+    }
+}
+.infoShopWrapper {
+    background-color: #efefef;
+    padding: 10px 0;
+}
+.infoShopWrap {
+    padding: 15px;
+    background-color: white;
+    .infoShopWrapper {
+        display: flex;
+        align-items: center;
+        background-color: white;
+
+        button {
+            color: $primary;
+            border: 1px solid;
+            border-radius: 2px;
+            border-color: $primary;
+            padding: 7px 14px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+    .infoShopWrapperLeft {
+        position: relative;
+    }
+    .infoShopWrapperLeft img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+    }
+    .infoShopWrapperLeft span {
+        position: absolute;
+        bottom: 0;
+        left: 1/2%;
+        transform: translateX(-100%);
+        color: white;
+        background-color: $primary;
+        padding: 3px;
+        font-size: 12px;
+        width: max-content;
+        border-radius: 4px;
+    }
+}
+.infoShopWrapperRight {
+    flex: 1;
+    text-align: left;
+    margin-left: 20px;
+    line-height: 20px;
+    .infoShopWrapperRightInfo ,.infoShopWrapperRightAddress {
+        font-size: 14px;
+        color: gray;
+    }
+    .infoShopWrapperRightAddress {
+        display: flex;
+        align-items: center;
+    }
+    .infoShopWrapperRightAddress span {
+        margin-left: 5px;
+    }
+}
+
+.infoSocial {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 0;
+    .infoSocialDiv {
+        font-size: 13px;
+        margin-left: 10px;
+    }
+    .infoSocialDiv span {
+        color: $primary;
+        margin-right: 7px ;
+    }
+}
