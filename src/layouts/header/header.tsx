@@ -6,18 +6,29 @@ import {
   ChevronDown,
   Search,
   ShoppingCart,
+  ArrowUpLeft,
 } from "lucide-react";
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
 import { useRecoilValue } from "recoil";
 import { countCartState } from "../../recoil";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Route from "../../app/route";
 
 
 
 const Header: FC = () => {
   const navigate = useNavigate();
   const countCart : any = useRecoilValue(countCartState);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleOpen = () => {
+    setIsDisabled(false)
+  }
+  const handleBlur = () => {
+    setIsDisabled(true)
+  }
   return <>
   <header className={styles.header}>
         <div className={styles.headerTop}>
@@ -67,9 +78,18 @@ const Header: FC = () => {
               <input
                 type="text"
                 placeholder="Tìm kiếm "
+                onClick={handleOpen}
                 className={styles.input}
+                onBlur={handleBlur}
               />
               <Search className={styles.inputIcon} />
+              {!isDisabled && <div className={styles.divInputSearchWrap}>
+                <ul className={styles.divInputSearch}>
+                  <li>Hoa quả   <ArrowUpLeft color="gray" /></li>
+                  <li>Hoa quả Hoa quảHoa quảHoa quảHoa quả  <ArrowUpLeft color="gray" /></li>
+                </ul>
+              </div> }
+              
             </div>  
             <div className={styles.DivList}>
               <li className={styles.list}>
@@ -99,7 +119,7 @@ const Header: FC = () => {
             </div>
           </div>
           <div className={styles.headerBottomRight}>
-            <div onClick={() => {navigate('/training-dev/ec/Cart')}} className={styles.headerBottomRightIconDiv}>
+            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
               <ShoppingCart size={30} className={styles.headerBottomRightIcon} />
               <div className={styles.headerBottomRightIconDivCount}>{countCart}</div>
             </div>
