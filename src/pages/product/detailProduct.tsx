@@ -79,8 +79,8 @@ function DetailProduct() {
             </div>
           </div>
         </header>
-        {product.map((item: any, index: any) => (
-          <>
+        {product.map((item: any, index: number) => (
+          <div key={index}>
         <div className={mobile.imgProductWrap}>
           <div className={mobile.imgProduct}>
             <img
@@ -343,7 +343,7 @@ DP COSMECTIC CAM KẾT:
             </div>
           </div>
         </footer>
-        </>
+        </div>
         ))}
       </section>}
       {!isPhoneScreen && <> 

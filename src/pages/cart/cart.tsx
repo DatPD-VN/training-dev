@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import mobile from "./mobile.module.scss";
 import { FC } from "react";
-import { ArrowLeft, BadgeDollarSign, ChevronDown, ChevronRight, Ellipsis, Search, ShoppingCart, Ticket } from "lucide-react";
+import { ArrowLeft, BadgeDollarSign, ChevronDown, ChevronRight, Search, Ticket } from "lucide-react";
 
 import Plus from "../../icon/plus";
 import NoPlus from "../../icon/noPlus";
