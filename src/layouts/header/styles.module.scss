@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: white;
+  color: $whiteColor;
   margin: 0px 10px;
 }
 .divTagTop:hover {
@@ -41,11 +41,11 @@
 
 .divTagTopIcon {
   width: 18px;
-  color: white;
+  color: $whiteColor;
 }
 .divTagTopATitle {
   font-size: 14px;
-  color: white;
+  color: $whiteColor;
   margin: 0px 6px;
 }
 .headerBottom {
@@ -71,7 +71,7 @@
 .headerBottomLogoDiv {
   height: 90px;
   width: 170px;
-  fill: #fff;
+  fill: $whiteColor;
   margin-right: 20px;
 }
 
@@ -100,14 +100,14 @@
 }
 .inputIcon {
   padding: 8px 20px;
-  background-color: red;
+  background-color: $redColor;
   cursor: pointer;
   width: 20px;
   border-radius: 2px;
   position: absolute;
   top: 3px;
   right: 5px;
-  color: white;
+  color: $whiteColor;
 }
 .DivList {
   display: flex;
@@ -117,20 +117,20 @@
   margin: 9px 15px 7px 0px;
   list-style: none;
   font-size: 14px;
-  color: white;
+  color: $whiteColor;
   cursor: pointer;
 }
 .list a {
-  color: white;
+  color: $whiteColor;
   cursor: pointer;
   text-decoration: none;
-  white-space: nowrap;
+  $whiteColor-space: nowrap;
 }
 .list a:hover {
   text-decoration: underline;
 }
 .headerBottomRightIcon {
-  color: white;
+  color: $whiteColor;
   cursor: pointer;  
 }
 .headerBottomRightIconDiv {
@@ -142,8 +142,8 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  color: #ff3d00;
-  background-color: #fff;
+  color: $primary;
+  background-color: $whiteColor;
   padding: 2px 6px ;
   border-radius: 50%;
   font-size: 14px;
@@ -155,7 +155,7 @@
     height: 100%;
     margin-right: 34px;
     width: 170px;
-    fill: #fff;
+    fill: $whiteColor;
   }
   .divTagTopATitle {
     font-size: 12px;

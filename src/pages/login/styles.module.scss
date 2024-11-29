@@ -21,7 +21,7 @@
 .headerRight {
     font-size: 14px ;
     line-height: 20px;    
-    color: red;
+    color: $primary;
     cursor: pointer;
 
 }
@@ -32,7 +32,7 @@
 
 .content {
   position: relative;
-  background-color: rgb(255 75 0);
+  background-color:$primary;
   width: 100%;
   height: auto;
   min-height: 100%;
@@ -40,11 +40,11 @@
 }
 .wapper {
   height: auto;
-  width: 33%;
+  max-width: 600px;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: $whiteColor;
   border-radius: 4px;
   padding: 32px;
 
@@ -56,7 +56,7 @@
   font-size: 14px ;
   line-height: 20px;  
   border-radius: 4px;
-  border: 1px solid gray ;
+  border: 1px solid $grayColor ;
   margin: 10px 0;
   outline: none;
 }
@@ -70,34 +70,34 @@
 .wapperBlock {
   margin: 6px 0;
   display: flex;
-  color: slategray;
+  color: $grayColor;
   align-items: center;
   justify-content: center;
 }
 .buttonNoSubmit {
-  color: white;
+  color: $whiteColor;
   padding: 8px 0px;
   width: 100%;
   border-radius: 4px;
-  background-color: rgb(244 0 0);
+  background-color: $primary;
   font-weight: 500;
   text-align: center;
   cursor: no-drop;
   opacity: 0.4;
 }
 .buttonSubmit {
-  color: white;
+  color: $whiteColor;
   padding: 8px 0px;
   width: 100%;
   border-radius: 4px;
-  background-color: rgb(244 0 0);
+  background-color: $primary;
   font-weight: 500;
   text-align: center;
   cursor: pointer;
 }
 .buttonSubmitPass  {
   text-align: left;
-  color: blue;
+  color: $blueColor;
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
@@ -111,7 +111,7 @@
 }
 .wapprerStyle{
   display: flex;
-  color: slategray;
+  color: $grayColor;
   align-items: center;
   justify-content: center;
   margin: 32px 0;
@@ -123,7 +123,7 @@
   margin: 0 16px;
 }
 .styleIcon {
-  color: blue;
+  color: $blueColor;
   margin: 0 8px;
 }
 .wapperButton {
@@ -132,14 +132,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 1px solid slategray ;
+  border: 1px solid $grayColor ;
   border-radius: 4px;
   padding: 8px 16px;
   margin: 0 12px;
 }
 
 .button {
-  color: red;
+  color: $redColor;
   cursor: pointer;
   text-align: center;
   font-weight: 500;
@@ -147,12 +147,12 @@
 }
 
 .error {
-  color: red;
+  color: $redColor;
   font-size: 14px;
   margin: 10px 0;
 }
 .errorInput {
-  color: red;
+  color: $redColor;
   font-size: 14px;
   text-align: left;
 }

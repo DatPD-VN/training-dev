@@ -21,7 +21,7 @@
 .headerRight {
     font-size: 14px ;
     line-height: 20px;    
-    color: red;
+    color: $redColor;
     cursor: pointer;
 
 }
@@ -32,7 +32,7 @@
 
 .content {
   position: relative;
-  background-color: rgb(255 75 0);
+  background-color: $primary;
   width: 100%;
   height: 100%;
   padding-top: 56px;
@@ -43,7 +43,7 @@
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: $whiteColor;
   border-radius: 4px;
   padding: 32px;
   position: relative;
@@ -55,7 +55,7 @@
   font-size: 14px ;
   line-height: 20px;  
   border-radius: 4px;
-  border: 1px solid gray ;
+  border: 1px solid $grayColor ;
   margin: 10px 0;
 }
 
@@ -66,23 +66,23 @@
 .wapperBlock {
   margin: 6px 0;
   display: flex;
-  color: slategray;
+  color: $grayColor;
   align-items: center;
   justify-content: center;
 }
 .buttonSubmit {
-  color: white;
+  color: $whiteColor;
   padding: 12px 0px;
   width: 100%;
   border-radius: 4px;
-  background-color: rgb(244 0 0);
+  background-color: $primary;
   font-weight: 500;
   text-align: center;
   cursor: pointer;
 }
 .buttonSubmitPass {
   text-align: left;
-  color: blue;
+  color: $blueColor;
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
@@ -93,7 +93,7 @@
 }
 .wapprerStyle{
   display: flex;
-  color: slategray;
+  color: $grayColor;
   align-items: center;
   justify-content: center;
   margin: 32px 0;
@@ -114,14 +114,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 1px solid slategray ;
+  border: 1px solid $grayColor ;
   border-radius: 4px;
   padding: 8px 16px;
   margin: 0 12px;
 }
 
 .button {
-  color: red;
+  color: $redColor;
   cursor: pointer;
   text-align: center;
   font-weight: 500;

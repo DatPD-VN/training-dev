@@ -1,15 +1,43 @@
 import { FC } from "react";
-import { Undo2 } from 'lucide-react';
+import { ArrowLeft, CircleHelp, Undo2, UserRound } from 'lucide-react';
 import {  useNavigate } from "react-router"
 import styles from "./styles.module.scss";
+import mobile from "./mobile.module.scss";
+import { useMediaQuery } from "react-responsive";
 
 
 
 const RessetPass: FC = () => {
   const navigate = useNavigate();
+  const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
 
   return <>
-  <section className={styles.container}>
+  {isPhoneScreen &&<section className={styles.container}>
+        <header className={mobile.headerWrap}>
+              <div className={mobile.headerWrapLeft} onClick={() => {
+                navigate('/training-dev/ec/Products')
+              }}>
+                <ArrowLeft size={25} />
+              </div>
+              <div className={mobile.headerWrapMiddle}>
+                  Đặt lại mật khẩu
+              </div>
+              <div className={mobile.headerWrapRight}>
+               <CircleHelp  />
+              </div>
+          </header>
+          <div className={mobile.inputWrapper}>
+            <div  className={mobile.inputWrap}>
+              <UserRound color="gray"/>
+              <input type="text" name="" id=""  placeholder="Email/Số Điện Thoại"/>
+            </div>
+            <div className={mobile.inputButton}>Tiếp theo</div>
+          </div>
+          
+
+      </section> }
+
+  {!isPhoneScreen && <section className={styles.container}>
         <div className={styles.header}>
           <div className={styles.text2xl}>Đặt lại mật khẩu </div>
           <div className={styles.headerRight}>
@@ -31,7 +59,8 @@ const RessetPass: FC = () => {
             </div>
           </div>
         </section>
-      </section>
+      </section> }  
+      
   </>;
 };
 

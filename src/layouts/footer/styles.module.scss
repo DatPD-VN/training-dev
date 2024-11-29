@@ -31,7 +31,7 @@
 }
 footer {
   padding: 30px 56px 5px;
-  background-color: #fbfbfb;
+  background-color: $whiteColor;
 }
 .footerLogoDiv {
   display: flex;
@@ -125,7 +125,7 @@ hr {
   border-top-width: 0px;
   border-left-width: 0px;
   border-bottom-width: 0px;
-  border-color: rgb(105, 104, 104);
+  border-color: $grayColor;
   border-style: solid;
 }
 
