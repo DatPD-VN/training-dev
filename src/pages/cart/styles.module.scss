@@ -434,3 +434,367 @@
     padding: 20px 11px;
   }
 }
+
+// Mobile
+.containerCart {
+  box-sizing: border-box;
+}
+.headerWrapMobile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+.headerWrapLeftMobile {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  padding-left: 15px;
+  color: $primary;
+}
+.headerWrapMiddleMobile {
+  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-size: 18px;
+  padding: 0 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.headerWrapRightMobile {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 25px;
+}
+.bodyWrapMobile {
+  padding: 10px 0;
+  .navWrapMobile {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+  }
+  .itemWrapMobile {
+    padding: 10px 15px;
+  }
+  .navWrapTitleMobile {
+    color: $grayColor;
+    font-size: 14px;
+  }
+  .navWrapInputMobile {
+    margin-right: 15px;
+  }
+  .navWrapInputMobile input {
+    width: 18px;
+    height: 18px;
+  }
+  .navWrapperMobile {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-right: auto;
+  }
+  .navWrapTitleProductIconMobile {
+    display: flex;
+    align-items: center;
+  }
+  .navWrapFauvoriteMobile {
+    color: $whiteColor;
+    background-color: $primary;
+    font-size: 12px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    margin-right: 10px;
+    $whiteColor-space: nowrap;
+  }
+  .navWrapTitleProductMobile {
+    $whiteColor-space: nowrap;
+  }
+}
+
+.footerWrapMobile {
+  padding: 20px 0;
+  .footerWrapTopMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    padding-bottom: 15px;
+  }
+  .footerWrapTopVoucherMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapTopVoucherMobile span {
+    margin-left: 5px;
+    font-size: 15px;
+  }
+  .footerWrapTopRightMobile {
+    display: flex;
+    align-items: center;
+    color: $grayColor;
+  }
+  .footerWrapTopRightMobile a {
+    text-decoration: none;
+    color: $grayColor;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .footerWrapTopRightMobile a:hover {
+    text-decoration: underline;
+  }
+}
+.footerWrapMiddleMobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px;
+  border-top: 1px;
+  border-right: 0px;
+  border-left: 0px;
+  border-color: rgba(128, 128, 128, 0.24);
+  border-style: solid;
+  padding: 15px;
+  .footerWrapMiddleWrapMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapMiddlePriceVoucherMobile {
+    color: $grayColor;
+  }
+  .footerWrapMiddleInputMobile {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+  .footerWrapMiddleIconMobile {
+    margin: 0 5px;
+    color: yellow;
+  }
+  .footerWrapMiddleSelectMobile {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+}
+.footerWrapBottomMobile {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .footerWrapBottomLeftMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapBottomLeftMobile input {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+  .footerWrapBottomLeftMobile span {
+    font-size: 14px;
+  }
+  .footerWrapBottomRightMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapBottomRightMobile span {
+    font-size: 14px;
+  }
+  .footerWrapBottomRightPriceTotalMobile {
+    display: flex;
+    align-items: start;
+    margin: 0 5px;
+    color: $primary;
+  }
+  .footerWrapBottomRightPriceTotalMobile span {
+    font-size: 12px;
+  }
+  .footerWrapBottomRightButtonMobile {
+    color: $whiteColor;
+    border-radius: 4px;
+    background-color: $primary;
+    padding: 10px;
+    border: none;
+    margin-left: 10px;
+  }
+}
+// Cart
+.itemWrapMobile {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px;
+  background-color: $whiteColor;
+  font-size: 15px;
+  margin: 10px 0;
+  .itemWrapperMobile {
+    padding: 5px;
+    border: 1px solid $whiteColor;
+    display: flex;
+    align-items: center;
+  }
+  .itemWrapInfoMobile {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+    }
+    .itemWrapInfoTitleMobile {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        padding-right: 20px;
+        text-align: left;
+        width: 90%;
+        overflow: hidden;
+      }
+      img {
+        width: 200px;
+        height: 20px;
+        margin: 10px 0;
+      }
+    }
+    .itemWrapSelectMobile {
+      font-size: 13px;
+      color: $grayColor;
+      select {
+        font-size: 13px;
+        outline: none;
+        border: none;
+        color: $grayColor;
+      }
+    }
+  }
+}
+
+.div5 {
+  width: 5%;
+}
+.div40 {
+  width: 40%;
+}
+.div13 {
+  width: 13.75%;
+}
+
+.itemWrapInfoMobile {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+  }
+  .itemWrapInfoTitleMobile {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      padding-right: 20px;
+      text-align: left;
+      width: 90%;
+      overflow: hidden;
+    }
+    img {
+      width: 200px;
+      height: 20px;
+      margin: 10px 0;
+    }
+  }
+  .itemWrapSelectMobile {
+    font-size: 13px;
+    color: $grayColor;
+    select {
+      font-size: 13px;
+      outline: none;
+      border: none;
+      color: $grayColor;
+    }
+  }
+}
+.itemWrapInfoPriceMobile {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .itemWrapInfoPriceOldMobile {
+    color: $grayColor;
+    text-decoration: line-through;
+    margin: 0 5px;
+    display: flex;
+    align-items: start;
+
+    span {
+      font-size: 10px;
+    }
+  }
+  .itemWrapInfoPriceNewMobile {
+    display: flex;
+    align-items: start;
+    color: $primary;
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+
+    span {
+      font-size: 10px;
+    }
+  }
+}
+
+.itemWrapAmountMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  .DetailProductDivAmountMobile {
+    display: flex;
+    align-items: center;
+    input {
+      outline: none;
+    }
+  }
+  .DetailProductDivAmountMobile button {
+    width: 32px;
+    height: 32px;
+    outline: none;
+    padding: 0px 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid $borderColor;
+    cursor: pointer;
+  }
+  .DetailProductDivAmountMobile input {
+    width: 50px;
+    height: 30px;
+    padding: 0px;
+    border: 1px solid $borderColor;
+    text-align: center;
+  }
+}
+
+.itemWrapInputMobile input {
+  width: 18px;
+  height: 18px;
+}
+.itemWrapInfomationMobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    width: 100%;
+}

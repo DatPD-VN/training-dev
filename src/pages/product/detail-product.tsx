@@ -1,5 +1,4 @@
 import styles from "./styles.module.scss";
-import mobile from "./mobile.module.scss";
 import {
   ArrowLeft,
   ChevronDown,
@@ -60,54 +59,54 @@ function DetailProduct() {
   return (
     <>
       {isPhoneScreen && (
-        <section className={mobile.containerDetail}>
-          <header className={mobile.headerWrap}>
+        <section className={styles.containerDetail}>
+          <header className={styles.headerWrap}>
             <div
-              className={mobile.headerWrapLeft}
+              className={styles.headerWrapLeft}
               onClick={() => {
                 navigate(Route('Products'));
               }}
             >
               <ArrowLeft size={25} />
             </div>
-            <div className={mobile.headerWrapMiddle}>
+            <div className={styles.headerWrapMiddle}>
               Sáp vuốt tóc BluMaan Styling Meraki (sáp tê giác) tạo kiểu giữ nếp
               cả ngày, không bết Minh Anh Hair Store
             </div>
-            <div className={mobile.headerWrapRight}>
+            <div className={styles.headerWrapRight}>
               <div
-                className={mobile.headerWrapRightCart}
+                className={styles.headerWrapRightCart}
                 onClick={() => {
                   navigate(Route("Cart"));
                 }}
               >
                 <ShoppingCart size={23} />
-                <div className={mobile.headerWrapRightCartAmount}>
+                <div className={styles.headerWrapRightCartAmount}>
                   {countCart}
                 </div>
               </div>
-              <div className={mobile.headerWrapRightEllipsis}>
+              <div className={styles.headerWrapRightEllipsis}>
                 <Ellipsis size={23} />
               </div>
             </div>
           </header>
           {product.map((item: any, index: number) => (
             <div key={index}>
-              <div className={mobile.imgProductWrap}>
-                <div className={mobile.imgProduct}>
+              <div className={styles.imgProductWrap}>
+                <div className={styles.imgProduct}>
                   <img
-                    className={mobile.imgProductWrapMain}
+                    className={styles.imgProductWrapMain}
                     src={item.imgProduct}
                     alt=""
                   />
                   <img
-                    className={mobile.imgProductWrapVoucher}
+                    className={styles.imgProductWrapVoucher}
                     src="https://down-vn.img.susercontent.com/file/vn-11134258-7ras8-m2w9lkghn9h62b"
                     alt=""
                   />
                 </div>
                 <p>2 phân loại có sẵn</p>
-                <div className={mobile.imgProductWrapSelect}>
+                <div className={styles.imgProductWrapSelect}>
                   <img
                     src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzgip241agf5e5@resize_w264_nl.webp"
                     alt=""
@@ -118,100 +117,100 @@ function DetailProduct() {
                   />
                 </div>
               </div>
-              <div className={mobile.flashSale}>
+              <div className={styles.flashSale}>
                 <img
                   src="https://deo.shopeemobile.com/shopee/shopee-mobilemall-live-sg/productdetailspage/8dbf303bff17e5d41618.svg"
                   alt=""
                 />
               </div>
-              <div className={mobile.priceWrap}>
-                <div className={mobile.priceWrapInfo}>
-                  <div className={mobile.priceWrapMain}>
-                    <div className={mobile.priceWrapMainNew}>
+              <div className={styles.priceWrap}>
+                <div className={styles.priceWrapInfo}>
+                  <div className={styles.priceWrapMain}>
+                    <div className={styles.priceWrapMainNew}>
                       <span className="">₫</span>
                       <p className="">
                         {item.priceProduct.toLocaleString("it-IT")}
                       </p>
                     </div>
-                    <div className={mobile.priceWrapMainOld}>
+                    <div className={styles.priceWrapMainOld}>
                       <span className="">₫</span>
                       <p className="">129.000</p>
                     </div>
                   </div>
-                  <div className={mobile.heartDiv}>
+                  <div className={styles.heartDiv}>
                     <span>4,3k Đã bán</span>
                     <Heart size={18} />
                   </div>
                 </div>
-                <div className={mobile.priceWrapVoucher}>
+                <div className={styles.priceWrapVoucher}>
                   <div>Mua tối thiểu ₫100k để được giảm ₫3k</div>
                   <ChevronRight size={18} />
                 </div>
               </div>
-              <div className={mobile.titleProduct}>
-                <p className={mobile.titleProductMain}>
-                  <span className={mobile.titleProductHeart}>Yêu thích </span>
+              <div className={styles.titleProduct}>
+                <p className={styles.titleProductMain}>
+                  <span className={styles.titleProductHeart}>Yêu thích </span>
                   {item.titleProduct}
                 </p>
               </div>
-              <div className={mobile.shipWrap}>
-                <div className={mobile.shipWrapLeft}>
+              <div className={styles.shipWrap}>
+                <div className={styles.shipWrapLeft}>
                   <Truck size={15} color="#61f5a1" />
-                  <div className={mobile.shipWrapLeftInfo}>
+                  <div className={styles.shipWrapLeftInfo}>
                     <p>Nhận từ 1 Th12 - 2 Th12, phí giao ₫0</p>
                     <p>Tặng Voucher ₫15.000 nếu đơn giao sau thời gian trên.</p>
                   </div>
                 </div>
-                <div className={mobile.shipWrapRight}>
+                <div className={styles.shipWrapRight}>
                   <ChevronRight size={15} />
                 </div>
               </div>
-              <div className={mobile.shipTimeWrap}>
-                <div className={mobile.shipTime}>
+              <div className={styles.shipTimeWrap}>
+                <div className={styles.shipTime}>
                   <ShieldCheck size={15} color="red" />
                   <div>
                     <p>Trả hàng miễn phí 15 ngày</p>
                   </div>
                 </div>
-                <div className={mobile.shipTimeWrapRight}>
+                <div className={styles.shipTimeWrapRight}>
                   <ChevronRight size={15} />
                 </div>
               </div>
-              <div className={mobile.infoShopWrapper}>
-                <div className={mobile.infoShopWrap}>
-                  <div className={mobile.infoShop}>
-                    <div className={mobile.infoShopWrapper}>
-                      <div className={mobile.infoShopWrapperLeft}>
+              <div className={styles.infoShopWrapper}>
+                <div className={styles.infoShopWrap}>
+                  <div className={styles.infoShop}>
+                    <div className={styles.infoShopWrapper}>
+                      <div className={styles.infoShopWrapperLeft}>
                         <img
                           src="https://down-vn.img.susercontent.com/file/4ad311e72dd00622dfa2da623b3a7961_tn"
                           alt=""
                         />
                         <span>Yêu thích</span>
                       </div>
-                      <div className={mobile.infoShopWrapperRight}>
-                        <p className={mobile.infoShopWrapperRightName}>
+                      <div className={styles.infoShopWrapperRight}>
+                        <p className={styles.infoShopWrapperRightName}>
                           Minh Anh Hair Store 19
                         </p>
-                        <p className={mobile.infoShopWrapperRightInfo}>
+                        <p className={styles.infoShopWrapperRightInfo}>
                           Online 16 phút trước
                         </p>
-                        <div className={mobile.infoShopWrapperRightAddress}>
+                        <div className={styles.infoShopWrapperRightAddress}>
                           <MapPin size={12} /> <span>Hà Nội</span>
                         </div>
                       </div>
                       <button>Xem Shop</button>
                     </div>
                   </div>
-                  <div className={mobile.infoSocial}>
-                    <div className={mobile.infoSocialDiv}>
+                  <div className={styles.infoSocial}>
+                    <div className={styles.infoSocialDiv}>
                       <span>129</span>
                       Sản phẩm
                     </div>
-                    <div className={mobile.infoSocialDiv}>
+                    <div className={styles.infoSocialDiv}>
                       <span>129</span>
                       Đánh giá
                     </div>
-                    <div className={mobile.infoSocialDiv}>
+                    <div className={styles.infoSocialDiv}>
                       <span>129</span>
                       Phản hồi Chat
                     </div>
@@ -219,21 +218,21 @@ function DetailProduct() {
                 </div>
               </div>
 
-              <section className={mobile.infoProductWrapper}>
-                <div className={mobile.infoProductTitle}>
-                  <div className={mobile.infoProductTitleLeft}>
+              <section className={styles.infoProductWrapper}>
+                <div className={styles.infoProductTitle}>
+                  <div className={styles.infoProductTitleLeft}>
                     Chi tiết sản phẩm
                   </div>
-                  <div className={mobile.infoProductTitleRight}>
+                  <div className={styles.infoProductTitleRight}>
                     Số lượng hàng khuyến mãi,Số sản phẩm còn lại{" "}
                     <ChevronRight />
                   </div>
                 </div>
-                <div className={mobile.infoProductDescription}>
-                  <p className={mobile.infoProductDescriptionTitle}>
+                <div className={styles.infoProductDescription}>
+                  <p className={styles.infoProductDescriptionTitle}>
                     Mô tả sản phẩm
                   </p>
-                  <p className={mobile.infoProductDescriptionMain}>
+                  <p className={styles.infoProductDescriptionMain}>
                     [ Chính Hãng ] Combo Sáp vuốt tóc Menitems Styling
                     Clay/Styling Pomade - Sáp dưỡng, tạo kiểu tự nhiên, giữ nếp
                     siêu cấp, hương nước hoa lôi cuốn - Tặng lược ✪ Menitems là
@@ -283,21 +282,21 @@ function DetailProduct() {
                     khách đặt
                   </p>
                 </div>
-                <div className={mobile.infoProductBottom}>
+                <div className={styles.infoProductBottom}>
                   <div>
                     Xem Thêm
                     <ChevronDown size={15} />
                   </div>
                 </div>
               </section>
-              <section className={mobile.feedBackWrap}>
-                <div className={mobile.feedBackWrapTitle}>
-                  <div className={mobile.feedBackWrapTitleLeft}>
-                    <p className={mobile.feedBackWrapTitleLeftTitle}>
+              <section className={styles.feedBackWrap}>
+                <div className={styles.feedBackWrapTitle}>
+                  <div className={styles.feedBackWrapTitleLeft}>
+                    <p className={styles.feedBackWrapTitleLeftTitle}>
                       Đánh Giá Sản Phẩm
                     </p>
-                    <div className={mobile.feedBackWrapTitleLeftInfo}>
-                      <div className={mobile.feedBackWrapTitleLeftStar}>
+                    <div className={styles.feedBackWrapTitleLeftInfo}>
+                      <div className={styles.feedBackWrapTitleLeftStar}>
                         <img
                           src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
                           alt=""
@@ -319,35 +318,35 @@ function DetailProduct() {
                           alt=""
                         />
                       </div>
-                      <span className={mobile.feedBackWrapTitleAmountStar}>
+                      <span className={styles.feedBackWrapTitleAmountStar}>
                         5.0/5
                       </span>
-                      <span className={mobile.feedBackWrapTitleLeftFeedback}>
+                      <span className={styles.feedBackWrapTitleLeftFeedback}>
                         (17 Đánh Giá)
                       </span>
                     </div>
                   </div>
-                  <div className={mobile.feedBackWrapTitleRight}>
+                  <div className={styles.feedBackWrapTitleRight}>
                     Xem Tất Cả <ChevronRight size={15} />
                   </div>
                 </div>
                 <FeedBack />
                 <FeedBack />
-                <div className={mobile.feedBackWrapBottom}>
+                <div className={styles.feedBackWrapBottom}>
                   Xem Tất Cả (17) <ChevronRight size={18} />
                 </div>
               </section>
               <footer>
-                <div className={mobile.footerContainer}>
-                  <div className={mobile.footerDiv}>
+                <div className={styles.footerContainer}>
+                  <div className={styles.footerDiv}>
                     <MessageCircleMore size={20} />
                     <span>Chat Ngay</span>
                   </div>
-                  <div className={mobile.footerDiv}>
+                  <div className={styles.footerDiv}>
                     <MessageCircleMore size={20} />
                     <span onClick={handleAdd(item)}>Thêm vào Giỏ hàng</span>
                   </div>
-                  <div className={mobile.footerButtonBuy}>
+                  <div className={styles.footerButtonBuy}>
                     <span onClick={handleAdd(item)}>Mua ngay</span>
                   </div>
                 </div>

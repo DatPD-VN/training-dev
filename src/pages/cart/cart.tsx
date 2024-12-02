@@ -1,6 +1,5 @@
 import styles from "./styles.module.scss";
-import mobile from "./mobile.module.scss";
-import { FC } from "react";
+import { FC } from "react";``
 import { ArrowLeft, BadgeDollarSign, ChevronDown, ChevronRight, Search, Ticket } from "lucide-react";
 
 import Plus from "../../icon/plus";
@@ -30,41 +29,41 @@ const Cart: FC = () => {
 
   return (
     <>
-    {isPhoneScreen &&  <section className={mobile.containerCart}>
-        <header className={mobile.headerWrap}>
-            <div className={mobile.headerWrapLeft} onClick={() => {
+    {isPhoneScreen &&  <section className={styles.containerCart}>
+        <header className={styles.headerWrapMobile}>
+            <div className={styles.headerWrapLeftMobile} onClick={() => {
               navigate(Route("Products"))
             }}>
               <ArrowLeft size={25} />
             </div>
-            <div className={mobile.headerWrapMiddle}>
+            <div className={styles.headerWrapMiddleMobile}>
                  Giỏ Hàng
             </div>
-            <div className={mobile.headerWrapRight}>
+            <div className={styles.headerWrapRightMobile}>
               Sửa
             </div>
         </header>
-        <div  className={mobile.bodyWrap}>
-          <div   className={mobile.navWrap}>
-            <div  className={`${mobile.navWrapInput} ${mobile.div5}`}>
+        <div  className={styles.bodyWrapMobile}>
+          <div   className={styles.navWrapMobile}>
+            <div  className={`${styles.navWrapInputMobile} ${styles.div5}`}>
               <input type="checkbox" name="" id="" />
             </div>
-            <div className={mobile.navWrapper}>
-              <div className={`${mobile.navWrapFauvorite}`}>Yêu Thích</div>
-              <div className={`${mobile.navWrapTitleProduct}`}>Sản Phẩm</div>
-              <div className={`${mobile.navWrapTitleProductIcon} ${mobile.div40}`}><ChevronRight size={19}/></div>
+            <div className={styles.navWrapperMobile}>
+              <div className={`${styles.navWrapFauvoriteMobile}`}>Yêu Thích</div>
+              <div className={`${styles.navWrapTitleProductMobile}`}>Sản Phẩm</div>
+              <div className={`${styles.navWrapTitleProductIconMobile} ${styles.div40}`}><ChevronRight size={19}/></div>
             </div>
-            <div className={`${mobile.navWrapTitle} ${mobile.div13}`}>Sửa</div>
+            <div className={`${styles.navWrapTitleMobile} ${styles.div13}`}>Sửa</div>
           </div>
           {cart.map((item : any, index : any) => (
-            <section key={index} className={mobile.itemWrap}>
-              <div className={`${mobile.itemWrapInput} ${mobile.div5}`}>
+            <section key={index} className={styles.itemWrapMobile}>
+              <div className={`${styles.itemWrapInputMobile} ${styles.div5}`}>
                 <input type="checkbox"  />
               </div>
-              <div className={mobile.itemWrapInfomation}>
-                <div className={`${mobile.itemWrapInfo} ${mobile.div40}`}>
-                  <img src={item.imgProduct} alt="" className={mobile.itemWrapInfoImg} />
-                  <div className={mobile.itemWrapInfoTitle} >
+              <div className={styles.itemWrapInfomationMobile}>
+                <div className={`${styles.itemWrapInfoMobile} ${styles.div40}`}>
+                  <img src={item.imgProduct} alt="" className={styles.itemWrapInfoImgMobile} />
+                  <div className={styles.itemWrapInfoTitleMobile} >
                     <span >
                       {item.titleProduct}
                     </span>
@@ -73,21 +72,21 @@ const Cart: FC = () => {
                       alt=""
                     />
                   </div>
-                  <div className={`${mobile.itemWrapSelect}`}>
+                  <div className={`${styles.itemWrapSelectMobile}`}>
                   <span>Phân Loại Hàng:</span>
                   <select>
                     <option value="M">M1 MIC DẢI BOX</option>
                   </select>
                 </div>
                 </div>
-                <div className={`${mobile.itemWrapInfoPrice} ${mobile.div13}`}>
-                  <div className={mobile.itemWrapInfoPriceNew}>
+                <div className={`${styles.itemWrapInfoPriceMobile} ${styles.div13}`}>
+                  <div className={styles.itemWrapInfoPriceNewMobile}>
                     <span>₫</span>
                     {(item.priceProduct.toLocaleString('it-IT'))}
                   </div>
                 </div>
-                <div className={`${mobile.itemWrapAmount} ${mobile.div13}`}>
-                  <div className={mobile.DetailProductDivAmount}>
+                <div className={`${styles.itemWrapAmountMobile} ${styles.div13}`}>
+                  <div className={styles.DetailProductDivAmountMobile}>
                     <button onClick={hadleCase("giam" ,item)}>
                       <NoPlus />
                     </button>
@@ -101,40 +100,40 @@ const Cart: FC = () => {
               
           </section>
           ))}
-          <section className={mobile.footerWrap}>
-            <div className={mobile.footerWrapTop}>
-              <div className={mobile.footerWrapTopVoucher}>
+          <section className={styles.footerWrapMobile}>
+            <div className={styles.footerWrapTopMobile}>
+              <div className={styles.footerWrapTopVoucherMobile}>
                 <Ticket color="#ff4807" size={20} />
                 <span>Shoppe Voucher</span>
               </div>
-              <div className={mobile.footerWrapTopRight}>
+              <div className={styles.footerWrapTopRightMobile}>
                 <a href="">Chọn hoặc nhập mã</a>
                 <ChevronRight  size={20} />
               </div>
             </div>
-            <div className={mobile.footerWrapMiddle}>
-              <div className={mobile.footerWrapMiddleWrap} >
-                <input type="checkbox" className={mobile.footerWrapMiddleInput}/>
-                <BadgeDollarSign size={17} className={mobile.footerWrapMiddleIcon} />
-                <span className={mobile.footerWrapMiddleSelect}>Bạn chưa chọn sản phẩm
+            <div className={styles.footerWrapMiddleMobile}>
+              <div className={styles.footerWrapMiddleWrapMobile} >
+                <input type="checkbox" className={styles.footerWrapMiddleInputMobile}/>
+                <BadgeDollarSign size={17} className={styles.footerWrapMiddleIconMobile} />
+                <span className={styles.footerWrapMiddleSelectMobile}>Bạn chưa chọn sản phẩm
                 </span>
                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/be6f27f93268c0f88ded.svg" alt="" />
               </div>
-              <div className={mobile.footerWrapMiddlePriceVoucher}>
+              <div className={styles.footerWrapMiddlePriceVoucherMobile}>
                 <ChevronRight size={19}/>
               </div>
 
             </div>
-            <div className={mobile.footerWrapBottom}>
-              <div className={mobile.footerWrapBottomLeft}>
+            <div className={styles.footerWrapBottomMobile}>
+              <div className={styles.footerWrapBottomLeftMobile}>
                 <input type="checkbox" name="" id="" />
-                <span className={mobile.footerWrapBottomLeftAll}>Chọn Tất Cả</span>
+                <span className={styles.footerWrapBottomLeftAllMobile}>Chọn Tất Cả</span>
               </div>
-              <div className={mobile.footerWrapBottomRight}>
-                <span className={mobile.footerWrapBottomRightTotal}>Tổng số tiền :</span>
-                <div className={mobile.footerWrapBottomRightPriceTotal}><span>₫</span> {(totalCart.toLocaleString('it-IT'))}
+              <div className={styles.footerWrapBottomRightMobile}>
+                <span className={styles.footerWrapBottomRightTotalMobile}>Tổng số tiền :</span>
+                <div className={styles.footerWrapBottomRightPriceTotalMobile}><span>₫</span> {(totalCart.toLocaleString('it-IT'))}
                 </div>
-                <button type="button" className={mobile.footerWrapBottomRightButton}>Thanh Toán</button>
+                <button type="button" className={styles.footerWrapBottomRightButtonMobile}>Thanh Toán</button>
               </div>
             </div>
           </section>
