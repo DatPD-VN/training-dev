@@ -4,6 +4,7 @@ import {  useNavigate } from "react-router"
 import styles from "./styles.module.scss";
 import mobile from "./mobile.module.scss";
 import { useMediaQuery } from "react-responsive";
+import Route from "../../app/route";
 
 
 
@@ -15,7 +16,7 @@ const RessetPass: FC = () => {
   {isPhoneScreen &&<section className={styles.container}>
         <header className={mobile.headerWrap}>
               <div className={mobile.headerWrapLeft} onClick={() => {
-                navigate('/training-dev/ec/Products')
+                navigate(Route("Products"))
               }}>
                 <ArrowLeft size={25} />
               </div>
@@ -46,7 +47,7 @@ const RessetPass: FC = () => {
         </div>
         <section className={styles.content}>
           <div className={styles.wapper} >
-            <Undo2 onClick={() => {navigate("/training-dev/ec/Products")}} className={styles.styleIcon}/>
+            <Undo2 onClick={() => {navigate(Route("Products"))}} className={styles.styleIcon}/>
             <h1 className={styles.text2xl}>Đặt lại mật khẩu </h1>
             <input
               type="text"

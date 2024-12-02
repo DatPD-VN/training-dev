@@ -58,7 +58,7 @@ const Header: FC = () => {
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
             <div onClick={() => {
-              navigate("/training-dev/ec/Products")
+              navigate(Route("Products"))
             }} className={styles.headerBottomLogoDiv}>
               <Logo/>
             </div>

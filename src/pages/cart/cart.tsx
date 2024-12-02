@@ -7,9 +7,9 @@ import Plus from "../../icon/plus";
 import NoPlus from "../../icon/noPlus";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { addCartState ,totalCartState ,delCartState ,handleCartState,countCartState } from "../../recoil";
-import { Header } from "../../layouts/header/header";
 import { useMediaQuery } from "react-responsive";
 import {  useNavigate } from "react-router"
+import Route from "../../app/route";
 
 const Cart: FC = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Cart: FC = () => {
     {isPhoneScreen &&  <section className={mobile.containerCart}>
         <header className={mobile.headerWrap}>
             <div className={mobile.headerWrapLeft} onClick={() => {
-              navigate('/training-dev/ec/Products')
+              navigate(Route("Products"))
             }}>
               <ArrowLeft size={25} />
             </div>
@@ -142,7 +142,6 @@ const Cart: FC = () => {
 
       </section>}
       {!isPhoneScreen && <>
-        <Header/>
         <section className={styles.container}>
           <header className={styles.headerWrap}>
             <div className={styles.headerWrapLeft}>
