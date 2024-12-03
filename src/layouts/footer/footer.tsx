@@ -1,8 +1,6 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
 
-
-
 const Footer: FC = () => {
   return <>
   <footer>
@@ -71,14 +69,14 @@ const Footer: FC = () => {
             </div>
             <div className={styles.footerDiv}>
               <div className={styles.footerTitle}>THEO DÕI SHOPEE</div>
-              <ul className={styles.footerUl}>
-                <li className={styles.footerIcon}>
+              <ul className={styles.footerUlNet}>
+                <li className={styles.footerIconNet}>
                   <img src="https://down-vn.img.susercontent.com/file/2277b37437aa470fd1c71127c6ff8eb5" alt="" />
                   Facebook</li>
-                <li className={styles.footerIcon}>
+                <li className={styles.footerIconNet}>
                    <img src="https://down-vn.img.susercontent.com/file/5973ebbc642ceee80a504a81203bfb91" alt="" />
                    Instagram</li>
-                <li className={styles.footerIcon}>
+                <li className={styles.footerIconNet}>
                    <img src="https://down-vn.img.susercontent.com/file/f4f86f1119712b553992a75493065d9a" alt="" />
                    LinkedIn</li>
                 
@@ -86,8 +84,8 @@ const Footer: FC = () => {
             </div>
             <div className={styles.footerDiv}>
               <div className={styles.footerTitle}>TẢI ỨNG DỤNG SHOPEE</div>
-              <ul className={styles.footerUl}>
-                <li className={styles.footerIcon}>
+              <div className={styles.footerUl}>
+                <div className={styles.footerIcon}>
                   <div className={styles.footerLogoLeft}>
                     <img src="https://down-vn.img.susercontent.com/file/a5e589e8e118e937dc660f224b9a1472" alt="" />
                   </div>
@@ -96,8 +94,8 @@ const Footer: FC = () => {
                     <img src="https://down-vn.img.susercontent.com/file/ae7dced05f7243d0f3171f786e123def" alt="" />
                     <img src="https://down-vn.img.susercontent.com/file/35352374f39bdd03b25e7b83542b2cb0" alt="" />
                   </div>
-                </li>
-              </ul> 
+                </div>
+              </div> 
             </div>
         </div>
         <hr />

@@ -12,6 +12,7 @@ import Logo from "../../icon/logo";
 import { useRecoilValue } from "recoil";
 import { countCartState } from "../../recoil";
 import { useNavigate } from "react-router-dom";
+import Route from "../../app/route";
 
 
 
@@ -41,7 +42,7 @@ const Header: FC = () => {
             </a>
           </div>
           <div className={styles.divTagTop}>
-            <a href="/training-dev/ec/login" className={styles.divTagTopA}>
+            <a href={Route("login")} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Ký </p>
             </a>
           </div>
@@ -49,7 +50,7 @@ const Header: FC = () => {
             <p style={{ color: "white" }}>| </p>
           </div>
           <div className={styles.divTagTop}>
-            <a href="/training-dev/ec/login " className={styles.divTagTopA}>
+            <a href={Route("login")} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Nhập </p>
             </a>
           </div>
@@ -57,7 +58,7 @@ const Header: FC = () => {
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
             <div onClick={() => {
-              navigate("/training-dev/ec/Products")
+              navigate(Route("Products"))
             }} className={styles.headerBottomLogoDiv}>
               <Logo/>
             </div>
@@ -99,9 +100,14 @@ const Header: FC = () => {
             </div>
           </div>
           <div className={styles.headerBottomRight}>
-            <div onClick={() => {navigate('/training-dev/ec/Cart')}} className={styles.headerBottomRightIconDiv}>
+            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
               <ShoppingCart size={30} className={styles.headerBottomRightIcon} />
               <div className={styles.headerBottomRightIconDivCount}>{countCart}</div>
+            </div>
+          </div>
+          <div className={styles.headerBottomRightDivImg}>
+            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
+              <img src="https://down-vn.img.susercontent.com/file/vn-11134226-7ras8-m18dlgfhrbq4f8_tn" alt=""  className={styles.headerBottomRightImg}/>
             </div>
           </div>
         </div>

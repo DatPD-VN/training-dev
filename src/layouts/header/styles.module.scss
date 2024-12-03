@@ -8,6 +8,9 @@
   height: auto;
   padding: 0px 56px 5px;
   background-color: $primary;
+  z-index: 10;
+  position: sticky;
+  top: 0px;
 }
 .headerTop {
   display: flex;
@@ -18,7 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: white;
+  color: $whiteColor;
   margin: 0px 10px;
 }
 .divTagTop:hover {
@@ -38,11 +41,11 @@
 
 .divTagTopIcon {
   width: 18px;
-  color: white;
+  color: $whiteColor;
 }
 .divTagTopATitle {
   font-size: 14px;
-  color: white;
+  color: $whiteColor;
   margin: 0px 6px;
 }
 .headerBottom {
@@ -68,14 +71,19 @@
 .headerBottomLogoDiv {
   height: 90px;
   width: 170px;
-  fill: #fff;
+  fill: $whiteColor;
+  margin-right: 20px;
 }
 
 .headerBottomRight {
   width: 20%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  height: 100%;
+}
+.headerBottomRightDivImg {
+  display: none;
 }
 .divInput {
   width: 100%;
@@ -92,639 +100,39 @@
 }
 .inputIcon {
   padding: 8px 20px;
-  background-color: red;
+  background-color: $redColor;
   cursor: pointer;
   width: 20px;
   border-radius: 2px;
   position: absolute;
   top: 3px;
   right: 5px;
-  color: white;
+  color: $whiteColor;
 }
 .DivList {
   display: flex;
 }
 
 .list {
-  margin: 9px 15px 12px 0px;
+  margin: 9px 15px 7px 0px;
   list-style: none;
   font-size: 14px;
-  color: white;
+  color: $whiteColor;
   cursor: pointer;
 }
 .list a {
-  color: white;
+  color: $whiteColor;
   cursor: pointer;
   text-decoration: none;
-  white-space: nowrap;
+  $whiteColor-space: nowrap;
 }
 .list a:hover {
   text-decoration: underline;
 }
 .headerBottomRightIcon {
-  color: white;
+  color: $whiteColor;
   cursor: pointer;  
 }
-
-.contaiter {
-  height: auto;
-  padding: 20px 56px;
-}
-.divItem {
-  box-sizing: border-box;
-  height: max-content;
-  border: 1px solid transparent;
-  width: 100%;
-  border-radius: 2px;
-  transition-duration: 100ms;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-}
-.divItemWrapper:hover .divItemHover {
-  display: block;
-  z-index: 2;
-}
-
-.divItemHover {
-  position: absolute;
-  display: none;
-  transform: translateY(100%);
-  bottom: 0;
-  color: white;
-  width: 100%;
-  padding: 5px 0px;
-  background-color: rgb(247, 103, 47);
-  font-size: 13px;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.divItemWrapper {
-  padding: 0 7px;
-  width: 16.6%;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  position: relative;
-}
-.divItemWrapperHover {
-  position: relative;
-}
-.divImg {
-  width: 100%;
-  position: relative;
-  border-radius: 2px;
-  cursor: pointer;
-}
-.divItem:hover {
-  border: 1px solid red;
-  cursor: pointer;
-  border-radius: 2px;
-}
-.img {
-  width: 100%;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-}
-.divItemSaleOff {
-  position: absolute;
-  color: red;
-  padding: 2px;
-  background-color: rgb(245, 185, 185);
-  top: 2px;
-  right: 3px;
-  font-size: 12px;
-}
-.logoVoucher {
-  width: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  border-radius: 4px;
-}
-.divItemTitle {
-  font-size: 13px;
-  text-align: left;
-  padding: 4px 10px 0 10px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.Voucher {
-  color: white;
-  padding: 2px 4px;
-  background-color: rgb(248, 177, 46);
-  width: fit-content;
-  font-size: 12px;
-  margin: 10px 0px 10px 10px;
-}
-.VoucherHidden {
-  color: white;
-  padding: 2px 4px;
-  width: fit-content;
-  font-size: 12px;
-  background-color: rgb(248, 177, 46);
-  margin: 10px 0px 10px 10px;
-  visibility: hidden;
-}
-
-.WarpVoucher {
-  position: relative;
-}
-
-.TitleVoucher:first {
-  width: 10px;
-  position: absolute;
-}
-
-.TitleVoucher:end {
-  width: 10px;
-  position: absolute;
-}
-
-.Price {
-  color: red;
-  text-align: left;
-  font-size: 14px;
-  margin-left: 10px;
-  padding: 10px 0;
-}
-.headerWrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-.IconPrice {
-  font-size: 12px;
-  margin-right: 5px;
-}
-.FooterContainer {
-  display: flex;
-  align-items: start;
-}
-.FooterDiv {
-  width: 20%;
-  text-align: left;
-}
-.FooterTitle {
-  font-weight: 500;
-  font-size: 14px;
-  margin-bottom: 25px;
-}
-.FooterUl {
-  text-align: left;
-  font-size: 13px;
-  padding-left: 0px;
-}
-
-.Footerlist {
-  list-style: none;
-  margin: 10px 0;
-  color: rgb(72, 80, 88);
-}
-footer {
-  padding: 30px 56px 5px;
-  background-color: #fbfbfb;
-}
-.FooterLogoDiv {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0px;
-}
-.FooterLogo {
-  list-style: none;
-  padding: 5px 0;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-
-.FooterIcon {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  margin-bottom: 10px;
-}
-.FooterIcon img {
-  margin-right: 10px;
-}
-.FooterLogoLeft {
-  flex: 1 1 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.FooterLogoLeft img {
-  padding: 5px;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-.FooterLogoRight {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
-}
-.FooterLogoRight img {
-  margin: 2px 0;
-  padding: 5px;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-hr {
-  margin: 20px 0;
-}
-
-.Footerdescription {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: rgb(66, 61, 88);
-  font-size: 13px;
-}
-.FooterdescriptionRight {
-  display: flex;
-  align-items: center;
-}
-.FooterdescriptionRight li {
-  list-style: none;
-  padding: 0px 7px;
-  border-right-width: 1px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-bottom-width: 0px;
-  border-color: rgb(105, 104, 104);
-  border-style: solid;
-}
-.FooterdescriptionRightList {
-  list-style: none;
-  padding: 0px 7px;
-  border-right-width: 0px !important;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-bottom-width: 0px;
-  border-color: rgb(105, 104, 104);
-  border-style: solid;
-}
-
-// DetailProducts
-
-.DetailProductContainer {
-  margin: 20px 64px;
-  padding: 20px;
-  display: flex;
-  justify-content: start;
-  background-color: white;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-.DetailProductLeft {
-  width: 40%;
-}
-
-.DetailProductRight {
-  width: 60%;
-  padding-left: 20px;
-}
-.DetailProductLeftImg {
-  width: 100%;
-}
-.DetailProductLeftSmall {
-  display: flex;
-}
-.DetailProductLeftSmall img {
-  width: 20%;
-  margin: 5px;
-  cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-
-.DetailProductLeftSmall img:hover {
-  border: 1px solid rgb(241, 74, 74);
-}
-
-.DetailProductLeftBottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 20px;
-  padding: 0 20px;
-  font-size: 15px;
-}
-.DetailProductLeftBottomFavourite {
-  display: flex;
-  align-items: center;
-}
-.DetailProductLeftBottomFavourite span {
-  margin-left: 10px;
-}
-.DetailProductLeftBottomShareIcon {
-  background-color: initial;
-  background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
-  background-size: 100%;
-  border: 0;
-  height: 25px;
-  margin-left: 5px;
-  outline: 0;
-  overflow: visible;
-  padding: 0;
-  position: relative;
-  width: 25px;
-}
-.DetailProductLeftBottomShare {
-  display: flex;
-  align-items: center;
-}
-.DetailProductRightTitleProduct {
-  font-size: 18px;
-  text-align: left;
-  font-weight: 400;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-.DetailProductRightInfomation {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 0;
-  font-size: 15px;
-}
-.DetailProductRightInfomationLeft {
-  display: flex;
-}
-.DetailProductFeedback {
-  display: flex;
-  margin: 0 10px;
-  border-right-width: 1px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-bottom-width: 0px;
-  border-color: gray;
-  border-style: solid;
-  padding-right: 10px;
-}
-.DetailProductFeedback p {
-  margin: 0;
-  color: gray;
-  margin-left: 5px;
-}
-.DetailProductSaler {
-  display: flex;
-  margin: 0 10px;
-}
-.DetailProductSaler p {
-  margin: 0;
-  color: gray;
-  margin-left: 5px;
-}
-.DetailProductStars {
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
-  border-right-width: 1px;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-bottom-width: 0px;
-  border-color: gray;
-  border-style: solid;
-  padding-right: 10px;
-}
-.DetailProductStars span {
-  margin-right: 10px;
-  text-decoration: underline;
-}
-.DetailProductRightInfomationRight {
-  color: gray;
-}
-.DetailProductStar {
-  display: flex;
-  align-items: center;
-}
-.DetailProductPrice {
-  display: flex;
-  align-items: center;
-  background-color: #fafafa;
-  padding: 30px;
-  font-size: 28px;
-  color: #ff3d00;
-  margin-bottom: 40px;
-}
-
-.DetailProductPriceNew {
-  display: flex;
-  align-items: start;
-}
-.DetailProductPriceNew span {
-  font-size: 15px;
-}
-.DetailProductPriceOld {
-  display: flex;
-  align-items: start;
-  color: gray;
-  font-size: 20px;
-  text-decoration: line-through;
-  margin: 0 20px;
-}
-.DetailProductPriceOld span {
-  font-size: 15px;
- 
-}
-.DetailProductPriceDiscount {
-  background-color: #ffede9;
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 500;
-  
-}
-.DetailProductTitle {
-  font-size: 14px;
-  padding-left: 40px;
-  margin: 20px 0;
-  display: flex;
-  align-items: center;
-}
-.DetailProductTitleShip {
-  font-size: 14px;
-  padding-left: 40px;
-  margin: 20px 0;
-  display: flex;
-  align-items: start;
-}
-.DetailProductRightTitle {
-  color: gray;
-  font-size: 14px;
-  margin-right: 20px;
-  max-width: 100px;
-  letter-spacing: 0em;
-}
-.DetailProductVoucherDetail {
-    color: #ff3d00;
-    background-color: #ffede9;
-    padding: 4px 6px;
-    font-size: 13px;
-    margin: 0 10px ;
-    position: relative;
-}
-.DetailProductVoucherDetail::before {
-  background-image: radial-gradient(#fff 2px, transparent 0);
-  background-position-x: -6px;
-  background-size: 6px 6px;
-  content: "";
-  height: calc(100% - 5px);
-  position: absolute;
-  top: 2.5px;
-  width: 6px;
-  left: -3px;
-}
-.DetailProductVoucherDetail::after {
-  background-image: radial-gradient(#fff 2px, transparent 0);
-  background-position-x: -6px;
-  background-size: 6px 6px;
-  content: "";
-  height: calc(100% - 5px);
-  position: absolute;
-  top: 2.5px;
-  width: 6px;
-  right:-3px;
-}
-.DetailProductRefund img {
-  width: 20px;
-  margin-right:5px;
-}
-.DetailProductRefund {
-  display: flex;
-  align-items: center;
-  color: gray;
-}
-.DetailProductRefundFreeIcon {
-  display: flex;
-  align-items: center;
-  margin: 0 5px;
-}
-.DetailProductRefundFree {
-  color: gray;
-  margin-left: 10px;
-}
-.DetailProductRightVoucher {
-  color: #ff3d00;
-  padding: 4px;
-  border: 1px solid #ff3d00 ;
-  font-size: 13px;
-  cursor: pointer;
-}
-.DetailProductShipTop {
-  display: flex;
-  align-items: center;
-}
-
-.DetailProductShipTop img {
-  width: 25px;
-  margin-right: 10px;
-}
-.DetailProductShipTop span {
-  font-size: 13px;
-}
-.DetailProductShipBottom {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  font-size: 13px;
-}
-.DetailProductShipBottom img {
-  width: 20px;
-  margin-right: 15px;
-}
-.DetailProductShipBottom span {
-  margin-right: 10px;
-}
-
-.DetailProductShipBottom  select {
-  outline: none;
-  border: none;
-}
-.DetailProductShipBot {
-  text-align: left;
-  font-size: 13px;
-}
-.DetailProductShipBot span {
-  margin-left: 35px;
-  margin-right: 10px;
-}
-.DetailProductShipBot select {
-  outline: none;
-  border: none;
-  letter-spacing: 1px;
-}
-
-.DetailProductAmount {
-  color: gray;
-  font-size: 13px;
-  margin: 0px 20px;
-}
-.DetailProductDivAmount {
-  display: flex;
-  align-items: center;
-}
-.DetailProductDivAmount button{
-  width: 32px;
-  height: 32px;
-  outline: none;  
-  padding: 0px 10px;
-  background-color: transparent;
-  outline: none;
-  border: 1px solid rgba(0, 0, 0, .09);
-  cursor: pointer;
-}
-.DetailProductDivAmount input {
-  width: 50px;
-  height: 30px;
-  padding: 0px ;
-  border: 1px solid rgba(0, 0, 0, .09);;
-  text-align: center  ;
-}
-
-.DetailProductTitleButton {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  margin-left: 40px;
-  margin-top: 50px;
-}
-.DetailProductTitleButtonRightTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 15px;
-  border-radius: 2px;
-  cursor: pointer;
-  color: #ff3d00;
-  border: 1px solid #ff3d00;
-  background-color: rgba(255, 87, 34, .1);
-  margin-right: 10px;
-  font-size: 14px;
-}
-.DetailProductTitleButtonRightTitle img {
-  width: 20px;
-  margin-right: 10px;
-}
-.DetailProductBuy {
-  padding: 10px 50px;
-  border-radius: 2px;
-  background-color: #ff3d00;
-  color: white;
-  font-size: 14px;
-  line-height: 20px;
-  cursor: pointer;
-}
-
 .headerBottomRightIconDiv {
   width: min-content;
   position: relative;
@@ -734,9 +142,82 @@ hr {
   position: absolute;
   top: -10px;
   right: -10px;
-  color: #ff3d00;
-  background-color: #fff;
+  color: $primary;
+  background-color: $whiteColor;
   padding: 2px 6px ;
   border-radius: 50%;
   font-size: 14px;
+}
+
+
+@media (max-width: 1024px) {
+  .headerBottomLogoDiv {
+    height: 100%;
+    margin-right: 34px;
+    width: 170px;
+    fill: $whiteColor;
+  }
+  .divTagTopATitle {
+    font-size: 12px;
+  }
+  .divTagTopIcon {
+    width: 14px;
+  }
+  .headerBottomRightIcon {
+    width: 23px;
+  }
+  .headerBottomRightIconDivCount {
+    top: -3px;
+    font-size: 12px;
+  }
+  .input  {
+    padding: 9px;
+    font-size: 12px;
+  }
+  .list a {
+    font-size: 11px;
+
+  }
+  .inputIcon {
+    padding: 1px 15px;
+    width: 15px;
+
+  }
+  .header {
+    padding: 0px 0px 5px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .header {
+    max-width: 50rem;
+  }
+  .headerTop , .headerBottomLogo , .DivList {
+    display: none;
+  }
+  .headerBottom {
+      padding: 7px 0 5px 0;
+      margin: 0px 20px 0 20px;
+  }
+  .headerBottomRight {
+    width: 7%;
+  }
+  .headerBottomRightDivImg {
+    width: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .headerBottomRightImg {
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+  }
+  .headerBottomLeft {
+    margin-right: 20px;
+  }
+  .input {
+    font-size: 15px;
+  }
 }
