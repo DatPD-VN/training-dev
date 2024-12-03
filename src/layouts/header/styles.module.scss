@@ -750,10 +750,14 @@ hr {
   padding: 0 10px;
   background-color: white;
   box-sizing: border-box;
+
   .divInputSearch {
     margin: 0;
     padding: 0;
+    height: auto;
+    max-height: 400px;
     list-style: none;
+    overflow-y: auto;
     li {
       text-align: left;
       padding: 10px 0;
@@ -762,6 +766,7 @@ hr {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 100%;
     }
     li:hover {
       color: #ff3d00;

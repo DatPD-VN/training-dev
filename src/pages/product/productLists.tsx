@@ -1,20 +1,32 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import { useRecoilValue } from 'recoil';
-import { newListState } from '../../recoil';
-import {  useNavigate } from "react-router"
+import { useRecoilValue , useSetRecoilState } from 'recoil';
+import { newListState ,listSearch } from '../../recoil';
+import {  useLocation, useNavigate  } from "react-router"
 import { Header } from "../../layouts/header/header";
 import { Footer } from "../../layouts/footer/footer";
 
 const Dashboard: FC = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const hashtag = location.state;
   const newList : Array<string> = useRecoilValue(newListState);
+  const newSearch : Array<string> = useRecoilValue(listSearch);
+  const choise : any = useSetRecoilState(listSearch);
+
+
+  if (newSearch.length === 0) {
+    if (hashtag) {
+      choise(hashtag.hashtag)
+    }
+  }
+  const list = (hashtag !== null ) ? newSearch : newList
   return (
     <>
       <Header/>
       <section className={styles.contaiter}>
         <div className={styles.headerWrapper}>
-          {newList.map((item : any, index:any) => (
+          {list.map((item : any, index:any) => (
             <div key={index} className={styles.divItemWrapper} onClick={() => {navigate("DetailProduct",{ 
               state :{
                 id : item.id

@@ -11,6 +11,7 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: false,
       voucherProduct: "10% Giảm",
+      hashTag : ["#Giaydep",  "#TaiNghe" , "#tat"]
     },
     {
         id: 2,
@@ -23,6 +24,8 @@ const defaultData =  [
       shipProduct: false,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#Giaydep", "#tat"]
+
     },
     {
         id: 3,
@@ -35,6 +38,8 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: false,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#Giaydep", "#trangdiem" ,]
+
     },
     {
         id: 4,
@@ -47,6 +52,8 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#trangdiem" , "#TaiNghe" , "#tat"]
+
     },
     {
         id: 5,
@@ -59,6 +66,7 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: false,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#trangdiem" , "#TaiNghe" , "#tat"]
     },
     {
         id: 6,
@@ -70,6 +78,7 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#TaiNghe" , "#tat"]
     },
     {
         id: 7,
@@ -82,6 +91,7 @@ const defaultData =  [
       shipProduct: false,
       isVoucher: true,
       voucherProduct: "20% Giảm",
+      hashTag : ["#aothun", "#Giaydep", "#trangdiem" , "#TaiNghe"]
     },
     {
         id: 8,
@@ -94,6 +104,7 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: false,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#Giaydep", "#TaiNghe" , "#tat"]
     },
     {
         id: 9,
@@ -106,6 +117,7 @@ const defaultData =  [
       shipProduct: false,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#trangdiem" , "#TaiNghe" , "#tat"]
     },
     {
         id: 10,
@@ -117,6 +129,7 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun", "#Giaydep", "#trangdiem", "#tat"]
     },
     {
         id: 11,
@@ -129,6 +142,7 @@ const defaultData =  [
       shipProduct: false,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : ["#aothun",  "#trangdiem" , "#TaiNghe" ]
     },
     {
         id: 12,
@@ -141,12 +155,26 @@ const defaultData =  [
       shipProduct: true,
       isVoucher: true,
       voucherProduct: "10% Giảm",
+      hashTag : [ "#Giaydep", "#trangdiem" ,  "#tat"]
     },
   ];
 
 const listTodoState : any  = atom({
     key: 'listTodo',
     default: defaultData ,
+});
+
+const dataSearch : Array<string> = []
+
+const listSearchState : any  = atom({
+    key: 'listSearch',
+    default: dataSearch ,
+});
+const listSuggest : Array<string> = []
+
+const listSuggestState : any  = atom({
+    key: 'listSuggest',
+    default: listSuggest ,
 });
 
 
@@ -167,6 +195,33 @@ export const newListState = selector({
         set(listTodoState , [...list, newTodo]);
     },
 });
-
+export const listSearch = selector({
+    key: 'handleSearch',
+    get: ({ get }) => {
+        const list : any  = get(listSearchState);
+        return list;
+    },
+    set: ({ get, set }, data) => {
+      const listState : any =  get(listTodoState);
+      const regex = new RegExp(data , "i")
+      const value = listState.filter((item : any) => regex.test(item.hashTag) )
+      set(listSearchState , [...value]);
+  },
+});
+export const listSugggest = selector({
+    key: 'handleSugggest',
+    get: ({ get }) => {
+        const list : any  = get(listSuggestState);
+        return list;
+    },
+    set: ({ get, set }, data) => {
+        const listState : any =  get(listTodoState);
+        const hashTag = listState.flatMap((item : any)=> item.hashTag)
+        const Fitter = [...new Set(hashTag)]
+        const regex = new RegExp(data , "i")
+        const value = Fitter.filter((hashTag : any) => regex.test(hashTag) )
+        set(listSuggestState , [...value]);
+    },
+});
 
 

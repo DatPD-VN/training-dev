@@ -10,25 +10,61 @@ import {
 } from "lucide-react";
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
-import { useRecoilValue } from "recoil";
-import { countCartState } from "../../recoil";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useRecoilValue ,useSetRecoilState } from "recoil";
+import { countCartState ,listSugggest ,listSearch } from "../../recoil";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState ,useRef ,useEffect } from "react";
 import Route from "../../app/route";
-
 
 
 const Header: FC = () => {
   const navigate = useNavigate();
   const countCart : any = useRecoilValue(countCartState);
+  const listHashtag : any = useRecoilValue(listSugggest);
+  const choise : any = useSetRecoilState(listSearch);
+  const handleSearch : any = useSetRecoilState(listSugggest);
   const [isDisabled, setIsDisabled] = useState(true);
+  const inputRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const location = useLocation();
+  const hashtag = location.state;
+  const tag = (hashtag !== null) ? hashtag.hashtag : null 
 
   const handleOpen = () => {
     setIsDisabled(false)
   }
-  const handleBlur = () => {
-    setIsDisabled(true)
+  const inputSearch = () => {
+    const valueInput = searchRef.current;
+    const value = valueInput?.value;
+    choise(value)
   }
+  const handleNav = () => {
+      (document.querySelector("#input") as HTMLInputElement).value = "",
+      navigate(Route('Products'))
+  }
+  const handleAdd = (item : any) => {
+    (document.querySelector("#input") as HTMLInputElement).value = item
+    choise(item)
+    setIsDisabled(true)
+    navigate(Route(`Products/${item} `),{
+      state: {
+        hashtag: item
+      }
+    })
+  }
+  useEffect(() => {
+    
+    const handleClickOutside = (event : any) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setIsDisabled(true);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return <>
   <header className={styles.header}>
         <div className={styles.headerTop}>
@@ -67,29 +103,33 @@ const Header: FC = () => {
         </div>
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
-            <div onClick={() => {
-              navigate("/training-dev/ec/Products")
-            }} className={styles.headerBottomLogoDiv}>
+            <div onClick={() => {handleNav()}} className={styles.headerBottomLogoDiv}>
               <Logo/>
             </div>
           </div>
           <div className={styles.headerBottomLeft}>
+         
             <div className={styles.divInput}>
               <input
                 type="text"
-                placeholder="Tìm kiếm "
+                placeholder={tag ? tag : "Tìm kiếm"}
                 onClick={handleOpen}
                 className={styles.input}
-                onBlur={handleBlur}
+                onChange={(e) => {handleSearch(e.target.value.toLowerCase())}}
+                id="input"
+                autoComplete="false"
+                ref={searchRef}
               />
-              <Search className={styles.inputIcon} />
-              {!isDisabled && <div className={styles.divInputSearchWrap}>
-                <ul className={styles.divInputSearch}>
-                  <li>Hoa quả   <ArrowUpLeft color="gray" /></li>
-                  <li>Hoa quả Hoa quảHoa quảHoa quảHoa quả  <ArrowUpLeft color="gray" /></li>
+              <Search className={styles.inputIcon} onClick={() => {inputSearch()}} />
+              
+              {!isDisabled && <div className={styles.divInputSearchWrap}  ref={inputRef} >
+
+                <ul className={styles.divInputSearch} >
+                    {listHashtag.map((item : any , index : number ) =>  {
+                     return   <li key={index} onClick={() => {handleAdd(item)}}>{item}<ArrowUpLeft color="gray" /></li>
+})}
                 </ul>
               </div> }
-              
             </div>  
             <div className={styles.DivList}>
               <li className={styles.list}>
