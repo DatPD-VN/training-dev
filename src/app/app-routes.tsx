@@ -2,7 +2,7 @@ import { FC, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import AppInit from "./AppInit";
 import { Login } from "../pages/login";
-import { RessetPass } from "../pages/resetPass/resetPass";
+import { RessetPass } from "../pages/reset-pass/reset-pass";
 import { Dashboard } from "../pages/product";
 import DetailProduct from "../pages/product/detail-product";
 import { RecoilRoot } from 'recoil';

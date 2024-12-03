@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 
 
-// module.exports = Toast;
 
 export const  Toast = () => {
     toast.success(" Thêm Thành Công!", {
