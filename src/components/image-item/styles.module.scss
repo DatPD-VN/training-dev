@@ -6,7 +6,9 @@
 .detailProductLeftImg {
   width: 100%;
 }
-
+.detailProductLeftImg img {
+  width: 100%;
+}
 .detailProductLeftSmall {
   display: flex;
 }
@@ -20,4 +22,11 @@
 
 .detailProductLeftSmall img:hover {
   border: 1px solid rgb(241, 74, 74);
+}
+
+
+@media (max-width: 1024px) {
+  .detailProductLeftSmall {
+    display: block;
+  }
 }
