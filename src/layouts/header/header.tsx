@@ -6,21 +6,71 @@ import {
   ChevronDown,
   Search,
   ShoppingCart,
+  ArrowUpLeft,
 } from "lucide-react";
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
-import { useRecoilValue } from "recoil";
-import { countCartState } from "../../recoil";
-import { useNavigate } from "react-router-dom";
-import Route from "../../app/route";
-
-
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { countCartState, listSugggest, listSearch } from "../../recoil";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 const Header: FC = () => {
   const navigate = useNavigate();
-  const countCart : any = useRecoilValue(countCartState);
-  return <>
-  <header className={styles.header}>
+  const countCart: any = useRecoilValue(countCartState);
+  const listHashtag: any = useRecoilValue(listSugggest);
+  const choise: any = useSetRecoilState(listSearch);
+  const handleSearch: any = useSetRecoilState(listSugggest);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const inputRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const location = useLocation();
+  const hashtag = location.state;
+  const tag = hashtag !== null ? hashtag.hashtag : null;
+
+  const handleOpen = () => {
+    setIsDisabled(false);
+  };
+  const inputSearch = () => {
+    const valueInput = searchRef.current;
+    const value = valueInput?.value;
+    choise(value);
+    navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${value} `), {
+      state: {
+        hashtag: value,
+      },
+    });
+  };
+  const handleNav = () => {
+    ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
+      navigate(Route(ROUTE_CONFIG.PRODUCT));
+  };
+  const handleAddHashTag = (item: any) => {
+    (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
+    choise(item);
+    setIsDisabled(true);
+    navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${item} `), {
+      state: {
+        hashtag: item,
+      },
+    });
+  };
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setIsDisabled(true);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  return (
+    <>
+      <header className={styles.header}>
         <div className={styles.headerTop}>
           <div className={styles.divTagTop}>
             <a href="" className={styles.divTagTopA}>
@@ -42,7 +92,7 @@ const Header: FC = () => {
             </a>
           </div>
           <div className={styles.divTagTop}>
-            <a href={Route("login")} className={styles.divTagTopA}>
+            <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Ký </p>
             </a>
           </div>
@@ -50,28 +100,63 @@ const Header: FC = () => {
             <p style={{ color: "white" }}>| </p>
           </div>
           <div className={styles.divTagTop}>
-            <a href={Route("login")} className={styles.divTagTopA}>
+            <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Nhập </p>
             </a>
           </div>
         </div>
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
-            <div onClick={() => {
-              navigate(Route("Products"))
-            }} className={styles.headerBottomLogoDiv}>
-              <Logo/>
+            <div
+              onClick={() => {
+                handleNav();
+              }}
+              className={styles.headerBottomLogoDiv}
+            >
+              <Logo />
             </div>
           </div>
           <div className={styles.headerBottomLeft}>
             <div className={styles.divInput}>
               <input
                 type="text"
-                placeholder="Tìm kiếm "
+                placeholder={tag ? tag : "Tìm kiếm"}
+                onClick={handleOpen}
                 className={styles.input}
+                onChange={(e) => {
+                  handleSearch(e.target.value.toLowerCase());
+                }}
+                id="inputSearch"
+                autoComplete="false"
+                ref={searchRef}
               />
-              <Search className={styles.inputIcon} />
-            </div>  
+              <Search
+                className={styles.inputIcon}
+                onClick={() => {
+                  inputSearch();
+                }}
+              />
+
+              {!isDisabled && (
+                <div className={styles.divInputSearchWrap} ref={inputRef}>
+                  <ul className={styles.divInputSearch}>
+                    {listHashtag.map((item: any, index: number) => {
+                      return (
+                        <li
+                          key={index}
+                          onClick={() => {
+                            handleAddHashTag(item);
+                          }}
+                        >
+                          {item}
+                          <ArrowUpLeft color="gray" />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </div>
             <div className={styles.DivList}>
               <li className={styles.list}>
                 <a href="">Dép</a>
@@ -100,19 +185,39 @@ const Header: FC = () => {
             </div>
           </div>
           <div className={styles.headerBottomRight}>
-            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
-              <ShoppingCart size={30} className={styles.headerBottomRightIcon} />
-              <div className={styles.headerBottomRightIconDivCount}>{countCart}</div>
+            <div
+              onClick={() => {
+                navigate(Route(ROUTE_CONFIG.CART));
+              }}
+              className={styles.headerBottomRightIconDiv}
+            >
+              <ShoppingCart
+                size={30}
+                className={styles.headerBottomRightIcon}
+              />
+              <div className={styles.headerBottomRightIconDivCount}>
+                {countCart}
+              </div>
             </div>
           </div>
           <div className={styles.headerBottomRightDivImg}>
-            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
-              <img src="https://down-vn.img.susercontent.com/file/vn-11134226-7ras8-m18dlgfhrbq4f8_tn" alt=""  className={styles.headerBottomRightImg}/>
+            <div
+              onClick={() => {
+                navigate(Route(ROUTE_CONFIG.CART));
+              }}
+              className={styles.headerBottomRightIconDiv}
+            >
+              <img
+                src="https://down-vn.img.susercontent.com/file/vn-11134226-7ras8-m18dlgfhrbq4f8_tn"
+                alt=""
+                className={styles.headerBottomRightImg}
+              />
             </div>
           </div>
         </div>
       </header>
-  </>;
+    </>
+  );
 };
 
 export { Header };

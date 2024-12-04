@@ -39,6 +39,11 @@ const appRoutes: {
     Component: Dashboard,
   },
   {
+    path: baseRoute("Products/:id"),
+    title: `${baseTitle} | Products`,
+    Component: Dashboard,
+  },
+  {
     path: baseRoute("Products/DetailProduct"),
     title: `${baseTitle} | DetailProduct`,
     Component: DetailProduct,

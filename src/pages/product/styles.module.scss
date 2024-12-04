@@ -179,7 +179,7 @@
   position: absolute;
   color: $redColor;
   padding: 2px;
-  background-color: $pinkColer ;
+  background-color: $pinkColor ;
   top: 2px;
   right: 3px;
   font-size: 12px;
@@ -1133,5 +1133,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+  }
+}
+
+.loading {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
+    background-size: 400% 100%;
+    animation-name: skeleton-loading;
+    animation-duration: 1.4s; 
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    min-width: min-content;
+    margin: 10px;
+    border-radius: 10px;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0 50%;
   }
 }

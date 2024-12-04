@@ -1,0 +1,1 @@
+export  const DELAY_DEFAULT= 1000;
