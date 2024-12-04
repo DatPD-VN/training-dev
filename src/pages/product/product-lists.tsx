@@ -5,6 +5,7 @@ import { newListState, listSearch } from "../../recoil";
 import { useLocation, useNavigate } from "react-router";
 import Route from "../../app/route";
 import { ProductLoaing } from "../../components/loading";
+import { Delay_Default } from "../../const";
 
 const Dashboard: FC = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const Dashboard: FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, Delay_Default);
   }, []);
 
   const listProduct = hashtag !== null ? newSearch : newList;
@@ -32,8 +33,7 @@ const Dashboard: FC = () => {
     <>
       <section className={styles.contaiter}>
         <div className={styles.headerWrapper}>
-          {isLoading &&
-            listProduct.map(() => <ProductLoaing />)}
+          {isLoading &&  <ProductLoaing qtt={12} />}
           {!isLoading &&
             listProduct.map((item: any, index: any) => (
               <div
