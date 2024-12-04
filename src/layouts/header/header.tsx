@@ -10,51 +10,54 @@ import {
 } from "lucide-react";
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
-import { useRecoilValue ,useSetRecoilState } from "recoil";
-import { countCartState ,listSugggest ,listSearch } from "../../recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { countCartState, listSugggest, listSearch } from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState ,useRef ,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Route from "../../app/route";
-
 
 const Header: FC = () => {
   const navigate = useNavigate();
-  const countCart : any = useRecoilValue(countCartState);
-  const listHashtag : any = useRecoilValue(listSugggest);
-  const choise : any = useSetRecoilState(listSearch);
-  const handleSearch : any = useSetRecoilState(listSugggest);
+  const countCart: any = useRecoilValue(countCartState);
+  const listHashtag: any = useRecoilValue(listSugggest);
+  const choise: any = useSetRecoilState(listSearch);
+  const handleSearch: any = useSetRecoilState(listSugggest);
   const [isDisabled, setIsDisabled] = useState(true);
   const inputRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const location = useLocation();
   const hashtag = location.state;
-  const tag = (hashtag !== null) ? hashtag.hashtag : null 
+  const tag = hashtag !== null ? hashtag.hashtag : null;
 
   const handleOpen = () => {
-    setIsDisabled(false)
-  }
+    setIsDisabled(false);
+  };
   const inputSearch = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
-    choise(value)
-  }
-  const handleNav = () => {
-      (document.querySelector("#input") as HTMLInputElement).value = "",
-      navigate(Route('Products'))
-  }
-  const handleAdd = (item : any) => {
-    (document.querySelector("#input") as HTMLInputElement).value = item
-    choise(item)
-    setIsDisabled(true)
-    navigate(Route(`Products/${item} `),{
+    choise(value);
+    navigate(Route(`Products/${value} `), {
       state: {
-        hashtag: item
-      }
-    })
-  }
+        hashtag: value,
+      },
+    });
+  };
+  const handleNav = () => {
+    ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
+      navigate(Route("Products"));
+  };
+  const handleAddHashTag = (item: any) => {
+    (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
+    choise(item);
+    setIsDisabled(true);
+    navigate(Route(`Products/${item} `), {
+      state: {
+        hashtag: item,
+      },
+    });
+  };
   useEffect(() => {
-    
-    const handleClickOutside = (event : any) => {
+    const handleClickOutside = (event: any) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
         setIsDisabled(true);
       }
@@ -65,8 +68,9 @@ const Header: FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  return <>
-  <header className={styles.header}>
+  return (
+    <>
+      <header className={styles.header}>
         <div className={styles.headerTop}>
           <div className={styles.divTagTop}>
             <a href="" className={styles.divTagTopA}>
@@ -103,34 +107,56 @@ const Header: FC = () => {
         </div>
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
-            <div onClick={() => {handleNav()}} className={styles.headerBottomLogoDiv}>
-              <Logo/>
+            <div
+              onClick={() => {
+                handleNav();
+              }}
+              className={styles.headerBottomLogoDiv}
+            >
+              <Logo />
             </div>
           </div>
           <div className={styles.headerBottomLeft}>
-         
             <div className={styles.divInput}>
               <input
                 type="text"
                 placeholder={tag ? tag : "Tìm kiếm"}
                 onClick={handleOpen}
                 className={styles.input}
-                onChange={(e) => {handleSearch(e.target.value.toLowerCase())}}
-                id="input"
+                onChange={(e) => {
+                  handleSearch(e.target.value.toLowerCase());
+                }}
+                id="inputSearch"
                 autoComplete="false"
                 ref={searchRef}
               />
-              <Search className={styles.inputIcon} onClick={() => {inputSearch()}} />
-              
-              {!isDisabled && <div className={styles.divInputSearchWrap}  ref={inputRef} >
+              <Search
+                className={styles.inputIcon}
+                onClick={() => {
+                  inputSearch();
+                }}
+              />
 
-                <ul className={styles.divInputSearch} >
-                    {listHashtag.map((item : any , index : number ) =>  {
-                     return   <li key={index} onClick={() => {handleAdd(item)}}>{item}<ArrowUpLeft color="gray" /></li>
-})}
-                </ul>
-              </div> }
-            </div>  
+              {!isDisabled && (
+                <div className={styles.divInputSearchWrap} ref={inputRef}>
+                  <ul className={styles.divInputSearch}>
+                    {listHashtag.map((item: any, index: number) => {
+                      return (
+                        <li
+                          key={index}
+                          onClick={() => {
+                            handleAddHashTag(item);
+                          }}
+                        >
+                          {item}
+                          <ArrowUpLeft color="gray" />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </div>
             <div className={styles.DivList}>
               <li className={styles.list}>
                 <a href="">Dép</a>
@@ -159,19 +185,39 @@ const Header: FC = () => {
             </div>
           </div>
           <div className={styles.headerBottomRight}>
-            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
-              <ShoppingCart size={30} className={styles.headerBottomRightIcon} />
-              <div className={styles.headerBottomRightIconDivCount}>{countCart}</div>
+            <div
+              onClick={() => {
+                navigate(Route("Cart"));
+              }}
+              className={styles.headerBottomRightIconDiv}
+            >
+              <ShoppingCart
+                size={30}
+                className={styles.headerBottomRightIcon}
+              />
+              <div className={styles.headerBottomRightIconDivCount}>
+                {countCart}
+              </div>
             </div>
           </div>
           <div className={styles.headerBottomRightDivImg}>
-            <div onClick={() => {navigate(Route("Cart"))}} className={styles.headerBottomRightIconDiv}>
-              <img src="https://down-vn.img.susercontent.com/file/vn-11134226-7ras8-m18dlgfhrbq4f8_tn" alt=""  className={styles.headerBottomRightImg}/>
+            <div
+              onClick={() => {
+                navigate(Route("Cart"));
+              }}
+              className={styles.headerBottomRightIconDiv}
+            >
+              <img
+                src="https://down-vn.img.susercontent.com/file/vn-11134226-7ras8-m18dlgfhrbq4f8_tn"
+                alt=""
+                className={styles.headerBottomRightImg}
+              />
             </div>
           </div>
         </div>
       </header>
-  </>;
+    </>
+  );
 };
 
 export { Header };

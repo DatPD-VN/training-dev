@@ -1,0 +1,199 @@
+@use "abstracts/index" as *;
+
+.divItemWrapper:hover .divItemHover {
+  display: block;
+  z-index: 2;
+}
+.divItemWrapper {
+  padding: 0 7px;
+  width: 16.6%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  .divItemWrapper {
+    padding: 0 7px;
+    width: 25%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .contaiter {
+    padding: 20px 15px;
+  }
+}
+@media (max-width: 800px) {
+  .divItemWrapper {
+    padding: 0 7px;
+    width: 50%;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .divItemTitle {
+    font-size: 16px;
+  }
+  .price {
+    font-size: 16px;
+  }
+}
+
+.divItemHover {
+  position: absolute;
+  display: none;
+  transform: translateY(100%);
+  bottom: 0;
+  color: $whiteColor;
+  width: 100%;
+  padding: 5px 0px;
+  background-color: $primary;
+  font-size: 13px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.divItemWrapper {
+  padding: 0 7px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  position: relative;
+}
+.divItemWrapperHover {
+  position: relative;
+}
+.divImg {
+  width: 100%;
+  position: relative;
+  border-radius: 2px;
+  cursor: pointer;
+  padding-top: 100%;
+}
+.divItem:hover {
+  cursor: pointer;
+  border-radius: 2px;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border: none;
+  top: 0;
+  right: 0;
+  position: absolute;
+  background-image: url("https://intero.vn/wp-content/uploads/No_Image_Available_thum_488.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.img::after {
+  // content: url("https://intero.vn/wp-content/uploads/No_Image_Available_thum_488.jpg");
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.divItemSaleOff {
+  position: absolute;
+  color: $redColor;
+  padding: 2px;
+  background-color: $pinkColer;
+  top: 2px;
+  right: 3px;
+  font-size: 12px;
+}
+.logoVoucher {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 4px;
+}
+.divItemTitle {
+  font-size: 13px;
+  text-align: left;
+  padding: 4px 10px 0 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  height: 20px;
+  margin: 10px 10px ;
+}
+
+.voucher {
+  color: $whiteColor;
+  padding: 2px 4px;
+  background-color: $yellowColor;
+  width: fit-content;
+  font-size: 12px;
+  margin: 10px 0px 10px 10px;
+  height: 15px;
+  width: 35%;
+}
+.voucherHidden {
+  color: $whiteColor;
+  padding: 2px 4px;
+  width: fit-content;
+  font-size: 12px;
+  background-color: $yellowColor;
+  margin: 10px 0px 10px 10px;
+  visibility: hidden;
+}
+.price {
+  color: $redColor;
+  text-align: left;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 10px 0;
+  height: 10px;
+  width: 50%;
+}
+.headerWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.iconPrice {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.divItemHover {
+  position: absolute;
+  display: none;
+  transform: translateY(100%);
+  bottom: 0;
+  color: $whiteColor;
+  width: 100%;
+  padding: 5px 0px;
+  background-color: $primary;
+  font-size: 13px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.loading {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.15) 37%,
+    rgba(0, 0, 0, 0.06) 63%
+  );
+  background-size: 400% 100%;
+  animation-name: skeleton-loading;
+  animation-duration: 1.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  // margin: 10px;
+  border-radius: 10px;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
