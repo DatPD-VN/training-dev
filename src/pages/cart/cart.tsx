@@ -3,7 +3,7 @@ import { FC } from "react";``
 import { ArrowLeft, BadgeDollarSign, ChevronDown, ChevronRight, Search, Ticket } from "lucide-react";
 
 import Plus from "../../icon/plus";
-import NoPlus from "../../icon/noPlus";
+import NoPlus from "../../icon/no-plus";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { addCartState ,totalCartState ,delCartState ,handleCartState,countCartState } from "../../recoil";
 import { useMediaQuery } from "react-responsive";

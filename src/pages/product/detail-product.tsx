@@ -12,7 +12,7 @@ import {
   Truck,
 } from "lucide-react";
 import Plus from "../../icon/plus";
-import NoPlus from "../../icon/noPlus";
+import NoPlus from "../../icon/no-plus";
 import { useLocation } from "react-router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { addCartState, newListState } from "../../recoil";
@@ -357,7 +357,6 @@ function DetailProduct() {
       )}
       {!isPhoneScreen && (
         <>
-          {/* <Header /> */}
           <section className={styles.detailProductContainerWrap}>
             {product.map((item: any, index: any) => (
               <div className={styles.detailProductContainer} key={index}>
@@ -570,7 +569,6 @@ function DetailProduct() {
           </section>
         </>
       )}
-      {/* <Footer /> */}
     </>
   );
 }

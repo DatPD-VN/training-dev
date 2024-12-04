@@ -11,7 +11,12 @@ import {
 import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { countCartState, listSugggest, listSearch } from "../../recoil";
+import {
+  countCartState,
+  listSugggest,
+  listSearch,
+  delCategory,
+} from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Route, { ROUTE_CONFIG } from "../../app/route";
@@ -28,6 +33,7 @@ const Header: FC = () => {
   const location = useLocation();
   const hashtag = location.state;
   const tag = hashtag !== null ? hashtag.hashtag : null;
+  const delData: any = useSetRecoilState(delCategory);
 
   const handleOpen = () => {
     setIsDisabled(false);
@@ -44,7 +50,8 @@ const Header: FC = () => {
   };
   const handleNav = () => {
     ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
-      navigate(Route(ROUTE_CONFIG.PRODUCT));
+      delData();
+    navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
   const handleAddHashTag = (item: any) => {
     (document.querySelector("#inputSearch") as HTMLInputElement).value = item;

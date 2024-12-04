@@ -21,6 +21,19 @@ const listSuggestState: any = atom({
   default: listSuggest,
 });
 
+const listCategories: Array<string> = [];
+
+const listCategoriesState: any = atom({
+  key: "listCategory",
+  default: listCategories,
+});
+const resultCategories: Array<string> = [];
+
+const resultCategoriesState: any = atom({
+  key: "resultCategory",
+  default: resultCategories,
+});
+
 export const newListState = selector({
   key: "newList",
   get: ({ get }) => {
@@ -66,5 +79,43 @@ export const listSugggest = selector({
     const regex = new RegExp(data, "i");
     const value = Fitter.filter((hashTag: any) => regex.test(hashTag));
     set(listSuggestState, [...value]);
+  },
+});
+export const listCategory = selector({
+  key: "handleCategories",
+  get: ({ get }) => {
+    const listState: any = get(listCategoriesState);
+    return listState;
+  },
+  set: ({ get, set }) => {
+    const listState: any = get(listTodoState);
+    const category = listState.flatMap((item: any) => item.categories);
+    const Fitter = [...new Set(category)];
+    set(listCategoriesState, [...Fitter]);
+  },
+});
+export const addCategory = selector({
+  key: "handleAddCategories",
+  get: ({ get }) => {
+    const listState: any = get(resultCategoriesState);
+    return listState;
+  },
+  set: ({ get, set }, data) => {
+    const listState: any = get(listTodoState);
+    const regex = new RegExp(data, "i");
+    const value = listState.filter((item: any) => regex.test(item.categories));
+    set(listSearchState, []);
+    set(resultCategoriesState, [...value]);
+  },
+});
+export const delCategory = selector({
+  key: "handleDelCategories",
+  get: ({ get }) => {
+    const listState: any = get(resultCategoriesState);
+    return listState;
+  },
+  set: ({ set }) => {
+    set(resultCategoriesState, []);
+    set(listSearchState, []);
   },
 });

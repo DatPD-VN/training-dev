@@ -1,0 +1,70 @@
+@use "abstracts/index" as *;
+
+.containerCategories {
+  padding: 20px 10px;
+  transition-duration: 300ms;
+}
+
+.titleCategories {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0px 10px;
+  a {
+    color: $textDefault;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: $borderColor;
+    padding: 10px 0;
+    div {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.categoryDiv {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-left: 20px;
+  a {
+    position: relative;
+    padding: 10px 15px;
+    white-space: nowrap;
+    font-size: 14px;
+    text-decoration: none;
+    color: $textDefault;
+  }
+  a:hover {
+    color: $redColor;
+    fill: $redColor;
+  }
+}
+.showCategories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px;
+}
+.showCategories:hover {
+  color: $redColor;
+}
+
+.arrowRightCategories {
+  width: 7px;
+  height: 7px;
+  fill: red;
+}

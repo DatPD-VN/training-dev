@@ -118,7 +118,8 @@
 
 .contaiter {
   height: auto;
-  padding: 20px 56px;
+  padding: 20px 36px;
+  width: 85%;
 }
 .divItem {
   box-sizing: border-box;
@@ -179,7 +180,7 @@
   position: absolute;
   color: $redColor;
   padding: 2px;
-  background-color: $pinkColor ;
+  background-color: $pinkColor;
   top: 2px;
   right: 3px;
   font-size: 12px;
@@ -254,18 +255,14 @@
     margin-bottom: 20px;
     position: relative;
   }
- .divItemTitle {
-  font-size: 16px;
- }
- .price {
-  font-size: 16px;
- }
- 
+  .divItemTitle {
+    font-size: 16px;
+  }
+  .price {
+    font-size: 16px;
+  }
 }
 // detailProducts
-
-
-
 
 .detailProductContainer {
   margin: 20px 64px;
@@ -317,7 +314,7 @@
   margin-left: 10px;
 }
 .detailProductLeftBottomShareIcon {
-  background-position-y:-100% ;
+  background-position-y: -100%;
   background-color: initial;
   background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
   background-size: 100%;
@@ -344,7 +341,7 @@
   width: 25px;
 }
 .detailProductLeftBottomShareIcon3 {
-  background-position-y:-300% ;
+  background-position-y: -300%;
   background-color: initial;
   background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
   background-size: 100%;
@@ -358,7 +355,7 @@
   width: 25px;
 }
 .detailProductLeftBottomShareIcon4 {
-  background-position-y:-400% ;
+  background-position-y: -400%;
   background-color: initial;
   background-image: url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/12f585f9c56d4f30.png);
   background-size: 100%;
@@ -469,7 +466,6 @@
 }
 .detailProductPriceOld span {
   font-size: 15px;
- 
 }
 .detailProductPriceDiscount {
   background-color: $whiteColor;
@@ -477,7 +473,6 @@
   border-radius: 4px;
   font-size: 13px;
   font-weight: 500;
-  
 }
 .detailProductTitle {
   font-size: 14px;
@@ -501,12 +496,12 @@
   letter-spacing: 0em;
 }
 .detailProductVoucherdetail {
-    color: $primary;
-    background-color: $whiteColor;
-    padding: 4px 6px;
-    font-size: 13px;
-    margin: 0 10px ;
-    position: relative;
+  color: $primary;
+  background-color: $whiteColor;
+  padding: 4px 6px;
+  font-size: 13px;
+  margin: 0 10px;
+  position: relative;
 }
 .detailProductVoucherdetail::before {
   background-image: radial-gradient($whiteColor 2px, transparent 0);
@@ -528,11 +523,11 @@
   position: absolute;
   top: 2.5px;
   width: 6px;
-  right:-3px;
+  right: -3px;
 }
 .detailProductRefund img {
   width: 20px;
-  margin-right:5px;
+  margin-right: 5px;
 }
 .detailProductRefund {
   display: flex;
@@ -551,7 +546,7 @@
 .detailProductRightVoucher {
   color: $primary;
   padding: 4px;
-  border: 1px solid $primary ;
+  border: 1px solid $primary;
   font-size: 13px;
   cursor: pointer;
 }
@@ -581,7 +576,7 @@
   margin-right: 10px;
 }
 
-.detailProductShipBottom  select {
+.detailProductShipBottom select {
   outline: none;
   border: none;
 }
@@ -608,22 +603,22 @@
   display: flex;
   align-items: center;
 }
-.detailProductDivAmount button{
+.detailProductDivAmount button {
   width: 32px;
   height: 32px;
-  outline: none;  
+  outline: none;
   padding: 0px 10px;
   background-color: transparent;
   outline: none;
-  border: 1px solid rgba(0, 0, 0, .09);
+  border: 1px solid rgba(0, 0, 0, 0.09);
   cursor: pointer;
 }
 .detailProductDivAmount input {
   width: 50px;
   height: 30px;
-  padding: 0px ;
-  border: 1px solid rgba(0, 0, 0, .09);;
-  text-align: center  ;
+  padding: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  text-align: center;
   outline: none;
 }
 
@@ -643,7 +638,7 @@
   cursor: pointer;
   color: $primary;
   border: 1px solid $primary;
-  background-color: rgba(255, 87, 34, .1);
+  background-color: rgba(255, 87, 34, 0.1);
   margin-right: 10px;
   font-size: 14px;
 }
@@ -661,74 +656,76 @@
   cursor: pointer;
 }
 
-
 @media (max-width: 1024px) {
- .detailProductLeftBottom {
-  margin: 20px 0 ;
-  padding: 0px;
-  font-size: 12px;
-  width: 100%;
+  .detailProductLeftBottom {
+    margin: 20px 0;
+    padding: 0px;
+    font-size: 12px;
+    width: 100%;
+  }
+  .detailProductLeftBottomFavourite {
+    justify-content: end;
+    font-size: 11px;
+    margin-top: 20px;
+  }
 
- }
- .detailProductLeftBottomFavourite {
-  justify-content: end;
-  font-size: 11px;
-  margin-top: 20px;
- }
-
- .detailProductLeftBottomShareIcon {
-  height: 18px;
-  width: 18px;
- }
- .detailProductLeftBottomShareIcon2 {
-  width: 18px;
-  height: 18px;
- }
- .detailProductLeftBottomShareIcon3 {
-  width: 18px;
-  height: 18px;
- }
- .detailProductLeftBottomShareIcon4 {
-  width: 18px;
-  height: 18px;
- }
- .detailProductLeftBottom {
-  flex-direction: column;
- }
- .detailProductRightTitleProduct {
-  font-size: 14px;
- }
- .detailProductRightInfomation {
-  font-size: 10px;
- }
- .detailProductRightTitle {
-  font-size: 11px;
-  text-align: left;
- }
- .detailProductTitle {
-  margin: 10px 0;
- }
- .detailProductPrice {
-  margin-bottom: 20px;
- }
- .detailProductRefund ,.detailProductRefundFree {
-  font-size: 12px;
- }
- .detailProductRightVoucher {
-  font-size: 11px;
- }
- .detailProductShipTop span , .detailProductShipBottom span ,.detailProductShipBot span {
-  font-size: 11px;
- }
- .detailProductShipBottom select ,.detailProductShipBot select {
-  font-size: 11px;
- }
+  .detailProductLeftBottomShareIcon {
+    height: 18px;
+    width: 18px;
+  }
+  .detailProductLeftBottomShareIcon2 {
+    width: 18px;
+    height: 18px;
+  }
+  .detailProductLeftBottomShareIcon3 {
+    width: 18px;
+    height: 18px;
+  }
+  .detailProductLeftBottomShareIcon4 {
+    width: 18px;
+    height: 18px;
+  }
+  .detailProductLeftBottom {
+    flex-direction: column;
+  }
+  .detailProductRightTitleProduct {
+    font-size: 14px;
+  }
+  .detailProductRightInfomation {
+    font-size: 10px;
+  }
+  .detailProductRightTitle {
+    font-size: 11px;
+    text-align: left;
+  }
+  .detailProductTitle {
+    margin: 10px 0;
+  }
+  .detailProductPrice {
+    margin-bottom: 20px;
+  }
+  .detailProductRefund,
+  .detailProductRefundFree {
+    font-size: 12px;
+  }
+  .detailProductRightVoucher {
+    font-size: 11px;
+  }
+  .detailProductShipTop span,
+  .detailProductShipBottom span,
+  .detailProductShipBot span {
+    font-size: 11px;
+  }
+  .detailProductShipBottom select,
+  .detailProductShipBot select {
+    font-size: 11px;
+  }
 }
 
 // Mobile Detail
 
 .containerDetail {
-  box-sizing: bord    er-box;
+  box-sizing: bord er-box;
 }
 .headerWrap {
   display: flex;
@@ -818,83 +815,83 @@
   background-color: $priceWrap;
   padding: 20px 10px;
   .priceWrapVoucher {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      padding: 10px 10px 0 10px;
-      color: $grayColor;
-      div {
-          color: $primary;
-          padding: 2px;
-          border: 1px solid $primary;
-          font-size: 12px;
-      }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 10px 0 10px;
+    color: $grayColor;
+    div {
+      color: $primary;
+      padding: 2px;
+      border: 1px solid $primary;
+      font-size: 12px;
+    }
   }
   .priceWrapInfo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .priceWrapMain {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
   }
   .heartDiv {
-      display: flex;
-      align-items: center;
-      color: $grayColor;
+    display: flex;
+    align-items: center;
+    color: $grayColor;
   }
   .heartDiv span {
-      margin-right: 10px;
-      color: $textDefault;
-      font-size: 14px;
+    margin-right: 10px;
+    color: $textDefault;
+    font-size: 14px;
   }
   .priceWrapMainNew {
-      display: flex;
-      align-items: start;
-      color: $primary;
-      margin: 0 10px;
+    display: flex;
+    align-items: start;
+    color: $primary;
+    margin: 0 10px;
   }
   .priceWrapMainNew p {
-      font-size: 27px;
+    font-size: 27px;
   }
   .priceWrapMainNew span {
-      font-size: 13px;
+    font-size: 13px;
   }
   .priceWrapMainOld {
-      color: $grayColor;
-      display: flex;
-      align-items: start;
-      text-decoration: line-through;
-      margin-right:10px;
+    color: $grayColor;
+    display: flex;
+    align-items: start;
+    text-decoration: line-through;
+    margin-right: 10px;
   }
   .priceWrapMainOld p {
-      font-size: 18px;
+    font-size: 18px;
   }
   .priceWrapMainOld span {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 .titleProduct {
   padding: 15px;
   .titleProductHeart {
-      color: $whiteColor;
-      background-color: $primary;
-      padding: 3px;
-      border-radius: 3px;
-      font-size: 12px;
-      margin-right: 10px;
+    color: $whiteColor;
+    background-color: $primary;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 10px;
   }
   .titleProductMain {
-      text-align: left;
-      font-size: 16px;
-      line-height: 20px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      width: 100%;
-      overflow: hidden;
+    text-align: left;
+    font-size: 16px;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    width: 100%;
+    overflow: hidden;
   }
 }
 .shipWrap {
@@ -909,17 +906,17 @@
   align-items: center;
   justify-content: space-between;
   .shipWrapLeft {
-      display: flex;
-      align-items: start;
+    display: flex;
+    align-items: start;
   }
   .shipWrapLeftInfo {
-      text-align: left;
-      line-height: 20px;
-      margin-left: 10px;
-      font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 14px;
   }
   .shipWrapLeftInfo p:first-child {
-      font-size: 16px;
+    font-size: 16px;
   }
 }
 .shipTimeWrap {
@@ -928,14 +925,14 @@
   align-items: center;
   justify-content: space-between;
   .shipTimeWrapRight {
-      color: $grayColor;
+    color: $grayColor;
   }
   .shipTime {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
   }
   .shipTime div {
-      margin-left: 10px;
+    margin-left: 10px;
   }
 }
 .infoShopWrapper {
@@ -946,39 +943,39 @@
   padding: 15px;
   background-color: $whiteColor;
   .infoShopWrapper {
-      display: flex;
-      align-items: center;
-      background-color: $whiteColor;
+    display: flex;
+    align-items: center;
+    background-color: $whiteColor;
 
-      button {
-          color: $primary;
-          border: 1px solid;
-          border-radius: 2px;
-          border-color: $primary;
-          padding: 7px 14px;
-          background-color: transparent;
-          cursor: pointer;
-      }
+    button {
+      color: $primary;
+      border: 1px solid;
+      border-radius: 2px;
+      border-color: $primary;
+      padding: 7px 14px;
+      background-color: transparent;
+      cursor: pointer;
+    }
   }
   .infoShopWrapperLeft {
-      position: relative;
+    position: relative;
   }
   .infoShopWrapperLeft img {
-      width: 60px;
-      height: 60px;
-      border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
   }
   .infoShopWrapperLeft span {
-      position: absolute;
-      bottom: 0;
-      left: 1/2%;
-      transform: translateX(-100%);
-      color: $whiteColor;
-      background-color: $primary;
-      padding: 3px;
-      font-size: 12px;
-      width: max-content;
-      border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 1/2%;
+    transform: translateX(-100%);
+    color: $whiteColor;
+    background-color: $primary;
+    padding: 3px;
+    font-size: 12px;
+    width: max-content;
+    border-radius: 4px;
   }
 }
 .infoShopWrapperRight {
@@ -986,16 +983,17 @@
   text-align: left;
   margin-left: 20px;
   line-height: 20px;
-  .infoShopWrapperRightInfo ,.infoShopWrapperRightAddress {
-      font-size: 14px;
-      color: $grayColor;
+  .infoShopWrapperRightInfo,
+  .infoShopWrapperRightAddress {
+    font-size: 14px;
+    color: $grayColor;
   }
   .infoShopWrapperRightAddress {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
   }
   .infoShopWrapperRightAddress span {
-      margin-left: 5px;
+    margin-left: 5px;
   }
 }
 
@@ -1005,12 +1003,12 @@
   justify-content: start;
   padding: 10px 0;
   .infoSocialDiv {
-      font-size: 13px;
-      margin-left: 10px;
+    font-size: 13px;
+    margin-left: 10px;
   }
   .infoSocialDiv span {
-      color: $primary;
-      margin-right: 7px ;
+    color: $primary;
+    margin-right: 7px;
   }
 }
 .infoProductWrapper {
@@ -1018,88 +1016,88 @@
   background-color: $whiteColor;
   font-size: 16px;
   .infoProductTitleLeft {
-      $whiteColor-space: nowrap;
+    $whiteColor-space: nowrap;
   }
   .infoProductTitleRight {
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      $whiteColor-space: nowrap;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    $whiteColor-space: nowrap;
   }
   .infoProductTitle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 15px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px 10px;
   }
-  .infoProductBottom div{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 0 ;
-      font-size: 18px;
-      color: $primary;
+  .infoProductBottom div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    font-size: 18px;
+    color: $primary;
   }
   .infoProductDescription {
-      padding: 20px;
-      border-bottom: 1px;
-      border-top: 1px;
-      border-right: 0px;
-      border-left: 0px;
-      border-color:rgba(128, 128, 128, 0.24) ;
-      border-style: solid;
+    padding: 20px;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-right: 0px;
+    border-left: 0px;
+    border-color: rgba(128, 128, 128, 0.24);
+    border-style: solid;
   }
   .infoProductDescriptionTitle {
-      text-align: left;
-      line-height: 30px;
+    text-align: left;
+    line-height: 30px;
   }
   .infoProductDescriptionMain {
-      line-height: 20px;
-      $whiteColor-space: pre-wrap;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
+    line-height: 20px;
+    $whiteColor-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
   }
 }
 .feedBackWrap {
   padding: 10px 0;
-  background-color:$bgColor ;
+  background-color: $bgColor;
   font-size: 16px;
   .feedBackWrapTitle {
-      background-color: $whiteColor;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 15px;
+    background-color: $whiteColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
   }
   .feedBackWrapTitleRight {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
   }
   .feedBackWrapBottom {
-      display: flex;
-      align-items: center;
-      background-color: $whiteColor;
-      justify-content: center;
-      padding: 15px 0;
-      font-size: 15px;
-      color: $primary;
+    display: flex;
+    align-items: center;
+    background-color: $whiteColor;
+    justify-content: center;
+    padding: 15px 0;
+    font-size: 15px;
+    color: $primary;
   }
   .feedBackWrapTitleLeftInfo {
-      display: flex;
-      align-items: center;
-      padding: 5px 0;
-      font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 14px;
   }
   .feedBackWrapTitleLeftTitle {
-      text-align: left;
+    text-align: left;
   }
   .feedBackWrapTitleAmountStar {
-      margin: 0 10px;
+    margin: 0 10px;
   }
 }
 
@@ -1112,46 +1110,58 @@
   width: 100%;
   height: 50px;
   .footerDiv {
-      flex: 1;
-      color: $whiteColor;
-      background-color: $buttonMessage;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      span {
-          font-size: 12px;
-      }
+    flex: 1;
+    color: $whiteColor;
+    background-color: $buttonMessage;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-size: 12px;
+    }
   }
-  
+
   .footerButtonBuy {
-      flex: 2;
-      background-color: $primary;
-      color: $whiteColor;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    flex: 2;
+    background-color: $primary;
+    color: $whiteColor;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .loading {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.06) 25%, rgba(0, 0, 0, 0.15) 37%, rgba(0, 0, 0, 0.06) 63%);
-    background-size: 400% 100%;
-    animation-name: skeleton-loading;
-    animation-duration: 1.4s; 
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
-    min-width: min-content;
-    margin: 10px;
-    border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.15) 37%,
+    rgba(0, 0, 0, 0.06) 63%
+  );
+  background-size: 400% 100%;
+  animation-name: skeleton-loading;
+  animation-duration: 1.4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  min-width: min-content;
+  margin: 10px;
+  border-radius: 10px;
 }
 @keyframes skeleton-loading {
   0% {
     background-position: 100% 50%;
   }
   100% {
-      background-position: 0 50%;
+    background-position: 0 50%;
   }
+}
+
+.categoriesContainer {
+  width: 15%;
+}
+.mainContainer {
+  display: flex;
 }
