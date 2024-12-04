@@ -3,9 +3,9 @@ import styles from "./styles.module.scss";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { newListState, listSearch } from "../../recoil";
 import { useLocation, useNavigate } from "react-router";
-import Route from "../../app/route";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 import { ProductLoaing } from "../../components/loading";
-import { Delay_Default } from "../../const";
+import { DELAY_DEFAULT } from "../../const";
 
 const Dashboard: FC = () => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const Dashboard: FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, Delay_Default);
+    }, DELAY_DEFAULT);
   }, []);
 
   const listProduct = hashtag !== null ? newSearch : newList;
@@ -38,7 +38,7 @@ const Dashboard: FC = () => {
                 key={index}
                 className={styles.divItemWrapper}
                 onClick={() => {
-                  navigate(Route("Products/DetailProduct"), {
+                  navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
                     state: {
                       id: item.id,
                     },

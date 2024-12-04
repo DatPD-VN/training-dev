@@ -14,7 +14,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { countCartState, listSugggest, listSearch } from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
-import Route from "../../app/route";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Header: FC = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
     choise(value);
-    navigate(Route(`Products/${value} `), {
+    navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${value} `), {
       state: {
         hashtag: value,
       },
@@ -44,13 +44,13 @@ const Header: FC = () => {
   };
   const handleNav = () => {
     ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
-      navigate(Route("Products"));
+      navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
   const handleAddHashTag = (item: any) => {
     (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
     choise(item);
     setIsDisabled(true);
-    navigate(Route(`Products/${item} `), {
+    navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${item} `), {
       state: {
         hashtag: item,
       },
@@ -92,7 +92,7 @@ const Header: FC = () => {
             </a>
           </div>
           <div className={styles.divTagTop}>
-            <a href={Route("login")} className={styles.divTagTopA}>
+            <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Ký </p>
             </a>
           </div>
@@ -100,7 +100,7 @@ const Header: FC = () => {
             <p style={{ color: "white" }}>| </p>
           </div>
           <div className={styles.divTagTop}>
-            <a href={Route("login")} className={styles.divTagTopA}>
+            <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Nhập </p>
             </a>
           </div>
@@ -187,7 +187,7 @@ const Header: FC = () => {
           <div className={styles.headerBottomRight}>
             <div
               onClick={() => {
-                navigate(Route("Cart"));
+                navigate(Route(ROUTE_CONFIG.CART));
               }}
               className={styles.headerBottomRightIconDiv}
             >
@@ -203,7 +203,7 @@ const Header: FC = () => {
           <div className={styles.headerBottomRightDivImg}>
             <div
               onClick={() => {
-                navigate(Route("Cart"));
+                navigate(Route(ROUTE_CONFIG.CART));
               }}
               className={styles.headerBottomRightIconDiv}
             >

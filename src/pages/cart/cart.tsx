@@ -8,7 +8,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { addCartState ,totalCartState ,delCartState ,handleCartState,countCartState } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
 import {  useNavigate } from "react-router"
-import Route from "../../app/route";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 const Cart: FC = () => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Cart: FC = () => {
     {isPhoneScreen &&  <section className={styles.containerCart}>
         <header className={styles.headerWrapMobile}>
             <div className={styles.headerWrapLeftMobile} onClick={() => {
-              navigate(Route("Products"))
+              navigate(Route(ROUTE_CONFIG.PRODUCT))
             }}>
               <ArrowLeft size={25} />
             </div>

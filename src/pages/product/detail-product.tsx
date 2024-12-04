@@ -22,7 +22,7 @@ import { useMediaQuery } from "react-responsive";
 import { FeedBack } from "../../components/feed-back/feed-back";
 import { useNavigate } from "react-router";
 import { countCartState } from "../../recoil";
-import Route from "../../app/route";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 function DetailProduct() {
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ function DetailProduct() {
             <div
               className={styles.headerWrapLeft}
               onClick={() => {
-                navigate(Route('Products'));
+                navigate(Route(ROUTE_CONFIG.PRODUCT));
               }}
             >
               <ArrowLeft size={25} />
@@ -77,7 +77,7 @@ function DetailProduct() {
               <div
                 className={styles.headerWrapRightCart}
                 onClick={() => {
-                  navigate(Route("Cart"));
+                  navigate(Route(ROUTE_CONFIG.CART));
                 }}
               >
                 <ShoppingCart size={23} />

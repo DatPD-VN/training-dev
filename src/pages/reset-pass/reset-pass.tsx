@@ -3,7 +3,7 @@ import { ArrowLeft, CircleHelp, Undo2, UserRound } from 'lucide-react';
 import {  useNavigate } from "react-router"
 import styles from "./styles.module.scss";
 import { useMediaQuery } from "react-responsive";
-import Route from "../../app/route";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 
 
@@ -15,7 +15,7 @@ const RessetPass: FC = () => {
   {isPhoneScreen &&<section className={styles.container}>
         <header className={styles.headerWrap}>
               <div className={styles.headerWrapLeft} onClick={() => {
-                navigate(Route("Products"))
+                navigate(Route(ROUTE_CONFIG.PRODUCT))
               }}>
                 <ArrowLeft size={25} />
               </div>
@@ -46,7 +46,7 @@ const RessetPass: FC = () => {
         </div>
         <section className={styles.content}>
           <div className={styles.wapper} >
-            <Undo2 onClick={() => {navigate(Route("Products"))}} className={styles.styleIcon}/>
+            <Undo2 onClick={() => {navigate(Route(ROUTE_CONFIG.PRODUCT))}} className={styles.styleIcon}/>
             <h1 className={styles.text2xl}>Đặt lại mật khẩu </h1>
             <input
               type="text"

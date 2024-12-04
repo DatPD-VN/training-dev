@@ -1,1 +1,1 @@
-export  const Delay_Default = 2000;
+export  const DELAY_DEFAULT= 1000;
