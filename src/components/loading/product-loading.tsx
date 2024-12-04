@@ -2,8 +2,8 @@ import styles from "./styles.module.scss";
 import React from "react";
 import { TLoaing } from "./type";
 
-const ProductLoaing: React.FC<TLoaing> = ({ qtt }) => {
-  const divs = Array.from({length : qtt} , (_,index) => index)
+const ProductLoaing: React.FC<TLoaing> = ({ quantity }) => {
+  const divs = Array.from({length : quantity} , (_,index) => index)
   return (
     <>
       {divs.map((item) => {

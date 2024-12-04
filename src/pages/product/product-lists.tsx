@@ -33,9 +33,7 @@ const Dashboard: FC = () => {
     <>
       <section className={styles.contaiter}>
         <div className={styles.headerWrapper}>
-          {isLoading &&  <ProductLoaing qtt={12} />}
-          {!isLoading &&
-            listProduct.map((item: any, index: any) => (
+          {isLoading ?  (<ProductLoaing quantity={12} />) : (listProduct.map((item: any, index: any) => (
               <div
                 key={index}
                 className={styles.divItemWrapper}
@@ -93,7 +91,8 @@ const Dashboard: FC = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            ))) }
+       
         </div>
       </section>
     </>

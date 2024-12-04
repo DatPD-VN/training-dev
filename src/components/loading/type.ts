@@ -1,5 +1,5 @@
 type TLoaing = {
-    qtt: number;
+    quantity: number;
 };
   
 
