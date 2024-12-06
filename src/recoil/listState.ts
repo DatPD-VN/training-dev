@@ -1,5 +1,6 @@
 import { atom, selector } from "recoil";
 import dataState from "../mock/mock-api";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const defaultData = dataState;
 
@@ -119,3 +120,37 @@ export const delCategory = selector({
     set(listSearchState, []);
   },
 });
+
+// Use
+export const useNewListState = () => {
+  return useRecoilValue(newListState);
+};
+export const useListSearch = () => {
+  return useRecoilValue(listSearch);
+};
+export const useListSugggest = () => {
+  return useRecoilValue(listSugggest);
+};
+export const useListCategory = () => {
+  return useRecoilValue(listCategory);
+};
+export const useListNewCategory = () => {
+  return useRecoilValue(addCategory);
+};
+
+// Set
+export const setListSearch = () => {
+  return useSetRecoilState(listSearch);
+};
+export const setListSugggest = () => {
+  return useSetRecoilState(listSugggest);
+};
+export const setListCategory = () => {
+  return useSetRecoilState(listCategory);
+};
+export const setAddCategory = () => {
+  return useSetRecoilState(addCategory);
+};
+export const setDelCategory = () => {
+  return useSetRecoilState(delCategory);
+};

@@ -4,7 +4,7 @@ import AppInit from "./AppInit";
 import { Login } from "../pages/login";
 import { RessetPass } from "../pages/reset-pass/reset-pass";
 import { Dashboard } from "../pages/product";
-import DetailProduct from "../pages/product/detail-product";
+import DetailProduct from "../pages/product/detail-product/detail-product";
 import { RecoilRoot } from 'recoil';
 import { Cart } from "../pages/cart/cart";
 import { ToastContainer } from 'react-toastify';

@@ -1,42 +1,19 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import styles from "./styles.module.scss";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { newListState, listSearch, addCategory } from "../../recoil";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { ProductLoaing } from "../../components/loading";
-import { DELAY_DEFAULT } from "../../const";
 import { Categories } from "../../layouts/categories";
+import { UseProduct } from "./hook";
 
 const Dashboard: FC = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const hashtag = location.state;
-  const newList: Array<string> = useRecoilValue(newListState);
-  const newSearch: Array<string> = useRecoilValue(listSearch);
-  const newCategories: Array<string> = useRecoilValue(addCategory);
-  const choise: any = useSetRecoilState(listSearch);
-  const [isLoading, setIsLoading] = useState(true);
-
-  if (newSearch.length === 0) {
-    if (hashtag) {
-      choise(hashtag.hashtag);
-    }
-  }
-
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, DELAY_DEFAULT);
-  }, [newSearch ,newCategories]);
-  
-  const listProduct = hashtag !== null ? newSearch : ((newCategories.length === 0) ? newList :newCategories );
+ const { listProduct ,isLoading} = UseProduct();
   return (
     <>
       <section className={styles.mainContainer}>
         <div className={styles.categoriesContainer}>
-          <Categories/>
+          <Categories />
         </div>
         <section className={styles.contaiter}>
           <div className={styles.headerWrapper}>
@@ -106,7 +83,6 @@ const Dashboard: FC = () => {
           </div>
         </section>
       </section>
-      
     </>
   );
 };
