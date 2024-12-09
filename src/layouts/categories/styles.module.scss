@@ -51,6 +51,22 @@
     fill: $redColor;
   }
 }
+.categoryDivSelect {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-left: 20px;
+  a {
+    position: relative;
+    padding: 10px 15px;
+    white-space: nowrap;
+    font-size: 14px;
+    text-decoration: none;
+    color: $textDefault;
+    color: $redColor;
+    fill: $redColor;
+  }
+}
 .showCategories {
   display: flex;
   align-items: center;

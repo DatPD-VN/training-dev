@@ -12,7 +12,7 @@ import styles from "./styles.module.scss";
 import Logo from "../../icon/logo";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
-import { UseHeader } from "./hook";
+import { useHeader } from "./hook";
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ const Header: FC = () => {
     listHashtag,
     handleAddHashTag,
     countCart,
-    inputRef
-  } = UseHeader();
+    inputRef,
+  } = useHeader();
 
   return (
     <>

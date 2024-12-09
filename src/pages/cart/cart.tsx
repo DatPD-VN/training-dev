@@ -12,18 +12,12 @@ import Plus from "../../icon/plus";
 import NoPlus from "../../icon/no-plus";
 import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../app/route";
-import { UseCart } from "./hook";
+import { useCart } from "./hook";
 
 const Cart: FC = () => {
   const navigate = useNavigate();
-  const {
-    isPhoneScreen,
-    cart,
-    totalCart,
-    countCart,
-    hadleDel,
-    hadleCase,
-  } = UseCart();
+  const { isPhoneScreen, listProduct, totalCart, countCart, handleDel, handleCase ,handleSearch,inputRef ,handleCheck ,handleCheckAll ,isSelectId ,handleDelAll } =
+    useCart();
   return (
     <>
       {isPhoneScreen && (
@@ -62,12 +56,12 @@ const Cart: FC = () => {
                 Sửa
               </div>
             </div>
-            {cart.map((item: any, index: any) => (
+            {listProduct.map((item: any, index: number) => (
               <section key={index} className={styles.itemWrapMobile}>
                 <div className={`${styles.itemWrapInputMobile} ${styles.div5}`}>
                   <input type="checkbox" />
                 </div>
-                <div className={styles.itemWrapInfomationMobile}>
+                <div className={styles.itemWrapInformationMobile}>
                   <div
                     className={`${styles.itemWrapInfoMobile} ${styles.div40}`}
                   >
@@ -102,7 +96,7 @@ const Cart: FC = () => {
                     className={`${styles.itemWrapAmountMobile} ${styles.div13}`}
                   >
                     <div className={styles.DetailProductDivAmountMobile}>
-                      <button onClick={()=>hadleCase("giam", item)}>
+                      <button onClick={() => handleCase("giam", item)}>
                         <NoPlus />
                       </button>
                       <input
@@ -112,7 +106,7 @@ const Cart: FC = () => {
                         name=""
                         id=""
                       />
-                      <button onClick={()=>hadleCase("tang", item)}>
+                      <button onClick={() => handleCase("tang", item)}>
                         <Plus />
                       </button>
                     </div>
@@ -187,8 +181,8 @@ const Cart: FC = () => {
                 <div>Giỏ Hàng</div>
               </div>
               <div className={styles.headerWrapRight}>
-                <input type="text" placeholder="Tìm Kiếm" name="" id="" />
-                <div className={styles.headerWrapRigthSearchDiv}>
+                <input type="text" placeholder="Tìm Kiếm" name="" id="" ref={inputRef} onChange={()=>handleSearch()}/>
+                <div className={styles.headerWrapRigthSearchDiv} onClick={()=>handleSearch()}>
                   <Search size={20} />
                 </div>
               </div>
@@ -216,10 +210,11 @@ const Cart: FC = () => {
                   Thao tác
                 </div>
               </div>
-              {cart.map((item: any, index: any) => (
+              {listProduct.map((item: any, index: number) => (
                 <section key={index} className={styles.itemWrap}>
                   <div className={`${styles.itemWrapInput} ${styles.div5}`}>
-                    <input type="checkbox" />
+                    {(isSelectId.includes(item.id)) ? <input type="checkbox" checked  onChange={()=>handleCheck(item.id)}/> :  <input type="checkbox"  onChange={()=>handleCheck(item.id)}/> }
+                   
                   </div>
                   <div className={`${styles.itemWrapInfo} ${styles.div40}`}>
                     <img
@@ -255,7 +250,7 @@ const Cart: FC = () => {
                   </div>
                   <div className={`${styles.itemWrapAmount} ${styles.div13}`}>
                     <div className={styles.DetailProductDivAmount}>
-                      <button onClick={()=>hadleCase("giam", item)}>
+                      <button onClick={() => handleCase("giam", item)}>
                         <NoPlus />
                       </button>
                       <input
@@ -265,7 +260,7 @@ const Cart: FC = () => {
                         name=""
                         id=""
                       />
-                      <button onClick={()=>hadleCase("tang", item)}>
+                      <button onClick={() => handleCase("tang", item)}>
                         <Plus />
                       </button>
                     </div>
@@ -279,7 +274,7 @@ const Cart: FC = () => {
                     )}
                   </div>
                   <div className={`${styles.itemWrapHandle} ${styles.div13}`}>
-                    <span onClick={()=>hadleDel(item.id)}>Xóa</span>
+                    <span onClick={() => handleDel(item.id)}>Xóa</span>
 
                     <div className={styles.itemWrapHandleDiv}>
                       <span>Tìm sản phẩm tương tự</span>
@@ -323,11 +318,11 @@ const Cart: FC = () => {
                 </div>
                 <div className={styles.footerWrapBottom}>
                   <div className={styles.footerWrapBottomLeft}>
-                    <input type="checkbox" name="" id="" />
-                    <span className={styles.footerWrapBottomLeftAll}>
+                    {(isSelectId.length > 0 && isSelectId.length == listProduct.length) ? <input type="checkbox" checked  onChange={()=>handleCheckAll()}/> :  <input type="checkbox"  onChange={()=>handleCheckAll()}/> }
+                    <span className={styles.footerWrapBottomLeftAll} onClick={()=>handleCheckAll()}>
                       Chọn Tất Cả
                     </span>
-                    <span className={styles.footerWrapBottomLeftHadleDel}>
+                    <span className={styles.footerWrapBottomLeftHandleDel} onClick={()=> handleDelAll()}>
                       Xóa
                     </span>
                     <span className={styles.footerWrapBottomLeftSave}>

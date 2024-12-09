@@ -17,7 +17,7 @@ import { ImageItem } from "../../../components/image-item/image-item";
 import { FeedBack } from "../../../components/feed-back/feed-back";
 import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../../app/route";
-import { UseDetailProduct } from "./hook";
+import { useDetailProduct } from "./hook";
 
 function DetailProduct() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function DetailProduct() {
     handleNoPlus,
     handlePlus,
     handleClick,
-  } = UseDetailProduct();
+  } = useDetailProduct();
 
   return (
     <>
@@ -335,7 +335,7 @@ function DetailProduct() {
       {!isPhoneScreen && (
         <>
           <section className={styles.detailProductContainerWrap}>
-            {product.map((item: any, index: any) => (
+            {product.map((item: any, index: number) => (
               <div className={styles.detailProductContainer} key={index}>
                 <div className={styles.detailProductLeft}>
                   <ImageItem src={item.imgProduct} />

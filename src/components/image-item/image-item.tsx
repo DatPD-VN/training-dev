@@ -2,9 +2,8 @@ import styles from "./styles.module.scss";
 import React from "react";
 import { TImage } from "./types";
 
-
 const ImageItem: React.FC<TImage> = ( { src  }) => {
-  
+
   return (
     <>
       <div className={styles.detailProductLeftImg}>

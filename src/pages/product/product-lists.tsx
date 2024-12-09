@@ -4,11 +4,11 @@ import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { ProductLoaing } from "../../components/loading";
 import { Categories } from "../../layouts/categories";
-import { UseProduct } from "./hook";
+import { useProduct } from "./hook";
 
 const Dashboard: FC = () => {
   const navigate = useNavigate();
- const { listProduct ,isLoading} = UseProduct();
+  const { listProduct, isLoading } = useProduct();
   return (
     <>
       <section className={styles.mainContainer}>
@@ -20,7 +20,7 @@ const Dashboard: FC = () => {
             {isLoading ? (
               <ProductLoaing quantity={listProduct.length} />
             ) : (
-              listProduct.map((item: any, index: any) => (
+              listProduct.map((item: any, index: number) => (
                 <div
                   key={index}
                   className={styles.divItemWrapper}

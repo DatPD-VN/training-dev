@@ -1,21 +1,21 @@
 import { THeaderProps } from "./type";
 import {
   useCountCartState,
-  useListSugggest,
+  useListSuggest,
   setListSearch,
-  setListSugggest,
+  setListSuggest,
   setDelCategory,
 } from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 
-export const UseHeader = (): THeaderProps => {
+export const useHeader = (): THeaderProps => {
   const navigate = useNavigate();
-  const countCart: any = useCountCartState();
-  const listHashtag: any = useListSugggest();
-  const choise: any = setListSearch();
-  const handleSearch: any = setListSugggest();
+  const countCart: number = useCountCartState();
+  const listHashtag: Array<string> = useListSuggest();
+  const choice: any = setListSearch();
+  const handleSearch: any = setListSuggest();
   const [isDisabled, setIsDisabled] = useState(true);
   const inputRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -27,10 +27,11 @@ export const UseHeader = (): THeaderProps => {
   const handleOpen = () => {
     setIsDisabled(false);
   };
+
   const inputSearch = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
-    choise(value);
+    choice(value);
     navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${value} `), {
       state: {
         hashtag: value,
@@ -44,7 +45,7 @@ export const UseHeader = (): THeaderProps => {
   };
   const handleAddHashTag = (item: any) => {
     (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
-    choise(item);
+    choice(item);
     setIsDisabled(true);
     navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${item} `), {
       state: {
@@ -75,6 +76,6 @@ export const UseHeader = (): THeaderProps => {
     listHashtag,
     handleAddHashTag,
     countCart,
-    inputRef
+    inputRef,
   };
 };

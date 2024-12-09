@@ -5,10 +5,10 @@ import { Login } from "../pages/login";
 import { RessetPass } from "../pages/reset-pass/reset-pass";
 import { Dashboard } from "../pages/product";
 import DetailProduct from "../pages/product/detail-product/detail-product";
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from "recoil";
 import { Cart } from "../pages/cart/cart";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -29,27 +29,32 @@ const appRoutes: {
     Component: Login,
   },
   {
-    path: baseRoute("ressetPass"),
-    title: `${baseTitle} | RessetPass`,
+    path: baseRoute("resset-Pass"),
+    title: `${baseTitle} | Resset-Pass`,
     Component: RessetPass,
   },
   {
-    path: baseRoute("Products"),
+    path: baseRoute("products"),
     title: `${baseTitle} | Products`,
     Component: Dashboard,
   },
   {
-    path: baseRoute("Products/:id"),
+    path: baseRoute("products/:id"),
     title: `${baseTitle} | Products`,
     Component: Dashboard,
   },
   {
-    path: baseRoute("Products/DetailProduct"),
-    title: `${baseTitle} | DetailProduct`,
+    path: baseRoute("products/Category/:id"),
+    title: `${baseTitle} | Products`,
+    Component: Dashboard,
+  },
+  {
+    path: baseRoute("products/detail-Product"),
+    title: `${baseTitle} | Detail-Product`,
     Component: DetailProduct,
   },
   {
-    path: baseRoute("Cart"),
+    path: baseRoute("cart"),
     title: `${baseTitle} | Cart`,
     Component: Cart,
   },

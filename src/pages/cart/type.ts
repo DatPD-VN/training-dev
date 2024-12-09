@@ -1,12 +1,17 @@
 type TUseCartProps = {
   isPhoneScreen: boolean;
-  cart: Array<string>;
+  listProduct: Array<object>;
+  listSearchCart: Array<string>;
   totalCart: number;
   countCart: number;
-  hadleDel: (id: any) => void;
-  hadleCase: (handle: any, item: any) => void;
+  handleDel: (id: any) => void;
+  handleDelAll: () => void;
+  handleCheck: (id: never) => void;
+  handleCase: (handle: string, item: any) => void;
+  handleSearch:() => void;
+  handleCheckAll:() => void;
+  inputRef: React.RefObject<HTMLInputElement>;
+  isSelectId : Array<object>
 };
-
-
 
 export type { TUseCartProps };

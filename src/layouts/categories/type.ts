@@ -1,8 +1,7 @@
 type TCategoriesProps = {
-  list : Array<string>,
-  handleAddCategory : (item: any) => void
+  nameCategory : string;
+  list: Array<string>;
+  handleAddCategory: (item: any) => void;
 };
-
-
 
 export type { TCategoriesProps };

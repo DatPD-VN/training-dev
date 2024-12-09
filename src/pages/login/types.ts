@@ -13,7 +13,7 @@ type TError = {
   Error: string;
 };
 type TIsDisabled = {
-  isDisabled : boolean
+  isDisabled: boolean;
 };
 
 type TUseLoginProps = {
@@ -25,4 +25,4 @@ type TUseLoginProps = {
   handleSubmit: () => void;
 };
 
-export type { TLoginProps, TUseLoginProps, TLogin,TError,TIsDisabled };
+export type { TLoginProps, TUseLoginProps, TLogin, TError, TIsDisabled };

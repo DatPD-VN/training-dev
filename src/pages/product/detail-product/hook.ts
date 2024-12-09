@@ -2,9 +2,13 @@ import { TUseDetailProductProps } from "./type";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router";
 import { Toast } from "../../../Common";
-import { useNewListState, setListCartState, useCountCartState } from "../../../recoil";
+import {
+  useNewListState,
+  setListCartState,
+  useCountCartState,
+} from "../../../recoil";
 
-export const UseDetailProduct = (): TUseDetailProductProps => {
+export const useDetailProduct = (): TUseDetailProductProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
   const location = useLocation();
   const newList: Array<string> = useNewListState();
@@ -13,7 +17,7 @@ export const UseDetailProduct = (): TUseDetailProductProps => {
   const product = newList.filter((item: any) => item.id === id);
   const countCart: any = useCountCartState();
 
-  const handleClick = (item: any)  => {
+  const handleClick = (item: any) => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
     let quanlity = qtt.value;
     let wrapItem = { ...item, quanlity: quanlity };

@@ -1,4 +1,4 @@
-const dataState = [
+export const dataState  = [
   {
     id: 1,
     imgProduct:
@@ -11,6 +11,7 @@ const dataState = [
     voucherProduct: "10% Giảm",
     hashTag: ["#Giaydep", "#TaiNghe", "#tat"],
     categories: "Áo Quần",
+    categoryID: 1
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#tat"],
+    categoryID: 2,
     categories: "Tất",
   },
   {
@@ -38,6 +40,7 @@ const dataState = [
     isVoucher: false,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#trangdiem"],
+    categoryID: 3,
     categories: "Giày dép",
   },
   {
@@ -52,6 +55,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
+    categoryID: 4,
     categories: "Tai Nghe",
   },
   {
@@ -66,6 +70,7 @@ const dataState = [
     isVoucher: false,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
+    categoryID: 5,
     categories: "Mỹ Phẩm",
   },
   {
@@ -79,6 +84,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#TaiNghe", "#tat"],
+    categoryID: 1,
     categories: "Áo Quần",
   },
   {
@@ -93,6 +99,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "20% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
+    categoryID: 3,
     categories: "Giày dép",
   },
   {
@@ -107,6 +114,7 @@ const dataState = [
     isVoucher: false,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#TaiNghe", "#tat"],
+    categoryID: 3,
     categories: "Giày dép",
   },
   {
@@ -121,6 +129,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
+    categoryID: 4,
     categories: "Tai Nghe",
   },
   {
@@ -134,6 +143,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#tat"],
+    categoryID: 1,
     categories: "Áo Quần",
   },
   {
@@ -148,6 +158,7 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe"],
+    categoryID: 2,
     categories: "Tất",
   },
   {
@@ -162,8 +173,31 @@ const dataState = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#Giaydep", "#trangdiem", "#tat"],
+    categoryID: 3,
     categories: "Giày dép",
   },
 ];
 
-export default dataState;
+export const categoryState = [
+  {
+    categoryID: 1,
+    categoryName: "Áo Quần",
+  },
+  {
+    categoryID: 2,
+    categoryName: "Tất",
+  },
+  {
+    categoryID: 3,
+    categoryName: "Giày dép",
+  },
+  {
+    categoryID: 4,
+    categoryName: "Tai Nghe",
+  },
+  {
+    categoryID: 5,
+    categoryName: "Mỹ Phẩm",
+  },
+
+]
