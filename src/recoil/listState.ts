@@ -1,5 +1,4 @@
 import { atom, selector } from "recoil";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import { categoryState, dataState } from "../mock/mock-api";
 
 const defaultData = dataState;
@@ -9,13 +8,13 @@ const listTodoState: any = atom({
   default: defaultData,
 });
 
-const dataSearch: Array<string> = [];
+const dataSearch: Array<object> = [];
 
 const listSearchState: any = atom({
   key: "listSearch",
   default: dataSearch,
 });
-const listSuggest: Array<string> = [];
+const listSuggest: Array<object> = [];
 
 const listSuggestState: any = atom({
   key: "listSuggest",
@@ -28,7 +27,7 @@ const listCategoriesState: any = atom({
   key: "listCategory",
   default: listCategories,
 });
-const resultCategories: Array<string> = [];
+const resultCategories: Array<object> = [];
 
 const resultCategoriesState: any = atom({
   key: "resultCategory",
@@ -38,11 +37,11 @@ const resultCategoriesState: any = atom({
 export const newListState = selector({
   key: "newList",
   get: ({ get }) => {
-    const list: any = get(listTodoState);
+    const list: Array<object> = get(listTodoState);
     return list;
   },
   set: ({ get, set }, newValue) => {
-    const list: any = get(listTodoState);
+    const list: Array<object> = get(listTodoState);
     const newTodo = {
       id: new Date().getTime(),
       content: newValue,
@@ -55,11 +54,11 @@ export const newListState = selector({
 export const listSearch = selector({
   key: "handleSearch",
   get: ({ get }) => {
-    const list: any = get(listSearchState);
+    const list: Array<object> = get(listSearchState);
     return list;
   },
-  set: ({ get, set }, data) => {
-    const listState: any = get(listTodoState);
+  set: ({ get, set }, data : any) => {
+    const listState: Array<object> = get(listTodoState);
     const regex = new RegExp(data, "i");
     const value = listState.filter(
       (item: any) => regex.test(item.hashTag) || regex.test(item.titleProduct)
@@ -70,11 +69,11 @@ export const listSearch = selector({
 export const handleSuggest = selector({
   key: "handleSuggest",
   get: ({ get }) => {
-    const list: any = get(listSuggestState);
+    const list: Array<object> = get(listSuggestState);
     return list;
   },
-  set: ({ get, set }, data) => {
-    const listState: any = get(listTodoState);
+  set: ({ get, set }, data : any) => {
+    const listState: Array<object> = get(listTodoState);
     const hashTag = listState.flatMap((item: any) => item.hashTag);
     const Fitter = [...new Set(hashTag)];
     const regex = new RegExp(data, "i");
@@ -85,20 +84,19 @@ export const handleSuggest = selector({
 export const listCategory = selector({
   key: "handleCategories",
   get: ({ get }) => {
-    const listState: any = get(listCategoriesState);
+    const listState: Array<object> = get(listCategoriesState);
     return listState;
   },
-  set: ({  }) => {
-  },
+  set: ({}) => {},
 });
 export const addCategory = selector({
   key: "handleAddCategories",
   get: ({ get }) => {
-    const listState: any = get(resultCategoriesState);
+    const listState: Array<object> = get(resultCategoriesState);
     return listState;
   },
-  set: ({ get, set }, data) => {
-    const listState: any = get(listTodoState);
+  set: ({ get, set }, data : any) => {
+    const listState: Array<object> = get(listTodoState);
     const regex = new RegExp(data, "i");
     const value = listState.filter((item: any) => regex.test(item.categoryID));
     set(listSearchState, []);
@@ -108,7 +106,7 @@ export const addCategory = selector({
 export const delCategory = selector({
   key: "handleDelCategories",
   get: ({ get }) => {
-    const listState: any = get(resultCategoriesState);
+    const listState: Array<object> = get(resultCategoriesState);
     return listState;
   },
   set: ({ set }) => {
@@ -117,36 +115,3 @@ export const delCategory = selector({
   },
 });
 
-// Use
-export const useNewListState = () => {
-  return useRecoilValue(newListState);
-};
-export const useListSearch = () => {
-  return useRecoilValue(listSearch);
-};
-export const useListSuggest = () => {
-  return useRecoilValue(handleSuggest);
-};
-export const useListCategory = () => {
-  return useRecoilValue(listCategory);
-};
-export const useListNewCategory = () => {
-  return useRecoilValue(addCategory);
-};
-
-// Set
-export const setListSearch = () => {
-  return useSetRecoilState(listSearch);
-};
-export const setListSuggest = () => {
-  return useSetRecoilState(handleSuggest);
-};
-export const setListCategory = () => {
-  return useSetRecoilState(listCategory);
-};
-export const setAddCategory = () => {
-  return useSetRecoilState(addCategory);
-};
-export const setDelCategory = () => {
-  return useSetRecoilState(delCategory);
-};

@@ -1,5 +1,5 @@
 type TUseProductProps = {
-  listProduct: Array<string>;
+  listProduct: Array<object>;
   isLoading: boolean;
 };
 

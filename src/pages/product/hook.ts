@@ -13,26 +13,25 @@ import { useLocation } from "react-router";
 export const useProduct = (): TUseProductProps => {
   const location = useLocation();
   const hashtag = location.state;
-  const newList: Array<string> = useNewListState();
-  const newSearch: Array<string> = useListSearch();
-  const newCategories: Array<string> = useListNewCategory();
-  const choiseHashtag: any = setListSearch();
-  const choiseCategory: any = setAddCategory();
+  const newList: Array<object> = useNewListState();
+  const newSearch: Array<object> = useListSearch();
+  const newCategories: Array<object> = useListNewCategory();
+  const choiceHashtag: any = setListSearch();
+  const choiceCategory: any = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (newSearch.length === 0) {
       if (hashtag) {
         if (hashtag.hashtag) {
-          choiseHashtag(hashtag.hashtag);
+          choiceHashtag(hashtag.hashtag);
         }
         if (hashtag.category) {
-          choiseCategory(hashtag.category);
+          choiceCategory(hashtag.category);
         }
       }
     }
-  },[hashtag])
-
+  }, [hashtag]);
 
   useEffect(() => {
     setIsLoading(true);

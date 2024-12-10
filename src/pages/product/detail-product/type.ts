@@ -1,7 +1,7 @@
 type TUseDetailProductProps = {
   isPhoneScreen: boolean;
   countCart: number;
-  product: Array<string>;
+  product: Array<object>;
   handleAdd: (item: any) => void;
   handleNoPlus: () => void;
   handlePlus: () => void;

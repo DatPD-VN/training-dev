@@ -1,25 +1,29 @@
 import { useEffect } from "react";
 import { TCategoriesProps } from "./type";
 import { useListCategory, setListCategory, setAddCategory } from "../../recoil";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 
 export const useCategories = (): TCategoriesProps => {
   const navigate = useNavigate();
-  const list: Array<string> = useListCategory();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const keyword = searchParams.get("keyword");
+  const list: Array<object> = useListCategory();
   const setlist: any = setListCategory();
   const choice: any = setAddCategory();
-  let { id } = useParams();
-  const nameCategory : string = id ? id : ""
+  const nameCategory: string = keyword ? keyword : "";
   useEffect(() => {
     setlist();
-    if (id) {
-      choice(id);
-    } 
+    if (keyword) {
+      choice(keyword);
+    }
   }, []);
   const handleAddCategory = (item: any) => {
     choice(item.categoryID);
-    navigate(Route(`${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName} `));
+    navigate(
+      Route(`${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName} `)
+    );
   };
 
   return {

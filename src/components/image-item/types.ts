@@ -1,5 +1,5 @@
 type TImage = {
-    src: string;
+    src: Array<string>;
 };
   
 

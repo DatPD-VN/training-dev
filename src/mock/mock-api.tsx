@@ -1,4 +1,6 @@
-export const dataState  = [
+import { TCategoryState, TDataState } from "../recoil/type";
+
+export const dataState : Array<TDataState>  = [
   {
     id: 1,
     imgProduct:
@@ -178,7 +180,7 @@ export const dataState  = [
   },
 ];
 
-export const categoryState = [
+export const categoryState : Array<TCategoryState> = [
   {
     categoryID: 1,
     categoryName: "Áo Quần",

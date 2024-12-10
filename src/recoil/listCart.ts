@@ -1,7 +1,6 @@
 import { atom, selector } from "recoil";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 
-const defaultData: Array<string> = [];
+const defaultData: Array<object> = [];
 
 const listCartState: any = atom({
   key: "listCart",
@@ -21,15 +20,15 @@ export const addCartState = selector({
     return list;
   },
   set: ({ get, set }, item: any) => {
-    const { quanlity } = item;
-    const list: any = get(listCartState);
-    const check = list.find((itemlist:any) => itemlist.id === item.id);
+    const { quantity } = item;
+    const list: Array<object> = get(listCartState);
+    const check = list.find((itemList: any) => itemList.id === item.id);
 
     if (check) {
-      if (quanlity === 1) {
+      if (quantity === 1) {
         const newTodo = list.map((itemDetail: any) =>
           itemDetail.id === item.id
-            ? { ...itemDetail, quanlity: parseInt(itemDetail.quanlity) + 1 }
+            ? { ...itemDetail, quantity: parseInt(itemDetail.quantity) + 1 }
             : itemDetail
         );
         set(listCartState, [...newTodo]);
@@ -39,7 +38,7 @@ export const addCartState = selector({
           itemDetail.id === item.id
             ? {
                 ...itemDetail,
-                quanlity: parseInt(itemDetail.quanlity) + parseInt(quanlity),
+                quantity: parseInt(itemDetail.quantity) + parseInt(quantity),
               }
             : itemDetail
         );
@@ -57,7 +56,7 @@ export const selectCartState = selector({
   get: ({ get }) => {
     const list = get(listCartState);
     return list;
-  }
+  },
 });
 export const delCartState = selector({
   key: "delCart",
@@ -66,7 +65,7 @@ export const delCartState = selector({
     return list;
   },
   set: ({ get, set }, id) => {
-    const list: any = get(listCartState);
+    const list : Array<object> = get(listCartState);
     const newTodo = list.filter((item: any) => item.id !== id);
     set(listCartState, [...newTodo]);
   },
@@ -77,7 +76,7 @@ export const delCartStateAll = selector({
     const list = get(listCartState);
     return list;
   },
-  set: ({ get, set }, id : any) => {
+  set: ({ get, set }, id: any) => {
     const list: Array<object> = get(listCartState);
     const newTodo = list.filter((item: any) => !id.includes(item.id));
     set(listCartState, [...newTodo]);
@@ -92,13 +91,13 @@ export const handleCartState = selector({
   },
   set: ({ get, set }, data: any) => {
     const { handle, item } = data;
-    const list: any = get(listCartState);
+    const list: Array<object> = get(listCartState);
 
     switch (handle) {
       case "tang":
         const newTodo = list.map((itemDetail: any) =>
           itemDetail.id === item.id
-            ? { ...itemDetail, quanlity: parseInt(itemDetail.quanlity) + 1 }
+            ? { ...itemDetail, quantity: parseInt(itemDetail.quantity) + 1 }
             : itemDetail
         );
         set(listCartState, [...newTodo]);
@@ -108,7 +107,7 @@ export const handleCartState = selector({
           itemDetail.id === item.id
             ? {
                 ...itemDetail,
-                quanlity: Math.max(1, parseInt(itemDetail.quanlity) - 1),
+                quantity: Math.max(1, parseInt(itemDetail.quantity) - 1),
               }
             : itemDetail
         );
@@ -123,11 +122,11 @@ export const handleCartState = selector({
 export const countCartState = selector({
   key: "countCart",
   get: ({ get }) => {
-    const list: any = get(listCartState);
+    const list: Array<object> = get(listCartState);
     return list.length;
   },
   set: ({ get, set }, item) => {
-    const list: any = get(listCartState);
+    const list: Array<object> = get(listCartState);
     const newTodo = {
       item,
     };
@@ -137,14 +136,14 @@ export const countCartState = selector({
 export const totalCartState = selector({
   key: "totalcart",
   get: ({ get }) => {
-    const list: any = get(listCartState);
-    const totalCart = list.reduce((total: any, item: any) => {
-      return total + item.priceProduct * item.quanlity;
+    const list: Array<object> = get(listCartState);
+    const totalCart = list.reduce((total: number, item: any) => {
+      return total + item.priceProduct * item.quantity;
     }, 0);
     return totalCart;
   },
   set: ({ get, set }, item) => {
-    const list: any = get(listCartState);
+    const list: Array<object> = get(listCartState);
     const newTodo = {
       item,
     };
@@ -156,46 +155,14 @@ export const totalCartState = selector({
 export const searchCartState = selector({
   key: "searchcart",
   get: ({ get }) => {
-    const list: Array<string> = get(listSearchState);
+    const list: Array<object> = get(listSearchState);
     return list;
   },
-  set: ({ get, set }, data : any) => {
-    const list: Array<string> = get(listCartState);   
+  set: ({ get, set }, data: any) => {
+    const list: Array<object> = get(listCartState);
     const regex = new RegExp(data, "i");
-    const value = list.filter(
-      (item: any) => regex.test(item.titleProduct) 
-    );
+    const value = list.filter((item: any) => regex.test(item.titleProduct));
     set(listSearchState, [...value]);
   },
 });
 
-// Use
-export const useListCartState = () => {
-  return useRecoilValue(addCartState);
-};
-export const useCountCartState = () => {
-  return useRecoilValue(countCartState);
-};
-export const useTotalCartState = () => {
-  return useRecoilValue(totalCartState);
-};
-export const useListSearchCartState = () => {
-  return useRecoilValue(searchCartState);
-};
-
-// Set
-export const setHandleCartState = () => {
-  return useSetRecoilState(handleCartState);
-};
-export const setListCartState = () => {
-  return useSetRecoilState(addCartState);
-};
-export const setDelCartState = () => {
-  return useSetRecoilState(delCartState);
-};
-export const setDelAllCartState = () => {
-  return useSetRecoilState(delCartStateAll);
-};
-export const setSearchCartState = () => {
-  return useSetRecoilState(searchCartState);
-};

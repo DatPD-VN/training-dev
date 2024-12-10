@@ -44,7 +44,7 @@ const appRoutes: {
     Component: Dashboard,
   },
   {
-    path: baseRoute("products/Category/:id"),
+    path: baseRoute("products/Category"),
     title: `${baseTitle} | Products`,
     Component: Dashboard,
   },

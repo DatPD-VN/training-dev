@@ -16,8 +16,20 @@ import { useCart } from "./hook";
 
 const Cart: FC = () => {
   const navigate = useNavigate();
-  const { isPhoneScreen, listProduct, totalCart, countCart, handleDel, handleCase ,handleSearch,inputRef ,handleCheck ,handleCheckAll ,isSelectId ,handleDelAll } =
-    useCart();
+  const {
+    isPhoneScreen,
+    listProduct,
+    totalCart,
+    countCart,
+    handleDel,
+    handleCase,
+    handleSearch,
+    inputRef,
+    handleCheck,
+    handleCheckAll,
+    isSelectId,
+    handleDelAll,
+  } = useCart();
   return (
     <>
       {isPhoneScreen && (
@@ -102,7 +114,7 @@ const Cart: FC = () => {
                       <input
                         type="number"
                         min={1}
-                        value={item.quanlity}
+                        value={item.quantity}
                         name=""
                         id=""
                       />
@@ -181,8 +193,18 @@ const Cart: FC = () => {
                 <div>Giỏ Hàng</div>
               </div>
               <div className={styles.headerWrapRight}>
-                <input type="text" placeholder="Tìm Kiếm" name="" id="" ref={inputRef} onChange={()=>handleSearch()}/>
-                <div className={styles.headerWrapRigthSearchDiv} onClick={()=>handleSearch()}>
+                <input
+                  type="text"
+                  placeholder="Tìm Kiếm"
+                  name=""
+                  id=""
+                  ref={inputRef}
+                  onChange={() => handleSearch()}
+                />
+                <div
+                  className={styles.headerWrapRigthSearchDiv}
+                  onClick={() => handleSearch()}
+                >
                   <Search size={20} />
                 </div>
               </div>
@@ -213,8 +235,18 @@ const Cart: FC = () => {
               {listProduct.map((item: any, index: number) => (
                 <section key={index} className={styles.itemWrap}>
                   <div className={`${styles.itemWrapInput} ${styles.div5}`}>
-                    {(isSelectId.includes(item.id)) ? <input type="checkbox" checked  onChange={()=>handleCheck(item.id)}/> :  <input type="checkbox"  onChange={()=>handleCheck(item.id)}/> }
-                   
+                    {isSelectId.includes(item.id) ? (
+                      <input
+                        type="checkbox"
+                        checked
+                        onChange={() => handleCheck(item.id)}
+                      />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        onChange={() => handleCheck(item.id)}
+                      />
+                    )}
                   </div>
                   <div className={`${styles.itemWrapInfo} ${styles.div40}`}>
                     <img
@@ -256,7 +288,7 @@ const Cart: FC = () => {
                       <input
                         type="number"
                         min={1}
-                        value={item.quanlity}
+                        value={item.quantity}
                         name=""
                         id=""
                       />
@@ -269,7 +301,7 @@ const Cart: FC = () => {
                     className={`${styles.itemWrapTotalPrice} ${styles.div13}`}
                   >
                     <span>₫</span>
-                    {(item.priceProduct * item.quanlity).toLocaleString(
+                    {(item.priceProduct * item.quantity).toLocaleString(
                       "it-IT"
                     )}
                   </div>
@@ -318,11 +350,29 @@ const Cart: FC = () => {
                 </div>
                 <div className={styles.footerWrapBottom}>
                   <div className={styles.footerWrapBottomLeft}>
-                    {(isSelectId.length > 0 && isSelectId.length == listProduct.length) ? <input type="checkbox" checked  onChange={()=>handleCheckAll()}/> :  <input type="checkbox"  onChange={()=>handleCheckAll()}/> }
-                    <span className={styles.footerWrapBottomLeftAll} onClick={()=>handleCheckAll()}>
+                    {isSelectId.length > 0 &&
+                    isSelectId.length == listProduct.length ? (
+                      <input
+                        type="checkbox"
+                        checked
+                        onChange={() => handleCheckAll()}
+                      />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        onChange={() => handleCheckAll()}
+                      />
+                    )}
+                    <span
+                      className={styles.footerWrapBottomLeftAll}
+                      onClick={() => handleCheckAll()}
+                    >
                       Chọn Tất Cả
                     </span>
-                    <span className={styles.footerWrapBottomLeftHandleDel} onClick={()=> handleDelAll()}>
+                    <span
+                      className={styles.footerWrapBottomLeftHandleDel}
+                      onClick={() => handleDelAll()}
+                    >
                       Xóa
                     </span>
                     <span className={styles.footerWrapBottomLeftSave}>

@@ -1,6 +1,6 @@
 type TCategoriesProps = {
   nameCategory : string;
-  list: Array<string>;
+  list: Array<object>;
   handleAddCategory: (item: any) => void;
 };
 

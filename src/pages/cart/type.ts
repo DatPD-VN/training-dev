@@ -6,7 +6,7 @@ type TUseCartProps = {
   countCart: number;
   handleDel: (id: any) => void;
   handleDelAll: () => void;
-  handleCheck: (id: never) => void;
+  handleCheck: (id: any) => void;
   handleCase: (handle: string, item: any) => void;
   handleSearch:() => void;
   handleCheckAll:() => void;
