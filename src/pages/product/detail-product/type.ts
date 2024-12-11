@@ -1,11 +1,13 @@
+import { TDataState } from "../../../recoil/type";
+
 type TUseDetailProductProps = {
   isPhoneScreen: boolean;
   countCart: number;
-  product: Array<object>;
-  handleAdd: (item: any) => void;
+  product: Array<TDataState>;
+  handleAddProduct: (item: TDataState) => void;
   handleNoPlus: () => void;
   handlePlus: () => void;
-  handleClick: (item: any) => void;
+  handleClick: (item: TDataState) => void;
 };
 
 export type { TUseDetailProductProps };

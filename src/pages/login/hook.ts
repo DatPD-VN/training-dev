@@ -16,6 +16,7 @@ export const useLogin = (): TUseLoginProps => {
 
   const isDisabledCheck = !from.email && !from.password;
 
+  // Function validate field
   const validate = (field: keyof TLogin, value: string): string | null => {
     switch (field) {
       case from.email:
@@ -30,6 +31,7 @@ export const useLogin = (): TUseLoginProps => {
     return null;
   };
 
+  // Handle Change Input Value
   const handleChange = (field: keyof TLogin, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     const check = validate(field, value);
@@ -44,6 +46,7 @@ export const useLogin = (): TUseLoginProps => {
     }));
   };
 
+  // Handle Check Value After Submit
   const handleSubmit = () => {
     if (
       USER_LOGIN.findIndex(

@@ -4,6 +4,7 @@ import { ChevronDown, Menu } from "lucide-react";
 
 import { ArrowRight } from "../../icon/arrow-right/arrow-right";
 import { useCategories } from "./hook";
+import { TCategoryState } from "../../recoil/type";
 
 const Categories: FC = () => {
   const { list, handleAddCategory,nameCategory } = useCategories();
@@ -19,7 +20,7 @@ const Categories: FC = () => {
           </a>
         </div>
         <div className={styles.listCategories}>
-          {list.map((item : any, index) => (
+          {list.map((item : TCategoryState, index) => (
             (item.categoryName == nameCategory) ? 
             <div
               key={index}

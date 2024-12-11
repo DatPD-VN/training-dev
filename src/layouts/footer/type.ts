@@ -1,6 +1,8 @@
+import { TCategoryState } from "../../recoil/type";
+
 type TCategoriesProps = {
   list : Array<string>,
-  handleAddCategory : (item: any) => void
+  handleAddCategory : (item: TCategoryState) => void
 };
 
 

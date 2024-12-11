@@ -18,6 +18,7 @@ import { FeedBack } from "../../../components/feed-back/feed-back";
 import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../../app/route";
 import { useDetailProduct } from "./hook";
+import { TDataState } from "../../../recoil/type";
 
 function DetailProduct() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function DetailProduct() {
     isPhoneScreen,
     countCart,
     product,
-    handleAdd,
+    handleAddProduct,
     handleNoPlus,
     handlePlus,
     handleClick,
@@ -65,7 +66,7 @@ function DetailProduct() {
               </div>
             </div>
           </header>
-          {product.map((item: any, index: number) => (
+          {product.map((item: TDataState, index: number) => (
             <div key={index}>
               <div className={styles.imgProductWrap}>
                 <div className={styles.imgProduct}>
@@ -319,12 +320,12 @@ function DetailProduct() {
                   </div>
                   <div className={styles.footerDiv}>
                     <MessageCircleMore size={20} />
-                    <span onClick={() => handleAdd(item)}>
+                    <span onClick={() => handleAddProduct(item)}>
                       Thêm vào Giỏ hàng
                     </span>
                   </div>
                   <div className={styles.footerButtonBuy}>
-                    <span onClick={() => handleAdd(item)}>Mua ngay</span>
+                    <span onClick={() => handleAddProduct(item)}>Mua ngay</span>
                   </div>
                 </div>
               </footer>
@@ -335,7 +336,7 @@ function DetailProduct() {
       {!isPhoneScreen && (
         <>
           <section className={styles.detailProductContainerWrap}>
-            {product.map((item: any, index: number) => (
+            {product.map((item: TDataState, index: number) => (
               <div className={styles.detailProductContainer} key={index}>
                 <div className={styles.detailProductLeft}>
                   <ImageItem src={item.imgProduct} />
@@ -535,7 +536,7 @@ function DetailProduct() {
                     </div>
                     <div
                       className={styles.detailProductBuy}
-                      onClick={() => handleAdd(item)}
+                      onClick={() => handleAddProduct(item)}
                     >
                       Mua Hàng
                     </div>

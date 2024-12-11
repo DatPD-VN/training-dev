@@ -102,7 +102,7 @@ const Header: FC = () => {
               {!isDisabled && (
                 <div className={styles.divInputSearchWrap} ref={inputRef}>
                   <ul className={styles.divInputSearch}>
-                    {listHashtag.map((item: any, index: number) => {
+                    {listHashtag.map((item: string, index: number) => {
                       return (
                         <li
                           key={index}

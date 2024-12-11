@@ -1,33 +1,26 @@
 import styles from "./styles.module.scss";
-import React, { useState } from "react";
+import React from "react";
 import { TImage } from "./types";
 import { SlideShow } from "../slide-show";
+import { useImageItem } from "./hook";
 
 const ImageItem: React.FC<TImage> = ({ src }) => {
-   const fakeSrc = [
-    `${src}`,
-    "https://down-vn.img.susercontent.com/file/sg-11134201-7rd45-lun0zz9gy26194_tn.webp",
-    "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m2sdfew3cmnu5b_tn.webp",
-    "https://down-vn.img.susercontent.com/file/sg-11134201-7rd45-lun0zz9gy26194_tn.webp",
-  ];
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const handleThumbnailClick = (index: number) => {
-    setSelectedIndex(index);
-  };
+  const { imageSrc, selectedIndex, setSelectedIndex, handleThumbnailClick } =
+    useImageItem(src);
 
   return (
     <>
       <div className={styles.detailProductLeftImg}>
         <SlideShow
-          src={fakeSrc}
+          src={imageSrc}
           currentIndex={selectedIndex}
           onChangeIndex={setSelectedIndex}
         />
       </div>
-      <div className={styles.dots}>
-        {fakeSrc.map((_, index) => (
+      <div className={styles.navigations}>
+        {imageSrc.map((_, index) => (
           <span
-            className={`${styles.dot}  ${
+            className={`${styles.navigation}  ${
               index === selectedIndex ? styles.active : ""
             }`}
             key={index}
@@ -36,7 +29,7 @@ const ImageItem: React.FC<TImage> = ({ src }) => {
         ))}
       </div>
       <div className={styles.detailProductLeftSmall}>
-        {fakeSrc.map((image, index) => (
+        {imageSrc.map((image, index) => (
           <img
             key={index}
             src={image}

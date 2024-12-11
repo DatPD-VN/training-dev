@@ -11,14 +11,15 @@ import {
 } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useRef, useState } from "react";
+import { TCartState } from "../../recoil/type";
 
 export const useCart = (): TUseCartProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
-  const cart: any = useListCartState();
-  const listSearchCart = useListSearchCartState();
+  const cart: Array<TCartState> = useListCartState();
+  const listSearchCart :Array<TCartState> = useListSearchCartState();
   const totalCart: number = useTotalCartState();
   const countCart: number = useCountCartState();
-  const setSearchCart: any = setSearchCartState();
+  const setSearchCart = setSearchCartState();
   const delCart = setDelCartState();
   const delCartAll = setDelAllCartState();
   const handleCart = setHandleCartState();
@@ -29,16 +30,21 @@ export const useCart = (): TUseCartProps => {
   useEffect(() => {
     console.log(isSelectId);
   }, [isSelectId]);
+
+  // Delete Product by ID
   const handleDel = (id: number) => {
     delCart(id);
   };
+
+  // Delete Products All
   const handleDelAll = () => {
     delCartAll(isSelectId);
   };
-  const handleCheck = (id: any) => {
+  // Handle Select Product
+  const handleCheck = (id: number) => {
     if (isSelectId.length > 0) {
       if (isSelectId.includes(id)) {
-        const values = isSelectId.filter((item: Array<object>) => item !== id);
+        const values = isSelectId.filter((item: number) => item !== id);
         setIsSelectId([...values]);
       } else {
         setIsSelectId([...isSelectId, id]);
@@ -47,13 +53,17 @@ export const useCart = (): TUseCartProps => {
       setIsSelectId([id]);
     }
   };
+
+  // Handle Search Products
   const handleSearch = () => {
     const valueInput = inputRef.current;
     const value = valueInput?.value;
     setSearchCart(value);
   };
+
+  // Handle Select Product All
   const handleCheckAll = () => {
-    const checkAll = listProduct.flatMap((item: any) => item.id);
+    const checkAll = listProduct.flatMap((item: TCartState) => item.id);
     if (JSON.stringify(checkAll) === JSON.stringify(isSelectId)) {
       setIsSelectId([]);
     } else {
@@ -61,7 +71,8 @@ export const useCart = (): TUseCartProps => {
     }
   };
 
-  const handleCase = (handle: string, item: any) => {
+  // Handle Increase or Reduce Quantity of Product
+  const handleCase = (handle: string, item: TCartState) => {
     let handleDetail = { handle, item };
     handleCart(handleDetail);
   };
@@ -69,7 +80,6 @@ export const useCart = (): TUseCartProps => {
   return {
     isPhoneScreen,
     listProduct,
-    listSearchCart,
     totalCart,
     countCart,
     handleDel,

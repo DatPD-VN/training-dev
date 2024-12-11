@@ -5,6 +5,7 @@ import Route, { ROUTE_CONFIG } from "../../app/route";
 import { ProductLoaing } from "../../components/loading";
 import { Categories } from "../../layouts/categories";
 import { useProduct } from "./hook";
+import { TListProduct } from "./type";
 
 const Dashboard: FC = () => {
   const navigate = useNavigate();
@@ -15,12 +16,12 @@ const Dashboard: FC = () => {
         <div className={styles.categoriesContainer}>
           <Categories />
         </div>
-        <section className={styles.contaiter}>
+        <section className={styles.container}>
           <div className={styles.headerWrapper}>
             {isLoading ? (
               <ProductLoaing quantity={listProduct.length} />
             ) : (
-              listProduct.map((item: any, index: number) => (
+              listProduct.map((item: TListProduct, index: number) => (
                 <div
                   key={index}
                   className={styles.divItemWrapper}

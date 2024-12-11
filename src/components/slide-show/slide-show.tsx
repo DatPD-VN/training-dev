@@ -2,19 +2,18 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { TSlideShowProps } from "./types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useSlideShow } from "./hook";
 
 const SlideShow: React.FC<TSlideShowProps> = ({
   src,
   currentIndex,
   onChangeIndex,
 }) => {
-  const nextSlide = () => {
-    onChangeIndex(currentIndex === src.length - 1 ? 0 : currentIndex + 1);
-  };
-
-  const prevSlide = () => {
-    onChangeIndex(currentIndex === 0 ? src.length - 1 : currentIndex - 1);
-  };
+  const { prevSlide, nextSlide } = useSlideShow(
+    src,
+    currentIndex,
+    onChangeIndex
+  );
 
   return (
     <div className={styles.sliderContainer}>
@@ -42,7 +41,7 @@ const SlideShow: React.FC<TSlideShowProps> = ({
       </div>
 
       <button onClick={nextSlide} className={styles.button}>
-        <ChevronRight size={40}/>
+        <ChevronRight size={40} />
       </button>
     </div>
   );

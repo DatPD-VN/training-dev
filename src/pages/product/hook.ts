@@ -1,4 +1,4 @@
-import { TUseProductProps } from "./type";
+import { TListProduct, TUseProductProps } from "./type";
 import { useEffect, useState } from "react";
 import {
   useNewListState,
@@ -13,11 +13,11 @@ import { useLocation } from "react-router";
 export const useProduct = (): TUseProductProps => {
   const location = useLocation();
   const hashtag = location.state;
-  const newList: Array<object> = useNewListState();
-  const newSearch: Array<object> = useListSearch();
-  const newCategories: Array<object> = useListNewCategory();
-  const choiceHashtag: any = setListSearch();
-  const choiceCategory: any = setAddCategory();
+  const newList: Array<TListProduct> = useNewListState();
+  const newSearch: Array<TListProduct> = useListSearch();
+  const newCategories: Array<TListProduct> = useListNewCategory();
+  const choiceHashtag = setListSearch();
+  const choiceCategory = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

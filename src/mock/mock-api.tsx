@@ -1,6 +1,6 @@
-import { TCategoryState, TDataState } from "../recoil/type";
+import { TCategoryState, TDataState, TImageState } from "../recoil/type";
 
-export const dataState : Array<TDataState>  = [
+export const dataState: Array<TDataState> = [
   {
     id: 1,
     imgProduct:
@@ -13,7 +13,7 @@ export const dataState : Array<TDataState>  = [
     voucherProduct: "10% Giảm",
     hashTag: ["#Giaydep", "#TaiNghe", "#tat"],
     categories: "Áo Quần",
-    categoryID: 1
+    categoryID: 1,
   },
   {
     id: 2,
@@ -180,7 +180,7 @@ export const dataState : Array<TDataState>  = [
   },
 ];
 
-export const categoryState : Array<TCategoryState> = [
+export const categoryState: Array<TCategoryState> = [
   {
     categoryID: 1,
     categoryName: "Áo Quần",
@@ -201,5 +201,16 @@ export const categoryState : Array<TCategoryState> = [
     categoryID: 5,
     categoryName: "Mỹ Phẩm",
   },
+];
 
-]
+export const srcFakeState: Array<TImageState> = [
+  {
+    src: "https://down-vn.img.susercontent.com/file/sg-11134201-7rd45-lun0zz9gy26194_tn.webp",
+  },
+  {
+    src: "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m2sdfew3cmnu5b_tn.webp",
+  },
+  {
+    src: "https://down-vn.img.susercontent.com/file/sg-11134201-7rd45-lun0zz9gy26194_tn.webp",
+  },
+];

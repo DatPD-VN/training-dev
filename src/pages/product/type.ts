@@ -1,6 +1,19 @@
 type TUseProductProps = {
-  listProduct: Array<object>;
+  listProduct: Array<TListProduct>;
   isLoading: boolean;
 };
+type TListProduct = {
+  id: number;
+  imgProduct: string;
+  titleProduct: string;
+  priceProduct: number;
+  saleProduct: string;
+  shipProduct: boolean;
+  isVoucher: boolean;
+  voucherProduct: string;
+  hashTag: Array<string>;
+  categories: string;
+  categoryID: number;
+};
 
-export type { TUseProductProps };
+export type { TUseProductProps,TListProduct };

@@ -13,6 +13,7 @@ import NoPlus from "../../icon/no-plus";
 import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useCart } from "./hook";
+import { TCartState } from "../../recoil/type";
 
 const Cart: FC = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const Cart: FC = () => {
                 Sửa
               </div>
             </div>
-            {listProduct.map((item: any, index: number) => (
+            {listProduct.map((item: TCartState, index: number) => (
               <section key={index} className={styles.itemWrapMobile}>
                 <div className={`${styles.itemWrapInputMobile} ${styles.div5}`}>
                   <input type="checkbox" />
@@ -232,7 +233,7 @@ const Cart: FC = () => {
                   Thao tác
                 </div>
               </div>
-              {listProduct.map((item: any, index: number) => (
+              {listProduct.map((item: TCartState, index: number) => (
                 <section key={index} className={styles.itemWrap}>
                   <div className={`${styles.itemWrapInput} ${styles.div5}`}>
                     {isSelectId.includes(item.id) ? (
