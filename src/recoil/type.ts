@@ -17,8 +17,6 @@ type TDataState = {
   hashTag: Array<string>;
   categoryName: string;
   categoryID: number;
-  content : string;
-  status : string
 };
 type TCartState = {
   id: number;
