@@ -1,0 +1,12 @@
+@use "abstracts/index" as *;
+
+
+.arrowRightCategories {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-100%);
+  margin-top: 2px;
+}

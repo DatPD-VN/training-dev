@@ -2,11 +2,12 @@ import { FC } from "react";
 import { Facebook } from "lucide-react";
 import { Volleyball } from "lucide-react";
 import styles from "./styles.module.scss";
-import { UseLogin } from "./hook";
+import { useLogin } from "./hook";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 const Login: FC = () => {
   const { email, password, isDisabled, error, handleChange, handleSubmit } =
-    UseLogin();
+    useLogin();
   return (
     <>
       <section className={styles.container}>
@@ -59,7 +60,9 @@ const Login: FC = () => {
                   ĐĂNG NHẬP
                 </button>
                 {!!error && <div className={styles.error}>{error.Error}</div>}
-                <p className={styles.buttonSubmitPass}><a href="/training-dev/ec/ressetPass">Quên mật khẩu</a></p>
+                <p className={styles.buttonSubmitPass}>
+                  <a href={Route(ROUTE_CONFIG.RESETPASS)}>Quên mật khẩu</a>
+                </p>
               </div>
               <div className={styles.wapperBlock}>
                 <hr className={styles.wFull} />

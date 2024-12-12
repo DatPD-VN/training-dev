@@ -55,6 +55,9 @@
     height: 100%;
     cursor: pointer;
   }
+  .headerWrapRigthSearchDiv:hover {
+    opacity: 0.8;
+  }
 }
 .bodyWrap {
   padding: 20px 56px;
@@ -404,11 +407,8 @@
     font-size: 10px;
     color: $grayColor;
   }
-  .itemWrap
-    .itemWrapInfo
-    .itemWrapSelect
-    select {
-      font-size: 10px;
+  .itemWrap .itemWrapInfo .itemWrapSelect select {
+    font-size: 10px;
   }
   .itemWrapInfoPrice {
     font-size: 11px;
@@ -791,10 +791,10 @@
   width: 18px;
   height: 18px;
 }
-.itemWrapInfomationMobile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 10px;
-    width: 100%;
+.itemWrapInformationMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  width: 100%;
 }

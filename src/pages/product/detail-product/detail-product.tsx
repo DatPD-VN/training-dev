@@ -11,50 +11,26 @@ import {
   ShoppingCart,
   Truck,
 } from "lucide-react";
-import Plus from "../../icon/plus";
-import NoPlus from "../../icon/noPlus";
-import { useLocation } from "react-router";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { addCartState, newListState } from "../../recoil";
-import { Toast } from "../../Common";
-import { ImageItem } from "../../components/image-item/image-item";
-import { useMediaQuery } from "react-responsive";
-import { FeedBack } from "../../components/feed-back/feed-back";
+import Plus from "../../../icon/plus";
+import NoPlus from "../../../icon/no-plus";
+import { ImageItem } from "../../../components/image-item/image-item";
+import { FeedBack } from "../../../components/feed-back/feed-back";
 import { useNavigate } from "react-router";
-import { countCartState } from "../../recoil";
-import Route, { ROUTE_CONFIG } from "../../app/route";
+import Route, { ROUTE_CONFIG } from "../../../app/route";
+import { useDetailProduct } from "./hook";
+import { TDataState } from "../../../recoil/type";
 
 function DetailProduct() {
   const navigate = useNavigate();
-  const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
-  const location = useLocation();
-  const newList = useRecoilValue(newListState);
-  const addCart = useSetRecoilState(addCartState);
-  const { id } = location.state;
-  const product = newList.filter((item: any) => item.id === id);
-  const countCart: any = useRecoilValue(countCartState);
-
-  const handleClick = (item: any) => () => {
-    const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    let quanlity = qtt.value;
-    let wrapItem = { ...item, quanlity: quanlity };
-    addCart(wrapItem);
-    Toast();
-  };
-  const handleAdd = (item: any) => () => {
-    let wrapItem = { ...item, quanlity: 1 };
-    addCart(wrapItem);
-    Toast();
-  };
-
-  const handlePlus = () => {
-    const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    qtt.value = (parseInt(qtt.value) + 1).toString();
-  };
-  const handleNoPlus = () => {
-    const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    qtt.value = (parseInt(qtt.value) - 1).toString();
-  };
+  const {
+    isPhoneScreen,
+    countCart,
+    product,
+    handleAddProduct,
+    handleNoPlus,
+    handlePlus,
+    handleClick,
+  } = useDetailProduct();
 
   return (
     <>
@@ -90,7 +66,7 @@ function DetailProduct() {
               </div>
             </div>
           </header>
-          {product.map((item: any, index: number) => (
+          {product.map((item: TDataState, index: number) => (
             <div key={index}>
               <div className={styles.imgProductWrap}>
                 <div className={styles.imgProduct}>
@@ -344,10 +320,12 @@ function DetailProduct() {
                   </div>
                   <div className={styles.footerDiv}>
                     <MessageCircleMore size={20} />
-                    <span onClick={handleAdd(item)}>Thêm vào Giỏ hàng</span>
+                    <span onClick={() => handleAddProduct(item)}>
+                      Thêm vào Giỏ hàng
+                    </span>
                   </div>
                   <div className={styles.footerButtonBuy}>
-                    <span onClick={handleAdd(item)}>Mua ngay</span>
+                    <span onClick={() => handleAddProduct(item)}>Mua ngay</span>
                   </div>
                 </div>
               </footer>
@@ -357,9 +335,8 @@ function DetailProduct() {
       )}
       {!isPhoneScreen && (
         <>
-          {/* <Header /> */}
           <section className={styles.detailProductContainerWrap}>
-            {product.map((item: any, index: any) => (
+            {product.map((item: TDataState, index: number) => (
               <div className={styles.detailProductContainer} key={index}>
                 <div className={styles.detailProductLeft}>
                   <ImageItem src={item.imgProduct} />
@@ -549,7 +526,7 @@ function DetailProduct() {
                   <div className={styles.detailProductTitleButton}>
                     <div
                       className={styles.detailProductTitleButtonRightTitle}
-                      onClick={handleClick(item)}
+                      onClick={() => handleClick(item)}
                     >
                       <img
                         src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/0f3bf6e431b6694a9aac.svg"
@@ -559,7 +536,7 @@ function DetailProduct() {
                     </div>
                     <div
                       className={styles.detailProductBuy}
-                      onClick={handleAdd(item)}
+                      onClick={() => handleAddProduct(item)}
                     >
                       Mua Hàng
                     </div>
@@ -570,7 +547,6 @@ function DetailProduct() {
           </section>
         </>
       )}
-      {/* <Footer /> */}
     </>
   );
 }

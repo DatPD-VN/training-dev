@@ -1,9 +1,10 @@
 import { USER_LOGIN } from "../../config/index";
 import { useState } from "react";
-import { TError,TLogin,TUseLoginProps } from "./types";
+import { TError, TLogin, TUseLoginProps } from "./types";
 import { useNavigate } from "react-router-dom";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
-export const UseLogin = (): TUseLoginProps => {
+export const useLogin = (): TUseLoginProps => {
   const [from, setForm] = useState<TLogin>({ email: "", password: "" });
   const [isDisabled, setIsDisabled] = useState(true);
   const [error, setError] = useState<TError>({
@@ -15,6 +16,7 @@ export const UseLogin = (): TUseLoginProps => {
 
   const isDisabledCheck = !from.email && !from.password;
 
+  // Function validate field
   const validate = (field: keyof TLogin, value: string): string | null => {
     switch (field) {
       case from.email:
@@ -22,12 +24,6 @@ export const UseLogin = (): TUseLoginProps => {
         const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
         if (!regex.test(value)) return "Email chưa đúng định dạng";
         break;
-      // case "password" :
-      //   if (!value) return "Password không được để trống. "
-      //   if (value.length  < 8) return "Password phải có hơn 8 kí tự"
-      //   var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
-      //   if (!regularExpression.test(value)) return "Password cần phải chứa chữ hoa, chữ thường, số, kí tự đặc biệt "
-      //   break;
 
       default:
         break;
@@ -35,6 +31,7 @@ export const UseLogin = (): TUseLoginProps => {
     return null;
   };
 
+  // Handle Change Input Value
   const handleChange = (field: keyof TLogin, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     const check = validate(field, value);
@@ -49,6 +46,7 @@ export const UseLogin = (): TUseLoginProps => {
     }));
   };
 
+  // Handle Check Value After Submit
   const handleSubmit = () => {
     if (
       USER_LOGIN.findIndex(
@@ -56,7 +54,7 @@ export const UseLogin = (): TUseLoginProps => {
       ) !== -1
     ) {
       setForm({ email: "", password: "" });
-      navigator("/training-dev/ec/dashboard");
+      navigator(Route(ROUTE_CONFIG.PRODUCT));
     } else {
       setForm({ ...from, password: "" });
       setError({
