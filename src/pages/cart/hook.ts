@@ -10,13 +10,13 @@ import {
   setDelAllCartState,
 } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { TCartState } from "../../recoil/type";
 
 export const useCart = (): TUseCartProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
   const cart: Array<TCartState> = useListCartState();
-  const listSearchCart :Array<TCartState> = useListSearchCartState();
+  const listSearchCart: Array<TCartState> = useListSearchCartState();
   const totalCart: number = useTotalCartState();
   const countCart: number = useCountCartState();
   const setSearchCart = setSearchCartState();
@@ -24,12 +24,8 @@ export const useCart = (): TUseCartProps => {
   const delCartAll = setDelAllCartState();
   const handleCart = setHandleCartState();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isSelectId, setIsSelectId] = useState<any>([]);
+  const [isSelectId, setIsSelectIds] = useState<any>([]);
   const listProduct = listSearchCart.length > 0 ? listSearchCart : cart;
-
-  useEffect(() => {
-    console.log(isSelectId);
-  }, [isSelectId]);
 
   // Delete Product by ID
   const handleDel = (id: number) => {
@@ -45,12 +41,12 @@ export const useCart = (): TUseCartProps => {
     if (isSelectId.length > 0) {
       if (isSelectId.includes(id)) {
         const values = isSelectId.filter((item: number) => item !== id);
-        setIsSelectId([...values]);
+        setIsSelectIds([...values]);
       } else {
-        setIsSelectId([...isSelectId, id]);
+        setIsSelectIds([...isSelectId, id]);
       }
     } else {
-      setIsSelectId([id]);
+      setIsSelectIds([id]);
     }
   };
 
@@ -65,9 +61,9 @@ export const useCart = (): TUseCartProps => {
   const handleCheckAll = () => {
     const checkAll = listProduct.flatMap((item: TCartState) => item.id);
     if (JSON.stringify(checkAll) === JSON.stringify(isSelectId)) {
-      setIsSelectId([]);
+      setIsSelectIds([]);
     } else {
-      setIsSelectId(checkAll);
+      setIsSelectIds(checkAll);
     }
   };
 

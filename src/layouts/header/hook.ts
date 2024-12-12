@@ -22,7 +22,7 @@ export const useHeader = (): THeaderProps => {
   const location = useLocation();
   const hashtag = location.state;
   const tag = hashtag !== null ? hashtag.hashtag : null;
-  const delData : any = setDelCategory();
+  const delData: any = setDelCategory();
 
   // Handle Open Nav Search
   const handleOpen = () => {
@@ -59,6 +59,7 @@ export const useHeader = (): THeaderProps => {
       },
     });
   };
+
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -71,6 +72,7 @@ export const useHeader = (): THeaderProps => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  
   return {
     handleNav,
     handleOpen,
