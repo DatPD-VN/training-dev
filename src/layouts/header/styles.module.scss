@@ -8,13 +8,14 @@
   height: auto;
   padding: 0px 56px 5px;
   background-color: $primary;
-  z-index: 10;
+  z-index: 3;
   position: sticky;
   top: 0px;
 }
 .headerTop {
   display: flex;
   justify-content: end;
+  padding-top: 5px;
 }
 .divTagTop {
   display: flex;
@@ -27,16 +28,84 @@
 .divTagTop:hover {
   opacity: 0.9;
 }
+.divProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: $whiteColor;
+  margin: 0px 10px;
+  position: relative;
+  z-index: 12;
+}
+.divProfileInfo {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: $whiteColor;
+  border-radius: 2px;
+  color: $textDefault;
+  width: max-content;
+  padding: 0px 20px;
+  z-index: 20;
+  transition-duration: 400ms;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    font-size: 16px;
+    li {
+      margin: 15px 0;
+      cursor: pointer;
+      transition-duration: 300ms;
+      a {
+        text-decoration: none;
+        color: $textDefault;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+.divTagTopA:hover ~ .divProfileInfo {
+  display: block;
+}
+.divProfileNav {
+  position: absolute;
+  border-top: transparent;
+  border-right: transparent;
+  border-left: transparent;
+  border-bottom: $whiteColor;
+  border-style: solid;
+  top: -23px;
+  right: 10px;
+  border-bottom-width: 13px;
+  border-top-width: 13px;
+  border-left-width: 13px;
+  border-right-width: 13px;
+}
 .divTagTopA:hover {
   text-decoration: none;
   cursor: pointer;
   display: flex;
+}
+
+.imageProfile {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
 }
 .divTagTopA {
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-duration: 400ms;
+  z-index: 20;
 }
 
 .divTagTopIcon {
@@ -139,6 +208,7 @@
 .headerBottomRightIconDiv {
   width: min-content;
   position: relative;
+  z-index: 10;
 }
 
 .headerBottomRightIconDivCount {

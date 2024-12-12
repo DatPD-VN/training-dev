@@ -53,7 +53,7 @@ const Header: FC = () => {
               <ChevronDown className={styles.divTagTopIcon} />
             </a>
           </div>
-          <div className={styles.divTagTop}>
+          {/* <div className={styles.divTagTop}>
             <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Ký </p>
             </a>
@@ -65,6 +65,31 @@ const Header: FC = () => {
             <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
               <p className={styles.divTagTopATitle}>Đăng Nhập </p>
             </a>
+          </div> */}
+          <div className={styles.divProfile}>
+            <a href="" className={styles.divTagTopA}>
+              <img
+                className={styles.imageProfile}
+                src="https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="
+                alt=""
+              />
+              <p className={styles.divTagTopATitle}>datpham909 </p>
+            </a>
+            <div className={styles.divProfileInfo}>
+              <ul>
+                <li>
+                  <a href="">Tài Khoản Của Tôi</a>
+                </li>
+                <li>
+                  <a href="">Đơn Mua</a>
+                </li>
+                <li>
+                  <a href="">Đăng Xuất</a>
+                </li>
+              </ul>
+              <div className={styles.divProfileNav}></div>
+              
+            </div>
           </div>
         </div>
         <div className={styles.headerBottom}>

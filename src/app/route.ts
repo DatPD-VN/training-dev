@@ -5,7 +5,8 @@ export const ROUTE_CONFIG = {
   PRODUCT: "/products",
   DETAIL_PRODUCT: "/products/detail-Product",
   LOGIN: "/login",
-  RESETPASS: "/resset-Pass",
+  RESETPASS: "/reset-Pass",
+  PROFILE: "/profile",
 };
 
 export const appCheck: {
