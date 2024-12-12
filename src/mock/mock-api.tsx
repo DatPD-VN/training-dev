@@ -12,7 +12,7 @@ export const dataState: Array<TDataState> = [
     isVoucher: false,
     voucherProduct: "10% Giảm",
     hashTag: ["#Giaydep", "#TaiNghe", "#tat"],
-    categories: "Áo Quần",
+    categoryName: "Áo Quần",
     categoryID: 1,
   },
   {
@@ -28,7 +28,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#tat"],
     categoryID: 2,
-    categories: "Tất",
+    categoryName: "Tất",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#trangdiem"],
     categoryID: 3,
-    categories: "Giày dép",
+    categoryName: "Giày dép",
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 4,
-    categories: "Tai Nghe",
+    categoryName: "Tai Nghe",
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 5,
-    categories: "Mỹ Phẩm",
+    categoryName: "Mỹ Phẩm",
   },
   {
     id: 6,
@@ -87,7 +87,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#TaiNghe", "#tat"],
     categoryID: 1,
-    categories: "Áo Quần",
+    categoryName: "Áo Quần",
   },
   {
     id: 7,
@@ -102,7 +102,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "20% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
     categoryID: 3,
-    categories: "Giày dép",
+    categoryName: "Giày dép",
   },
   {
     id: 8,
@@ -117,7 +117,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#TaiNghe", "#tat"],
     categoryID: 3,
-    categories: "Giày dép",
+    categoryName: "Giày dép",
   },
   {
     id: 9,
@@ -132,7 +132,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 4,
-    categories: "Tai Nghe",
+    categoryName: "Tai Nghe",
   },
   {
     id: 10,
@@ -146,7 +146,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#tat"],
     categoryID: 1,
-    categories: "Áo Quần",
+    categoryName: "Áo Quần",
   },
   {
     id: 11,
@@ -161,7 +161,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe"],
     categoryID: 2,
-    categories: "Tất",
+    categoryName: "Tất",
   },
   {
     id: 12,
@@ -176,7 +176,7 @@ export const dataState: Array<TDataState> = [
     voucherProduct: "10% Giảm",
     hashTag: ["#Giaydep", "#trangdiem", "#tat"],
     categoryID: 3,
-    categories: "Giày dép",
+    categoryName: "Giày dép",
   },
 ];
 

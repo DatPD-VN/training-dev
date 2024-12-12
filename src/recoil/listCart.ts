@@ -1,15 +1,15 @@
-import { atom, selector } from "recoil";
+import { atom, RecoilState, selector } from "recoil";
 import { TCartState } from "./type";
 
-const defaultData: Array<TCartState> = [];
+const defaultData: TCartState[] = [];
 
-const listCartState: any = atom({
+const listCartState :RecoilState<TCartState[]> = atom<TCartState[]>({
   key: "listCart",
   default: defaultData,
 });
-const searchData: Array<TCartState> = [];
+const searchData: TCartState[] = [];
 
-const listSearchState: any = atom({
+const listSearchState: RecoilState<TCartState[]> = atom<TCartState[]>({
   key: "listCartSearch",
   default: searchData,
 });
@@ -17,7 +17,7 @@ const listSearchState: any = atom({
 export const addCartState = selector({
   key: "newCart",
   get: ({ get }) => {
-    const list : Array<TCartState> = get(listCartState);
+    const list: Array<TCartState> = get(listCartState);
     return list;
   },
   set: ({ get, set }, item: any) => {
@@ -29,7 +29,7 @@ export const addCartState = selector({
       if (quantity === 1) {
         const newTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
-            ? { ...itemDetail, quantity: (itemDetail.quantity) + 1 }
+            ? { ...itemDetail, quantity: itemDetail.quantity + 1 }
             : itemDetail
         );
         set(listCartState, [...newTodo]);
@@ -39,7 +39,7 @@ export const addCartState = selector({
           itemDetail.id === item.id
             ? {
                 ...itemDetail,
-                quantity: (itemDetail.quantity) + parseInt(quantity),
+                quantity: itemDetail.quantity + parseInt(quantity),
               }
             : itemDetail
         );
@@ -65,8 +65,8 @@ export const delCartState = selector({
     const list = get(listCartState);
     return list;
   },
-  set: ({ get, set }, id) => {
-    const list : Array<TCartState> = get(listCartState);
+  set: ({ get, set }, id : any) => {
+    const list: Array<TCartState> = get(listCartState);
     const newTodo = list.filter((item: TCartState) => item.id !== id);
     set(listCartState, [...newTodo]);
   },
@@ -98,7 +98,7 @@ export const handleCartState = selector({
       case "tang":
         const newTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
-            ? { ...itemDetail, quantity: (itemDetail.quantity) + 1 }
+            ? { ...itemDetail, quantity: itemDetail.quantity + 1 }
             : itemDetail
         );
         set(listCartState, [...newTodo]);
@@ -108,7 +108,7 @@ export const handleCartState = selector({
           itemDetail.id === item.id
             ? {
                 ...itemDetail,
-                quantity: Math.max(1, (itemDetail.quantity) - 1),
+                quantity: Math.max(1, itemDetail.quantity - 1),
               }
             : itemDetail
         );
@@ -125,14 +125,7 @@ export const countCartState = selector({
   get: ({ get }) => {
     const list: Array<TCartState> = get(listCartState);
     return list.length;
-  },
-  set: ({ get, set }, item) => {
-    const list: Array<TCartState> = get(listCartState);
-    const newTodo = {
-      item,
-    };
-    set(listCartState, [...list, newTodo]);
-  },
+  }
 });
 export const totalCartState = selector({
   key: "totalcart",
@@ -142,15 +135,7 @@ export const totalCartState = selector({
       return total + item.priceProduct * item.quantity;
     }, 0);
     return totalCart;
-  },
-  set: ({ get, set }, item) => {
-    const list: Array<TCartState> = get(listCartState);
-    const newTodo = {
-      item,
-    };
-
-    set(listCartState, [...list, newTodo]);
-  },
+  }
 });
 export const searchCartState = selector({
   key: "searchcart",
@@ -161,8 +146,9 @@ export const searchCartState = selector({
   set: ({ get, set }, data: any) => {
     const list: Array<TCartState> = get(listCartState);
     const regex = new RegExp(data, "i");
-    const value = list.filter((item: TCartState) => regex.test(item.titleProduct));
+    const value = list.filter((item: TCartState) =>
+      regex.test(item.titleProduct)
+    );
     set(listSearchState, [...value]);
   },
 });
-

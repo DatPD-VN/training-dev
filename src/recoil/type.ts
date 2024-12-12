@@ -15,8 +15,10 @@ type TDataState = {
   isVoucher: boolean;
   voucherProduct: string;
   hashTag: Array<string>;
-  categories: string;
+  categoryName: string;
   categoryID: number;
+  content : string;
+  status : string
 };
 type TCartState = {
   id: number;
@@ -32,6 +34,8 @@ type TCartState = {
   categoryID: number;
   quantity: number;
 };
+
+
 
 
 export type { TCategoryState, TDataState, TImageState, TCartState };

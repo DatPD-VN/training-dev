@@ -1,36 +1,37 @@
-import { atom, selector } from "recoil";
+import { atom, RecoilState, selector } from "recoil";
 import { categoryState, dataState } from "../mock/mock-api";
 import { TCategoryState, TDataState } from "./type";
 
 const defaultData = dataState;
 
-const listTodoState: any = atom({
+const listTodoState: any = atom<TDataState[]>({
   key: "listTodo",
   default: defaultData,
 });
 
 const dataSearch: Array<TDataState> = [];
 
-const listSearchState: any = atom({
+const listSearchState: RecoilState<TDataState[]> = atom<TDataState[]>({
   key: "listSearch",
   default: dataSearch,
 });
-const listSuggest: Array<TDataState> = [];
+const listSuggest: string[] = [];
 
-const listSuggestState: any = atom({
+const listSuggestState: RecoilState<string[]> = atom<string[]>({
   key: "listSuggest",
   default: listSuggest,
 });
 
 const listCategories = categoryState;
 
-const listCategoriesState: any = atom({
+const listCategoriesState: RecoilState<TCategoryState[]> = atom<TCategoryState[]>({
   key: "listCategory",
   default: listCategories,
 });
+
 const resultCategories: Array<TCategoryState> = [];
 
-const resultCategoriesState: any = atom({
+const resultCategoriesState: RecoilState<TCategoryState[]> = atom<TCategoryState[]>({
   key: "resultCategory",
   default: resultCategories,
 });
@@ -81,7 +82,7 @@ export const listSearch = selector({
 export const handleSuggest = selector({
   key: "handleSuggest",
   get: ({ get }) => {
-    const list: Array<TDataState> = get(listSuggestState);
+    const list: string[] = get(listSuggestState);
     return list;
   },
   set: ({ get, set }, data: any) => {
