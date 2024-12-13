@@ -5,7 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 
 export const useLogin = (): TUseLoginProps => {
-  const [from, setForm] = useState<TLogin>({ email: "", password: "" });
+  const [from, setForm] = useState<TLogin>({
+    email: "",
+    password: "",
+    image:
+      "https://down-vn.img.susercontent.com/file/vn-11134004-7ras8-m3on32ln4jw598_tn",
+  });
   const [isDisabled, setIsDisabled] = useState(true);
   const [error, setError] = useState<TError>({
     email: "",
@@ -53,7 +58,8 @@ export const useLogin = (): TUseLoginProps => {
         (item) => item.email === from.email && item.password === from.password
       ) !== -1
     ) {
-      setForm({ email: "", password: "" });
+      setForm({ ...from, password: "" });
+      localStorage.setItem("profileData", JSON.stringify(from));
       navigator(Route(ROUTE_CONFIG.PRODUCT));
     } else {
       setForm({ ...from, password: "" });

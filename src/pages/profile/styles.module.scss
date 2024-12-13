@@ -30,7 +30,10 @@
       font-weight: 500;
       font-size: 14px;
       color: $textDefault;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
+      max-width: 100px;
     }
     div {
       display: flex;
@@ -248,16 +251,24 @@
       td {
         padding-bottom: 30px;
         font-size: 14px;
-        button {
-          background-color: transparent;
-          border: none;
-          color: $blueColor;
-          cursor: pointer;
-          text-align: left;
+        section {
+          display: flex;
+          align-items: center;
           padding-left: 20px;
-          margin-right: 100%;
-          &:hover {
-            text-decoration: underline;
+          span {
+            padding-right: 20px;
+          }
+          button {
+            background-color: transparent;
+            border: none;
+            color: $blueColor;
+            cursor: pointer;
+            text-align: left;
+            margin-right: 100%;
+            padding: 0;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
         label {
@@ -317,9 +328,11 @@
       margin: 0;
       cursor: pointer;
     }
-    span {
+    .divProfileGenreLabel {
       color: $textDefault;
       margin-left: 10px;
+      margin-bottom: 0px;
+      cursor: pointer;
     }
   }
 }
@@ -327,7 +340,7 @@
 .divProfileBirthday {
   display: flex;
   align-items: center;
-  section {
+  select {
     width: 33%;
     display: flex;
     align-items: center;
@@ -336,9 +349,14 @@
     border: 1px solid $borderColor;
     margin: 5px 10px;
     margin-left: 0px;
+    color: $textTitleGray;
+    &:focus {
+    outline: none;
+    }
     span {
       color: $borderColor;
     }
+   
   }
 }
 .divProfileSubmit {

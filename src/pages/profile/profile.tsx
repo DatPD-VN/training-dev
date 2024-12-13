@@ -3,26 +3,41 @@ import styles from "./styles.module.scss";
 import {
   BadgeDollarSign,
   BellRing,
-  ChevronDown,
   ClipboardList,
   Pencil,
   Ticket,
   UserRound,
 } from "lucide-react";
 import New from "../../icon/new";
+import { useProfile } from "./hook";
 
 const Profile: FC = () => {
+  const {
+    handleImageChange,
+    handleChange,
+    handleDelete,
+    handleChangeGender,
+    handleSubmit,
+    profileData,
+    isActiveNumber,
+    isActiveEmail,
+  } = useProfile();
+
   return (
     <>
       <section className={styles.divProfileContainer}>
         <div className={styles.divProfileSidebar}>
           <div className={styles.divProfileSidebarInfo}>
             <img
-              src="https://down-vn.img.susercontent.com/file/vn-11134004-7ras8-m3on32ln4jw598_tn"
+              src={
+                (profileData.image as string)
+                  ? (profileData.image as string)
+                  : "https://down-vn.img.susercontent.com/file/vn-11134004-7ras8-m3on32ln4jw598_tn"
+              }
               alt=""
             />
             <div className={styles.divProfileSidebarInfoName}>
-              <p>datpham909</p>
+              <p>{profileData.userName}</p>
               <div>
                 <Pencil size={15} />
                 <p>Sửa Hồ Sơ</p>
@@ -97,7 +112,15 @@ const Profile: FC = () => {
                   <td>
                     <div>
                       <div>
-                        <input type="text" placeholder="" />
+                        <input
+                          type="text"
+                          placeholder=""
+                          defaultValue={
+                            profileData.userName ? profileData.userName : ""
+                          }
+                          name="userName"
+                          onChange={handleChange}
+                        />
                       </div>
                       <p>Tên Đăng nhập chỉ có thể thay đổi một lần.</p>
                     </div>
@@ -109,7 +132,15 @@ const Profile: FC = () => {
                   </td>
                   <td>
                     <div className={styles.divProfileInformationLeftInput}>
-                      <input type="text" placeholder="" />
+                      <input
+                        type="text"
+                        placeholder=""
+                        name="fullName"
+                        defaultValue={
+                          profileData.fullName ? profileData.fullName : ""
+                        }
+                        onChange={handleChange}
+                      />
                     </div>
                   </td>
                 </tr>
@@ -118,7 +149,27 @@ const Profile: FC = () => {
                     <label htmlFor="">Email </label>
                   </td>
                   <td>
-                    <button> Thêm </button>
+                    {!isActiveEmail ? (
+                      <div className={styles.divProfileInformationLeftInput}>
+                        <input
+                          type="text"
+                          placeholder=""
+                          name="email"
+                          defaultValue={
+                            profileData.email ? profileData.email : ""
+                          }
+                          onChange={handleChange}
+                        />
+                      </div>
+                    ) : (
+                      <section>
+                        <span>{profileData.email}</span>
+                        <button onClick={() => handleDelete("email")}>
+                          {" "}
+                          Xóa{" "}
+                        </button>
+                      </section>
+                    )}
                   </td>
                 </tr>
                 <tr>
@@ -126,7 +177,29 @@ const Profile: FC = () => {
                     <label htmlFor="">Số Điện Thoại </label>
                   </td>
                   <td>
-                    <button> Thêm </button>
+                    {!isActiveNumber ? (
+                      <div className={styles.divProfileInformationLeftInput}>
+                        <input
+                          type="text"
+                          placeholder=""
+                          name="numberPhone"
+                          defaultValue={
+                            profileData.numberPhone
+                              ? profileData.numberPhone
+                              : ""
+                          }
+                          onChange={handleChange}
+                        />
+                      </div>
+                    ) : (
+                      <section>
+                        <span>{profileData.numberPhone}</span>
+                        <button onClick={() => handleDelete("numberPhone")}>
+                          {" "}
+                          Xóa{" "}
+                        </button>
+                      </section>
+                    )}
                   </td>
                 </tr>
                 <tr>
@@ -134,18 +207,23 @@ const Profile: FC = () => {
                     <label htmlFor="">Giới Tính </label>
                   </td>
                   <td className={styles.divProfileGener}>
-                    <div>
-                      <input type="checkbox" name="" id="" />
-                      <span>Nam</span>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="" id="" />
-                      <span>Nữ</span>
-                    </div>
-                    <div>
-                      <input type="checkbox" name="" id="" />
-                      <span>Khác</span>
-                    </div>
+                    {["Nam", "Nữ", "Khác"].map((label) => (
+                      <div>
+                        <input
+                          type="checkbox"
+                          name=""
+                          id="male"
+                          checked={profileData.gender === label}
+                          onChange={() => handleChangeGender(label)}
+                        />
+                        <label
+                          className={styles.divProfileGenreLabel}
+                          htmlFor="male"
+                        >
+                          {label}
+                        </label>
+                      </div>
+                    ))}
                   </td>
                 </tr>
                 <tr>
@@ -154,36 +232,77 @@ const Profile: FC = () => {
                   </td>
                   <td>
                     <div className={styles.divProfileBirthday}>
-                      <section>
-                        <span>Ngày</span>
-                        <ChevronDown />
-                      </section>
-                      <section>
-                        <span>Tháng</span>
-                        <ChevronDown />
-                      </section>
-                      <section>
-                        <span>Năm</span>
-                        <ChevronDown />
-                      </section>
+                      {["Ngày", "Tháng", "Năm"].map((label, index) => (
+                        <select
+                          id="day"
+                          value={
+                            index === 0
+                              ? profileData.birthDay
+                              : index === 1
+                              ? profileData.birthMonth
+                              : profileData.birthYear
+                          }
+                          name={
+                            index === 0
+                              ? "birthDay"
+                              : index === 1
+                              ? "birthMonth"
+                              : "birthYear"
+                          }
+                          onChange={handleChange}
+                          key={label}
+                        >
+                          {" "}
+                          {[
+                            ...(index === 0
+                              ? Array(31)
+                              : index === 1
+                              ? Array(12)
+                              : Array(100)),
+                          ].map((_, i) => (
+                            <option
+                              key={i}
+                              value={index === 2 ? 2024 - i : i + 1}
+                            >
+                              {index === 2 ? 2024 - i : i + 1}
+                            </option>
+                          ))}
+                        </select>
+                      ))}
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td></td>
                   <td className={styles.divProfileSubmit}>
-                    <div className={styles.divProfileSubmitDiv}>Lưu</div>
+                    <div
+                      className={styles.divProfileSubmitDiv}
+                      onClick={handleSubmit}
+                    >
+                      Lưu
+                    </div>
                   </td>
                 </tr>
               </table>
             </div>
             <div className={styles.divProfileInformationRight}>
               <img
-                src="https://down-vn.img.susercontent.com/file/vn-11134004-7ras8-m3on32ln4jw598_tn"
+                src={
+                  (profileData.image as string)
+                    ? (profileData.image as string)
+                    : "https://down-vn.img.susercontent.com/file/vn-11134004-7ras8-m3on32ln4jw598_tn"
+                }
                 alt=""
               />
               <label htmlFor="file">Chọn Ảnh</label>
-              <input type="file" name="file" id="file" hidden />
+              <input
+                type="file"
+                name="file"
+                id="file"
+                hidden
+                accept="image/*"
+                onChange={handleImageChange}
+              />
               <p>Dụng lượng file tối đa 1 MB </p>
               <p>Định dạng:.JPEG, .PNG </p>
             </div>

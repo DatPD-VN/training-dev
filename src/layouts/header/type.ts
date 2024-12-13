@@ -10,6 +10,8 @@ type THeaderProps = {
   handleAddHashTag: (item: string) => void;
   countCart: number;
   inputRef: React.RefObject<HTMLDivElement>;
+  userName: string | null;
+  userImage: string | null;
 };
 
 export type { THeaderProps };

@@ -71,24 +71,39 @@
     }
   }
 }
-.divTagTopA:hover ~ .divProfileInfo {
+.divProfileInfo::after {
+  content: "";
+  position: absolute;
+  top: -22px;
+  right: 10px;
+  z-index: 20;
+  border-color: transparent transparent $whiteColor transparent;
+  border-style: solid;
+  border-width: 13px;
+} 
+.divTagTopProfile:hover ~ .divProfileInfo {
   display: block;
 }
-.divProfileNav {
-  position: absolute;
-  border-top: transparent;
-  border-right: transparent;
-  border-left: transparent;
-  border-bottom: $whiteColor;
-  border-style: solid;
-  top: -23px;
-  right: 10px;
-  border-bottom-width: 13px;
-  border-top-width: 13px;
-  border-left-width: 13px;
-  border-right-width: 13px;
-}
+// .divProfileInfo::after {
+//   position: absolute;
+//   border-top: transparent;
+//   border-right: transparent;
+//   border-left: transparent;
+//   border-bottom: $whiteColor;
+//   border-style: solid;
+//   top: -23px;
+//   right: 10px;
+//   border-bottom-width: 13px;
+//   border-top-width: 13px;
+//   border-left-width: 13px;
+//   border-right-width: 13px;
+// }
 .divTagTopA:hover {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+}
+.divTagTopProfile:hover {
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -107,6 +122,24 @@
   transition-duration: 400ms;
   z-index: 20;
 }
+.divTagTopProfile {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 400ms;
+  z-index: 20;
+  line-height: 20px;
+  position: relative;
+}
+// .divTagTopProfile::after {
+//   content: "";
+//   position: absolute;
+//   top: -30px;
+//   right: 0px;
+//   width: 100px;
+//   height: 100px;
+// }
 
 .divTagTopIcon {
   width: 18px;
@@ -116,6 +149,15 @@
   font-size: 14px;
   color: $whiteColor;
   margin: 0px 6px;
+}
+.divTagTopATitleUser {
+  font-size: 14px;
+  color: $whiteColor;
+  margin: 0px 6px;
+  overflow: hidden;
+  max-width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .headerBottom {
   display: flex;

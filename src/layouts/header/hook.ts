@@ -23,6 +23,9 @@ export const useHeader = (): THeaderProps => {
   const hashtag = location.state;
   const tag = hashtag !== null ? hashtag.hashtag : null;
   const delData: any = setDelCategory();
+  const user : any = (localStorage.getItem("profileData"));
+  const userName = JSON.parse(user).email 
+  const userImage = JSON.parse(user).image 
 
   // Handle Open Nav Search
   const handleOpen = () => {
@@ -61,6 +64,7 @@ export const useHeader = (): THeaderProps => {
   };
 
   useEffect(() => {
+   
     const handleClickOutside = (event: any) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
         setIsDisabled(true);
@@ -85,5 +89,7 @@ export const useHeader = (): THeaderProps => {
     handleAddHashTag,
     countCart,
     inputRef,
+    userName,
+    userImage
   };
 };

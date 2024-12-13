@@ -13,10 +13,10 @@ export const appCheck: {
   path: string;
 }[] = [
   {
-    path: `${Route(ROUTE_CONFIG.LOGIN)}`,
+    path: "training-dev/ec/login",
   },
   {
-    path: Route(ROUTE_CONFIG.RESETPASS),
+    path: "training-dev/ec/reset-Pass",
   },
 ];
 
@@ -25,7 +25,6 @@ function Route(link: string) {
   const ROUTE = {
     Link: `${path}${link}`,
   };
-
   return ROUTE.Link;
 }
 

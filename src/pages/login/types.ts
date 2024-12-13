@@ -2,9 +2,14 @@ type TLoginProps = {
   text: string;
 };
 
+type TLoginConfig = {
+  email: string;
+  password: string;
+};
 type TLogin = {
   email: string;
   password: string;
+  image: string;
 };
 
 type TError = {
@@ -25,4 +30,11 @@ type TUseLoginProps = {
   handleSubmit: () => void;
 };
 
-export type { TLoginProps, TUseLoginProps, TLogin, TError, TIsDisabled };
+export type {
+  TLoginProps,
+  TUseLoginProps,
+  TLogin,
+  TError,
+  TIsDisabled,
+  TLoginConfig,
+};

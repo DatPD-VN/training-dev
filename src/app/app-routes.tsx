@@ -1,7 +1,7 @@
 import { FC, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import AppInit from "./AppInit";
-import { RessetPass } from "../pages/reset-pass/reset-pass";
+import { ResetPass } from "../pages/reset-pass/reset-pass";
 import { Dashboard } from "../pages/product";
 import DetailProduct from "../pages/product/detail-product/detail-product";
 import { RecoilRoot } from "recoil";
@@ -31,8 +31,8 @@ const appRoutes: {
   },
   {
     path: baseRoute("reset-Pass"),
-    title: `${baseTitle} | Resset-Pass`,
-    Component: RessetPass,
+    title: `${baseTitle} | Reset-Pass`,
+    Component: ResetPass,
   },
   {
     path: baseRoute("products"),
