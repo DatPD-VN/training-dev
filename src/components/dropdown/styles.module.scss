@@ -1,0 +1,96 @@
+@use "abstracts/index" as *;
+
+.optionImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background-color: #9ca3af;
+  margin-inline-end: 8px;
+  object-fit: cover;
+}
+.optionItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 12px;
+  &:hover {
+    background-color: #e5e7eb;
+  }
+}
+.bgGray300 {
+  background-color: #d1d5db;
+}
+
+.chevronDown {
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.rotate180 {
+  transform: rotate(180deg);
+}
+.buttonOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px 16px;
+  color: $textTitleGray;
+  background-color: transparent;
+  border: 1px solid $borderColor
+}
+.dropDownClassContainer {
+  position: relative;
+  margin-right: 20px;
+  padding-left: 0px !important;
+  width: 30%;
+}
+.dropDownClass {
+  position: absolute;
+  background-color: #f3f4f6;
+  width: 100%;
+  max-height: 208px;
+  z-index: 2;
+  border-radius: 4px;
+  padding: 12px 0px;
+  overflow-y: auto;
+  margin: 0;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  ul {
+    width: 100%;
+    padding-left: 0px;
+    margin: 0px;
+    scroll-behavior: none;
+    li {
+      padding: 10px;
+    }
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.bottomRight {
+  top: 100%;
+  right: 0px;
+  margin-top: 8px;
+}
+.bottomLeft {
+  top: 100%;
+  left: 0px;
+  margin-top: 8px;
+}
+.topRight {
+  bottom: 100%;
+  right: 0px;
+  margin-bottom: 8px;
+}
+.topLeft {
+  bottom: 100%;
+  left: 0px;
+  margin-bottom: 8px;
+}
+.bgPurple800 {
+  background-color: #6b21a8;
+}

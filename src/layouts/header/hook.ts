@@ -24,8 +24,8 @@ export const useHeader = (): THeaderProps => {
   const tag = hashtag !== null ? hashtag.hashtag : null;
   const delData: any = setDelCategory();
   const user : any = (localStorage.getItem("profileData"));
-  const userName = JSON.parse(user).email 
-  const userImage = JSON.parse(user).image 
+  const userName = JSON.parse(user)?.email 
+  const userImage = JSON.parse(user)?.image 
 
   // Handle Open Nav Search
   const handleOpen = () => {
@@ -48,6 +48,12 @@ export const useHeader = (): THeaderProps => {
   const handleNav = () => {
     ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
       delData();
+    navigate(Route(ROUTE_CONFIG.PRODUCT));
+  };
+
+  // Handle LogOut 
+  const handleLogOut = () => {
+    localStorage.removeItem("profileData")
     navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
 
@@ -90,6 +96,7 @@ export const useHeader = (): THeaderProps => {
     countCart,
     inputRef,
     userName,
-    userImage
+    userImage,
+    handleLogOut
   };
 };

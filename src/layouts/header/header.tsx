@@ -30,6 +30,7 @@ const Header: FC = () => {
     inputRef,
     userName,
     userImage,
+    handleLogOut
   } = useHeader();
 
   return (
@@ -68,17 +69,17 @@ const Header: FC = () => {
               <div className={styles.divProfileInfo}>
                 <ul>
                   <li>
-                    <a href="">Tài Khoản Của Tôi</a>
+                    <a href={Route(ROUTE_CONFIG.PROFILE)}>Tài Khoản Của Tôi</a>
                   </li>
                   <li>
-                    <a href="">Đơn Mua</a>
+                    <a href={Route(ROUTE_CONFIG.CART)}>Đơn Mua</a>
                   </li>
                   <li>
-                    <a href="">Đăng Xuất</a>
+                    <a onClick={handleLogOut}>Đăng Xuất</a>
                   </li>
                 </ul>
-                {/* <div className={styles.divProfileNav}></div> */}
               </div>
+              <div className={styles.divProfileOverHidden}> </div>
             </div>
           ) : (
             <>

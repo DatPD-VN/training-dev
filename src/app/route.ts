@@ -20,12 +20,21 @@ export const appCheck: {
   },
 ];
 
-
 function Route(link: string) {
   const ROUTE = {
     Link: `${path}${link}`,
   };
-  return ROUTE.Link;
+  if (link == ROUTE_CONFIG.PROFILE) {
+    if (localStorage.getItem("profileData")) {
+      return ROUTE.Link;
+    } else {
+      return Route(ROUTE_CONFIG.PRODUCT)
+    }
+  } else {
+    return ROUTE.Link;
+  }
+
+  
 }
 
 export default Route;

@@ -336,27 +336,42 @@
     }
   }
 }
-
 .divProfileBirthday {
   display: flex;
   align-items: center;
   select {
-    width: 33%;
+    width: 20%;
     display: flex;
+    border-radius: 5px;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 10px 15px;
     border: 1px solid $borderColor;
     margin: 5px 10px;
     margin-left: 0px;
     color: $textTitleGray;
+    .divProfileBirthdayOption {
+      background-color: $textDefault;
+      color: $whiteColor;
+      padding: 10px;
+      cursor: pointer ;
+      padding-block-start: 10px;
+      padding-block-end: 10px;
+      min-block-size: 30px;
+      &:hover {
+        background-color: aliceblue !important;
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     &:focus {
-    outline: none;
+      outline: none;
     }
     span {
       color: $borderColor;
     }
-   
   }
 }
 .divProfileSubmit {
@@ -370,3 +385,8 @@
     cursor: pointer;
   }
 }
+.divProfileSubmitMessage {
+  color: red;
+  margin-bottom: 20px;
+}
+

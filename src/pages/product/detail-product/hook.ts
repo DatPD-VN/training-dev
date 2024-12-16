@@ -24,14 +24,14 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     let quantity = qtt.value;
     let wrapItem = { ...item, quantity: quantity };
     addCart(wrapItem);
-    Toast();
+    Toast("success", "Thêm sản phẩm thành công");
   };
 
   // Handle Add Product
   const handleAddProduct = (item: TDataState) => {
     let wrapItem = { ...item, quantity: 1 };
     addCart(wrapItem);
-    Toast();
+    Toast("success", "Thêm sản phẩm thành công");
   };
 
   // Function Increase Quantity

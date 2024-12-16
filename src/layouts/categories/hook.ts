@@ -23,7 +23,7 @@ export const useCategories = (): TCategoriesProps => {
   const handleAddCategory = (item: TCategoryState) => {
     choice(item.categoryID);
     navigate(
-      Route(`${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName} `)
+      Route(`${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName}&CategoryId=${item.categoryID} `)
     );
   };
 

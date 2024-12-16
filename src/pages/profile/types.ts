@@ -10,15 +10,16 @@ type TUseProfileProps = {
   isActiveNumber: boolean;
   isActiveEmail: boolean;
   successMessage: string;
+  handleChangeBirthday: (value: number, id: string) => void;
 };
 type TProfileData = {
   userName: string;
   email: string;
   gender: string;
   image: string | ArrayBuffer | null;
-  birthDay: string;
-  birthMonth: string;
-  birthYear: string;
+  birthDay: number;
+  birthMonth: number;
+  birthYear: number;
   fullName: string;
   numberPhone: string;
 };

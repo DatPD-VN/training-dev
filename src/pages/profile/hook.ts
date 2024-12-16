@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { TProfileData, TUseProfileProps } from "./types";
+import { Toast } from "../../Common";
 
 export const useProfile = (): TUseProfileProps => {
   const [profileData, setProfileData] = useState<TProfileData>({
@@ -7,19 +8,21 @@ export const useProfile = (): TUseProfileProps => {
     email: "",
     gender: "",
     image: "",
-    birthDay: "",
-    birthMonth: "",
-    birthYear: "",
+    birthDay: 1,
+    birthMonth: 1,
+    birthYear: 1,
     fullName: "",
     numberPhone: "",
   });
   const [isActiveNumber, setIsActiveNumber] = useState(false);
   const [isActiveEmail, setIsActiveEmail] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const user = JSON.parse(localStorage.getItem("profileData") as string);
+  console.log(user)
 
   useEffect(() => {
+    setSuccessMessage("");
     try {
-      const user = JSON.parse(localStorage.getItem("profileData") as string);
       if (user) {
         const {
           birthday,
@@ -58,6 +61,7 @@ export const useProfile = (): TUseProfileProps => {
     }
   }, []);
 
+  // Handle Change Images
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];
     if (file) {
@@ -72,6 +76,7 @@ export const useProfile = (): TUseProfileProps => {
     }
   };
 
+  // Handle Change Fields
   const handleChange = (event: any) => {
     const { name, value } = event.target;
     setProfileData((prevData) => ({
@@ -80,6 +85,15 @@ export const useProfile = (): TUseProfileProps => {
     }));
   };
 
+  //Handle Change Birthday
+  const handleChangeBirthday = (value: number, id: string) => {
+    setProfileData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  // Handle Delete Field
   const handleDelete = (name: string) => {
     setProfileData((prevData) => ({
       ...prevData,
@@ -91,6 +105,8 @@ export const useProfile = (): TUseProfileProps => {
       setIsActiveEmail(false);
     }
   };
+
+  // Handle Change Gender
   const handleChangeGender = (gender: string) => {
     setProfileData((prevData) => ({
       ...prevData,
@@ -98,14 +114,19 @@ export const useProfile = (): TUseProfileProps => {
     }));
   };
 
+  // Handle Submit Information Profile
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const updatedProfileData = {  
-      ...profileData,
-      birthday: `${profileData.birthDay}-${profileData.birthMonth}-${profileData.birthYear}`,
-    };
-    setSuccessMessage('Hồ sơ đã được lưu thành công!');
-    localStorage.setItem("profileData", JSON.stringify(updatedProfileData));
+    if (user) {
+      const updatedProfileData = {
+        ...profileData,
+        birthday: `${profileData.birthDay}-${profileData.birthMonth}-${profileData.birthYear}`,
+      };
+      Toast("success", "Hồ sơ đã được lưu thành công!");
+      localStorage.setItem("profileData", JSON.stringify(updatedProfileData));
+    } else {
+      Toast("error", "Vui lòng đăng nhập để thực hiện!");
+    }
   };
 
   return {
@@ -117,7 +138,7 @@ export const useProfile = (): TUseProfileProps => {
     profileData,
     isActiveNumber,
     isActiveEmail,
-    successMessage
-
+    successMessage,
+    handleChangeBirthday,
   };
 };

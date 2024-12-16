@@ -12,6 +12,7 @@ type THeaderProps = {
   inputRef: React.RefObject<HTMLDivElement>;
   userName: string | null;
   userImage: string | null;
+  handleLogOut: () => void;
 };
 
 export type { THeaderProps };

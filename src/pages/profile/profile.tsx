@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import New from "../../icon/new";
 import { useProfile } from "./hook";
+import Dropdown from "../../components/dropdown/drop-down";
 
 const Profile: FC = () => {
   const {
@@ -21,8 +22,9 @@ const Profile: FC = () => {
     profileData,
     isActiveNumber,
     isActiveEmail,
+    successMessage,
+    handleChangeBirthday,
   } = useProfile();
-
   return (
     <>
       <section className={styles.divProfileContainer}>
@@ -37,7 +39,7 @@ const Profile: FC = () => {
               alt=""
             />
             <div className={styles.divProfileSidebarInfoName}>
-              <p>{profileData.userName}</p>
+              <p>{profileData.email}</p>
               <div>
                 <Pencil size={15} />
                 <p>Sửa Hồ Sơ</p>
@@ -210,6 +212,7 @@ const Profile: FC = () => {
                     {["Nam", "Nữ", "Khác"].map((label) => (
                       <div>
                         <input
+                          key={label}
                           type="checkbox"
                           name=""
                           id="male"
@@ -231,50 +234,40 @@ const Profile: FC = () => {
                     <label htmlFor="">Ngày Sinh </label>
                   </td>
                   <td>
-                    <div className={styles.divProfileBirthday}>
-                      {["Ngày", "Tháng", "Năm"].map((label, index) => (
-                        <select
-                          id="day"
-                          value={
-                            index === 0
-                              ? profileData.birthDay
-                              : index === 1
-                              ? profileData.birthMonth
-                              : profileData.birthYear
-                          }
-                          name={
-                            index === 0
-                              ? "birthDay"
-                              : index === 1
-                              ? "birthMonth"
-                              : "birthYear"
-                          }
-                          onChange={handleChange}
-                          key={label}
-                        >
-                          {" "}
-                          {[
-                            ...(index === 0
-                              ? Array(31)
-                              : index === 1
-                              ? Array(12)
-                              : Array(100)),
-                          ].map((_, i) => (
-                            <option
-                              key={i}
-                              value={index === 2 ? 2024 - i : i + 1}
-                            >
-                              {index === 2 ? 2024 - i : i + 1}
-                            </option>
-                          ))}
-                        </select>
-                      ))}
+                    <div className={`${styles.divProfileBirthday} `}>
+                      <Dropdown
+                        name="birthDay"
+                        title="Ngày"
+                        data={Array.from({ length: 31 }, (_, i) => ({
+                          value: i + 1,
+                        }))}
+                        onSelect={handleChangeBirthday}
+                      />
+                      <Dropdown
+                        name="birthMonth"
+                        title="Tháng"
+                        data={Array.from({ length: 12 }, (_, i) => ({
+                          value: i + 1,
+                        }))}
+                        onSelect={handleChangeBirthday}
+                      />
+                      <Dropdown
+                        name="birthYear"
+                        title="Năm"
+                        data={Array.from({ length: 100 }, (_, i) => ({
+                          value: 2024 - i,
+                        }))}
+                        onSelect={handleChangeBirthday}
+                      />
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td></td>
                   <td className={styles.divProfileSubmit}>
+                    <div className={styles.divProfileSubmitMessage}>
+                      {successMessage}
+                    </div>
                     <div
                       className={styles.divProfileSubmitDiv}
                       onClick={handleSubmit}
