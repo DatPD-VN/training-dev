@@ -213,13 +213,14 @@ const Cart: FC = () => {
             <div className={styles.bodyWrap}>
               <div className={styles.navWrap}>
                 <div className={`${styles.navWrapInput} ${styles.div5}`}>
-                  <input type="checkbox" name="" id="" />
+                  <input type="checkbox" name="" id="all" hidden />
                 </div>
-                <div
+                <label
+                  htmlFor="all"
                   className={`${styles.navWrapTitleProduct} ${styles.div40}`}
                 >
                   Sản Phẩm
-                </div>
+                </label>
                 <div className={`${styles.navWrapTitle} ${styles.div13}`}>
                   Đơn Giá
                 </div>
@@ -357,19 +358,33 @@ const Cart: FC = () => {
                         type="checkbox"
                         checked
                         onChange={() => handleCheckAll()}
+                        id="checkAll"
                       />
                     ) : (
                       <input
                         type="checkbox"
                         onChange={() => handleCheckAll()}
+                        id="delCheckAll"
                       />
                     )}
-                    <span
-                      className={styles.footerWrapBottomLeftAll}
-                      onClick={() => handleCheckAll()}
-                    >
-                      Chọn Tất Cả
-                    </span>
+                    {isSelectId.length == listProduct.length ? (
+                      <label
+                        htmlFor="delCheckAll"
+                        className={styles.footerWrapBottomLeftAll}
+                        onClick={() => handleCheckAll()}
+                      >
+                        Bỏ chọn Tất Cả
+                      </label>
+                    ) : (
+                      <label
+                        htmlFor="checkAll"
+                        className={styles.footerWrapBottomLeftAll}
+                        onClick={() => handleCheckAll()}
+                      >
+                        Chọn Tất Cả
+                      </label>
+                    )}
+
                     <span
                       className={styles.footerWrapBottomLeftHandleDel}
                       onClick={() => handleDelAll()}

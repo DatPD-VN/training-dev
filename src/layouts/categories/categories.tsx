@@ -21,7 +21,7 @@ const Categories: FC = () => {
         </div>
         <div className={styles.listCategories}>
           {list.map((item : TCategoryState, index) => (
-            (item.categoryName == nameCategory) ? 
+            (item.categoryID == nameCategory) ? 
             <div
               key={index}
               className={`${styles.categoryDivSelect} } `}

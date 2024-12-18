@@ -1,3 +1,5 @@
+import { TCategoryState } from "../../recoil/type";
+
 type THeaderProps = {
   handleNav: () => void;
   handleOpen: () => void;
@@ -13,6 +15,8 @@ type THeaderProps = {
   userName: string | null;
   userImage: string | null;
   handleLogOut: () => void;
+  list: Array<TCategoryState>;
+  handleAddCategory: (item: TCategoryState) => void;
 };
 
 export type { THeaderProps };

@@ -9,10 +9,11 @@ export const useCategories = (): TCategoriesProps => {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const keyword = searchParams.get("keyword");
+  const keyword = Number(searchParams.get("CategoryId"));
   const list: Array<TCategoryState> = useListCategory();
   const choice = setAddCategory();
-  const nameCategory: string = keyword ? keyword : "";
+  const nameCategory: number = keyword ? keyword : -1;
+
   useEffect(() => {
     if (keyword) {
       choice(keyword);
@@ -21,10 +22,14 @@ export const useCategories = (): TCategoriesProps => {
 
   // Function add Category
   const handleAddCategory = (item: TCategoryState) => {
-    choice(item.categoryID);
-    navigate(
-      Route(`${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName}&CategoryId=${item.categoryID} `)
-    );
+    if (nameCategory !== item.categoryID) {
+      choice(item.categoryID);
+      navigate(
+        Route(
+          `${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName}&CategoryId=${item.categoryID} `
+        )
+      );
+    }
   };
 
   return {

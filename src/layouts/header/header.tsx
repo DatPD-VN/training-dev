@@ -13,6 +13,7 @@ import Logo from "../../icon/logo";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useHeader } from "./hook";
+import { TCategoryState } from "../../recoil/type";
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -30,7 +31,9 @@ const Header: FC = () => {
     inputRef,
     userName,
     userImage,
-    handleLogOut
+    handleLogOut,
+    list,
+    handleAddCategory
   } = useHeader();
 
   return (
@@ -61,7 +64,11 @@ const Header: FC = () => {
               <a href="" className={styles.divTagTopProfile}>
                 <img
                   className={styles.imageProfile}
-                  src={userImage ? userImage :"https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="}
+                  src={
+                    userImage
+                      ? userImage
+                      : "https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="
+                  }
                   alt=""
                 />
                 <p className={styles.divTagTopATitleUser}>{userName} </p>
@@ -127,7 +134,7 @@ const Header: FC = () => {
                   handleSearch(e.target.value.toLowerCase());
                 }}
                 id="inputSearch"
-                autoComplete="false"
+                autoComplete="off"
                 ref={searchRef}
               />
               <Search
@@ -158,30 +165,13 @@ const Header: FC = () => {
               )}
             </div>
             <div className={styles.DivList}>
-              <li className={styles.list}>
-                <a href="">Dép</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Baby Three</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Ốp lưng</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Áo khoác</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Gấu Bông</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Chân Váy</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Váy Nữ</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Kẹp Tóc </a>
-              </li>
+              {list.map((item: TCategoryState, index) => (
+                <li key={index} className={styles.list}>
+                  <a onClick={() => handleAddCategory(item)}>
+                    {item.categoryName}
+                  </a>
+                </li>
+              ))}
             </div>
           </div>
           <div className={styles.headerBottomRight}>
