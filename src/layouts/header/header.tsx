@@ -21,7 +21,7 @@ const Header: FC = () => {
     handleNav,
     handleOpen,
     tag,
-    handleSearch,
+    handleChangeSearch,
     searchRef,
     inputSearch,
     isDisabled,
@@ -33,7 +33,8 @@ const Header: FC = () => {
     userImage,
     handleLogOut,
     list,
-    handleAddCategory
+    handleAddCategory,
+    isSearch,
   } = useHeader();
 
   return (
@@ -131,7 +132,7 @@ const Header: FC = () => {
                 onClick={handleOpen}
                 className={styles.input}
                 onChange={(e) => {
-                  handleSearch(e.target.value.toLowerCase());
+                  handleChangeSearch(e.target.value.toLowerCase());
                 }}
                 id="inputSearch"
                 autoComplete="off"
@@ -147,19 +148,28 @@ const Header: FC = () => {
               {!isDisabled && (
                 <div className={styles.divInputSearchWrap} ref={inputRef}>
                   <ul className={styles.divInputSearch}>
-                    {listHashtag.map((item: string, index: number) => {
-                      return (
-                        <li
-                          key={index}
-                          onClick={() => {
-                            handleAddHashTag(item);
-                          }}
-                        >
-                          {item}
-                          <ArrowUpLeft color="gray" />
-                        </li>
-                      );
-                    })}
+                    {listHashtag.length > 0 ? (
+                      listHashtag.map((item: string, index: number) => {
+                        return (
+                          <li
+                            key={index}
+                            onClick={() => {
+                              handleAddHashTag(item);
+                            }}
+                          >
+                            {item}
+                            <ArrowUpLeft color="gray" />
+                          </li>
+                        );
+                      })
+                    ) : isSearch ? (
+                      <li>
+                        Không tìm thấy kết quả!
+                        <ArrowUpLeft color="gray" />
+                      </li>
+                    ) : (
+                      null
+                    )}
                   </ul>
                 </div>
               )}

@@ -34,16 +34,35 @@ export const useHeader = (): THeaderProps => {
   const searchParams = new URLSearchParams(location.search);
   const keyword = Number(searchParams.get("CategoryId"));
   const nameCategory: number = keyword ? keyword : -1;
+  const [isSearch, setIsSearch] = useState<boolean>(false);
 
   // Handle Open Nav Search
   const handleOpen = () => {
     setIsDisabled(false);
   };
 
+  // Handle Set Input Data When Search Change
+  const handleChangeSearch = (item: string) => {
+    const valueInput = searchRef.current;
+    const value = valueInput?.value;
+    if (value !== undefined && value !== "") {
+      setIsSearch(true);
+      handleSearch(item);
+    } else {
+      setIsSearch(false);
+      handleSearch(item);
+    }
+  };
+
   // Handle Set Input Data When Click Search
   const inputSearch = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
+    if (value !== undefined && value !== "") {
+      setIsSearch(true);
+    } else {
+      setIsSearch(false);
+    }
     choice(value);
     navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${value} `), {
       state: {
@@ -91,7 +110,12 @@ export const useHeader = (): THeaderProps => {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (inputRef.current && !inputRef.current.contains(event.target)) {
+      if (
+        inputRef.current &&
+        searchRef.current &&
+        !inputRef.current.contains(event.target) &&
+        !searchRef.current.contains(event.target)
+      ) {
         setIsDisabled(true);
       }
     };
@@ -106,7 +130,7 @@ export const useHeader = (): THeaderProps => {
     handleNav,
     handleOpen,
     tag,
-    handleSearch,
+    handleChangeSearch,
     searchRef,
     inputSearch,
     isDisabled,
@@ -119,5 +143,6 @@ export const useHeader = (): THeaderProps => {
     handleLogOut,
     list,
     handleAddCategory,
+    isSearch,
   };
 };

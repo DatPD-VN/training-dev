@@ -4,7 +4,7 @@ type THeaderProps = {
   handleNav: () => void;
   handleOpen: () => void;
   tag: string;
-  handleSearch: (item: string) => void;
+  handleChangeSearch: (item: string) => void;
   searchRef: React.RefObject<HTMLInputElement>;
   inputSearch: () => void;
   isDisabled: boolean;
@@ -17,6 +17,7 @@ type THeaderProps = {
   handleLogOut: () => void;
   list: Array<TCategoryState>;
   handleAddCategory: (item: TCategoryState) => void;
+  isSearch : boolean;
 };
 
 export type { THeaderProps };
