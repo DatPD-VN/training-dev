@@ -289,8 +289,9 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      color: $textTitleGray;
       &:hover {
-        color: $textDefault;
+        color: $textTitleGray;
         transition-duration: 300ms;
       }
     }

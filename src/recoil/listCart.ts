@@ -3,7 +3,7 @@ import { TCartState } from "./type";
 
 const defaultData: TCartState[] = [];
 
-const listCartState :RecoilState<TCartState[]> = atom<TCartState[]>({
+const listCartState: RecoilState<TCartState[]> = atom<TCartState[]>({
   key: "listCart",
   default: defaultData,
 });
@@ -65,7 +65,7 @@ export const delCartState = selector({
     const list = get(listCartState);
     return list;
   },
-  set: ({ get, set }, id : any) => {
+  set: ({ get, set }, id: any) => {
     const list: Array<TCartState> = get(listCartState);
     const newTodo = list.filter((item: TCartState) => item.id !== id);
     set(listCartState, [...newTodo]);
@@ -91,20 +91,20 @@ export const handleCartState = selector({
     return list;
   },
   set: ({ get, set }, data: any) => {
-    const { handle, item } = data;
+    const { handle, item, itemId, quantity } = data;
     const list: Array<TCartState> = get(listCartState);
 
     switch (handle) {
       case "tang":
         const newTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
-            ? { ...itemDetail, quantity: itemDetail.quantity + 1 }
+            ? { ...itemDetail, quantity: Number(itemDetail.quantity) + 1 }
             : itemDetail
         );
         set(listCartState, [...newTodo]);
         break;
       case "giam":
-        let neTodo = list.map((itemDetail: TCartState) =>
+        let reduceTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
             ? {
                 ...itemDetail,
@@ -112,7 +112,18 @@ export const handleCartState = selector({
               }
             : itemDetail
         );
-        set(listCartState, [...neTodo]);
+        set(listCartState, [...reduceTodo]);
+        break;
+      case "Change":
+        let changeTodo = list.map((itemDetail: TCartState) =>
+          itemDetail.id === Number(itemId)
+            ? {
+                ...itemDetail,
+                quantity: quantity,
+              }
+            : itemDetail
+        );
+        set(listCartState, [...changeTodo]);
         break;
       default:
         break;
@@ -125,7 +136,7 @@ export const countCartState = selector({
   get: ({ get }) => {
     const list: Array<TCartState> = get(listCartState);
     return list.length;
-  }
+  },
 });
 export const totalCartState = selector({
   key: "totalcart",
@@ -135,7 +146,7 @@ export const totalCartState = selector({
       return total + item.priceProduct * item.quantity;
     }, 0);
     return totalCart;
-  }
+  },
 });
 export const searchCartState = selector({
   key: "searchcart",

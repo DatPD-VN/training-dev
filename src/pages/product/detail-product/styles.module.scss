@@ -379,6 +379,9 @@
   background-color: rgba(255, 87, 34, 0.1);
   margin-right: 10px;
   font-size: 14px;
+  &:hover {
+    opacity: 0.85;
+  }
 }
 .detailProductTitleButtonRightTitle img {
   width: 20px;
@@ -392,6 +395,9 @@
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
 @media (max-width: 1024px) {

@@ -13,22 +13,23 @@ export const validationFileUpload = (
   const fileEvent = event.target;
 
   if (file) {
-    if (file.size > MAX_SIZE_UPLOAD) {
-      return {
-        isValid: false,
-        message: "Lỗi dung lượng file ko được quá 100KB!",
-      };
-    }
     if (!ALLOWED_EXTENSIONS.exec(fileEvent.value)) {
       fileEvent.value = "";
       return {
         isValid: false,
         message: "Định dạng file chưa hợp lệ!",
       };
-    } else
+    } else {
+      if (file.size > MAX_SIZE_UPLOAD) {
+        return {
+          isValid: false,
+          message: "Lỗi dung lượng file ko được quá 100KB!",
+        };
+      }
       return {
         isValid: true,
         message: "Upload thành công!",
       };
+    }
   }
 };

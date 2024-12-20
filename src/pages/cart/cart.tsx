@@ -30,6 +30,8 @@ const Cart: FC = () => {
     handleCheckAll,
     isSelectId,
     handleDelAll,
+    handleChangeQuality,
+    handleAddCategory
   } = useCart();
   return (
     <>
@@ -255,8 +257,24 @@ const Cart: FC = () => {
                       src={item.imgProduct}
                       alt=""
                       className={styles.itemWrapInfoImg}
+                      onClick={() => {
+                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
+                          state: {
+                            id: item.id,
+                          },
+                        });
+                      }}
                     />
-                    <div className={styles.itemWrapInfoTitle}>
+                    <div
+                      className={styles.itemWrapInfoTitle}
+                      onClick={() => {
+                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
+                          state: {
+                            id: item.id,
+                          },
+                        });
+                      }}
+                    >
                       <span>{item.titleProduct}</span>
                       <img
                         src="https://down-vn.img.susercontent.com/file/vn-11134258-7ras8-m2waud2e3pbk8b"
@@ -290,9 +308,12 @@ const Cart: FC = () => {
                       <input
                         type="number"
                         min={1}
+                        max={999}
+                        onChange={handleChangeQuality}
                         value={item.quantity}
-                        name=""
-                        id=""
+                        name={item.titleProduct}
+                        id={String(item.id)}
+                        className="textbox_id"
                       />
                       <button onClick={() => handleCase("tang", item)}>
                         <Plus />
@@ -310,7 +331,10 @@ const Cart: FC = () => {
                   <div className={`${styles.itemWrapHandle} ${styles.div13}`}>
                     <span onClick={() => handleDel(item.id)}>Xóa</span>
 
-                    <div className={styles.itemWrapHandleDiv}>
+                    <div
+                      className={styles.itemWrapHandleDiv}
+                      onClick={() => handleAddCategory(item)}
+                    >
                       <span>Tìm sản phẩm tương tự</span>
                       <ChevronDown size={17} />
                     </div>

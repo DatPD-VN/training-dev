@@ -167,7 +167,11 @@ const Header: FC = () => {
                         Không tìm thấy kết quả!
                         <ArrowUpLeft color="gray" />
                       </li>
-                    ) : null}
+                    ) : (
+                      <li className={styles.divInputSearchNoResult}>
+                        Vui lòng nhập từ khóa tìm kiếm!
+                      </li>
+                    )}
                   </ul>
                 </div>
               )}

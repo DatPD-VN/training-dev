@@ -37,13 +37,36 @@ export const useDetailProduct = (): TUseDetailProductProps => {
   // Function Increase Quantity
   const handlePlus = () => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    qtt.value = (parseInt(qtt.value) + 1).toString();
+    if (qtt.value == "999") {
+      qtt.value = qtt.value;
+    } else {
+      qtt.value = (parseInt(qtt.value) + 1).toString();
+    }
   };
 
   // Function Reduce Quantity
   const handleNoPlus = () => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    qtt.value = (parseInt(qtt.value) - 1).toString();
+    if (qtt.value == "1") {
+      qtt.value = qtt.value;
+    } else {
+      qtt.value = (parseInt(qtt.value) - 1).toString();
+    }
+  };
+
+  // Function Handle Change Quality
+  const handleChangeQuality = () => {
+    const quantity = document.querySelector("#textbox_id") as HTMLInputElement;
+    quantity.addEventListener("keydown", (e) => {
+      if (e.key === "+" || e.key === "-" || e.key === "." || e.key === "e") {
+        e.preventDefault();
+      }
+    });
+    if (parseInt(quantity.value) > 999) {
+      quantity.value = "999";
+    } else if (parseInt(quantity.value) < 1) {
+      quantity.value = "1";
+    }
   };
 
   return {
@@ -54,5 +77,6 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     handleNoPlus,
     handlePlus,
     handleClick,
+    handleChangeQuality,
   };
 };

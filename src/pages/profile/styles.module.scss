@@ -39,10 +39,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $grayColor;
+      color: $textDefault;
       margin-top: 3px;
       p {
-        color: $grayColor;
         margin-left: 3px;
         white-space: nowrap;
 
@@ -52,6 +51,7 @@
       }
       &:hover {
         color: $textDefault;
+        opacity: 0.8;
       }
     }
   }
@@ -354,7 +354,7 @@
       background-color: $textDefault;
       color: $whiteColor;
       padding: 10px;
-      cursor: pointer ;
+      cursor: pointer;
       padding-block-start: 10px;
       padding-block-end: 10px;
       min-block-size: 30px;
@@ -375,7 +375,7 @@
   }
 }
 .divProfileSubmit {
-  .divProfileSubmitDiv {
+  .divProfileSubmitDiv {  
     color: $whiteColor;
     padding: 10px 20px;
     background-color: $primary;
@@ -383,6 +383,9 @@
     margin-left: 20px;
     border-radius: 2px;
     cursor: pointer;
+    &:hover {
+      opacity: 0.85;
+    }
   }
 }
 .divProfileSubmitMessage {

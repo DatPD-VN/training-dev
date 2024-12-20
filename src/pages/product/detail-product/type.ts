@@ -7,6 +7,7 @@ type TUseDetailProductProps = {
   handleAddProduct: (item: TDataState) => void;
   handleNoPlus: () => void;
   handlePlus: () => void;
+  handleChangeQuality: () => void;
   handleClick: (item: TDataState) => void;
 };
 

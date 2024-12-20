@@ -20,6 +20,7 @@ export const useProfile = (): TUseProfileProps => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessageUploadFile, setErrorMessageUploadFile] = useState("");
   const user = JSON.parse(localStorage.getItem("profileData") as string);
+  console.log(user);
 
   useEffect(() => {
     setSuccessMessage("");
@@ -34,7 +35,20 @@ export const useProfile = (): TUseProfileProps => {
           numberPhone,
           fullName,
         } = user;
-        const [day, month, year] = birthday.split("-").map(Number);
+        if (birthday) {
+          const [day, month, year] = birthday?.split("-").map(Number);
+          setProfileData({
+            userName: userName || "",
+            email: email || "",
+            birthDay: day || "",
+            birthMonth: month || "",
+            birthYear: year || "",
+            gender: gender || "",
+            fullName: fullName || "",
+            image: image || "",
+            numberPhone: numberPhone || "",
+          });
+        }
         if (numberPhone == "") {
           setIsActiveNumber(false);
         } else {
@@ -48,10 +62,10 @@ export const useProfile = (): TUseProfileProps => {
         setProfileData({
           userName: userName || "",
           email: email || "",
-          birthDay: day || "",
-          birthMonth: month || "",
-          birthYear: year || "",
           gender: gender || "",
+          birthDay: 1,
+          birthMonth: 1,
+          birthYear: 1,
           fullName: fullName || "",
           image: image || "",
           numberPhone: numberPhone || "",
@@ -79,7 +93,7 @@ export const useProfile = (): TUseProfileProps => {
           }));
         };
         reader.readAsDataURL(file);
-        setErrorMessageUploadFile("");
+        setErrorMessageUploadFile(validation?.message as string);
       } else {
         setErrorMessageUploadFile(validation?.message as string);
       }

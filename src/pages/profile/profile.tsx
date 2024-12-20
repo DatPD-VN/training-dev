@@ -108,163 +108,169 @@ const Profile: FC = () => {
           <div className={styles.divProfileInformation}>
             <div className={styles.divProfileInformationLeft}>
               <table>
-                <tr>
-                  <td>
-                    <label htmlFor="">Tên đăng nhập</label>
-                  </td>
-                  <td>
-                    <div>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label htmlFor="">Tên đăng nhập</label>
+                    </td>
+                    <td>
                       <div>
-                        <input
-                          type="text"
-                          placeholder=""
-                          defaultValue={profileData.userName ?? ""}
-                          name="userName"
-                          onChange={handleChange}
-                        />
+                        <div>
+                          <input
+                            type="text"
+                            placeholder=""
+                            defaultValue={profileData.userName ?? ""}
+                            name="userName"
+                            onChange={handleChange}
+                            autoComplete="off"
+                          />
+                        </div>
+                        <p>Tên Đăng nhập chỉ có thể thay đổi một lần.</p>
                       </div>
-                      <p>Tên Đăng nhập chỉ có thể thay đổi một lần.</p>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="">Tên </label>
-                  </td>
-                  <td>
-                    <div className={styles.divProfileInformationLeftInput}>
-                      <input
-                        type="text"
-                        placeholder=""
-                        name="fullName"
-                        defaultValue={profileData.fullName ?? ""}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="">Email </label>
-                  </td>
-                  <td>
-                    {!isActiveEmail ? (
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label htmlFor="">Tên </label>
+                    </td>
+                    <td>
                       <div className={styles.divProfileInformationLeftInput}>
                         <input
                           type="text"
                           placeholder=""
-                          name="email"
-                          defaultValue={profileData.email ?? ""}
+                          name="fullName"
+                          defaultValue={profileData.fullName ?? ""}
+                          autoComplete="off"
                           onChange={handleChange}
                         />
                       </div>
-                    ) : (
-                      <section>
-                        <span>{profileData.email}</span>
-                        <button onClick={() => handleDelete("email")}>
-                          Xóa
-                        </button>
-                      </section>
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="">Số Điện Thoại </label>
-                  </td>
-                  <td>
-                    {!isActiveNumber ? (
-                      <div className={styles.divProfileInformationLeftInput}>
-                        <input
-                          type="text"
-                          placeholder=""
-                          name="numberPhone"
-                          defaultValue={profileData.numberPhone ?? ""}
-                          onChange={handleChange}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label htmlFor="">Email </label>
+                    </td>
+                    <td>
+                      {!isActiveEmail ? (
+                        <div className={styles.divProfileInformationLeftInput}>
+                          <input
+                            type="text"
+                            placeholder=""
+                            name="email"
+                            defaultValue={profileData.email ?? ""}
+                            autoComplete="off"
+                            onChange={handleChange}
+                          />
+                        </div>
+                      ) : (
+                        <section>
+                          <span>{profileData.email}</span>
+                          <button onClick={() => handleDelete("email")}>
+                            Xóa
+                          </button>
+                        </section>
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label htmlFor="">Số Điện Thoại </label>
+                    </td>
+                    <td>
+                      {!isActiveNumber ? (
+                        <div className={styles.divProfileInformationLeftInput}>
+                          <input
+                            type="text"
+                            placeholder=""
+                            name="numberPhone"
+                            defaultValue={profileData.numberPhone ?? ""}
+                            autoComplete="off"
+                            onChange={handleChange}
+                          />
+                        </div>
+                      ) : (
+                        <section>
+                          <span>{profileData.numberPhone}</span>
+                          <button onClick={() => handleDelete("numberPhone")}>
+                            Xóa
+                          </button>
+                        </section>
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label htmlFor="">Giới Tính </label>
+                    </td>
+                    <td className={styles.divProfileGener}>
+                      {["Nam", "Nữ", "Khác"].map((label) => (
+                        <div key={label}>
+                          <input
+                            key={label}
+                            type="checkbox"
+                            name=""
+                            id="male"
+                            checked={profileData.gender === label}
+                            onChange={() => handleChangeGender(label)}
+                          />
+                          <label
+                            className={styles.divProfileGenreLabel}
+                            htmlFor="male"
+                          >
+                            {label}
+                          </label>
+                        </div>
+                      ))}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label htmlFor="">Ngày Sinh </label>
+                    </td>
+                    <td>
+                      <div className={`${styles.divProfileBirthday} `}>
+                        <Dropdown
+                          name="birthDay"
+                          title="Ngày"
+                          data={Array.from({ length: 31 }, (_, i) => ({
+                            value: i + 1,
+                          }))}
+                          onSelect={handleChangeBirthday}
+                        />
+                        <Dropdown
+                          name="birthMonth"
+                          title="Tháng"
+                          data={Array.from({ length: 12 }, (_, i) => ({
+                            value: i + 1,
+                          }))}
+                          onSelect={handleChangeBirthday}
+                        />
+                        <Dropdown
+                          name="birthYear"
+                          title="Năm"
+                          data={Array.from({ length: 100 }, (_, i) => ({
+                            value: 2024 - i,
+                          }))}
+                          onSelect={handleChangeBirthday}
                         />
                       </div>
-                    ) : (
-                      <section>
-                        <span>{profileData.numberPhone}</span>
-                        <button onClick={() => handleDelete("numberPhone")}>
-                          Xóa
-                        </button>
-                      </section>
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="">Giới Tính </label>
-                  </td>
-                  <td className={styles.divProfileGener}>
-                    {["Nam", "Nữ", "Khác"].map((label) => (
-                      <div>
-                        <input
-                          key={label}
-                          type="checkbox"
-                          name=""
-                          id="male"
-                          checked={profileData.gender === label}
-                          onChange={() => handleChangeGender(label)}
-                        />
-                        <label
-                          className={styles.divProfileGenreLabel}
-                          htmlFor="male"
-                        >
-                          {label}
-                        </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td className={styles.divProfileSubmit}>
+                      <div className={styles.divProfileSubmitMessage}>
+                        {successMessage}
                       </div>
-                    ))}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="">Ngày Sinh </label>
-                  </td>
-                  <td>
-                    <div className={`${styles.divProfileBirthday} `}>
-                      <Dropdown
-                        name="birthDay"
-                        title="Ngày"
-                        data={Array.from({ length: 31 }, (_, i) => ({
-                          value: i + 1,
-                        }))}
-                        onSelect={handleChangeBirthday}
-                      />
-                      <Dropdown
-                        name="birthMonth"
-                        title="Tháng"
-                        data={Array.from({ length: 12 }, (_, i) => ({
-                          value: i + 1,
-                        }))}
-                        onSelect={handleChangeBirthday}
-                      />
-                      <Dropdown
-                        name="birthYear"
-                        title="Năm"
-                        data={Array.from({ length: 100 }, (_, i) => ({
-                          value: 2024 - i,
-                        }))}
-                        onSelect={handleChangeBirthday}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td className={styles.divProfileSubmit}>
-                    <div className={styles.divProfileSubmitMessage}>
-                      {successMessage}
-                    </div>
-                    <div
-                      className={styles.divProfileSubmitDiv}
-                      onClick={handleSubmit}
-                    >
-                      Lưu
-                    </div>
-                  </td>
-                </tr>
+                      <div
+                        className={styles.divProfileSubmitDiv}
+                        onClick={handleSubmit}
+                      >
+                        Lưu
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <div className={styles.divProfileInformationRight}>

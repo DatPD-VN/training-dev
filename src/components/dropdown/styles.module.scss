@@ -38,7 +38,8 @@
   padding: 8px 16px;
   color: $textTitleGray;
   background-color: transparent;
-  border: 1px solid $borderColor
+  border: 1px solid $borderColor;
+  cursor: pointer;
 }
 .dropDownClassContainer {
   position: relative;
