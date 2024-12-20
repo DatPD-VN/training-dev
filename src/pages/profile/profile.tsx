@@ -24,6 +24,7 @@ const Profile: FC = () => {
     isActiveEmail,
     successMessage,
     handleChangeBirthday,
+    errorMessageUploadFile,
   } = useProfile();
   return (
     <>
@@ -117,9 +118,7 @@ const Profile: FC = () => {
                         <input
                           type="text"
                           placeholder=""
-                          defaultValue={
-                            profileData.userName ? profileData.userName : ""
-                          }
+                          defaultValue={profileData.userName ?? ""}
                           name="userName"
                           onChange={handleChange}
                         />
@@ -138,9 +137,7 @@ const Profile: FC = () => {
                         type="text"
                         placeholder=""
                         name="fullName"
-                        defaultValue={
-                          profileData.fullName ? profileData.fullName : ""
-                        }
+                        defaultValue={profileData.fullName ?? ""}
                         onChange={handleChange}
                       />
                     </div>
@@ -157,9 +154,7 @@ const Profile: FC = () => {
                           type="text"
                           placeholder=""
                           name="email"
-                          defaultValue={
-                            profileData.email ? profileData.email : ""
-                          }
+                          defaultValue={profileData.email ?? ""}
                           onChange={handleChange}
                         />
                       </div>
@@ -167,8 +162,7 @@ const Profile: FC = () => {
                       <section>
                         <span>{profileData.email}</span>
                         <button onClick={() => handleDelete("email")}>
-                          {" "}
-                          Xóa{" "}
+                          Xóa
                         </button>
                       </section>
                     )}
@@ -185,11 +179,7 @@ const Profile: FC = () => {
                           type="text"
                           placeholder=""
                           name="numberPhone"
-                          defaultValue={
-                            profileData.numberPhone
-                              ? profileData.numberPhone
-                              : ""
-                          }
+                          defaultValue={profileData.numberPhone ?? ""}
                           onChange={handleChange}
                         />
                       </div>
@@ -197,8 +187,7 @@ const Profile: FC = () => {
                       <section>
                         <span>{profileData.numberPhone}</span>
                         <button onClick={() => handleDelete("numberPhone")}>
-                          {" "}
-                          Xóa{" "}
+                          Xóa
                         </button>
                       </section>
                     )}
@@ -281,13 +270,16 @@ const Profile: FC = () => {
             <div className={styles.divProfileInformationRight}>
               <img
                 src={
-                  (profileData.image as string)
+                  profileData.image
                     ? (profileData.image as string)
                     : "https://down-vn.img.susercontent.com/file/vn-11134004-7ras8-m3on32ln4jw598_tn"
                 }
                 alt=""
               />
               <label htmlFor="file">Chọn Ảnh</label>
+              <p className={styles.divProfileInformationRightUploadFile}>
+                {errorMessageUploadFile ?? ""}
+              </p>
               <input
                 type="file"
                 name="file"
@@ -297,7 +289,7 @@ const Profile: FC = () => {
                 onChange={handleImageChange}
               />
               <p>Dụng lượng file tối đa 1 MB </p>
-              <p>Định dạng:.JPEG, .PNG </p>
+              <p>Định dạng:.JPEG, .PNG .JPG </p>
             </div>
           </div>
         </div>

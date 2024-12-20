@@ -26,7 +26,7 @@ export const useCategories = (): TCategoriesProps => {
       choice(item.categoryID);
       navigate(
         Route(
-          `${ROUTE_CONFIG.PRODUCT}/Category/?keyword=${item.categoryName}&CategoryId=${item.categoryID} `
+          `${ROUTE_CONFIG.PRODUCT}/Category?keyword=${item.categoryName}&CategoryId=${item.categoryID}`
         )
       );
     }

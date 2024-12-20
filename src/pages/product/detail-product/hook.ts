@@ -1,13 +1,13 @@
 import { TUseDetailProductProps } from "./type";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router";
-import { Toast } from "../../../Common";
 import {
   useNewListState,
   setListCartState,
   useCountCartState,
 } from "../../../recoil";
 import { TDataState } from "../../../recoil/type";
+import { Toast } from "../../../Common/toast";
 
 export const useDetailProduct = (): TUseDetailProductProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });

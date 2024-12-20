@@ -125,15 +125,6 @@
   line-height: 20px;
   position: relative;
 }
-// .divTagTopProfile::after {
-//   content: "";
-//   position: absolute;
-//   top: -30px;
-//   right: 0px;
-//   width: 100px;
-//   height: 100px;
-// }
-
 .divTagTopIcon {
   width: 18px;
   color: $whiteColor;
@@ -263,7 +254,7 @@
   z-index: 10;
   width: 100%;
   padding: 0 10px;
-  background-color: white;
+  background-color: $whiteColor;
   box-sizing: border-box;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -274,6 +265,7 @@
     max-height: 400px;
     list-style: none;
     overflow-y: auto;
+
     li {
       text-align: left;
       padding: 10px 0;
@@ -285,8 +277,22 @@
       width: 100%;
     }
     li:hover {
-      color: #ff3d00;
+      color: $redColor;
       transition-duration: 300ms;
+    }
+    .divInputSearchNoResult {
+      text-align: left;
+      padding: 10px 0;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      &:hover {
+        color: $textDefault;
+        transition-duration: 300ms;
+      }
     }
   }
 }

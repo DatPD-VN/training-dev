@@ -3,7 +3,7 @@
 .divProfileContainer {
   display: flex;
   padding: 20px 60px;
-  background-color: #f5f5f5;
+  background-color: $whiteColor;
 }
 .divProfileSidebar {
   width: max-content;
@@ -359,7 +359,7 @@
       padding-block-end: 10px;
       min-block-size: 30px;
       &:hover {
-        background-color: aliceblue !important;
+        background-color: $whiteColor !important;
       }
     }
     &::-webkit-scrollbar {
@@ -386,7 +386,10 @@
   }
 }
 .divProfileSubmitMessage {
-  color: red;
+  color: $redColor;
   margin-bottom: 20px;
 }
-
+.divProfileInformationRightUploadFile {
+  color: $redColor;
+  font-size: 14px;
+}

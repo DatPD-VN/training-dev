@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TProfileData, TUseProfileProps } from "./types";
-import { Toast } from "../../Common";
+import { Toast } from "../../Common/toast";
+import { validationFileUpload } from "../../Common/validation-upload-file";
 
 export const useProfile = (): TUseProfileProps => {
   const [profileData, setProfileData] = useState<TProfileData>({
@@ -17,8 +18,8 @@ export const useProfile = (): TUseProfileProps => {
   const [isActiveNumber, setIsActiveNumber] = useState(false);
   const [isActiveEmail, setIsActiveEmail] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessageUploadFile, setErrorMessageUploadFile] = useState("");
   const user = JSON.parse(localStorage.getItem("profileData") as string);
-  console.log(user)
 
   useEffect(() => {
     setSuccessMessage("");
@@ -62,22 +63,33 @@ export const useProfile = (): TUseProfileProps => {
   }, []);
 
   // Handle Change Images
-  const handleImageChange = (event: any) => {
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) {
+      return;
+    }
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileData((prevData) => ({
-          ...prevData,
-          image: reader.result,
-        }));
-      };
-      reader.readAsDataURL(file);
+      const validation = validationFileUpload(event);
+      if (validation?.isValid) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setProfileData((prevData) => ({
+            ...prevData,
+            image: reader.result,
+          }));
+        };
+        reader.readAsDataURL(file);
+        setErrorMessageUploadFile("");
+      } else {
+        setErrorMessageUploadFile(validation?.message as string);
+      }
     }
   };
 
   // Handle Change Fields
-  const handleChange = (event: any) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = event.target;
     setProfileData((prevData) => ({
       ...prevData,
@@ -115,7 +127,7 @@ export const useProfile = (): TUseProfileProps => {
   };
 
   // Handle Submit Information Profile
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (user) {
       const updatedProfileData = {
@@ -140,5 +152,6 @@ export const useProfile = (): TUseProfileProps => {
     isActiveEmail,
     successMessage,
     handleChangeBirthday,
+    errorMessageUploadFile,
   };
 };

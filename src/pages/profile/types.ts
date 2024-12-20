@@ -11,6 +11,7 @@ type TUseProfileProps = {
   isActiveEmail: boolean;
   successMessage: string;
   handleChangeBirthday: (value: number, id: string) => void;
+  errorMessageUploadFile: string;
 };
 type TProfileData = {
   userName: string;

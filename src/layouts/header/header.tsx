@@ -163,13 +163,11 @@ const Header: FC = () => {
                         );
                       })
                     ) : isSearch ? (
-                      <li>
+                      <li className={styles.divInputSearchNoResult}>
                         Không tìm thấy kết quả!
                         <ArrowUpLeft color="gray" />
                       </li>
-                    ) : (
-                      null
-                    )}
+                    ) : null}
                   </ul>
                 </div>
               )}
