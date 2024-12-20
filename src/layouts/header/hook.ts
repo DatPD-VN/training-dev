@@ -26,7 +26,7 @@ export const useHeader = (): THeaderProps => {
   const hashtag = location.state;
   const tag = hashtag !== null ? hashtag.hashtag : null;
   const delData: any = setDelCategory();
-  const user: any = localStorage.getItem("profileData");
+  const user: string = localStorage.getItem("profileData") as string;
   const userName = JSON.parse(user)?.email;
   const userImage = JSON.parse(user)?.image;
   const list: Array<TCategoryState> = useListCategory();
@@ -109,12 +109,12 @@ export const useHeader = (): THeaderProps => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         inputRef.current &&
         searchRef.current &&
-        !inputRef.current.contains(event.target) &&
-        !searchRef.current.contains(event.target)
+        !inputRef.current.contains(event.target as Node) &&
+        !searchRef.current.contains(event.target as Node)
       ) {
         setIsDisabled(true);
       }

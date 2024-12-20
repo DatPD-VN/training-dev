@@ -24,7 +24,7 @@ export const useCart = (): TUseCartProps => {
   const delCartAll = setDelAllCartState();
   const handleCart = setHandleCartState();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isSelectId, setIsSelectIds] = useState<any>([]);
+  const [isSelectId, setIsSelectIds] = useState<number[]>([]);
   const listProduct = listSearchCart.length > 0 ? listSearchCart : cart;
 
   // Delete Product by ID
