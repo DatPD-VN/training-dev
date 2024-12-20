@@ -8,13 +8,11 @@ import {
   setSearchCartState,
   useListSearchCartState,
   setDelAllCartState,
-  setListCartState,
-  setAddCategory,
 } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
 import { useRef, useState } from "react";
 import { TCartState, TCategoryState } from "../../recoil/type";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 
 export const useCart = (): TUseCartProps => {

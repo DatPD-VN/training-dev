@@ -28,7 +28,7 @@ type TCartState = {
   isVoucher: boolean;
   voucherProduct: string;
   hashTag: Array<string>;
-  categories: string;
+  categoryName: string;
   categoryID: number;
   quantity: number;
 };

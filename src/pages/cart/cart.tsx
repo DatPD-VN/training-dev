@@ -31,7 +31,7 @@ const Cart: FC = () => {
     isSelectId,
     handleDelAll,
     handleChangeQuality,
-    handleAddCategory
+    handleAddCategory,
   } = useCart();
   return (
     <>
