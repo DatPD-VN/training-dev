@@ -1,8 +1,10 @@
+import { TCategoryState } from "../../recoil/type";
+
 type THeaderProps = {
   handleNav: () => void;
   handleOpen: () => void;
   tag: string;
-  handleSearch: (item: string) => void;
+  handleChangeSearch: (item: string) => void;
   searchRef: React.RefObject<HTMLInputElement>;
   inputSearch: () => void;
   isDisabled: boolean;
@@ -10,6 +12,12 @@ type THeaderProps = {
   handleAddHashTag: (item: string) => void;
   countCart: number;
   inputRef: React.RefObject<HTMLDivElement>;
+  userName: string | null;
+  userImage: string | null;
+  handleLogOut: () => void;
+  list: Array<TCategoryState>;
+  handleAddCategory: (item: TCategoryState) => void;
+  isSearch : boolean;
 };
 
 export type { THeaderProps };

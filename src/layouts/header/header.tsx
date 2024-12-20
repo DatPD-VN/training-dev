@@ -13,6 +13,7 @@ import Logo from "../../icon/logo";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useHeader } from "./hook";
+import { TCategoryState } from "../../recoil/type";
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Header: FC = () => {
     handleNav,
     handleOpen,
     tag,
-    handleSearch,
+    handleChangeSearch,
     searchRef,
     inputSearch,
     isDisabled,
@@ -28,6 +29,12 @@ const Header: FC = () => {
     handleAddHashTag,
     countCart,
     inputRef,
+    userName,
+    userImage,
+    handleLogOut,
+    list,
+    handleAddCategory,
+    isSearch,
   } = useHeader();
 
   return (
@@ -53,19 +60,58 @@ const Header: FC = () => {
               <ChevronDown className={styles.divTagTopIcon} />
             </a>
           </div>
-          <div className={styles.divTagTop}>
-            <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
-              <p className={styles.divTagTopATitle}>Đăng Ký </p>
-            </a>
-          </div>
-          <div>
-            <p style={{ color: "white" }}>| </p>
-          </div>
-          <div className={styles.divTagTop}>
-            <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.divTagTopA}>
-              <p className={styles.divTagTopATitle}>Đăng Nhập </p>
-            </a>
-          </div>
+          {userName && userImage ? (
+            <div className={styles.divProfile}>
+              <a href="" className={styles.divTagTopProfile}>
+                <img
+                  className={styles.imageProfile}
+                  src={
+                    userImage
+                      ? userImage
+                      : "https://media.istockphoto.com/id/1131164548/vector/avatar-5.jpg?s=612x612&w=0&k=20&c=CK49ShLJwDxE4kiroCR42kimTuuhvuo2FH5y_6aSgEo="
+                  }
+                  alt=""
+                />
+                <p className={styles.divTagTopATitleUser}>{userName} </p>
+              </a>
+              <div className={styles.divProfileInfo}>
+                <ul>
+                  <li>
+                    <a href={Route(ROUTE_CONFIG.PROFILE)}>Tài Khoản Của Tôi</a>
+                  </li>
+                  <li>
+                    <a href={Route(ROUTE_CONFIG.CART)}>Đơn Mua</a>
+                  </li>
+                  <li>
+                    <a onClick={handleLogOut}>Đăng Xuất</a>
+                  </li>
+                </ul>
+              </div>
+              <div className={styles.divProfileOverHidden}> </div>
+            </div>
+          ) : (
+            <>
+              <div className={styles.divTagTop}>
+                <a
+                  href={Route(ROUTE_CONFIG.LOGIN)}
+                  className={styles.divTagTopA}
+                >
+                  <p className={styles.divTagTopATitle}>Đăng Ký </p>
+                </a>
+              </div>
+              <div>
+                <p style={{ color: "white" }}>| </p>
+              </div>
+              <div className={styles.divTagTop}>
+                <a
+                  href={Route(ROUTE_CONFIG.LOGIN)}
+                  className={styles.divTagTopA}
+                >
+                  <p className={styles.divTagTopATitle}>Đăng Nhập </p>
+                </a>
+              </div>
+            </>
+          )}
         </div>
         <div className={styles.headerBottom}>
           <div className={styles.headerBottomLogo}>
@@ -86,10 +132,10 @@ const Header: FC = () => {
                 onClick={handleOpen}
                 className={styles.input}
                 onChange={(e) => {
-                  handleSearch(e.target.value.toLowerCase());
+                  handleChangeSearch(e.target.value.toLowerCase());
                 }}
                 id="inputSearch"
-                autoComplete="false"
+                autoComplete="off"
                 ref={searchRef}
               />
               <Search
@@ -102,48 +148,42 @@ const Header: FC = () => {
               {!isDisabled && (
                 <div className={styles.divInputSearchWrap} ref={inputRef}>
                   <ul className={styles.divInputSearch}>
-                    {listHashtag.map((item: string, index: number) => {
-                      return (
-                        <li
-                          key={index}
-                          onClick={() => {
-                            handleAddHashTag(item);
-                          }}
-                        >
-                          {item}
-                          <ArrowUpLeft color="gray" />
-                        </li>
-                      );
-                    })}
+                    {listHashtag.length > 0 ? (
+                      listHashtag.map((item: string, index: number) => {
+                        return (
+                          <li
+                            key={index}
+                            onClick={() => {
+                              handleAddHashTag(item);
+                            }}
+                          >
+                            {item}
+                            <ArrowUpLeft color="gray" />
+                          </li>
+                        );
+                      })
+                    ) : isSearch ? (
+                      <li className={styles.divInputSearchNoResult}>
+                        Không tìm thấy kết quả!
+                        <ArrowUpLeft color="gray" />
+                      </li>
+                    ) : (
+                      <li className={styles.divInputSearchNoResult}>
+                        Vui lòng nhập từ khóa tìm kiếm!
+                      </li>
+                    )}
                   </ul>
                 </div>
               )}
             </div>
             <div className={styles.DivList}>
-              <li className={styles.list}>
-                <a href="">Dép</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Baby Three</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Ốp lưng</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Áo khoác</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Gấu Bông</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Chân Váy</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Váy Nữ</a>
-              </li>
-              <li className={styles.list}>
-                <a href="">Kẹp Tóc </a>
-              </li>
+              {list.map((item: TCategoryState, index) => (
+                <li key={index} className={styles.list}>
+                  <a onClick={() => handleAddCategory(item)}>
+                    {item.categoryName}
+                  </a>
+                </li>
+              ))}
             </div>
           </div>
           <div className={styles.headerBottomRight}>

@@ -7,7 +7,7 @@ import { useCategories } from "./hook";
 import { TCategoryState } from "../../recoil/type";
 
 const Categories: FC = () => {
-  const { list, handleAddCategory,nameCategory } = useCategories();
+  const { list, handleAddCategory, nameCategory } = useCategories();
   return (
     <>
       <section className={styles.containerCategories}>
@@ -20,28 +20,31 @@ const Categories: FC = () => {
           </a>
         </div>
         <div className={styles.listCategories}>
-          {list.map((item : TCategoryState, index) => (
-            (item.categoryName == nameCategory) ? 
-            <div
-              key={index}
-              className={`${styles.categoryDivSelect} } `}
-              onClick={() => handleAddCategory(item)} 
-            >
-              <a href="#">
-                <ArrowRight />
-                {item.categoryName}
-              </a>
-            </div> :  <div
-              key={index}
-              className={`${styles.categoryDiv} } `}
-              onClick={() => handleAddCategory(item)} 
-            >
-              <a href="#">
-                <ArrowRight />
-                {item.categoryName}
-              </a>
-            </div>
-          ))}
+          {list.map((item: TCategoryState, index) =>
+            item.categoryID == nameCategory ? (
+              <div
+                key={index}
+                className={`${styles.categoryDivSelect} } `}
+                onClick={() => handleAddCategory(item)}
+              >
+                <a href="">
+                  <ArrowRight />
+                  {item.categoryName}
+                </a>
+              </div>
+            ) : (
+              <div
+                key={index}
+                className={`${styles.categoryDiv} } `}
+                onClick={() => handleAddCategory(item)}
+              >
+                <a href="">
+                  <ArrowRight />
+                  {item.categoryName}
+                </a>
+              </div>
+            )
+          )}
         </div>
         <div className={styles.showCategories}>
           Xem thêm <ChevronDown size={16} />

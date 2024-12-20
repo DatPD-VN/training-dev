@@ -1,14 +1,15 @@
 import { FC, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import AppInit from "./AppInit";
-import { Login } from "../pages/login";
-import { RessetPass } from "../pages/reset-pass/reset-pass";
+import { ResetPass } from "../pages/reset-pass/reset-pass";
 import { Dashboard } from "../pages/product";
 import DetailProduct from "../pages/product/detail-product/detail-product";
 import { RecoilRoot } from "recoil";
 import { Cart } from "../pages/cart/cart";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Login } from "../pages/login";
+import { Profile } from "../pages/profile";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -29,9 +30,9 @@ const appRoutes: {
     Component: Login,
   },
   {
-    path: baseRoute("resset-Pass"),
-    title: `${baseTitle} | Resset-Pass`,
-    Component: RessetPass,
+    path: baseRoute("reset-Pass"),
+    title: `${baseTitle} | Reset-Pass`,
+    Component: ResetPass,
   },
   {
     path: baseRoute("products"),
@@ -57,6 +58,11 @@ const appRoutes: {
     path: baseRoute("cart"),
     title: `${baseTitle} | Cart`,
     Component: Cart,
+  },
+  {
+    path: baseRoute("profile"),
+    title: `${baseTitle} | Profile`,
+    Component: Profile,
   },
 ];
 

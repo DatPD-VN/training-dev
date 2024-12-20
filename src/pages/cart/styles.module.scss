@@ -114,7 +114,7 @@
     .itemWrapInfoTitle {
       display: flex;
       flex-direction: column;
-
+      cursor: pointer;
       span {
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -797,4 +797,7 @@
   justify-content: center;
   margin-left: 10px;
   width: 100%;
+}
+.itemWrapInfoImg {
+  cursor: pointer;
 }

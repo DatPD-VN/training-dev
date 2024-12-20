@@ -5,10 +5,13 @@ import {
   setListSearch,
   setListSuggest,
   setDelCategory,
+  useListCategory,
+  setAddCategory,
 } from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Route, { ROUTE_CONFIG } from "../../app/route";
+import { TCategoryState } from "../../recoil/type";
 
 export const useHeader = (): THeaderProps => {
   const navigate = useNavigate();
@@ -23,16 +26,43 @@ export const useHeader = (): THeaderProps => {
   const hashtag = location.state;
   const tag = hashtag !== null ? hashtag.hashtag : null;
   const delData: any = setDelCategory();
+  const user: string = localStorage.getItem("profileData") as string;
+  const userName = JSON.parse(user)?.email;
+  const userImage = JSON.parse(user)?.image;
+  const list: Array<TCategoryState> = useListCategory();
+  const choiceCategory = setAddCategory();
+  const searchParams = new URLSearchParams(location.search);
+  const keyword = Number(searchParams.get("CategoryId"));
+  const nameCategory: number = keyword ? keyword : -1;
+  const [isSearch, setIsSearch] = useState<boolean>(false);
 
   // Handle Open Nav Search
   const handleOpen = () => {
     setIsDisabled(false);
   };
 
+  // Handle Set Input Data When Search Change
+  const handleChangeSearch = (item: string) => {
+    const valueInput = searchRef.current;
+    const value = valueInput?.value;
+    if (value !== undefined && value !== "") {
+      setIsSearch(true);
+      handleSearch(item);
+    } else {
+      setIsSearch(false);
+      handleSearch(item);
+    }
+  };
+
   // Handle Set Input Data When Click Search
   const inputSearch = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
+    if (value !== undefined && value !== "") {
+      setIsSearch(true);
+    } else {
+      setIsSearch(false);
+    }
     choice(value);
     navigate(Route(`${ROUTE_CONFIG.PRODUCT}/${value} `), {
       state: {
@@ -48,6 +78,12 @@ export const useHeader = (): THeaderProps => {
     navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
 
+  // Handle LogOut
+  const handleLogOut = () => {
+    localStorage.removeItem("profileData");
+    navigate(Route(ROUTE_CONFIG.PRODUCT));
+  };
+
   // Handle Set Input Data When Click HashTag
   const handleAddHashTag = (item: string) => {
     (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
@@ -60,9 +96,26 @@ export const useHeader = (): THeaderProps => {
     });
   };
 
+  // Function add Category
+  const handleAddCategory = (item: TCategoryState) => {
+    if (nameCategory !== item.categoryID) {
+      choiceCategory(item.categoryID);
+      navigate(
+        Route(
+          `${ROUTE_CONFIG.PRODUCT}/Category?keyword=${item.categoryName}&CategoryId=${item.categoryID}`
+        )
+      );
+    }
+  };
+
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (inputRef.current && !inputRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        inputRef.current &&
+        searchRef.current &&
+        !inputRef.current.contains(event.target as Node) &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
         setIsDisabled(true);
       }
     };
@@ -72,12 +125,12 @@ export const useHeader = (): THeaderProps => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
+
   return {
     handleNav,
     handleOpen,
     tag,
-    handleSearch,
+    handleChangeSearch,
     searchRef,
     inputSearch,
     isDisabled,
@@ -85,5 +138,11 @@ export const useHeader = (): THeaderProps => {
     handleAddHashTag,
     countCart,
     inputRef,
+    userName,
+    userImage,
+    handleLogOut,
+    list,
+    handleAddCategory,
+    isSearch,
   };
 };

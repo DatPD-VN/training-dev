@@ -30,6 +30,8 @@ const Cart: FC = () => {
     handleCheckAll,
     isSelectId,
     handleDelAll,
+    handleChangeQuality,
+    handleAddCategory,
   } = useCart();
   return (
     <>
@@ -213,13 +215,14 @@ const Cart: FC = () => {
             <div className={styles.bodyWrap}>
               <div className={styles.navWrap}>
                 <div className={`${styles.navWrapInput} ${styles.div5}`}>
-                  <input type="checkbox" name="" id="" />
+                  <input type="checkbox" name="" id="all" hidden />
                 </div>
-                <div
+                <label
+                  htmlFor="all"
                   className={`${styles.navWrapTitleProduct} ${styles.div40}`}
                 >
                   Sản Phẩm
-                </div>
+                </label>
                 <div className={`${styles.navWrapTitle} ${styles.div13}`}>
                   Đơn Giá
                 </div>
@@ -254,8 +257,24 @@ const Cart: FC = () => {
                       src={item.imgProduct}
                       alt=""
                       className={styles.itemWrapInfoImg}
+                      onClick={() => {
+                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
+                          state: {
+                            id: item.id,
+                          },
+                        });
+                      }}
                     />
-                    <div className={styles.itemWrapInfoTitle}>
+                    <div
+                      className={styles.itemWrapInfoTitle}
+                      onClick={() => {
+                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
+                          state: {
+                            id: item.id,
+                          },
+                        });
+                      }}
+                    >
                       <span>{item.titleProduct}</span>
                       <img
                         src="https://down-vn.img.susercontent.com/file/vn-11134258-7ras8-m2waud2e3pbk8b"
@@ -289,9 +308,12 @@ const Cart: FC = () => {
                       <input
                         type="number"
                         min={1}
+                        max={999}
+                        onChange={handleChangeQuality}
                         value={item.quantity}
-                        name=""
-                        id=""
+                        name={item.titleProduct}
+                        id={String(item.id)}
+                        className="textbox_id"
                       />
                       <button onClick={() => handleCase("tang", item)}>
                         <Plus />
@@ -309,7 +331,10 @@ const Cart: FC = () => {
                   <div className={`${styles.itemWrapHandle} ${styles.div13}`}>
                     <span onClick={() => handleDel(item.id)}>Xóa</span>
 
-                    <div className={styles.itemWrapHandleDiv}>
+                    <div
+                      className={styles.itemWrapHandleDiv}
+                      onClick={() => handleAddCategory(item)}
+                    >
                       <span>Tìm sản phẩm tương tự</span>
                       <ChevronDown size={17} />
                     </div>
@@ -353,23 +378,37 @@ const Cart: FC = () => {
                   <div className={styles.footerWrapBottomLeft}>
                     {isSelectId.length > 0 &&
                     isSelectId.length == listProduct.length ? (
-                      <input
-                        type="checkbox"
-                        checked
-                        onChange={() => handleCheckAll()}
-                      />
+                      <>
+                        <input
+                          type="checkbox"
+                          checked
+                          onChange={() => handleCheckAll()}
+                          id="checkAll"
+                        />
+                        <label
+                          htmlFor="delCheckAll"
+                          className={styles.footerWrapBottomLeftAll}
+                          onClick={() => handleCheckAll()}
+                        >
+                          Bỏ chọn Tất Cả
+                        </label>
+                      </>
                     ) : (
-                      <input
-                        type="checkbox"
-                        onChange={() => handleCheckAll()}
-                      />
+                      <>
+                        <input
+                          type="checkbox"
+                          onChange={() => handleCheckAll()}
+                          id="delCheckAll"
+                        />
+                        <label
+                          htmlFor="checkAll"
+                          className={styles.footerWrapBottomLeftAll}
+                          onClick={() => handleCheckAll()}
+                        >
+                          Chọn Tất Cả
+                        </label>
+                      </>
                     )}
-                    <span
-                      className={styles.footerWrapBottomLeftAll}
-                      onClick={() => handleCheckAll()}
-                    >
-                      Chọn Tất Cả
-                    </span>
                     <span
                       className={styles.footerWrapBottomLeftHandleDel}
                       onClick={() => handleDelAll()}

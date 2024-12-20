@@ -8,13 +8,14 @@
   height: auto;
   padding: 0px 56px 5px;
   background-color: $primary;
-  z-index: 10;
+  z-index: 4;
   position: sticky;
   top: 0px;
 }
 .headerTop {
   display: flex;
   justify-content: end;
+  padding-top: 5px;
 }
 .divTagTop {
   display: flex;
@@ -27,18 +28,103 @@
 .divTagTop:hover {
   opacity: 0.9;
 }
+.divProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: $whiteColor;
+  margin: 0px 10px;
+  position: relative;
+  z-index: 12;
+}
+.divProfileInfo {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: $whiteColor;
+  border-radius: 2px;
+  color: $textDefault;
+  width: max-content;
+  padding: 0px 20px;
+  z-index: 20;
+  transition-duration: 400ms;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+    font-size: 14px;
+    li {
+      margin: 15px 0;
+      cursor: pointer;
+      transition-duration: 300ms;
+      a {
+        text-decoration: none;
+        color: $textDefault;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+.divProfileInfo::after {
+  content: "";
+  position: absolute;
+  top: -22px;
+  right: 10px;
+  z-index: 20;
+  border-color: transparent transparent $whiteColor transparent;
+  border-style: solid;
+  border-width: 13px;
+}
+.divProfile:hover .divProfileInfo {
+  display: block;
+}
+.divProfileOverHidden {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 150px;
+  height: 50px;
+}
 .divTagTopA:hover {
   text-decoration: none;
   cursor: pointer;
   display: flex;
+}
+.divTagTopProfile:hover {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.imageProfile {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
 }
 .divTagTopA {
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-duration: 400ms;
+  z-index: 20;
 }
-
+.divTagTopProfile {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 400ms;
+  z-index: 20;
+  line-height: 20px;
+  position: relative;
+}
 .divTagTopIcon {
   width: 18px;
   color: $whiteColor;
@@ -47,6 +133,15 @@
   font-size: 14px;
   color: $whiteColor;
   margin: 0px 6px;
+}
+.divTagTopATitleUser {
+  font-size: 14px;
+  color: $whiteColor;
+  margin: 0px 6px;
+  overflow: hidden;
+  max-width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .headerBottom {
   display: flex;
@@ -139,6 +234,7 @@
 .headerBottomRightIconDiv {
   width: min-content;
   position: relative;
+  z-index: 10;
 }
 
 .headerBottomRightIconDivCount {
@@ -158,7 +254,7 @@
   z-index: 10;
   width: 100%;
   padding: 0 10px;
-  background-color: white;
+  background-color: $whiteColor;
   box-sizing: border-box;
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -169,6 +265,7 @@
     max-height: 400px;
     list-style: none;
     overflow-y: auto;
+
     li {
       text-align: left;
       padding: 10px 0;
@@ -180,8 +277,23 @@
       width: 100%;
     }
     li:hover {
-      color: #ff3d00;
+      color: $redColor;
       transition-duration: 300ms;
+    }
+    .divInputSearchNoResult {
+      text-align: left;
+      padding: 10px 0;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      color: $textTitleGray;
+      &:hover {
+        color: $textTitleGray;
+        transition-duration: 300ms;
+      }
     }
   }
 }

@@ -1,13 +1,13 @@
 import { TUseDetailProductProps } from "./type";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router";
-import { Toast } from "../../../Common";
 import {
   useNewListState,
   setListCartState,
   useCountCartState,
 } from "../../../recoil";
 import { TDataState } from "../../../recoil/type";
+import { Toast } from "../../../Common/toast";
 
 export const useDetailProduct = (): TUseDetailProductProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
@@ -24,26 +24,49 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     let quantity = qtt.value;
     let wrapItem = { ...item, quantity: quantity };
     addCart(wrapItem);
-    Toast();
+    Toast("success", "Thêm sản phẩm thành công");
   };
 
   // Handle Add Product
   const handleAddProduct = (item: TDataState) => {
     let wrapItem = { ...item, quantity: 1 };
     addCart(wrapItem);
-    Toast();
+    Toast("success", "Thêm sản phẩm thành công");
   };
 
   // Function Increase Quantity
   const handlePlus = () => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    qtt.value = (parseInt(qtt.value) + 1).toString();
+    if (qtt.value == "999") {
+      qtt.value = qtt.value;
+    } else {
+      qtt.value = (parseInt(qtt.value) + 1).toString();
+    }
   };
 
   // Function Reduce Quantity
   const handleNoPlus = () => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
-    qtt.value = (parseInt(qtt.value) - 1).toString();
+    if (qtt.value == "1") {
+      qtt.value = qtt.value;
+    } else {
+      qtt.value = (parseInt(qtt.value) - 1).toString();
+    }
+  };
+
+  // Function Handle Change Quality
+  const handleChangeQuality = () => {
+    const quantity = document.querySelector("#textbox_id") as HTMLInputElement;
+    quantity.addEventListener("keydown", (e) => {
+      if (e.key === "+" || e.key === "-" || e.key === "." || e.key === "e") {
+        e.preventDefault();
+      }
+    });
+    if (parseInt(quantity.value) > 999) {
+      quantity.value = "999";
+    } else if (parseInt(quantity.value) < 1) {
+      quantity.value = "1";
+    }
   };
 
   return {
@@ -54,5 +77,6 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     handleNoPlus,
     handlePlus,
     handleClick,
+    handleChangeQuality,
   };
 };

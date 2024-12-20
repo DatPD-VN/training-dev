@@ -6,8 +6,7 @@ import { useLogin } from "./hook";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 
 const Login: FC = () => {
-  const { email, password, isDisabled, error, handleChange, handleSubmit } =
-    useLogin();
+  const { isDisabled, error, handleChange, handleSubmit } = useLogin();
   return (
     <>
       <section className={styles.container}>
@@ -24,8 +23,7 @@ const Login: FC = () => {
                 placeholder="Email/Số Điện Thoại/Tên Đăng Nhập"
                 name="email"
                 className={styles.input}
-                value={email}
-                autoComplete="false"
+                autoComplete="off"
                 onChange={(e) => {
                   handleChange("email", e.target.value);
                 }}
@@ -39,8 +37,7 @@ const Login: FC = () => {
                 type="password"
                 name="password"
                 className={styles.input}
-                value={password}
-                autoComplete="true"
+                autoComplete="off"
                 onChange={(e) => {
                   handleChange("password", e.target.value);
                 }}

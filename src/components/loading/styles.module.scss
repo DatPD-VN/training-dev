@@ -57,6 +57,7 @@
   box-sizing: border-box;
   margin-bottom: 20px;
   position: relative;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 .divItemWrapperHover {
   position: relative;
@@ -150,6 +151,7 @@
   padding: 10px 0;
   height: 10px;
   width: 50%;
+  margin-bottom: 10px;
 }
 .headerWrapper {
   display: flex;

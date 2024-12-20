@@ -5,27 +5,36 @@ export const ROUTE_CONFIG = {
   PRODUCT: "/products",
   DETAIL_PRODUCT: "/products/detail-Product",
   LOGIN: "/login",
-  RESETPASS: "/resset-Pass",
+  RESETPASS: "/reset-Pass",
+  PROFILE: "/profile",
 };
 
 export const appCheck: {
   path: string;
 }[] = [
   {
-    path: `${Route(ROUTE_CONFIG.LOGIN)}`,
+    path: "training-dev/ec/login",
   },
   {
-    path: Route(ROUTE_CONFIG.RESETPASS),
+    path: "training-dev/ec/reset-Pass",
   },
 ];
-
 
 function Route(link: string) {
   const ROUTE = {
     Link: `${path}${link}`,
   };
+  if (link == ROUTE_CONFIG.PROFILE) {
+    if (localStorage.getItem("profileData")) {
+      return ROUTE.Link;
+    } else {
+      return Route(ROUTE_CONFIG.PRODUCT)
+    }
+  } else {
+    return ROUTE.Link;
+  }
 
-  return ROUTE.Link;
+  
 }
 
 export default Route;

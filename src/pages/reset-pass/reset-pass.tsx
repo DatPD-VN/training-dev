@@ -7,7 +7,7 @@ import Route, { ROUTE_CONFIG } from "../../app/route";
 
 
 
-const RessetPass: FC = () => {
+const ResetPass: FC = () => {
   const navigate = useNavigate();
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
 
@@ -64,4 +64,4 @@ const RessetPass: FC = () => {
   </>;
 };
 
-export { RessetPass };
+export { ResetPass };

@@ -11,11 +11,11 @@ type TAppInitProps = {
 };
 
 const AppInit: FC<TAppInitProps> = ({ children, title, path }) => {
-  const isExcludedPath = appCheck.some((route) => route.path === path);
+  const isExcludedPath = appCheck.some((route) => route.path == path);
+  document.title = title;
   return (
     <>
       {!isExcludedPath && <Header />}
-      <title>{title}</title>
       {children}
       {!isExcludedPath && <Footer />}
     </>

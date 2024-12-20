@@ -30,6 +30,7 @@ function DetailProduct() {
     handleNoPlus,
     handlePlus,
     handleClick,
+    handleChangeQuality,
   } = useDetailProduct();
 
   return (
@@ -507,7 +508,9 @@ function DetailProduct() {
                       <input
                         type="number"
                         defaultValue={1}
+                        onChange={handleChangeQuality}
                         min={1}
+                        max={999}
                         name=""
                         id="textbox_id"
                       />

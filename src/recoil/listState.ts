@@ -24,14 +24,18 @@ const listSuggestState: RecoilState<string[]> = atom<string[]>({
 
 const listCategories = categoryState;
 
-const listCategoriesState: RecoilState<TCategoryState[]> = atom<TCategoryState[]>({
+const listCategoriesState: RecoilState<TCategoryState[]> = atom<
+  TCategoryState[]
+>({
   key: "listCategory",
   default: listCategories,
 });
 
 const resultCategories: Array<TCategoryState> = [];
 
-const resultCategoriesState: RecoilState<TCategoryState[]> = atom<TCategoryState[]>({
+const resultCategoriesState: RecoilState<TCategoryState[]> = atom<
+  TCategoryState[]
+>({
   key: "resultCategory",
   default: resultCategories,
 });
