@@ -6,12 +6,14 @@ import { ProductLoaing } from "../../components/loading";
 import { Categories } from "../../layouts/categories";
 import { useProduct } from "./hook";
 import { TListProduct } from "./type";
+import { Banner } from "../../layouts/banner/banner";
 
 const Dashboard: FC = () => {
   const navigate = useNavigate();
   const { listProduct, isLoading } = useProduct();
   return (
     <>
+      <Banner />
       <section className={styles.mainContainer}>
         <div className={styles.categoriesContainer}>
           <Categories />
