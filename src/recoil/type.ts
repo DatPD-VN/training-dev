@@ -4,7 +4,7 @@ type TCategoryState = {
   categoryList: Array<TCategoryList>;
 };
 type TCategoryList = {
-  categoryDetailID: number;
+  categoryDetailId: number;
   categoryDetailName: string;
 };
 type TImageState = {
@@ -22,7 +22,7 @@ type TDataState = {
   hashTag: Array<string>;
   categoryName: string;
   categoryID: number;
-  categoryDetailID: number;
+  categoryDetailId: number;
 };
 type TCartState = {
   id: number;

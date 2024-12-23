@@ -132,7 +132,7 @@ export const addDetailCategory = selector({
       (item: TDataState) => categoryID == item.categoryID
     );
     const valueResult = value.filter(
-      (item: TDataState) => itemDetailID == item.categoryDetailID
+      (item: TDataState) => itemDetailID == item.categoryDetailId
     );
 
     set(listSearchState, []);

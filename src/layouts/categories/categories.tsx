@@ -12,7 +12,7 @@ const Categories: FC = () => {
     handleAddCategory,
     nameCategory,
     handleAddDetailCategory,
-    detailCategoryID,
+    detailCategoryId,
     visibleCount,
     setVisibleCount,
   } = useCategories();
@@ -32,7 +32,7 @@ const Categories: FC = () => {
             item.categoryID == nameCategory ? (
               <li key={index}>
                 <input type="checkbox" name="" id={item.categoryName} hidden />
-                <div className={`${styles.categoryDivSelect} } `}>
+                <div className={styles.categoryDivSelect}>
                   <a>
                     <ArrowRight />
                     <label
@@ -51,7 +51,7 @@ const Categories: FC = () => {
                           key={index}
                           onClick={() => handleAddDetailCategory(item, list)}
                           className={`${
-                            detailCategoryID === list.categoryDetailName
+                            detailCategoryId === list.categoryDetailName
                               ? styles.activeDetailCategory
                               : ""
                           }`}
@@ -66,7 +66,7 @@ const Categories: FC = () => {
             ) : (
               <li key={index}>
                 <input type="checkbox" name="" id={item.categoryName} hidden />
-                <div key={index} className={`${styles.categoryDiv} } `}>
+                <div key={index} className={styles.categoryDiv}>
                   <a>
                     <ArrowRight />
                     <label
@@ -85,7 +85,7 @@ const Categories: FC = () => {
                           key={index}
                           onClick={() => handleAddDetailCategory(item, list)}
                           className={`${
-                            detailCategoryID === list.categoryDetailName
+                            detailCategoryId === list.categoryDetailName
                               ? styles.activeDetailCategory
                               : ""
                           }`}

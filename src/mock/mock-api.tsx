@@ -14,7 +14,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#Giaydep", "#TaiNghe", "#tat"],
     categoryName: "Áo Quần",
     categoryID: 1,
-    categoryDetailID: 1,
+    categoryDetailId: 1,
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#tat"],
     categoryID: 1,
     categoryName: "Tất",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem"],
     categoryID: 3,
     categoryName: "Giày dép",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 4,
     categoryName: "Tai Nghe",
-    categoryDetailID: 4,
+    categoryDetailId: 4,
   },
   {
     id: 5,
@@ -78,7 +78,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 5,
     categoryName: "Mỹ Phẩm",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 6,
@@ -93,7 +93,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#TaiNghe", "#tat"],
     categoryID: 1,
     categoryName: "Áo Quần",
-    categoryDetailID: 1,
+    categoryDetailId: 1,
   },
   {
     id: 7,
@@ -109,7 +109,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
     categoryID: 3,
     categoryName: "Giày dép",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 8,
@@ -125,7 +125,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#TaiNghe", "#tat"],
     categoryID: 3,
     categoryName: "Giày dép",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 9,
@@ -141,7 +141,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 4,
     categoryName: "Tai Nghe",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 10,
@@ -156,7 +156,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#tat"],
     categoryID: 1,
     categoryName: "Áo Quần",
-    categoryDetailID: 1,
+    categoryDetailId: 1,
   },
   {
     id: 11,
@@ -172,7 +172,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe"],
     categoryID: 3,
     categoryName: "Tất",
-    categoryDetailID: 1,
+    categoryDetailId: 1,
   },
   {
     id: 12,
@@ -188,7 +188,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#Giaydep", "#trangdiem", "#tat"],
     categoryID: 5,
     categoryName: "Giày dép",
-    categoryDetailID: 1,
+    categoryDetailId: 1,
   },
   {
     id: 13,
@@ -204,7 +204,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
     categoryID: 2,
     categoryName: "Giày dép",
-    categoryDetailID: 2,
+    categoryDetailId: 2,
   },
   {
     id: 14,
@@ -220,7 +220,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
     categoryID: 2,
     categoryName: "Giày dép",
-    categoryDetailID: 1,
+    categoryDetailId: 1,
   },
 ];
 
@@ -230,11 +230,11 @@ export const categoryState: Array<TCategoryState> = [
     categoryName: "Áo Quần",
     categoryList: [
       {
-        categoryDetailID: 1,
+        categoryDetailId: 1,
         categoryDetailName: "Quần bò",
       },
       {
-        categoryDetailID: 2,
+        categoryDetailId: 2,
         categoryDetailName: " Quần dài",
       },
     ],
@@ -244,11 +244,11 @@ export const categoryState: Array<TCategoryState> = [
     categoryName: "Tất",
     categoryList: [
       {
-        categoryDetailID: 1,
+        categoryDetailId: 1,
         categoryDetailName: "Tất đen",
       },
       {
-        categoryDetailID: 2,
+        categoryDetailId: 2,
         categoryDetailName: " Tất cao",
       },
     ],
@@ -258,11 +258,11 @@ export const categoryState: Array<TCategoryState> = [
     categoryName: "Giày dép",
     categoryList: [
       {
-        categoryDetailID: 1,
+        categoryDetailId: 1,
         categoryDetailName: "Giày cao",
       },
       {
-        categoryDetailID: 2,
+        categoryDetailId: 2,
         categoryDetailName: " Giày thấp",
       },
     ],
@@ -277,11 +277,11 @@ export const categoryState: Array<TCategoryState> = [
     categoryName: "Mỹ Phẩm",
     categoryList: [
       {
-        categoryDetailID: 1,
+        categoryDetailId: 1,
         categoryDetailName: "Son",
       },
       {
-        categoryDetailID: 2,
+        categoryDetailId: 2,
         categoryDetailName: " Kem Dưỡng",
       },
     ],

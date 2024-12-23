@@ -20,14 +20,14 @@ export const useCategories = (): TCategoriesProps => {
   const choice = setAddCategory();
   const choiceDetail = setAddDetailCategory();
   const nameCategory: number = keyword ? keyword : -1;
-  const detailCategoryID: string = detailCategory ? detailCategory : "";
-  const categoryDetailID: number = categoryDetail ? categoryDetail : -1;
+  const detailCategoryId: string = detailCategory ? detailCategory : "";
+  const categoryDetailId: number = categoryDetail ? categoryDetail : -1;
   const [openCategory, setOpenCategory] = useState<boolean>(false);
   const [visibleCount, setVisibleCount] = useState<number>(4);
 
   useEffect(() => {
     if (keyword && detailCategory !== "null") {
-      const data = { categoryID: keyword, itemDetailID: categoryDetailID };
+      const data = { categoryID: keyword, itemDetailID: categoryDetailId };
       choiceDetail(data);
     } else if (keyword && detailCategory == "null") {
       choice(keyword);
@@ -36,14 +36,14 @@ export const useCategories = (): TCategoriesProps => {
 
   /**
    * Function add Category
-   * @param item
+   * @param item: TCategoryState
    *
    */
   const handleAddCategory = (item: TCategoryState) => {
     if (
-      (nameCategory !== item.categoryID && categoryDetailID == -1) ||
-      (nameCategory == item.categoryID && categoryDetailID !== -1) ||
-      (nameCategory !== item.categoryID && categoryDetailID !== -1)
+      (nameCategory !== item.categoryID && categoryDetailId == -1) ||
+      (nameCategory == item.categoryID && categoryDetailId !== -1) ||
+      (nameCategory !== item.categoryID && categoryDetailId !== -1)
     ) {
       choice(item.categoryID);
       navigate(
@@ -63,14 +63,14 @@ export const useCategories = (): TCategoriesProps => {
     item: TCategoryState,
     itemDetail: TCategoryList
   ) => {
-    if (detailCategoryID !== itemDetail.categoryDetailName) {
+    if (detailCategoryId !== itemDetail.categoryDetailName) {
       const categoryID = item.categoryID;
-      const itemDetailID = itemDetail.categoryDetailID;
+      const itemDetailID = itemDetail.categoryDetailId;
       const data = { categoryID, itemDetailID };
       choiceDetail(data);
       navigate(
         Route(
-          `${ROUTE_CONFIG.PRODUCT}/Category?keyword=${item.categoryName}&CategoryId=${item.categoryID}&CategoryDetailName=${itemDetail.categoryDetailName}&CategoryDetailID=${itemDetail.categoryDetailID}`
+          `${ROUTE_CONFIG.PRODUCT}/Category?keyword=${item.categoryName}&CategoryId=${item.categoryID}&CategoryDetailName=${itemDetail.categoryDetailName}&CategoryDetailID=${itemDetail.categoryDetailId}`
         )
       );
     }
@@ -83,7 +83,7 @@ export const useCategories = (): TCategoriesProps => {
     openCategory,
     setOpenCategory,
     handleAddDetailCategory,
-    detailCategoryID,
+    detailCategoryId,
     visibleCount,
     setVisibleCount,
   };

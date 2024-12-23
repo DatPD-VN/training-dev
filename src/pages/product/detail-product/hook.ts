@@ -20,7 +20,7 @@ export const useDetailProduct = (): TUseDetailProductProps => {
 
   /**
    * Handle Add Product When Click Cart Icon
-   * @param item
+   * @param item: TDataState
    *
    */
   const handleClick = (item: TDataState) => {
@@ -33,7 +33,7 @@ export const useDetailProduct = (): TUseDetailProductProps => {
 
   /**
    * Handle Add Product
-   * @param item
+   * @param item: TDataState
    *
    */
   const handleAddProduct = (item: TDataState) => {
@@ -44,7 +44,6 @@ export const useDetailProduct = (): TUseDetailProductProps => {
 
   /**
    * Function Increase Quantity
-   * @param item
    *
    */
   const handlePlus = () => {
@@ -58,7 +57,6 @@ export const useDetailProduct = (): TUseDetailProductProps => {
 
   /**
    * Function Reduce Quantity
-   * @param item
    *
    */
   const handleNoPlus = () => {
@@ -72,7 +70,6 @@ export const useDetailProduct = (): TUseDetailProductProps => {
 
   /**
    * Function Handle Change Quality
-   * @param item
    *
    */
   const handleChangeQuality = () => {

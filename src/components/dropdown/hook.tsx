@@ -17,14 +17,21 @@ const useDropDown = (
     user ? dataUser : undefined
   );
 
-  //   Handle Change Item
+  /**
+   * Function Handle Change Item
+   * @param item: DropdownItem
+   *
+   */
   const handleChange = (item: DropdownItem) => {
     setSelectedItem(item);
     onSelect && onSelect(item.value, name);
     setIsOpen(false);
   };
 
-  //   Handle Open/Close DropDown
+  /**
+   * Handle Open/Close DropDown
+   *
+   */
   const dropdownRef = useRef<HTMLDivElement>(null);
   useOutsideClick({
     ref: dropdownRef,

@@ -23,7 +23,7 @@ export const useLogin = (): TUseLoginProps => {
 
   /**
    * Function validate field
-   * @param item
+   * @param field: keyof TLogin @param value: string
    *
    */
   const validate = (field: keyof TLogin, value: string): string | null => {
@@ -42,7 +42,7 @@ export const useLogin = (): TUseLoginProps => {
 
   /**
    * Handle Change Input Value
-   * @param item
+   * @param field: keyof TLogin @param value: string
    *
    */
   const handleChange = (field: keyof TLogin, value: string) => {
@@ -61,7 +61,6 @@ export const useLogin = (): TUseLoginProps => {
 
   /**
    * Handle Check Value After Submit
-   * @param item
    *
    */
   const handleSubmit = () => {

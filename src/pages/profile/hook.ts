@@ -78,7 +78,7 @@ export const useProfile = (): TUseProfileProps => {
 
   /**
    * Handle Change Images
-   * @param item
+   * @param event: React.ChangeEvent<HTMLInputElement>
    *
    */
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +106,6 @@ export const useProfile = (): TUseProfileProps => {
 
   /**
    * Handle Change Fields
-   * @param item
    *
    */
   const handleChange = (
@@ -121,7 +120,7 @@ export const useProfile = (): TUseProfileProps => {
 
   /**
    * Handle Change Birthday
-   * @param item
+   * @param value: number @param id: string
    *
    */
   const handleChangeBirthday = (value: number, id: string) => {
@@ -133,7 +132,7 @@ export const useProfile = (): TUseProfileProps => {
 
   /**
    * Handle Delete Field
-   * @param item
+   * @param name: string
    *
    */
   const handleDelete = (name: string) => {
@@ -150,7 +149,7 @@ export const useProfile = (): TUseProfileProps => {
 
   /**
    * Handle Change Gender
-   * @param item
+   * @param gender: string
    *
    */
   const handleChangeGender = (gender: string) => {
@@ -162,7 +161,7 @@ export const useProfile = (): TUseProfileProps => {
 
   /**
    * Handle Submit Information Profile
-   * @param item
+   * @param event: React.MouseEvent<HTMLDivElement>
    *
    */
   const handleSubmit = async (event: React.MouseEvent<HTMLDivElement>) => {

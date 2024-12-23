@@ -32,7 +32,7 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Delete Product by ID
-   * @param item
+   * @param id: number
    *
    */
   const handleDel = (id: number) => {
@@ -41,7 +41,6 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Delete Products All
-   * @param item
    *
    */
   const handleDelAll = () => {
@@ -49,7 +48,7 @@ export const useCart = (): TUseCartProps => {
   };
   /**
    * Handle Select Product
-   * @param item
+   * @param id: number
    *
    */
   const handleCheck = (id: number) => {
@@ -67,7 +66,6 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Handle Search Products
-   * @param item
    *
    */
   const handleSearch = () => {
@@ -78,7 +76,6 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Handle Select Product All
-   * @param item
    *
    */
   const handleCheckAll = () => {
@@ -92,7 +89,7 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Handle Increase or Reduce Quantity of Product
-   * @param item
+   * @param handle: string @param item: TCartState
    *
    */
   const handleCase = (handle: string, item: TCartState) => {
@@ -107,7 +104,7 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Function Handle Change Quality
-   * @param item
+   * @param event: React.ChangeEvent<HTMLInputElement>
    *
    */
   const handleChangeQuality = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -137,7 +134,7 @@ export const useCart = (): TUseCartProps => {
 
   /**
    * Function add Category
-   * @param item
+   * @param item: TCartState
    *
    */
   const handleAddCategory = (item: TCartState) => {

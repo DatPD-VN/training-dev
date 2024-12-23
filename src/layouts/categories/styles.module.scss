@@ -49,9 +49,6 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    .ChevronDown {
-      display: none;
-    }
     label {
       cursor: pointer;
     }
@@ -81,9 +78,6 @@
     label {
       cursor: pointer;
     }
-    .ChevronDown {
-      display: none;
-    }
   }
   .categoryName {
     cursor: pointer;
@@ -109,14 +103,6 @@
 .listCategories {
   li {
     list-style: none;
-    .categoryDivSelect a .ChevronRight {
-      display: block;
-      color: aliceblue;
-    }
-    .categoryDivSelect a .ChevronDown {
-      color: aliceblue;
-      display: none;
-    }
   }
   ul {
     li {
@@ -137,21 +123,6 @@
 .listCategories input[type="checkbox"]:checked ~ ul {
   max-height: 300px;
 }
-.listCategories
-  input[type="checkbox"]:checked
-  ~ .categoryDivSelect
-  a
-  .ChevronRight {
-  display: none;
-}
-.listCategories
-  input[type="checkbox"]:checked
-  ~ .categoryDivSelect
-  a
-  .ChevronDown {
-  display: block;
-}
-
 .listCategoriesDetail {
   list-style: none;
   margin: 0px;

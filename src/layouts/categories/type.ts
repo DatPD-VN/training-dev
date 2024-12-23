@@ -2,7 +2,7 @@ import { TCategoryList, TCategoryState } from "../../recoil/type";
 
 type TCategoriesProps = {
   nameCategory: number;
-  detailCategoryID: string;
+  detailCategoryId: string;
   list: Array<TCategoryState>;
   handleAddCategory: (item: TCategoryState) => void;
   handleAddDetailCategory: (

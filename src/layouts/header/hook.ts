@@ -38,7 +38,6 @@ export const useHeader = (): THeaderProps => {
 
   /**
    * Handle Open Nav Search
-   * @param item
    *
    */
   const handleOpen = () => {
@@ -47,7 +46,7 @@ export const useHeader = (): THeaderProps => {
 
   /**
    * Handle Set Input Data When Search Change
-   * @param item
+   * @param item: string
    *
    */
   const handleChangeSearch = (item: string) => {
