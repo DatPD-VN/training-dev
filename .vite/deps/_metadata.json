@@ -1,0 +1,73 @@
+{
+  "hash": "b65cc57b",
+  "configHash": "50ff60ec",
+  "lockfileHash": "ddddcdb4",
+  "browserHash": "ea6186b6",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "f0039180",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "b4a06b04",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ae5dd4d0",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "7c692c52",
+      "needsInterop": false
+    },
+    "recoil": {
+      "src": "../../node_modules/recoil/es/index.js",
+      "file": "recoil.js",
+      "fileHash": "4c862c05",
+      "needsInterop": false
+    },
+    "react-toastify": {
+      "src": "../../node_modules/react-toastify/dist/react-toastify.esm.mjs",
+      "file": "react-toastify.js",
+      "fileHash": "547c81d2",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "64e373a6",
+      "needsInterop": false
+    },
+    "react-router": {
+      "src": "../../node_modules/react-router/dist/index.js",
+      "file": "react-router.js",
+      "fileHash": "6c6f15bf",
+      "needsInterop": false
+    },
+    "react-responsive": {
+      "src": "../../node_modules/react-responsive/dist/esm/index.js",
+      "file": "react-responsive.js",
+      "fileHash": "3d84f250",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YBFRUR3B": {
+      "file": "chunk-YBFRUR3B.js"
+    },
+    "chunk-H3L6EI26": {
+      "file": "chunk-H3L6EI26.js"
+    },
+    "chunk-JRE55LYH": {
+      "file": "chunk-JRE55LYH.js"
+    }
+  }
+}

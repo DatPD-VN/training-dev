@@ -76,7 +76,11 @@ export const useProfile = (): TUseProfileProps => {
     }
   }, []);
 
-  // Handle Change Images
+  /**
+   * Handle Change Images
+   * @param item
+   *
+   */
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) {
       return;
@@ -100,7 +104,11 @@ export const useProfile = (): TUseProfileProps => {
     }
   };
 
-  // Handle Change Fields
+  /**
+   * Handle Change Fields
+   * @param item
+   *
+   */
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -111,7 +119,11 @@ export const useProfile = (): TUseProfileProps => {
     }));
   };
 
-  //Handle Change Birthday
+  /**
+   * Handle Change Birthday
+   * @param item
+   *
+   */
   const handleChangeBirthday = (value: number, id: string) => {
     setProfileData((prevData) => ({
       ...prevData,
@@ -119,7 +131,11 @@ export const useProfile = (): TUseProfileProps => {
     }));
   };
 
-  // Handle Delete Field
+  /**
+   * Handle Delete Field
+   * @param item
+   *
+   */
   const handleDelete = (name: string) => {
     setProfileData((prevData) => ({
       ...prevData,
@@ -132,7 +148,11 @@ export const useProfile = (): TUseProfileProps => {
     }
   };
 
-  // Handle Change Gender
+  /**
+   * Handle Change Gender
+   * @param item
+   *
+   */
   const handleChangeGender = (gender: string) => {
     setProfileData((prevData) => ({
       ...prevData,
@@ -140,7 +160,11 @@ export const useProfile = (): TUseProfileProps => {
     }));
   };
 
-  // Handle Submit Information Profile
+  /**
+   * Handle Submit Information Profile
+   * @param item
+   *
+   */
   const handleSubmit = async (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (user) {

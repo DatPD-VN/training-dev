@@ -8,6 +8,7 @@ import {
 } from "./listCart";
 import {
   addCategory,
+  addDetailCategory,
   delCategory,
   handleSuggest,
   listCategory,
@@ -43,6 +44,9 @@ export const setListCategory = () => {
 };
 export const setAddCategory = () => {
   return useSetRecoilState(addCategory);
+};
+export const setAddDetailCategory = () => {
+  return useSetRecoilState(addDetailCategory);
 };
 export const setDelCategory = () => {
   return useSetRecoilState(delCategory);

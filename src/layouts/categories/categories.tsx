@@ -7,7 +7,15 @@ import { useCategories } from "./hook";
 import { TCategoryState } from "../../recoil/type";
 
 const Categories: FC = () => {
-  const { list, handleAddCategory, nameCategory } = useCategories();
+  const {
+    list,
+    handleAddCategory,
+    nameCategory,
+    handleAddDetailCategory,
+    detailCategoryID,
+    visibleCount,
+    setVisibleCount,
+  } = useCategories();
   return (
     <>
       <section className={styles.containerCategories}>
@@ -20,35 +28,86 @@ const Categories: FC = () => {
           </a>
         </div>
         <div className={styles.listCategories}>
-          {list.map((item: TCategoryState, index) =>
+          {list.slice(0, visibleCount).map((item: TCategoryState, index) =>
             item.categoryID == nameCategory ? (
-              <div
-                key={index}
-                className={`${styles.categoryDivSelect} } `}
-                onClick={() => handleAddCategory(item)}
-              >
-                <a href="">
-                  <ArrowRight />
-                  {item.categoryName}
-                </a>
-              </div>
+              <li key={index}>
+                <input type="checkbox" name="" id={item.categoryName} hidden />
+                <div className={`${styles.categoryDivSelect} } `}>
+                  <a>
+                    <ArrowRight />
+                    <label
+                      htmlFor={item.categoryName}
+                      onDoubleClick={() => handleAddCategory(item)}
+                    >
+                      {item.categoryName}
+                    </label>
+                  </a>
+                </div>
+                {item.categoryList.length > 0 && (
+                  <ul className={styles.listCategoriesDetail}>
+                    {item.categoryList.map((list, index) => {
+                      return (
+                        <li
+                          key={index}
+                          onClick={() => handleAddDetailCategory(item, list)}
+                          className={`${
+                            detailCategoryID === list.categoryDetailName
+                              ? styles.activeDetailCategory
+                              : ""
+                          }`}
+                        >
+                          {list.categoryDetailName}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
             ) : (
-              <div
-                key={index}
-                className={`${styles.categoryDiv} } `}
-                onClick={() => handleAddCategory(item)}
-              >
-                <a href="">
-                  <ArrowRight />
-                  {item.categoryName}
-                </a>
-              </div>
+              <li key={index}>
+                <input type="checkbox" name="" id={item.categoryName} hidden />
+                <div key={index} className={`${styles.categoryDiv} } `}>
+                  <a>
+                    <ArrowRight />
+                    <label
+                      htmlFor={item.categoryName}
+                      onDoubleClick={() => handleAddCategory(item)}
+                    >
+                      {item.categoryName}
+                    </label>
+                  </a>
+                </div>
+                {item.categoryList.length > 0 && (
+                  <ul className={styles.listCategoriesDetail}>
+                    {item.categoryList.map((list, index) => {
+                      return (
+                        <li
+                          key={index}
+                          onClick={() => handleAddDetailCategory(item, list)}
+                          className={`${
+                            detailCategoryID === list.categoryDetailName
+                              ? styles.activeDetailCategory
+                              : ""
+                          }`}
+                        >
+                          {list.categoryDetailName}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
             )
           )}
         </div>
-        <div className={styles.showCategories}>
-          Xem thêm <ChevronDown size={16} />
-        </div>
+        {visibleCount < list.length && (
+          <div
+            className={styles.showCategories}
+            onClick={() => setVisibleCount(list.length)}
+          >
+            Xem thêm <ChevronDown size={16} />
+          </div>
+        )}
       </section>
     </>
   );

@@ -36,12 +36,20 @@ export const useHeader = (): THeaderProps => {
   const nameCategory: number = keyword ? keyword : -1;
   const [isSearch, setIsSearch] = useState<boolean>(false);
 
-  // Handle Open Nav Search
+  /**
+   * Handle Open Nav Search
+   * @param item
+   *
+   */
   const handleOpen = () => {
     setIsDisabled(false);
   };
 
-  // Handle Set Input Data When Search Change
+  /**
+   * Handle Set Input Data When Search Change
+   * @param item
+   *
+   */
   const handleChangeSearch = (item: string) => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
@@ -54,7 +62,11 @@ export const useHeader = (): THeaderProps => {
     }
   };
 
-  // Handle Set Input Data When Click Search
+  /**
+   * Handle Set Input Data When Click Search
+   * @param item
+   *
+   */
   const inputSearch = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
@@ -71,20 +83,32 @@ export const useHeader = (): THeaderProps => {
     });
   };
 
-  // Delete value Input and Navigate
+  /**
+   * Delete value Input and Navigate
+   * @param item
+   *
+   */
   const handleNav = () => {
     ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
       delData();
     navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
 
-  // Handle LogOut
+  /**
+   * Handle LogOut
+   * @param item
+   *
+   */
   const handleLogOut = () => {
     localStorage.removeItem("profileData");
     navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
 
-  // Handle Set Input Data When Click HashTag
+  /**
+   * Handle Set Input Data When Click HashTag
+   * @param item
+   *
+   */
   const handleAddHashTag = (item: string) => {
     (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
     choice(item);
@@ -96,7 +120,11 @@ export const useHeader = (): THeaderProps => {
     });
   };
 
-  // Function add Category
+  /**
+   * Function add Category
+   * @param item
+   *
+   */
   const handleAddCategory = (item: TCategoryState) => {
     if (nameCategory !== item.categoryID) {
       choiceCategory(item.categoryID);

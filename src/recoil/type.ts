@@ -1,6 +1,11 @@
 type TCategoryState = {
   categoryID: number;
   categoryName: string;
+  categoryList: Array<TCategoryList>;
+};
+type TCategoryList = {
+  categoryDetailID: number;
+  categoryDetailName: string;
 };
 type TImageState = {
   src: string;
@@ -17,6 +22,7 @@ type TDataState = {
   hashTag: Array<string>;
   categoryName: string;
   categoryID: number;
+  categoryDetailID: number;
 };
 type TCartState = {
   id: number;
@@ -33,7 +39,10 @@ type TCartState = {
   quantity: number;
 };
 
-
-
-
-export type { TCategoryState, TDataState, TImageState, TCartState };
+export type {
+  TCategoryState,
+  TDataState,
+  TImageState,
+  TCartState,
+  TCategoryList,
+};

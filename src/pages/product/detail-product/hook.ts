@@ -18,7 +18,11 @@ export const useDetailProduct = (): TUseDetailProductProps => {
   const product = newList.filter((item: TDataState) => item.id === id);
   const countCart: number = useCountCartState();
 
-  // Handle Add Product When Click Cart Icon
+  /**
+   * Handle Add Product When Click Cart Icon
+   * @param item
+   *
+   */
   const handleClick = (item: TDataState) => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
     let quantity = qtt.value;
@@ -27,14 +31,22 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     Toast("success", "Thêm sản phẩm thành công");
   };
 
-  // Handle Add Product
+  /**
+   * Handle Add Product
+   * @param item
+   *
+   */
   const handleAddProduct = (item: TDataState) => {
     let wrapItem = { ...item, quantity: 1 };
     addCart(wrapItem);
     Toast("success", "Thêm sản phẩm thành công");
   };
 
-  // Function Increase Quantity
+  /**
+   * Function Increase Quantity
+   * @param item
+   *
+   */
   const handlePlus = () => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
     if (qtt.value == "999") {
@@ -44,7 +56,11 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     }
   };
 
-  // Function Reduce Quantity
+  /**
+   * Function Reduce Quantity
+   * @param item
+   *
+   */
   const handleNoPlus = () => {
     const qtt = document.querySelector("#textbox_id") as HTMLInputElement;
     if (qtt.value == "1") {
@@ -54,7 +70,11 @@ export const useDetailProduct = (): TUseDetailProductProps => {
     }
   };
 
-  // Function Handle Change Quality
+  /**
+   * Function Handle Change Quality
+   * @param item
+   *
+   */
   const handleChangeQuality = () => {
     const quantity = document.querySelector("#textbox_id") as HTMLInputElement;
     quantity.addEventListener("keydown", (e) => {

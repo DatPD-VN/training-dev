@@ -31,11 +31,9 @@ const listCategoriesState: RecoilState<TCategoryState[]> = atom<
   default: listCategories,
 });
 
-const resultCategories: Array<TCategoryState> = [];
+const resultCategories: Array<TDataState> = [];
 
-const resultCategoriesState: RecoilState<TCategoryState[]> = atom<
-  TCategoryState[]
->({
+const resultCategoriesState: RecoilState<TDataState[]> = atom<TDataState[]>({
   key: "resultCategory",
   default: resultCategories,
 });
@@ -109,22 +107,42 @@ export const listCategory = selector({
 export const addCategory = selector({
   key: "handleAddCategories",
   get: ({ get }) => {
-    const listState: Array<TCategoryState> = get(resultCategoriesState);
+    const listState: Array<TDataState> = get(resultCategoriesState);
     return listState;
   },
   set: ({ get, set }, data: any) => {
-    const listState: Array<TCategoryState> = get(listTodoState);
+    const listState: Array<TDataState> = get(listTodoState);
     const value = listState.filter(
-      (item: TCategoryState) => data == item.categoryID
+      (item: TDataState) => data == item.categoryID
     );
     set(listSearchState, []);
     set(resultCategoriesState, [...value]);
   },
 });
+export const addDetailCategory = selector({
+  key: "handleAddDetailCategories",
+  get: ({ get }) => {
+    const listState: Array<TDataState> = get(resultCategoriesState);
+    return listState;
+  },
+  set: ({ get, set }, data: any) => {
+    const { categoryID, itemDetailID } = data;
+    const listState: Array<TDataState> = get(listTodoState);
+    const value = listState.filter(
+      (item: TDataState) => categoryID == item.categoryID
+    );
+    const valueResult = value.filter(
+      (item: TDataState) => itemDetailID == item.categoryDetailID
+    );
+
+    set(listSearchState, []);
+    set(resultCategoriesState, [...valueResult]);
+  },
+});
 export const delCategory = selector({
   key: "handleDelCategories",
   get: ({ get }) => {
-    const listState: Array<TCategoryState> = get(resultCategoriesState);
+    const listState: Array<TDataState> = get(resultCategoriesState);
     return listState;
   },
   set: ({ set }) => {
