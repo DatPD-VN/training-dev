@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { srcFakeBanner } from "../../const";
+import { SRC_FAKE_BANNER } from "../../const";
 import { THookImageItem } from "./type";
 
 export const useBanner = (): THookImageItem => {
-  const imageSrc = [...srcFakeBanner.map((item) => item.src)];
+  const imageSrc = [...SRC_FAKE_BANNER.map((item) => item.src)];
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return {

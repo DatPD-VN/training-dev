@@ -1,6 +1,10 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import { BANNER_RIGHT_BOTTOM, BANNER_RIGHT_TOP } from "../../const";
+import {
+  BANNER_RIGHT_BOTTOM,
+  BANNER_RIGHT_TOP,
+  BOTTOM_BANNER,
+} from "../../const";
 import { Carousel } from "../../components/carousel";
 import { useBanner } from "./hook";
 
@@ -40,6 +44,16 @@ const Banner: FC = () => {
               className={styles.bannerRightBottom}
             />
           </div>
+        </div>
+      </section>
+      <section className={styles.containerBannerBottom}>
+        <div className={styles.containerBannerBottomWrapper}>
+          {BOTTOM_BANNER.map((item, index) => (
+            <div key={index} className={styles.containerBannerDivImg}>
+              <img src={item.src} alt="" />
+              <p>{item.title}</p>
+            </div>
+          ))}
         </div>
       </section>
     </>
