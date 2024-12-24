@@ -1,6 +1,10 @@
 type TUseProductProps = {
   listProduct: Array<TListProduct>;
   isLoading: boolean;
+  handleDragStart: (
+    event: React.DragEvent<HTMLDivElement>,
+    product: TListProduct
+  ) => void;
 };
 type TListProduct = {
   id: number;
@@ -16,4 +20,4 @@ type TListProduct = {
   categoryID: number;
 };
 
-export type { TUseProductProps,TListProduct };
+export type { TUseProductProps, TListProduct };

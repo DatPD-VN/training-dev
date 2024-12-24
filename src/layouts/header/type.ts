@@ -17,7 +17,9 @@ type THeaderProps = {
   handleLogOut: () => void;
   list: Array<TCategoryState>;
   handleAddCategory: (item: TCategoryState) => void;
-  isSearch : boolean;
+  handleDrop: (event: React.DragEvent<HTMLDivElement>) => void;
+  handleDragOver: (event: React.DragEvent<HTMLDivElement>) => void;
+  isSearch: boolean;
 };
 
 export type { THeaderProps };

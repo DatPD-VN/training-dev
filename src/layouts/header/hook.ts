@@ -7,11 +7,14 @@ import {
   setDelCategory,
   useListCategory,
   setAddCategory,
+  setListCartState,
 } from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { TCategoryState } from "../../recoil/type";
+import { TListProduct } from "../../pages/product/type";
+import { Toast } from "../../Common/toast";
 
 export const useHeader = (): THeaderProps => {
   const navigate = useNavigate();
@@ -35,6 +38,42 @@ export const useHeader = (): THeaderProps => {
   const keyword = Number(searchParams.get("CategoryId"));
   const nameCategory: number = keyword ? keyword : -1;
   const [isSearch, setIsSearch] = useState<boolean>(false);
+  const addCart = setListCartState();
+
+  /**
+   * Handle Drop Product
+   * @param event: React.DragEvent<HTMLDivElement>
+   *
+   */
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const productData = event.dataTransfer.getData("product");
+    if (productData) {
+      const product = JSON.parse(productData);
+      console.log(product);
+      handleAddProduct(product);
+    }
+  };
+
+  /**
+   * Handle Drag Over
+   * @param event: React.DragEvent<HTMLDivElement>
+   *
+   */
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
+  /**
+   * Handle Add Product
+   * @param item: TListProduct
+   *
+   */
+  const handleAddProduct = (item: TListProduct) => {
+    let wrapItem = { ...item, quantity: 1 };
+    addCart(wrapItem);
+    Toast("success", "Thêm sản phẩm thành công");
+  };
 
   /**
    * Handle Open Nav Search
@@ -171,5 +210,7 @@ export const useHeader = (): THeaderProps => {
     list,
     handleAddCategory,
     isSearch,
+    handleDrop,
+    handleDragOver,
   };
 };

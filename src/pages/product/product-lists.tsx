@@ -10,7 +10,8 @@ import { Banner } from "../../layouts/banner/banner";
 
 const Dashboard: FC = () => {
   const navigate = useNavigate();
-  const { listProduct, isLoading } = useProduct();
+  const { listProduct, isLoading, handleDragStart } = useProduct();
+
   return (
     <>
       <Banner />
@@ -34,6 +35,8 @@ const Dashboard: FC = () => {
                       },
                     });
                   }}
+                  draggable
+                  onDragStart={(event) => handleDragStart(event, item)}
                 >
                   <div className={styles.divItemWrapperHover}>
                     <div className={styles.divItem}>

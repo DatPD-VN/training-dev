@@ -20,6 +20,18 @@ export const useProduct = (): TUseProductProps => {
   const choiceCategory = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
 
+  /**
+   * Handle Drag Product
+   * @param event: React.DragEvent<HTMLDivElement>,
+   * @param product: TListProduct
+   */
+  const handleDragStart = (
+    event: React.DragEvent<HTMLDivElement>,
+    product: TListProduct
+  ) => {
+    event.dataTransfer.setData("product", JSON.stringify(product));
+  };
+
   useEffect(() => {
     if (newSearch.length === 0) {
       if (hashtag) {
@@ -50,5 +62,6 @@ export const useProduct = (): TUseProductProps => {
   return {
     listProduct,
     isLoading,
+    handleDragStart,
   };
 };
