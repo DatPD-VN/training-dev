@@ -4,7 +4,12 @@ import type { FC } from "react";
 import AppRoutes from "./app-routes";
 
 const App: FC = () => (
-  <BrowserRouter>
+  <BrowserRouter
+    future={{
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    }}
+  >
     <AppRoutes />
   </BrowserRouter>
 );

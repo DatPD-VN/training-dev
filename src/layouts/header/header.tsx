@@ -35,6 +35,8 @@ const Header: FC = () => {
     list,
     handleAddCategory,
     isSearch,
+    handleDrop,
+    handleDragOver,
   } = useHeader();
 
   return (
@@ -192,6 +194,8 @@ const Header: FC = () => {
                 navigate(Route(ROUTE_CONFIG.CART));
               }}
               className={styles.headerBottomRightIconDiv}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
             >
               <ShoppingCart
                 size={30}

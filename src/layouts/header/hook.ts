@@ -7,11 +7,14 @@ import {
   setDelCategory,
   useListCategory,
   setAddCategory,
+  setListCartState,
 } from "../../recoil";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { TCategoryState } from "../../recoil/type";
+import { TListProduct } from "../../pages/product/type";
+import { Toast } from "../../Common/toast";
 
 export const useHeader = (): THeaderProps => {
   const navigate = useNavigate();
@@ -35,13 +38,56 @@ export const useHeader = (): THeaderProps => {
   const keyword = Number(searchParams.get("CategoryId"));
   const nameCategory: number = keyword ? keyword : -1;
   const [isSearch, setIsSearch] = useState<boolean>(false);
+  const addCart = setListCartState();
 
-  // Handle Open Nav Search
+  /**
+   * Handle Drop Product
+   * @param event: React.DragEvent<HTMLDivElement>
+   *
+   */
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const productData = event.dataTransfer.getData("product");
+    if (productData) {
+      const product = JSON.parse(productData);
+      console.log(product);
+      handleAddProduct(product);
+    }
+  };
+
+  /**
+   * Handle Drag Over
+   * @param event: React.DragEvent<HTMLDivElement>
+   *
+   */
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
+  /**
+   * Handle Add Product
+   * @param item: TListProduct
+   *
+   */
+  const handleAddProduct = (item: TListProduct) => {
+    let wrapItem = { ...item, quantity: 1 };
+    addCart(wrapItem);
+    Toast("success", "Thêm sản phẩm thành công");
+  };
+
+  /**
+   * Handle Open Nav Search
+   *
+   */
   const handleOpen = () => {
     setIsDisabled(false);
   };
 
-  // Handle Set Input Data When Search Change
+  /**
+   * Handle Set Input Data When Search Change
+   * @param item: string
+   *
+   */
   const handleChangeSearch = (item: string) => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
@@ -54,7 +100,11 @@ export const useHeader = (): THeaderProps => {
     }
   };
 
-  // Handle Set Input Data When Click Search
+  /**
+   * Handle Set Input Data When Click Search
+   * @param item
+   *
+   */
   const inputSearch = () => {
     const valueInput = searchRef.current;
     const value = valueInput?.value;
@@ -71,20 +121,32 @@ export const useHeader = (): THeaderProps => {
     });
   };
 
-  // Delete value Input and Navigate
+  /**
+   * Delete value Input and Navigate
+   * @param item
+   *
+   */
   const handleNav = () => {
     ((document.querySelector("#inputSearch") as HTMLInputElement).value = ""),
       delData();
     navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
 
-  // Handle LogOut
+  /**
+   * Handle LogOut
+   * @param item
+   *
+   */
   const handleLogOut = () => {
     localStorage.removeItem("profileData");
     navigate(Route(ROUTE_CONFIG.PRODUCT));
   };
 
-  // Handle Set Input Data When Click HashTag
+  /**
+   * Handle Set Input Data When Click HashTag
+   * @param item
+   *
+   */
   const handleAddHashTag = (item: string) => {
     (document.querySelector("#inputSearch") as HTMLInputElement).value = item;
     choice(item);
@@ -96,7 +158,11 @@ export const useHeader = (): THeaderProps => {
     });
   };
 
-  // Function add Category
+  /**
+   * Function add Category
+   * @param item
+   *
+   */
   const handleAddCategory = (item: TCategoryState) => {
     if (nameCategory !== item.categoryID) {
       choiceCategory(item.categoryID);
@@ -144,5 +210,7 @@ export const useHeader = (): THeaderProps => {
     list,
     handleAddCategory,
     isSearch,
+    handleDrop,
+    handleDragOver,
   };
 };

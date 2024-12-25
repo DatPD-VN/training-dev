@@ -1,4 +1,4 @@
-import { TCartState, TCategoryState } from "../../recoil/type";
+import { TCartState } from "../../recoil/type";
 
 type TUseCartProps = {
   isPhoneScreen: boolean;
@@ -14,7 +14,7 @@ type TUseCartProps = {
   handleChangeQuality: (event: React.ChangeEvent<HTMLInputElement>) => void;
   inputRef: React.RefObject<HTMLInputElement>;
   isSelectId: Array<number>;
-  handleAddCategory: (item: TCategoryState) => void;
+  handleAddCategory: (item: TCartState) => void;
 };
 
 export type { TUseCartProps };

@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { THookSlideShowProps } from "./types";
 
-export const useSlideShow = (
+export const useCarousel = (
   src: string[],
   currentIndex: number,
   onChangeIndex: (index: number) => void
@@ -20,6 +21,13 @@ export const useSlideShow = (
   const prevSlide = () => {
     onChangeIndex(currentIndex === 0 ? src.length - 1 : currentIndex - 1);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentIndex, src.length]);
 
   return {
     nextSlide,

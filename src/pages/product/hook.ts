@@ -1,4 +1,4 @@
-import { TListProduct, TUseProductProps } from "./type";
+import { TListProduct, TListProductChange, TUseProductProps } from "./type";
 import { useEffect, useState } from "react";
 import {
   useNewListState,
@@ -19,6 +19,18 @@ export const useProduct = (): TUseProductProps => {
   const choiceHashtag = setListSearch();
   const choiceCategory = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
+
+  /**
+   * Handle Drag Product
+   * @param event: React.DragEvent<HTMLDivElement>,
+   * @param product: TListProduct
+   */
+  const handleDragStart = (
+    event: React.DragEvent<HTMLDivElement>,
+    product: TListProduct
+  ) => {
+    event.dataTransfer.setData("product", JSON.stringify(product));
+  };
 
   useEffect(() => {
     if (newSearch.length === 0) {
@@ -47,8 +59,40 @@ export const useProduct = (): TUseProductProps => {
       ? newList
       : newCategories;
 
+  const listProducts = listProduct.map((item, index) => ({
+    ...item,
+    displayOrder: index + 1,
+  }));
+
+  useEffect(() => {
+    setLists(listProducts);
+  }, [listProduct]);
+
+  const [lists, setLists] = useState(listProducts);
+
+  /**
+   * Handle Set List Product
+   * @param newList: TListProduct[]
+   *
+   */
+  const handleSetList = (newLists: TListProductChange[]) => {
+    const updateList = newLists.map((item, index) => ({
+      ...item,
+      displayOrder: index + 1,
+    }));
+
+    // const changeList = newLists.filter((item, index) => {
+    //   return item.displayOrder !== lists[index].displayOrder;
+    // });
+    // console.log("Các Sản Phẩm Thay Đổi", changeList);
+
+    setLists(updateList);
+  };
+
   return {
-    listProduct,
+    lists,
     isLoading,
+    handleDragStart,
+    handleSetList,
   };
 };

@@ -19,6 +19,8 @@ import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../../app/route";
 import { useDetailProduct } from "./hook";
 import { TDataState } from "../../../recoil/type";
+import FlashSale from "../../../components/flash-sale/flash-sale";
+import { FLASH_SALE } from "../../../const";
 
 function DetailProduct() {
   const navigate = useNavigate();
@@ -492,6 +494,9 @@ function DetailProduct() {
                         </select>
                       </div>
                     </div>
+                  </div>
+                  <div className={styles.detailProductTitle}>
+                    <FlashSale time={FLASH_SALE} />
                   </div>
                   <div className={styles.detailProductTitle}>
                     <div className={styles.detailProductRightTitle}>

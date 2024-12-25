@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import React from "react";
 import { TLoaing } from "./type";
 
-const ProductLoaing: React.FC<TLoaing> = ({ quantity }) => {
+const ProductLoading: React.FC<TLoaing> = ({ quantity }) => {
   const divs = Array.from({length : quantity} , (_,index) => index)
   return (
     <>
@@ -32,4 +32,4 @@ const ProductLoaing: React.FC<TLoaing> = ({ quantity }) => {
   );
 };
 
-export { ProductLoaing };
+export { ProductLoading };

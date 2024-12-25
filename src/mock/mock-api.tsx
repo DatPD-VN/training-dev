@@ -14,6 +14,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#Giaydep", "#TaiNghe", "#tat"],
     categoryName: "Áo Quần",
     categoryID: 1,
+    categoryDetailId: 1,
   },
   {
     id: 2,
@@ -27,8 +28,9 @@ export const dataState: Array<TDataState> = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#Giaydep", "#tat"],
-    categoryID: 2,
+    categoryID: 1,
     categoryName: "Tất",
+    categoryDetailId: 2,
   },
   {
     id: 3,
@@ -44,6 +46,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem"],
     categoryID: 3,
     categoryName: "Giày dép",
+    categoryDetailId: 2,
   },
   {
     id: 4,
@@ -59,6 +62,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 4,
     categoryName: "Tai Nghe",
+    categoryDetailId: 4,
   },
   {
     id: 5,
@@ -74,6 +78,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 5,
     categoryName: "Mỹ Phẩm",
+    categoryDetailId: 2,
   },
   {
     id: 6,
@@ -88,6 +93,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#TaiNghe", "#tat"],
     categoryID: 1,
     categoryName: "Áo Quần",
+    categoryDetailId: 1,
   },
   {
     id: 7,
@@ -103,6 +109,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
     categoryID: 3,
     categoryName: "Giày dép",
+    categoryDetailId: 2,
   },
   {
     id: 8,
@@ -118,6 +125,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#TaiNghe", "#tat"],
     categoryID: 3,
     categoryName: "Giày dép",
+    categoryDetailId: 2,
   },
   {
     id: 9,
@@ -133,6 +141,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe", "#tat"],
     categoryID: 4,
     categoryName: "Tai Nghe",
+    categoryDetailId: 2,
   },
   {
     id: 10,
@@ -147,6 +156,7 @@ export const dataState: Array<TDataState> = [
     hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#tat"],
     categoryID: 1,
     categoryName: "Áo Quần",
+    categoryDetailId: 1,
   },
   {
     id: 11,
@@ -160,8 +170,9 @@ export const dataState: Array<TDataState> = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#aothun", "#trangdiem", "#TaiNghe"],
-    categoryID: 2,
+    categoryID: 3,
     categoryName: "Tất",
+    categoryDetailId: 1,
   },
   {
     id: 12,
@@ -175,8 +186,41 @@ export const dataState: Array<TDataState> = [
     isVoucher: true,
     voucherProduct: "10% Giảm",
     hashTag: ["#Giaydep", "#trangdiem", "#tat"],
-    categoryID: 3,
+    categoryID: 5,
     categoryName: "Giày dép",
+    categoryDetailId: 1,
+  },
+  {
+    id: 13,
+    imgProduct:
+      "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lv8q5cowvmf186_tn.webp",
+    titleProduct:
+      "DÉP QUAI NGANG CHỮ H GIÁ RẺ SIÊU ĐẸP ĐI ÊM CHÂN TÔN DÁNG.DÉP QUAI NGANG NAM NỮ SÀNH ĐIỆU",
+    priceProduct: 10000,
+    saleProduct: "-42%",
+    shipProduct: false,
+    isVoucher: true,
+    voucherProduct: "20% Giảm",
+    hashTag: ["#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"],
+    categoryID: 2,
+    categoryName: "Giày dép",
+    categoryDetailId: 2,
+  },
+  {
+    id: 14,
+    imgProduct:
+      "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lv8q5cowvmf186_tn.webp",
+    titleProduct:
+      "DÉP QUAI NGANG CHỮ H GIÁ RẺ SIÊU ĐẸP ĐI ÊM CHÂN TÔN DÁNG.DÉP QUAI NGANG NAM NỮ SÀNH ĐIỆU",
+    priceProduct: 10000,
+    saleProduct: "-42%",
+    shipProduct: false,
+    isVoucher: true,
+    voucherProduct: "20% Giảm",
+    hashTag: ["#aothun", "#Giaydep", "#TaiNghe"],
+    categoryID: 2,
+    categoryName: "Giày dép",
+    categoryDetailId: 1,
   },
 ];
 
@@ -184,22 +228,63 @@ export const categoryState: Array<TCategoryState> = [
   {
     categoryID: 1,
     categoryName: "Áo Quần",
+    categoryList: [
+      {
+        categoryDetailId: 1,
+        categoryDetailName: "Quần bò",
+      },
+      {
+        categoryDetailId: 2,
+        categoryDetailName: " Quần dài",
+      },
+    ],
   },
   {
     categoryID: 2,
     categoryName: "Tất",
+    categoryList: [
+      {
+        categoryDetailId: 1,
+        categoryDetailName: "Tất đen",
+      },
+      {
+        categoryDetailId: 2,
+        categoryDetailName: " Tất cao",
+      },
+    ],
   },
   {
     categoryID: 3,
     categoryName: "Giày dép",
+    categoryList: [
+      {
+        categoryDetailId: 1,
+        categoryDetailName: "Giày cao",
+      },
+      {
+        categoryDetailId: 2,
+        categoryDetailName: " Giày thấp",
+      },
+    ],
   },
   {
     categoryID: 4,
     categoryName: "Tai Nghe",
+    categoryList: [],
   },
   {
     categoryID: 5,
     categoryName: "Mỹ Phẩm",
+    categoryList: [
+      {
+        categoryDetailId: 1,
+        categoryDetailName: "Son",
+      },
+      {
+        categoryDetailId: 2,
+        categoryDetailName: " Kem Dưỡng",
+      },
+    ],
   },
 ];
 

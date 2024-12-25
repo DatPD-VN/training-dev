@@ -11,8 +11,8 @@ import {
 } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
 import { useRef, useState } from "react";
-import { TCartState, TCategoryState } from "../../recoil/type";
-import { useLocation, useNavigate } from "react-router-dom";
+import { TCartState } from "../../recoil/type";
+import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 
 export const useCart = (): TUseCartProps => {
@@ -28,22 +28,29 @@ export const useCart = (): TUseCartProps => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isSelectId, setIsSelectIds] = useState<number[]>([]);
   const listProduct = listSearchCart.length > 0 ? listSearchCart : cart;
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const keyword = Number(searchParams.get("CategoryId"));
-  const nameCategory: number = keyword ? keyword : -1;
   const navigate = useNavigate();
 
-  // Delete Product by ID
+  /**
+   * Delete Product by ID
+   * @param id: number
+   *
+   */
   const handleDel = (id: number) => {
     delCart(id);
   };
 
-  // Delete Products All
+  /**
+   * Delete Products All
+   *
+   */
   const handleDelAll = () => {
     delCartAll(isSelectId);
   };
-  // Handle Select Product
+  /**
+   * Handle Select Product
+   * @param id: number
+   *
+   */
   const handleCheck = (id: number) => {
     if (isSelectId.length > 0) {
       if (isSelectId.includes(id)) {
@@ -57,14 +64,20 @@ export const useCart = (): TUseCartProps => {
     }
   };
 
-  // Handle Search Products
+  /**
+   * Handle Search Products
+   *
+   */
   const handleSearch = () => {
     const valueInput = inputRef.current;
     const value = valueInput?.value;
     setSearchCart(value);
   };
 
-  // Handle Select Product All
+  /**
+   * Handle Select Product All
+   *
+   */
   const handleCheckAll = () => {
     const checkAll = listProduct.flatMap((item: TCartState) => item.id);
     if (JSON.stringify(checkAll) === JSON.stringify(isSelectId)) {
@@ -74,7 +87,11 @@ export const useCart = (): TUseCartProps => {
     }
   };
 
-  // Handle Increase or Reduce Quantity of Product
+  /**
+   * Handle Increase or Reduce Quantity of Product
+   * @param handle: string @param item: TCartState
+   *
+   */
   const handleCase = (handle: string, item: TCartState) => {
     if (item.quantity >= 999) {
       item.quantity = 999;
@@ -85,7 +102,11 @@ export const useCart = (): TUseCartProps => {
     handleCart(handleDetail);
   };
 
-  // Function Handle Change Quality
+  /**
+   * Function Handle Change Quality
+   * @param event: React.ChangeEvent<HTMLInputElement>
+   *
+   */
   const handleChangeQuality = (event: React.ChangeEvent<HTMLInputElement>) => {
     const quantitys = document.querySelectorAll(
       ".textbox_id"
@@ -111,16 +132,17 @@ export const useCart = (): TUseCartProps => {
     handleCart(handleDetail);
   };
 
-  // Function add Category
-  const handleAddCategory = (item: TCategoryState) => {
-    console.log(item.categoryID);
-    if (nameCategory !== item.categoryID) {
-      navigate(
-        Route(
-          `${ROUTE_CONFIG.PRODUCT}/Category?keyword=${item.categoryName}&CategoryId=${item.categoryID}`
-        )
-      );
-    }
+  /**
+   * Function add Category
+   * @param item: TCartState
+   *
+   */
+  const handleAddCategory = (item: TCartState) => {
+    navigate(
+      Route(
+        `${ROUTE_CONFIG.PRODUCT}/Category?keyword=${item.categoryName}&CategoryId=${item.categoryID}`
+      )
+    );
   };
 
   return {
