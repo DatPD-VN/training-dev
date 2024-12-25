@@ -1,0 +1,84 @@
+@use "abstracts/index" as *;
+
+.containerDataProduct {
+  padding: 20px 50px;
+}
+
+.containerDataProductTitle {
+  text-align: left;
+  font-weight: 500;
+}
+
+.tableDataProduct {
+  border-spacing: 0px 10px;
+  text-align: center;
+  thead th {
+    font-weight: 500;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  tbody {
+    font-size: 13px;
+    tr {
+      transition-duration: 300ms;
+      border-radius: 10px;
+      cursor: pointer;
+      td {
+        padding: 0px;
+      }
+      &:hover {
+        background-color: $hoverDataProducts;
+      }
+    }
+  }
+  .theadDataProductStt {
+    width: 50px;
+  }
+  .theadDataProductImage {
+    width: 100px;
+  }
+  .theadDataProductName {
+    width: 40%;
+  }
+  .theadDataProductPrice {
+    width: 100px;
+  }
+  .theadDataProductSale {
+    width: 50px;
+  }
+
+  .theadDataProductHashtag {
+  }
+  .theadDataProductCategory {
+  }
+  .tbodyDataProductStt {
+  }
+  .tbodyDataProductImage {
+    img {
+      width: 50px;
+      margin: 5px 0px;
+      border-radius: 5px;
+    }
+  }
+  .tbodyDataProductName {
+    text-align: left;
+    padding: 0 20px;
+    text-transform: capitalize;
+    span {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+  .tbodyDataProductSale {
+    font-weight: 500;
+    color: $redColor;
+  }
+  .tbodyDataProductHashtag,
+  .tbodyDataProductCategory {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

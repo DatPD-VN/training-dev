@@ -13,6 +13,7 @@ import {
   handleSuggest,
   listCategory,
   listSearch,
+  newListState,
 } from "./listState";
 
 // Set Cart
@@ -50,4 +51,7 @@ export const setAddDetailCategory = () => {
 };
 export const setDelCategory = () => {
   return useSetRecoilState(delCategory);
+};
+export const setDataProducts = () => {
+  return useSetRecoilState(newListState);
 };

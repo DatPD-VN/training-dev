@@ -1,13 +1,14 @@
 import React from "react";
+import { TDataState } from "../../recoil/type";
 
 type TUseProductProps = {
-  lists: Array<TListProductChange>;
+  lists: Array<TDataState>;
   isLoading: boolean;
   handleDragStart: (
     event: React.DragEvent<HTMLDivElement>,
-    product: TListProduct
+    product: TDataState
   ) => void;
-  handleSetList: (newList: TListProductChange[]) => void;
+  handleSetList: (newList: TDataState[]) => void;
 };
 type TListProduct = {
   id: number;

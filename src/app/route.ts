@@ -7,6 +7,7 @@ export const ROUTE_CONFIG = {
   LOGIN: "/login",
   RESETPASS: "/reset-Pass",
   PROFILE: "/profile",
+  DATA: "/data-products",
 };
 
 export const appCheck: {

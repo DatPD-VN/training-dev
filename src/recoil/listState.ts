@@ -44,15 +44,10 @@ export const newListState = selector({
     const list: Array<TDataState> = get(listTodoState);
     return list;
   },
-  set: ({ get, set }, newValue) => {
+  set: ({ get, set }, newValue: any) => {
     const list: Array<TDataState> = get(listTodoState);
-    const newTodo = {
-      id: new Date().getTime(),
-      content: newValue,
-      status: "new",
-    };
-
-    set(listTodoState, [...list, newTodo]);
+    console.log(list);
+    set(listTodoState, [...newValue]);
   },
 });
 export const listSearch = selector({

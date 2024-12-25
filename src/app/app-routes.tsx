@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
+import { DataProducts } from "../pages/data-products";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -63,6 +64,11 @@ const appRoutes: {
     path: baseRoute("profile"),
     title: `${baseTitle} | Profile`,
     Component: Profile,
+  },
+  {
+    path: baseRoute("data-products"),
+    title: `${baseTitle} | Data Products`,
+    Component: DataProducts,
   },
 ];
 

@@ -1,4 +1,4 @@
-import { TListProduct, TListProductChange, TUseProductProps } from "./type";
+import { TDataProductProps } from "./type";
 import { useEffect, useState } from "react";
 import {
   useNewListState,
@@ -6,19 +6,17 @@ import {
   useListNewCategory,
   setListSearch,
   setAddCategory,
-  setDataProducts,
 } from "../../recoil";
 import { DELAY_DEFAULT } from "../../const";
 import { useLocation } from "react-router";
-import { TDataState } from "../../recoil/type";
+import { TListProduct } from "../product/type";
 
-export const useProduct = (): TUseProductProps => {
+export const useDataProducts = (): TDataProductProps => {
   const location = useLocation();
   const hashtag = location.state;
-  const newList: Array<TDataState> = useNewListState();
-  const setListNew = setDataProducts();
-  const newSearch: Array<TDataState> = useListSearch();
-  const newCategories: Array<TDataState> = useListNewCategory();
+  const newList: Array<TListProduct> = useNewListState();
+  const newSearch: Array<TListProduct> = useListSearch();
+  const newCategories: Array<TListProduct> = useListNewCategory();
   const choiceHashtag = setListSearch();
   const choiceCategory = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +28,7 @@ export const useProduct = (): TUseProductProps => {
    */
   const handleDragStart = (
     event: React.DragEvent<HTMLDivElement>,
-    product: TDataState
+    product: TListProduct
   ) => {
     event.dataTransfer.setData("product", JSON.stringify(product));
   };
@@ -78,29 +76,19 @@ export const useProduct = (): TUseProductProps => {
    * @param newList: TListProduct[]
    *
    */
-  const handleSetList = (newLists: TDataState[]) => {
+  const handleSetList = (newLists: TListProductChange[]) => {
     const updateList = newLists.map((item, index) => ({
       ...item,
       displayOrder: index + 1,
     }));
-    const newTodo = updateList.map((item, index) => {
-      const newTodo2 = newList[index];
-
-      const isCheck = Object.keys(item).some((key) => item[key] !== newTodo2[key]);
-
-      return isCheck && newList[index]
-
-    });
 
     // const changeList = newLists.filter((item, index) => {
     //   return item.displayOrder !== lists[index].displayOrder;
     // });
     // console.log("Các Sản Phẩm Thay Đổi", changeList);
 
-    // setLists(updateList);
-    setListNew(updateList);
+    setLists(updateList);
   };
-
   return {
     lists,
     isLoading,

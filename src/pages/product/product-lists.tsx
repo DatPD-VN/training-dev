@@ -8,6 +8,7 @@ import { useProduct } from "./hook";
 import { TListProduct } from "./type";
 import { Banner } from "../../layouts/banner/banner";
 import { ReactSortable } from "react-sortablejs";
+import { TDataState } from "../../recoil/type";
 
 const Dashboard: FC = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Dashboard: FC = () => {
                 easing="ease-out"
                 className={styles.headerWrapper}
               >
-                {lists.map((item: TListProduct, index: number) => (
+                {lists.map((item: TDataState, index: number) => (
                   <div
                     key={index}
                     className={` ${styles.divItemWrapper} draggableItem`}
@@ -87,7 +88,7 @@ const Dashboard: FC = () => {
 
                         <div className={styles.price}>
                           <span className={styles.iconPrice}>₫</span>
-                          {item.priceProduct.toLocaleString("it-IT")}
+                          {item.priceProduct?.toLocaleString("it-IT")}
                         </div>
                       </div>
                       <div className={styles.divItemHover}>
