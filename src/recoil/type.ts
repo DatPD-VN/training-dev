@@ -11,6 +11,7 @@ type TImageState = {
   src: string;
 };
 type TDataState = {
+  displayOrder?: number;
   id: number;
   imgProduct: string;
   titleProduct: string;

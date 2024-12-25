@@ -16,6 +16,7 @@
     "react-dom": "^18.3.1",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.28.0",
+    "react-sortablejs": "^6.1.4",
     "react-toastify": "^10.0.6",
     "recoil": "^0.7.7",
     "require": "^2.4.20"
