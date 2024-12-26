@@ -82,7 +82,9 @@ const Header: FC = () => {
                     <a href={Route(ROUTE_CONFIG.PROFILE)}>Tài Khoản Của Tôi</a>
                   </li>
                   <li>
-                    <a href={Route(ROUTE_CONFIG.DATA)}>Thông Tin Sản Phẩm</a>
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.DATA))}>
+                      Thông Tin Sản Phẩm
+                    </a>
                   </li>
                   <li>
                     <a href={Route(ROUTE_CONFIG.CART)}>Đơn Mua</a>
