@@ -1,4 +1,4 @@
-import { TListProduct, TListProductChange, TUseProductProps } from "./type";
+import { TUseProductProps } from "./type";
 import { useEffect, useState } from "react";
 import {
   useNewListState,
@@ -10,7 +10,7 @@ import {
 } from "../../recoil";
 import { DELAY_DEFAULT } from "../../const";
 import { useLocation } from "react-router";
-import { TDataState } from "../../recoil/type";
+import { TCategoryId, TDataState } from "../../recoil/type";
 
 export const useProduct = (): TUseProductProps => {
   const location = useLocation();
@@ -18,10 +18,11 @@ export const useProduct = (): TUseProductProps => {
   const newList: Array<TDataState> = useNewListState();
   const setListNew = setDataProducts();
   const newSearch: Array<TDataState> = useListSearch();
-  const newCategories: Array<TDataState> = useListNewCategory();
+  const newCategories: Array<TCategoryId> = useListNewCategory();
   const choiceHashtag = setListSearch();
   const choiceCategory = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
+  const [listCategory, setListCategory] = useState<TDataState[]>([]);
 
   /**
    * Handle Drag Product
@@ -49,6 +50,35 @@ export const useProduct = (): TUseProductProps => {
   }, [hashtag]);
 
   useEffect(() => {
+    if (newCategories) {
+      if (
+        newCategories[0]?.categoryID !== null &&
+        newCategories[0]?.categoryDetailId == null
+      ) {
+        const valueCategories = newCategories.map((category) => {
+          const listCategories = newList.filter((item: TDataState) => {
+            return category.categoryID == item.categoryID;
+          });
+          return [...listCategories];
+        });
+        setListCategory(valueCategories[0]);
+      } else {
+        const valueCategories = newCategories.map((category) => {
+          const listCategories = newList.filter((item: TDataState) => {
+            return category.categoryID == item.categoryID;
+          });
+          const valueResult = listCategories.filter(
+            (item: TDataState) =>
+              category.categoryDetailId == item.categoryDetailId
+          );
+          return [...valueResult];
+        });
+        setListCategory(valueCategories[0]);
+      }
+    }
+  }, [newCategories]);
+
+  useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -58,9 +88,9 @@ export const useProduct = (): TUseProductProps => {
   const listProduct =
     hashtag !== null
       ? newSearch
-      : newCategories.length === 0
+      : listCategory === undefined
       ? newList
-      : newCategories;
+      : listCategory;
 
   const listProducts = listProduct.map((item, index) => ({
     ...item,
@@ -75,7 +105,7 @@ export const useProduct = (): TUseProductProps => {
 
   /**
    * Handle Set List Product
-   * @param newList: TListProduct[]
+   * @param newLists: TListProduct[]
    *
    */
   const handleSetList = (newLists: TDataState[]) => {
@@ -83,22 +113,33 @@ export const useProduct = (): TUseProductProps => {
       ...item,
       displayOrder: index + 1,
     }));
-    const newTodo = updateList.map((item, index) => {
-      const newTodo2 = newList[index];
+    setLists(updateList);
 
-      const isCheck = Object.keys(item).some((key) => item[key] !== newTodo2[key]);
+    const mergedList = newList.map((updateItem) => {
+      const matchingItem = updateList.find(
+        (newItem) => newItem.id === updateItem.id
+      );
 
-      return isCheck && newList[index]
+      if (matchingItem) {
+        return { ...updateItem, ...matchingItem };
+      }
 
+      return updateItem;
     });
 
-    // const changeList = newLists.filter((item, index) => {
-    //   return item.displayOrder !== lists[index].displayOrder;
-    // });
-    // console.log("Các Sản Phẩm Thay Đổi", changeList);
+    const result = mergedList.sort((a, b) => {
+      const A = a.displayOrder || 0;
+      const B = b.displayOrder || 0;
 
-    // setLists(updateList);
-    setListNew(updateList);
+      return A - B;
+    });
+
+    const isDifferent = mergedList.some(
+      (item, index) => item !== newList[index]
+    );
+    if (isDifferent) {
+      setListNew(result);
+    }
   };
 
   return {

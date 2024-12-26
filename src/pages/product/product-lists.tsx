@@ -5,7 +5,6 @@ import Route, { ROUTE_CONFIG } from "../../app/route";
 import { ProductLoading } from "../../components/loading";
 import { Categories } from "../../layouts/categories";
 import { useProduct } from "./hook";
-import { TListProduct } from "./type";
 import { Banner } from "../../layouts/banner/banner";
 import { ReactSortable } from "react-sortablejs";
 import { TDataState } from "../../recoil/type";
@@ -37,6 +36,7 @@ const Dashboard: FC = () => {
               >
                 {lists.map((item: TDataState, index: number) => (
                   <div
+                    data-order={item.displayOrder}
                     key={index}
                     className={` ${styles.divItemWrapper} draggableItem`}
                     onClick={() => {

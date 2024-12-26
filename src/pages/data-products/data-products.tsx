@@ -1,62 +1,76 @@
 import styles from "./styles.module.scss";
 import { FC } from "react";
-import {
-  ArrowLeft,
-  BadgeDollarSign,
-  ChevronDown,
-  ChevronRight,
-  Search,
-  Ticket,
-} from "lucide-react";
-import Plus from "../../icon/plus";
-import NoPlus from "../../icon/no-plus";
-import { useNavigate } from "react-router";
-import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useDataProducts } from "./hook";
-import { TCartState } from "../../recoil/type";
+import { ReactSortable } from "react-sortablejs";
+import { TListProduct } from "../product/type";
+import { useNavigate } from "react-router-dom";
+import Route, { ROUTE_CONFIG } from "../../app/route";
 
 const DataProducts: FC = () => {
-  const {} = useDataProducts();
+  const navigate = useNavigate();
+  const { lists, handleSetList } = useDataProducts();
   return (
     <>
       <section className={styles.containerDataProduct}>
         <h4 className={styles.containerDataProductTitle}>Thông Tin Sản Phẩm</h4>
-        <table className={styles.tableDataProduct}>
-          <thead>
-            <tr>
-              <th className={styles.theadDataProductStt}>STT</th>
-              <th className={styles.theadDataProductImage}>Image</th>
-              <th className={styles.theadDataProductName}>Tên Sản Phẩm</th>
-              <th className={styles.theadDataProductPrice}>Giá</th>
-              <th className={styles.theadDataProductSale}>Sale</th>
-              <th className={styles.theadDataProductHashtag}>HashTag</th>
-              <th className={styles.theadDataProductCategory}>Danh Mục</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className={styles.tbodyDataProductStt}>1</td>
-              <td className={styles.tbodyDataProductImage}>
-                <img
-                  src="https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-ls9f6xwhk0igf3_tn.webp"
-                  alt=""
-                />
-              </td>
-              <td className={styles.tbodyDataProductName}>
-                <span>
-                  DÉP QUAI NGANG CHỮ H GIÁ RẺ SIÊU ĐẸP ĐI ÊM CHÂN TÔN DÁNG.DÉP
-                  QUAI NGANG NAM NỮ SÀNH ĐIỆU
-                </span>
-              </td>
-              <td className={styles.tbodyDataProductPrice}>10000</td>
-              <td className={styles.tbodyDataProductSale}>-42%</td>
-              <td className={styles.tbodyDataProductHashtag}>
-                "#aothun", "#Giaydep", "#trangdiem", "#TaiNghe"
-              </td>
-              <td className={styles.tbodyDataProductCategory}>Giày dép</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div className={styles.tableDataProduct}>
+          <ul>
+            <li className={styles.theadDataProductStt}>STT</li>
+            <li className={styles.theadDataProductImage}>Image</li>
+            <li className={styles.theadDataProductName}>Tên Sản Phẩm</li>
+            <li className={styles.theadDataProductPrice}>Giá</li>
+            <li className={styles.theadDataProductSale}>Sale</li>
+            <li className={styles.theadDataProductHashtag}>HashTag</li>
+            <li className={styles.theadDataProductCategory}>Danh Mục</li>
+          </ul>
+
+          <ReactSortable
+            filter=".addImageButtonContainer"
+            dragClass="sortableDrag"
+            list={lists.map((item) => ({ ...item }))}
+            setList={handleSetList}
+            animation={200}
+            easing="ease-out"
+            className={styles.listWrapper}
+          >
+            {lists.map((item: TListProduct, index: number) => (
+              <ul key={index}>
+                <li className={styles.tbodyDataProductStt}>{index + 1}</li>
+                <li
+                  className={styles.tbodyDataProductImage}
+                  onClick={() => {
+                    navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
+                      state: {
+                        id: item.id,
+                      },
+                    });
+                  }}
+                >
+                  <img src={item.imgProduct} alt="" />
+                </li>
+                <li className={styles.tbodyDataProductName}>
+                  <span>{item.titleProduct}</span>
+                </li>
+                <li className={styles.tbodyDataProductPrice}>
+                  {item.priceProduct?.toLocaleString("it-IT")}
+                  <span className={styles.iconPrice}>₫</span>
+                </li>
+                <li className={styles.tbodyDataProductSale}>
+                  {item.saleProduct}
+                </li>
+                <li className={styles.tbodyDataProductHashtag}>
+                  {item.hashTag.map((item, index) => (
+                    <span key={index}>{item} , </span>
+                  ))}
+                </li>
+                <li className={styles.tbodyDataProductCategory}>
+                  {item.categoryName}
+                </li>
+              </ul>
+            ))}
+          </ReactSortable>
+        </div>
       </section>
     </>
   );

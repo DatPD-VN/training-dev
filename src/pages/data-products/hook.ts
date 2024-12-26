@@ -6,6 +6,7 @@ import {
   useListNewCategory,
   setListSearch,
   setAddCategory,
+  setDataProducts,
 } from "../../recoil";
 import { DELAY_DEFAULT } from "../../const";
 import { useLocation } from "react-router";
@@ -20,18 +21,7 @@ export const useDataProducts = (): TDataProductProps => {
   const choiceHashtag = setListSearch();
   const choiceCategory = setAddCategory();
   const [isLoading, setIsLoading] = useState(true);
-
-  /**
-   * Handle Drag Product
-   * @param event: React.DragEvent<HTMLDivElement>,
-   * @param product: TListProduct
-   */
-  const handleDragStart = (
-    event: React.DragEvent<HTMLDivElement>,
-    product: TListProduct
-  ) => {
-    event.dataTransfer.setData("product", JSON.stringify(product));
-  };
+  const setListNew = setDataProducts();
 
   useEffect(() => {
     if (newSearch.length === 0) {
@@ -76,23 +66,16 @@ export const useDataProducts = (): TDataProductProps => {
    * @param newList: TListProduct[]
    *
    */
-  const handleSetList = (newLists: TListProductChange[]) => {
+  const handleSetList = (newLists: TListProduct[]) => {
     const updateList = newLists.map((item, index) => ({
       ...item,
       displayOrder: index + 1,
     }));
-
-    // const changeList = newLists.filter((item, index) => {
-    //   return item.displayOrder !== lists[index].displayOrder;
-    // });
-    // console.log("Các Sản Phẩm Thay Đổi", changeList);
-
-    setLists(updateList);
+    setListNew(updateList);
   };
   return {
     lists,
     isLoading,
-    handleDragStart,
     handleSetList,
   };
 };

@@ -12,25 +12,20 @@
 .tableDataProduct {
   border-spacing: 0px 10px;
   text-align: center;
-  thead th {
-    font-weight: 500;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-  tbody {
-    font-size: 13px;
-    tr {
-      transition-duration: 300ms;
-      border-radius: 10px;
-      cursor: pointer;
-      td {
-        padding: 0px;
-      }
-      &:hover {
-        background-color: $hoverDataProducts;
-      }
+  width: 100%;
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0;
+    li {
+      font-size: 14px;
+      font-weight: 500;
     }
   }
+
   .theadDataProductStt {
     width: 50px;
   }
@@ -40,7 +35,8 @@
   .theadDataProductName {
     width: 40%;
   }
-  .theadDataProductPrice {
+  .theadDataProductPrice,
+  .tbodyDataProductPrice {
     width: 100px;
   }
   .theadDataProductSale {
@@ -48,12 +44,17 @@
   }
 
   .theadDataProductHashtag {
+    width: 200px;
   }
   .theadDataProductCategory {
+    width: 100px;
   }
   .tbodyDataProductStt {
+    width: 50px;
   }
   .tbodyDataProductImage {
+    width: 100px;
+
     img {
       width: 50px;
       margin: 5px 0px;
@@ -61,8 +62,9 @@
     }
   }
   .tbodyDataProductName {
-    text-align: left;
-    padding: 0 20px;
+    width: 40%;
+    text-align: center;
+    // padding: 0 20px;
     text-transform: capitalize;
     span {
       overflow: hidden;
@@ -74,11 +76,45 @@
   .tbodyDataProductSale {
     font-weight: 500;
     color: $redColor;
+    width: 50px;
   }
-  .tbodyDataProductHashtag,
+  .iconPrice {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .tbodyDataProductHashtag {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .tbodyDataProductCategory {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 100px;
+  }
+}
+
+.listWrapper {
+  font-size: 13px;
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: space-between;
+    border-radius: 10px;
+    transition-duration: 300ms;
+
+    li {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    cursor: pointer;
+    padding: 0px;
+    &:hover {
+      background-color: $hoverDataProducts;
+    }
   }
 }
