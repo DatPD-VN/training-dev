@@ -5,17 +5,26 @@ import { ReactSortable } from "react-sortablejs";
 import { TListProduct } from "../product/type";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const DataProducts: FC = () => {
   const navigate = useNavigate();
-  const { lists, handleSetList } = useDataProducts();
+  const {
+    lists,
+    handleSetList,
+    currentItems,
+    paginate,
+    totalPages,
+    currentPage,
+    itemsPerPage,
+  } = useDataProducts();
   return (
     <>
       <section className={styles.containerDataProduct}>
         <h4 className={styles.containerDataProductTitle}>Thông Tin Sản Phẩm</h4>
 
         <div className={styles.tableDataProduct}>
-          <ul>
+          <ul className={styles.tableDataProductTitle}>
             <li className={styles.theadDataProductStt}>STT</li>
             <li className={styles.theadDataProductImage}>Image</li>
             <li className={styles.theadDataProductName}>Tên Sản Phẩm</li>
@@ -34,9 +43,11 @@ const DataProducts: FC = () => {
             easing="ease-out"
             className={styles.listWrapper}
           >
-            {lists.map((item: TListProduct, index: number) => (
+            {currentItems.map((item: TListProduct, index: number) => (
               <ul key={index}>
-                <li className={styles.tbodyDataProductStt}>{index + 1}</li>
+                <li className={styles.tbodyDataProductStt}>
+                  {currentPage == 1 ? index + 1 : index + 1 + itemsPerPage}
+                </li>
                 <li
                   className={styles.tbodyDataProductImage}
                   onClick={() => {
@@ -70,6 +81,25 @@ const DataProducts: FC = () => {
               </ul>
             ))}
           </ReactSortable>
+        </div>
+        <div className={styles.containerPatination}>
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
+          >
+            <ChevronLeft />
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 bg-gray-300 rounded-lg disabled:opacity-50"
+          >
+            <ChevronRight />
+          </button>
         </div>
       </section>
     </>

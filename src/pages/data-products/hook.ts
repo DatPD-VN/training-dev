@@ -61,6 +61,16 @@ export const useDataProducts = (): TDataProductProps => {
 
   const [lists, setLists] = useState(listProducts);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = lists.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const totalPages = Math.ceil(lists.length / itemsPerPage);
+
   /**
    * Handle Set List Product
    * @param newList: TListProduct[]
@@ -77,5 +87,10 @@ export const useDataProducts = (): TDataProductProps => {
     lists,
     isLoading,
     handleSetList,
+    currentItems,
+    paginate,
+    totalPages,
+    currentPage,
+    itemsPerPage
   };
 };
