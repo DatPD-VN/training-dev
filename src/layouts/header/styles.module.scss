@@ -168,6 +168,10 @@
   fill: $whiteColor;
   margin-right: 20px;
   img {
+    width: 100%;
+    transform: translateY(-10px);
+  }
+  svg {
     transform: translateY(-10px);
   }
 }

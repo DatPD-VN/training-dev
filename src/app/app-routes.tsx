@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
 import { DataProducts } from "../pages/data-products";
+import { Order } from "../pages/order";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -69,6 +70,11 @@ const appRoutes: {
     path: baseRoute("data-products"),
     title: `${baseTitle} | Data Products`,
     Component: DataProducts,
+  },
+  {
+    path: baseRoute("order"),
+    title: `${baseTitle} | Order`,
+    Component: Order,
   },
 ];
 

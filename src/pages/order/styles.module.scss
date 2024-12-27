@@ -6,7 +6,7 @@
 .container {
   height: auto;
   width: 100%;
-  background-color: $whiteColor;
+  background-color: $backgroundGray;
 }
 .headerWrap {
   display: flex;
@@ -107,9 +107,10 @@
     display: flex;
     align-items: center;
     img {
-      width: 80px;
-      height: 80px;
+      width: 40px;
+      height: 40px;
       margin-right: 20px;
+      border-radius: 5px;
     }
     .itemWrapInfoTitle {
       display: flex;
@@ -118,7 +119,7 @@
       span {
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         padding-right: 20px;
         text-align: left;
         width: 90%;
@@ -224,18 +225,11 @@
   background-color: $whiteColor;
   font-size: 15px;
   margin: 10px 0;
-  position: sticky;
-  bottom: 0px;
   .footerWrapTop {
     display: flex;
     align-items: center;
     justify-content: end;
-    border-bottom: 1px;
-    border-top: 0px;
-    border-right: 0px;
-    border-left: 0px;
-    border-style: dashed;
-    border-color: $borderColor;
+
     padding: 0 30px;
     padding-bottom: 20px;
     .footerWrapTopVoucher {
@@ -250,6 +244,7 @@
     a {
       font-size: 14px;
       text-decoration: none;
+      color: $blueColor;
     }
   }
   .footerWrapMiddle {
@@ -257,6 +252,12 @@
     align-items: center;
     justify-content: end;
     padding: 10px 30px;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: dashed;
+    border-color: $borderColor;
     .footerWrapMiddleWrap {
       display: flex;
       align-items: center;
@@ -288,6 +289,18 @@
         font-size: 10px;
       }
     }
+  }
+  .footerWrapBottomShip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: dashed;
+    border-color: $borderColor;
+    padding: 30px 30px;
   }
   .footerWrapBottom {
     display: flex;
@@ -438,12 +451,14 @@
 // Mobile
 .containerCart {
   box-sizing: border-box;
+  background-color: $backgroundGray;
 }
 .headerWrapMobile {
   display: flex;
   align-items: center;
   width: 100%;
   padding: 10px 0;
+  background-color: $whiteColor;
 }
 .headerWrapLeftMobile {
   width: 20px;
@@ -518,6 +533,9 @@
 
 .footerWrapMobile {
   padding: 20px 0;
+  margin: 10px;
+  background-color: $whiteColor;
+  border-radius: 10px;
   .footerWrapTopMobile {
     display: flex;
     align-items: center;
@@ -552,16 +570,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px;
+  border-bottom: 0px;
   border-top: 1px;
   border-right: 0px;
   border-left: 0px;
-  border-color: rgba(128, 128, 128, 0.24);
+  border-color: $borderColorGray;
   border-style: solid;
-  padding: 15px;
+  padding: 15px 15px 0 15px;
   .footerWrapMiddleWrapMobile {
     display: flex;
     align-items: center;
+    gap: 5px;
   }
   .footerWrapMiddlePriceVoucherMobile {
     color: $grayColor;
@@ -581,7 +600,7 @@
   }
 }
 .footerWrapBottomMobile {
-  padding: 15px;
+  margin-right: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -629,7 +648,8 @@
   padding: 25px 30px;
   background-color: $whiteColor;
   font-size: 15px;
-  margin: 10px 0;
+  margin: 10px;
+  border-radius: 10px;
   .itemWrapperMobile {
     padding: 5px;
     border: 1px solid $whiteColor;
@@ -644,15 +664,15 @@
       width: 80px;
       height: 80px;
       margin-right: 20px;
+      border-radius: 5px;
     }
     .itemWrapInfoTitleMobile {
-      display: flex;
-      flex-direction: column;
+     
 
-      span {
+      p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         padding-right: 20px;
         text-align: left;
         width: 90%;
@@ -681,7 +701,7 @@
   width: 5%;
 }
 .div40 {
-  width: 40%;
+  width: 60%;
 }
 .div13 {
   width: 13.75%;
@@ -691,14 +711,14 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  width: 100%;
   img {
     width: 80px;
     height: 80px;
     margin-right: 20px;
   }
   .itemWrapInfoTitleMobile {
-    display: flex;
-    flex-direction: column;
+   text-align: left;
 
     span {
       display: -webkit-box;
@@ -801,33 +821,225 @@
 .itemWrapInfoImg {
   cursor: pointer;
 }
-.footerWrapEmptyCart {
+.headerWrapInformationUser {
+  background-color: $whiteColor;
+  margin: 10px 60px;
+}
+.headerWrapBorder {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #6fa6d6,
+    #6fa6d6 33px,
+    transparent 0,
+    transparent 41px,
+    #f18d9b 0,
+    #f18d9b 74px,
+    transparent 0,
+    transparent 82px
+  );
+  background-position-x: -30px;
+  background-size: 116px 3px;
+  height: 3px;
   width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  .footerWrapEmptyCartTitle {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 20px 0 7px;
-    transform: translateX(10px);
-  }
-  .footerWrapEmptyCartDescription {
-    font-size: 14px;
-    transform: translateX(10px);
-  }
-  button {
-    outline: none;
-    border: 1px solid $primary;
+}
+.headerWrapContent {
+  padding: 25px 40px;
+  text-align: left;
+  .headerWrapContentTitle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
     color: $primary;
-    font-size: 18px;
-    border-radius: 4px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: transparent;
-    transform: translateX(10px);
+    margin-bottom: 20px;
+  }
+  .headerWrapContentMain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 14px;
+    button {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: $blueColor;
+      cursor: pointer;
+    }
+    .headerWrapContentName,
+    .headerWrapContentPhone {
+      font-weight: 500;
+      margin-right: 5px;
+    }
+    .headerWrapContentSelect {
+      color: $primary;
+      border: 1px solid $primary;
+      font-size: 12px;
+      padding: 3px;
+      border-radius: 3px;
+      margin-left: 10px;
+    }
+  }
+}
+.footerShipWrapper {
+  display: flex;
+  align-items: start;
+  border-bottom: 1px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-color: rgba(128, 128, 128, 0.24);
+  border-style: dashed;
+  height: 115px;
+  box-sizing: border-box;
+  .footerShipWrapperText {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 20px;
+    font-size: 14px;
+    color: $grayColor;
+    white-space: nowrap;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-right: 1px;
+    border-left: 0px;
+    border-color: rgba(128, 128, 128, 0.24);
+    border-style: dashed;
+    box-sizing: border-box;
+    span {
+      transform: translateY(7px);
+    }
+    input {
+      padding: 7px 12px;
+      border: 1px solid $borderColor;
+      color: $grayColor;
+      outline: none;
+      width: 100%;
+    }
+  }
+}
+.footerShipWrapperContent {
+  width: 60%;
+  padding: 20px;
+  display: flex;
+  align-items: start;
+  font-size: 14px;
+}
+.footerShipWrapperTitle {
+  white-space: nowrap;
+  padding-right: 10px;
+}
+.footerShipWrapperMain {
+  text-align: left;
+  font-size: 13px;
+}
+.footerShipWrapperSelect {
+  display: flex;
+  justify-content: space-between;
+  .footerShipWrapperSelectChange {
+    color: $blueColor;
     cursor: pointer;
   }
+}
+.footerShipWrapperMainDescription {
+  margin: 7px 0;
+  color: $greenPrimary;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footerShipWrapperMainHelper {
+  color: $grayColor;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footerWrapBottomTitle {
+  font-size: 18px;
+}
+.footerWrapBottomContent {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: $blueColor;
+    cursor: pointer;
+  }
+}
+
+.footerWrapBottomLeft {
+  font-size: 14px;
+  span {
+    color: $blueColor;
+  }
+}
+.footerWrapBottomTotal {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+  padding: 20px 40px;
+  gap: 20px;
+  color: $textTitleGray;
+  .footerWrapBottomTotalWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    h2 {
+      margin: 0;
+      color: $primary;
+    }
+  }
+}
+@media (max-width: 1100px) {
+  .headerWrapInformationUser {
+    margin: 10px;
+  }
+}
+.headerWrapInformationUserMobile {
+  background-color: $whiteColor;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  .headerWrapContentMobile {
+    display: flex;
+    gap: 10px;
+  }
+  .headerWrapContentMainMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 14px;
+  }
+  .headerWrapContentWrapperMobile {
+    text-align: left;
+  }
+  .headerWrapContentTitleMobile {
+    transform: translateY(2px);
+  }
+  .headerWrapContentPhoneMobile {
+    color: $grayColor;
+  }
+  .headerWrapContentAddressMobile {
+    color: $textTitleGray;
+    width: 80%;
+  }
+}
+.itemWrapInfoTitleMobileWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.itemWrapInfoPriceNewMobileWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

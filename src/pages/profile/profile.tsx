@@ -86,7 +86,7 @@ const Profile: FC = () => {
                   <li>Cập nhật đơn hàng</li>
                   <li>Khuyến mãi</li>
                   <li>Cập nhật Ví</li>
-                  <li>Cập nhật Shopee</li>
+                  <li>Cập nhật Riche</li>
                 </ul>
               </li>
               <li>
@@ -95,7 +95,7 @@ const Profile: FC = () => {
               </li>
               <li>
                 <BadgeDollarSign color="yellow" size={20} />
-                <label htmlFor="">Shopee Xu</label>
+                <label htmlFor="">Riche Xu</label>
               </li>
             </ul>
           </div>

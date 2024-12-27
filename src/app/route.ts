@@ -8,6 +8,7 @@ export const ROUTE_CONFIG = {
   RESETPASS: "/reset-Pass",
   PROFILE: "/profile",
   DATA: "/data-products",
+  ORDER: "/order",
 };
 
 export const appCheck: {
@@ -29,13 +30,11 @@ function Route(link: string) {
     if (localStorage.getItem("profileData")) {
       return ROUTE.Link;
     } else {
-      return Route(ROUTE_CONFIG.PRODUCT)
+      return Route(ROUTE_CONFIG.PRODUCT);
     }
   } else {
     return ROUTE.Link;
   }
-
-  
 }
 
 export default Route;

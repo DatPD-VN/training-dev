@@ -4,32 +4,32 @@ import styles from "./styles.module.scss";
 const Footer: FC = () => {
   return (
     <>
-      <footer>
+      <footer className={styles.footerContainerWrapper}>
         <div className={styles.footerContainer}>
           <div className={styles.footerDiv}>
             <div className={styles.footerTitle}>DỊCH VỤ KHÁCH HÀNG</div>
             <ul className={styles.footerUl}>
-              <li className={styles.footerlist}>Trung Tâm Trợ Giúp Shopee</li>
-              <li className={styles.footerlist}>Shopee Blog</li>
-              <li className={styles.footerlist}>Shopee Mall</li>
+              <li className={styles.footerlist}>Trung Tâm Trợ Giúp Riche</li>
+              <li className={styles.footerlist}>Riche Blog</li>
+              <li className={styles.footerlist}>Riche Mall</li>
               <li className={styles.footerlist}>Hướng Dẫn Mua Hàng/Đặt Hàng</li>
               <li className={styles.footerlist}>Hướng Dẫn Bán Hàng</li>
               <li className={styles.footerlist}>Ví ShopeePay</li>
-              <li className={styles.footerlist}>Shopee Xu</li>
+              <li className={styles.footerlist}>Riche Xu</li>
               <li className={styles.footerlist}>Đơn Hàng</li>
               <li className={styles.footerlist}>Trả Hàng/Hoàn Tiền</li>
-              <li className={styles.footerlist}>Liên Hệ Shopee</li>
+              <li className={styles.footerlist}>Liên Hệ Riche</li>
               <li className={styles.footerlist}>Chính Sách Bảo Hành</li>
             </ul>
           </div>
           <div className={styles.footerDiv}>
-            <div className={styles.footerTitle}>SHOPEE VIỆT NAM</div>
+            <div className={styles.footerTitle}>Riche VIỆT NAM</div>
             <ul className={styles.footerUl}>
-              <li className={styles.footerlist}>Về Shopee</li>
+              <li className={styles.footerlist}>Về Riche</li>
               <li className={styles.footerlist}>Tuyển Dụng</li>
-              <li className={styles.footerlist}>Điều Khoản Shopee</li>
+              <li className={styles.footerlist}>Điều Khoản Riche</li>
               <li className={styles.footerlist}>Chính Sách Bảo Mật</li>
-              <li className={styles.footerlist}>Shopee Mall</li>
+              <li className={styles.footerlist}>Riche Mall</li>
               <li className={styles.footerlist}>Kênh Người Bán</li>
               <li className={styles.footerlist}>Flash Sale</li>
               <li className={styles.footerlist}>Tiếp Thị Liên Kết</li>
@@ -149,7 +149,7 @@ const Footer: FC = () => {
         <hr />
         <div className={styles.footerdescription}>
           <div className={styles.footerdescriptionLeft}>
-            © 2024 Shopee. Tất cả các quyền được bảo lưu.
+            © 2024 Riche. Tất cả các quyền được bảo lưu.
           </div>
           <div className={styles.footerdescriptionRight}>
             <div className={styles.footerdescriptionRightTitle}>
