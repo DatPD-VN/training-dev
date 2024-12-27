@@ -20,7 +20,6 @@ export const useProfile = (): TUseProfileProps => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessageUploadFile, setErrorMessageUploadFile] = useState("");
   const user = JSON.parse(localStorage.getItem("profileData") as string);
-  console.log(user);
 
   useEffect(() => {
     setSuccessMessage("");

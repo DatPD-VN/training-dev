@@ -167,6 +167,9 @@
   width: 170px;
   fill: $whiteColor;
   margin-right: 20px;
+  img {
+    transform: translateY(-10px);
+  }
 }
 
 .headerBottomRight {

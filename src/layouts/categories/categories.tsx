@@ -20,7 +20,7 @@ const Categories: FC = () => {
     <>
       <section className={styles.containerCategories}>
         <div className={styles.titleCategories}>
-          <a href="#">
+          <a>
             <div>
               <Menu size={18} />
             </div>
