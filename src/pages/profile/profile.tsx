@@ -207,7 +207,7 @@ const Profile: FC = () => {
                         <div key={label}>
                           <input
                             key={label}
-                            type="checkbox"
+                            type="radio"
                             name=""
                             id="male"
                             checked={profileData.gender === label}

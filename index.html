@@ -1,11 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/icon_favicon_1_32.0Wecxv.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./src/images/logo-favicon.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
       body {
         font-family: "Roboto", sans-serif;
         margin: 0px;
@@ -19,8 +24,19 @@
         margin: 0;
       }
       img {
-        pointer-events: none;
-        user-select: none;
+        position: relative;
+      }
+      img::after {
+        position: absolute;
+        content: "";
+        background-image: url("https://intero.vn/wp-content/uploads/No_Image_Available_thum_488.jpg");
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
     </style>
   </head>
