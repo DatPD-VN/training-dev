@@ -43,7 +43,7 @@ const Categories: FC = () => {
                     </label>
                   </a>
                 </div>
-                {item.categoryList.length > 0 && (
+                {item.categoryList && item.categoryList.length > 0 && (
                   <ul className={styles.listCategoriesDetail}>
                     {item.categoryList.map((list, index) => {
                       return (
@@ -77,7 +77,7 @@ const Categories: FC = () => {
                     </label>
                   </a>
                 </div>
-                {item.categoryList.length > 0 && (
+                {item.categoryList && item.categoryList.length > 0 && (
                   <ul className={styles.listCategoriesDetail}>
                     {item.categoryList.map((list, index) => {
                       return (

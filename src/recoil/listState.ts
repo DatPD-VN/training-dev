@@ -31,9 +31,11 @@ const listCategoriesState: RecoilState<TCategoryState[]> = atom<
   default: listCategories,
 });
 
-const resultCategories: Array<TDataState> = [];
+const resultCategories: Array<TCategoryState> = [];
 
-const resultCategoriesState: RecoilState<TDataState[]> = atom<TDataState[]>({
+const resultCategoriesState: RecoilState<TCategoryState[]> = atom<
+  TCategoryState[]
+>({
   key: "resultCategory",
   default: resultCategories,
 });
@@ -44,15 +46,8 @@ export const newListState = selector({
     const list: Array<TDataState> = get(listTodoState);
     return list;
   },
-  set: ({ get, set }, newValue) => {
-    const list: Array<TDataState> = get(listTodoState);
-    const newTodo = {
-      id: new Date().getTime(),
-      content: newValue,
-      status: "new",
-    };
-
-    set(listTodoState, [...list, newTodo]);
+  set: ({ set }, newValue: any) => {
+    set(listTodoState, [...newValue]);
   },
 });
 export const listSearch = selector({
@@ -107,14 +102,15 @@ export const listCategory = selector({
 export const addCategory = selector({
   key: "handleAddCategories",
   get: ({ get }) => {
-    const listState: Array<TDataState> = get(resultCategoriesState);
+    const listState: Array<TCategoryState> = get(resultCategoriesState);
     return listState;
   },
-  set: ({ get, set }, data: any) => {
-    const listState: Array<TDataState> = get(listTodoState);
-    const value = listState.filter(
-      (item: TDataState) => data == item.categoryID
-    );
+  set: ({ set }, data: any) => {
+    const value = [
+      {
+        categoryID: data,
+      },
+    ];
     set(listSearchState, []);
     set(resultCategoriesState, [...value]);
   },
@@ -122,27 +118,26 @@ export const addCategory = selector({
 export const addDetailCategory = selector({
   key: "handleAddDetailCategories",
   get: ({ get }) => {
-    const listState: Array<TDataState> = get(resultCategoriesState);
+    const listState: Array<TCategoryState> = get(resultCategoriesState);
     return listState;
   },
-  set: ({ get, set }, data: any) => {
+  set: ({ set }, data: any) => {
     const { categoryID, itemDetailID } = data;
-    const listState: Array<TDataState> = get(listTodoState);
-    const value = listState.filter(
-      (item: TDataState) => categoryID == item.categoryID
-    );
-    const valueResult = value.filter(
-      (item: TDataState) => itemDetailID == item.categoryDetailId
-    );
 
+    const value = [
+      {
+        categoryID,
+        categoryDetailId: itemDetailID,
+      },
+    ];
     set(listSearchState, []);
-    set(resultCategoriesState, [...valueResult]);
+    set(resultCategoriesState, [...value]);
   },
 });
 export const delCategory = selector({
   key: "handleDelCategories",
   get: ({ get }) => {
-    const listState: Array<TDataState> = get(resultCategoriesState);
+    const listState: Array<TCategoryState> = get(resultCategoriesState);
     return listState;
   },
   set: ({ set }) => {

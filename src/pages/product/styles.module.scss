@@ -167,7 +167,7 @@
   cursor: pointer;
 }
 .divItem:hover {
-  border: 1px solid $redColor;
+  border: 1px solid $primary;
   cursor: pointer;
   border-radius: 2px;
 }
@@ -175,6 +175,8 @@
   width: 100%;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+  min-width: 150px;
+  min-height: 150px;
 }
 .divItemSaleOff {
   position: absolute;

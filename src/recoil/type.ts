@@ -1,7 +1,7 @@
 type TCategoryState = {
-  categoryID: number;
-  categoryName: string;
-  categoryList: Array<TCategoryList>;
+  categoryID?: number;
+  categoryName?: string;
+  categoryList?: Array<TCategoryList>;
 };
 type TCategoryList = {
   categoryDetailId: number;
@@ -9,6 +9,10 @@ type TCategoryList = {
 };
 type TImageState = {
   src: string;
+};
+type TCategoryId = {
+  categoryID: number;
+  categoryDetailId?: number;
 };
 type TDataState = {
   displayOrder?: number;
@@ -46,4 +50,5 @@ export type {
   TImageState,
   TCartState,
   TCategoryList,
+  TCategoryId,
 };

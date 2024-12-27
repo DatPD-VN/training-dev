@@ -217,7 +217,7 @@ export const dataState: Array<TDataState> = [
     shipProduct: false,
     isVoucher: true,
     voucherProduct: "20% Giảm",
-    hashTag: ["#aothun", "#Giaydep", "#TaiNghe"],
+    hashTag: ["#aothun", "#Giaydep", "#TaiNghe","#Re"],
     categoryID: 2,
     categoryName: "Giày dép",
     categoryDetailId: 1,
