@@ -1,6 +1,6 @@
 import { TListProductChange } from "../product/type";
 
-type TDataProductProps = {
+type TOrderProductProps = {
   newList: Array<TListProductChange>;
   isLoading: boolean;
   currentItems: Array<TListProductChange>;
@@ -10,4 +10,4 @@ type TDataProductProps = {
   itemsPerPage: number;
 };
 
-export type { TDataProductProps };
+export type { TOrderProductProps };
