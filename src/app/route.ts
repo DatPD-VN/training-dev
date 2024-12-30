@@ -9,6 +9,7 @@ export const ROUTE_CONFIG = {
   PROFILE: "/profile",
   DATA: "/data-products",
   ORDER: "/order",
+  HISTORY: "/order-history",
 };
 
 export const appCheck: {

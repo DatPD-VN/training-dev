@@ -50,7 +50,6 @@ export const useHeader = (): THeaderProps => {
     const productData = event.dataTransfer.getData("product");
     if (productData) {
       const product = JSON.parse(productData);
-      console.log(product);
       handleAddProduct(product);
     }
   };

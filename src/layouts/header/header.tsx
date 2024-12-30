@@ -87,15 +87,16 @@ const Header: FC = () => {
                     </a>
                   </li>
                   <li>
-                    <a onClick={() => navigate(Route(ROUTE_CONFIG.CART))}>
-                      Đơn Mua
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.HISTORY))}>
+                      Thông tin đơn hàng
                     </a>
                   </li>
                   <li>
-                    <a onClick={() => navigate(Route(ROUTE_CONFIG.ORDER))}>
-                      Thanh Toán
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.CART))}>
+                      Giỏ hàng
                     </a>
                   </li>
+
                   <li>
                     <a onClick={handleLogOut}>Đăng Xuất</a>
                   </li>

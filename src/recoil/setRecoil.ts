@@ -4,6 +4,8 @@ import {
   delCartState,
   delCartStateAll,
   handleCartState,
+  handleChoiceProduct,
+  handleDelCartAfterSubmit,
   searchCartState,
 } from "./listCart";
 import {
@@ -31,6 +33,12 @@ export const setDelAllCartState = () => {
 };
 export const setSearchCartState = () => {
   return useSetRecoilState(searchCartState);
+};
+export const setHandleChoiceProductState = () => {
+  return useSetRecoilState(handleChoiceProduct);
+};
+export const setHandleDelCartAfterSubmit = () => {
+  return useSetRecoilState(handleDelCartAfterSubmit);
 };
 
 // Set State

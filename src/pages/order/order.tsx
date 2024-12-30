@@ -3,15 +3,14 @@ import { FC } from "react";
 import {
   ArrowLeft,
   BadgeDollarSign,
-  ChevronDown,
   ChevronRight,
   CircleHelp,
   MapPin,
-  Search,
   Ticket,
+  TicketX,
+  Wallet,
+  WalletMinimal,
 } from "lucide-react";
-import Plus from "../../icon/plus";
-import NoPlus from "../../icon/no-plus";
 import { useNavigate } from "react-router";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useOrder } from "./hook";
@@ -19,22 +18,7 @@ import { TCartState } from "../../recoil/type";
 
 const Order: FC = () => {
   const navigate = useNavigate();
-  const {
-    isPhoneScreen,
-    listProduct,
-    totalCart,
-    countCart,
-    handleDel,
-    handleCase,
-    handleSearch,
-    inputRef,
-    handleCheck,
-    handleCheckAll,
-    isSelectId,
-    handleDelAll,
-    handleChangeQuality,
-    handleAddCategory,
-  } = useOrder();
+  const { cart, isPhoneScreen, totalCart, countCart,handleSubmit } = useOrder();
   return (
     <>
       {isPhoneScreen && (
@@ -43,7 +27,7 @@ const Order: FC = () => {
             <div
               className={styles.headerWrapLeftMobile}
               onClick={() => {
-                navigate(Route(ROUTE_CONFIG.PRODUCT));
+                navigate(Route(ROUTE_CONFIG.CART));
               }}
             >
               <ArrowLeft size={25} />
@@ -73,7 +57,7 @@ const Order: FC = () => {
             </div>
           </div>
           <div className={styles.bodyWrapMobile}>
-            {listProduct.map((item: TCartState, index: number) => (
+            {cart.map((item: TCartState, index: number) => (
               <section key={index} className={styles.itemWrapMobile}>
                 <div className={styles.itemWrapInformationMobile}>
                   <div
@@ -139,7 +123,7 @@ const Order: FC = () => {
               </div>
               <div className={styles.footerWrapMiddleMobile}>
                 <div className={styles.footerWrapMiddleWrapMobile}>
-                  <BadgeDollarSign size={17} color="yellow" />
+                  <TicketX size={17} color="red" />
                   <span className={styles.footerWrapMiddleSelectMobile}>
                     Thanh toán khi nhận hàng
                   </span>
@@ -148,14 +132,80 @@ const Order: FC = () => {
                   <ChevronRight size={19} />
                 </div>
               </div>
+              <div className={styles.footerWrapMiddleMobile}>
+                <div className={styles.footerWrapMiddleWrapMobile}>
+                  <WalletMinimal size={17} color="red" />
+                  <span className={styles.footerWrapMiddleSelectMobile}>
+                    Ví RichePay
+                  </span>
+                </div>
+                <div className={styles.footerWrapMiddleButtonMobile}>
+                  Thiết lập Ví
+                </div>
+              </div>
+              <div className={styles.footerWrapMiddleMobile}>
+                <div className={styles.footerWrapMiddleWrapMobile}>
+                  <Wallet size={17} color="red" />
+                  <div className={styles.footerWrapMiddleSelectMobile}>
+                    <p>RPayLater</p>
+                    <span>Trả sau lên đến 45 ngày</span>
+                  </div>
+                </div>
+                <div className={styles.footerWrapMiddleButtonMobile}>
+                  Kích Hoạt ngay
+                </div>
+              </div>
             </section>
-
             <section className={styles.footerWrapMobile}>
+              <div className={styles.footerWrapTopMobile}>
+                <div className={styles.footerWrapTopVoucherMobile}>
+                  <span>Chi tiết thanh toán</span>
+                </div>
+              </div>
+              <div className={styles.footerWrapBottomWrapMobile}>
+                <div className={styles.footerWrapBottomWrapMobileTitle}>
+                  Tổng tiền hàng
+                </div>
+                <div className={styles.footerWrapBottomWrapMobilePrice}>
+                  đ123.000
+                </div>
+              </div>
+              <div className={styles.footerWrapBottomWrapMobile}>
+                <div className={styles.footerWrapBottomWrapMobileTitle}>
+                  Tổng tiền phí vận chuyển
+                </div>
+                <div className={styles.footerWrapBottomWrapMobilePrice}>
+                  đ103.000
+                </div>
+              </div>
+              <div className={styles.footerWrapBottomWrapMobile}>
+                <div className={styles.footerWrapBottomWrapMobileTitle}>
+                  Giảm giá phí vận chuyển
+                </div>
+                <div className={styles.footerWrapBottomWrapMobilePrice}>
+                  -đ23.000
+                </div>
+              </div>
+              <div className={styles.footerWrapBottomWrapMobileMain}>
+                <div className={styles.footerWrapBottomWrapMobileTitle}>
+                  Tổng thanh toán
+                </div>
+                <div className={styles.footerWrapBottomWrapMobilePrice}>
+                  đ2123.000
+                </div>
+              </div>
+            </section>
+            <div className={styles.footerDescription}>
+              Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo{" "}
+              <span>Điều khoản Riche</span>
+            </div>
+
+            <section className={styles.footerWrapMobileTotal}>
               <div className={styles.footerWrapBottomMobile}>
                 <div className={styles.footerWrapBottomLeftMobile}></div>
                 <div className={styles.footerWrapBottomRightMobile}>
                   <span className={styles.footerWrapBottomRightTotalMobile}>
-                    Tổng thanh toán :
+                    Tổng thanh toán ({countCart}) :
                   </span>
                   <div className={styles.footerWrapBottomRightPriceTotalMobile}>
                     <span>₫</span> {totalCart.toLocaleString("it-IT")}
@@ -163,6 +213,7 @@ const Order: FC = () => {
                   <button
                     type="button"
                     className={styles.footerWrapBottomRightButtonMobile}
+                    onClick={handleSubmit}
                   >
                     Đặt hàng
                   </button>
@@ -224,7 +275,7 @@ const Order: FC = () => {
                   Thành Tiền
                 </div>
               </div>
-              {listProduct.map((item: TCartState, index: number) => (
+              {cart.map((item: TCartState, index: number) => (
                 <section key={index} className={styles.itemWrap}>
                   <div className={`${styles.itemWrapInfo} ${styles.div40}`}>
                     <img
@@ -359,7 +410,9 @@ const Order: FC = () => {
                 <div className={styles.footerWrapBottomTotal}>
                   <div className={styles.footerWrapBottomTotalWrapper}>
                     <p>Tổng tiền hàng</p>
-                    <p>đ234.000</p>
+                    <p>
+                      <span>₫</span> {totalCart.toLocaleString("it-IT")}
+                    </p>
                   </div>
                   <div className={styles.footerWrapBottomTotalWrapper}>
                     <p>Tổng tiền phí vận chuyển</p>
@@ -367,7 +420,10 @@ const Order: FC = () => {
                   </div>
                   <div className={styles.footerWrapBottomTotalWrapper}>
                     <p>Tổng thanh toán</p>
-                    <h2>đ314.000</h2>
+                    <h2>
+                      <span>₫</span>{" "}
+                      {(totalCart + 24000).toLocaleString("it-IT")}
+                    </h2>
                   </div>
                 </div>
                 <div className={styles.footerWrapBottom}>
@@ -379,6 +435,7 @@ const Order: FC = () => {
                     <button
                       type="button"
                       className={styles.footerWrapBottomRightButton}
+                      onClick={handleSubmit}
                     >
                       Đặt hàng
                     </button>

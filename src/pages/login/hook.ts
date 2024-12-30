@@ -70,7 +70,11 @@ export const useLogin = (): TUseLoginProps => {
       ) !== -1
     ) {
       setForm({ ...from, password: "" });
-      localStorage.setItem("profileData", JSON.stringify(from));
+      const profileData = {
+        ...from,
+        id: 1,
+      };
+      localStorage.setItem("profileData", JSON.stringify(profileData));
       navigator(Route(ROUTE_CONFIG.PRODUCT));
     } else {
       setForm({ ...from, password: "" });

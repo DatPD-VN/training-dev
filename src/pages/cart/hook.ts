@@ -1,26 +1,28 @@
 import { TUseCartProps } from "./type";
 import {
   useListCartState,
-  useCountCartState,
   setDelCartState,
   useTotalCartState,
   setHandleCartState,
   setSearchCartState,
   useListSearchCartState,
   setDelAllCartState,
+  useCountChoiceCartState,
+  setHandleChoiceProductState,
 } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TCartState } from "../../recoil/type";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
+import { Toast } from "../../Common/toast";
 
 export const useCart = (): TUseCartProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
   const cart: Array<TCartState> = useListCartState();
   const listSearchCart: Array<TCartState> = useListSearchCartState();
   const totalCart: number = useTotalCartState();
-  const countCart: number = useCountCartState();
+  const countCart: number = useCountChoiceCartState();
   const setSearchCart = setSearchCartState();
   const delCart = setDelCartState();
   const delCartAll = setDelAllCartState();
@@ -29,6 +31,7 @@ export const useCart = (): TUseCartProps => {
   const [isSelectId, setIsSelectIds] = useState<number[]>([]);
   const listProduct = listSearchCart.length > 0 ? listSearchCart : cart;
   const navigate = useNavigate();
+  const handleChoiProduct = setHandleChoiceProductState();
 
   /**
    * Delete Product by ID
@@ -145,6 +148,22 @@ export const useCart = (): TUseCartProps => {
     );
   };
 
+  /**
+   * Function Submit
+   *
+   */
+  const handleSubmit = () => {
+    if (countCart > 0) {
+      navigate(Route(ROUTE_CONFIG.ORDER));
+    } else {
+      Toast("error", "Vui lòng chọn sản phẩm để mua hàng");
+    }
+  };
+
+  useEffect(() => {
+    handleChoiProduct(isSelectId);
+  }, [isSelectId]);
+
   return {
     isPhoneScreen,
     listProduct,
@@ -160,5 +179,6 @@ export const useCart = (): TUseCartProps => {
     handleDelAll,
     handleChangeQuality,
     handleAddCategory,
+    handleSubmit,
   };
 };

@@ -1,0 +1,162 @@
+@use "abstracts/index" as *;
+
+.containerDataProduct {
+  padding: 20px 50px;
+}
+
+.containerDataProductTitle {
+  text-align: left;
+  font-weight: 500;
+}
+
+.tableDataProduct {
+  border-spacing: 0px 10px;
+  text-align: center;
+  width: 100%;
+  .tableDataProductTitle {
+    background-color: $titleShowProducts;
+    padding: 13px;
+    border-radius: 5px;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: space-between;
+
+    li {
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+
+  .theadDataProductStt {
+    width: 50px;
+  }
+  .theadDataProductImage {
+    width: 100px;
+  }
+  .theadDataProductName {
+    width: 40%;
+    text-align: left;
+  }
+  .theadDataProductPrice,
+  .tbodyDataProductPrice {
+    width: 100px;
+  }
+  .theadDataProductSale {
+    width: 50px;
+  }
+
+  .theadDataProductHashtag {
+    width: 200px;
+  }
+  .theadDataProductCategory {
+    width: 100px;
+  }
+  .tbodyDataProductStt {
+    width: 50px;
+  }
+  .tbodyDataProductImage {
+    width: 100px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin: 5px 0px;
+      border-radius: 5px;
+    }
+  }
+  .tbodyDataProductName {
+    width: 40%;
+    text-align: left;
+    text-transform: capitalize;
+    span {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+  .tbodyDataProductSale {
+    font-weight: 500;
+    color: $redColor;
+    width: 50px;
+  }
+  .iconPrice {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .tbodyDataProductHashtag {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .tbodyDataProductCategory {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
+  }
+}
+
+.listWrapper {
+  font-size: 13px;
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    justify-content: space-between;
+    border-radius: 10px;
+    transition-duration: 300ms;
+
+    li {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    cursor: pointer;
+    padding: 0px;
+    &:hover {
+      background-color: $hoverDataProducts;
+    }
+  }
+}
+.containerPatination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  button {
+    padding: 4px 8px;
+    border-radius: 3px;
+    outline: none;
+    color: $grayColor;
+    border: none;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.9;
+      cursor: not-allowed;
+    }
+  }
+  span {
+    font-size: 13px;
+    margin: 0px 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .containerDataProduct {
+    padding: 20px 20px;
+  }
+  .tableDataProduct {
+    .tbodyDataProductName {
+      width: 20%;
+    }
+  }
+  .theadDataProductName {
+    width: 20%;
+  }
+}

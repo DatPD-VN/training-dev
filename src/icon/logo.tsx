@@ -8,9 +8,9 @@ export default function Logo() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="1"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="lucide lucide-animal animal-icon flip"
     >
       <path d="M15.236 22a3 3 0 0 0-2.2-5" style={{ stroke: "white" }}></path>

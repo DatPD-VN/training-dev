@@ -15,6 +15,7 @@ type TUseCartProps = {
   inputRef: React.RefObject<HTMLInputElement>;
   isSelectId: Array<number>;
   handleAddCategory: (item: TCartState) => void;
+  handleSubmit: () => void;
 };
 
 export type { TUseCartProps };
