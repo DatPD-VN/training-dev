@@ -1,58 +1,104 @@
-import { TUseCartProps } from "./type";
-import {
-  useCountCartState,
-  useTotalCartState,
-  useListCartChoiceProduct,
-  setHandleDelCartAfterSubmit,
-} from "../../recoil";
-import { useMediaQuery } from "react-responsive";
-import { TCartState } from "../../recoil/type";
-import { useNavigate } from "react-router-dom";
-import Route, { ROUTE_CONFIG } from "../../app/route";
+import { TAddProductProps, TProductData } from "./type";
+import { useListCategory } from "../../recoil";
+import { TCategoryState } from "../../recoil/type";
 import { Toast } from "../../Common/toast";
+import { useState } from "react";
+import { validationFileUpload } from "../../Common/validation-upload-file";
 
-export const useAddProduct = (): TUseCartProps => {
-  const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
-  const cart: Array<TCartState> = useListCartChoiceProduct();
-  const totalCart: number = useTotalCartState();
-  const countCart: number = useCountCartState();
-  const navigate = useNavigate();
-  const handleDeleteAfterSubmit = setHandleDelCartAfterSubmit();
+export const useAddProduct = (): TAddProductProps => {
+  const listCategories: TCategoryState[] = useListCategory();
+  const [isImages, setIsImages] = useState(false);
+  const [productData, setProductData] = useState<TProductData>({
+    titleProduct: "",
+    imgProduct: "",
+    priceProduct: "",
+    categoryName: "",
+    hashTag: "",
+    stockProduct: 0,
+  });
+  console.log("productData", productData);
 
-  /**
-   * Function Submit
-   *
-   */
-  const handleSubmit = () => {
-    if (cart.length > 0) {
-      const profile = JSON.parse(localStorage.getItem("profileData") as string);
-      const valueOld = JSON.parse(
-        localStorage.getItem("CartHistory") as string
-      );
-      const value = cart.map((item) => ({
-        ...item,
-        idUser: profile.id,
-      }));
-      if (valueOld) {
-        const valueNew = [...valueOld, ...value];
-        localStorage.setItem("CartHistory", JSON.stringify(valueNew));
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) {
+      return;
+    }
+    const file = event.target.files[0];
+    if (file) {
+      const validation = validationFileUpload(event);
+      if (validation?.isValid) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setProductData((prevData) => ({
+            ...prevData,
+            image: reader.result as string,
+          }));
+        };
+        reader.readAsDataURL(file);
       } else {
-        const valueNew = [...value];
-        localStorage.setItem("CartHistory", JSON.stringify(valueNew));
       }
-      handleDeleteAfterSubmit(cart);
-      navigate(Route(ROUTE_CONFIG.PRODUCT));
-      Toast("success", "Đặt hàng thành công!!!");
-    } else {
-      Toast("error", "Vui lòng chọn sản phẩm để đặt hàng");
     }
   };
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setProductData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleCategory = (value: number | string, id: string) => {
+    setProductData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const validateForm = () => {
+    const errors = [];
+    if (!productData.titleProduct) errors.push("Vui lòng nhập tên sản phẩm .");
+    if (!productData.imgProduct) errors.push("Vui lòng nhập ảnh.");
+    if (!productData.priceProduct) errors.push("Vui lòng nhập giá sản phẩm.");
+    if (!productData.categoryName) errors.push("Vui lòng chọn thể loại.");
+    if (!productData.hashTag) errors.push("Vui lòng nhập hash tag.");
+    if (!productData.stockProduct)
+      errors.push("Vui lòng nhập số lượng sản phẩm.");
+
+    return errors;
+  };
+
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const validationErrors = validateForm();
+    if (validationErrors.length > 0) {
+      validationErrors.forEach((error) => Toast("error", error));
+      return;
+    }
+    const valueOld = JSON.parse(localStorage.getItem("Data") as string);
+    const value = [productData, ...valueOld];
+    localStorage.setItem("Data", JSON.stringify(value));
+    setProductData({
+      titleProduct: "",
+      imgProduct: "",
+      priceProduct: "",
+      categoryName: "",
+      hashTag: "",
+      stockProduct: 0,
+    });
+    Toast("success", "Thêm sản phẩm thành công");
+  };
+
   return {
-    cart,
-    isPhoneScreen,
-    totalCart,
-    countCart,
+    listCategories,
+    isImages,
+    setIsImages,
+    handleImageChange,
+    handleChange,
     handleSubmit,
+    handleCategory,
+    productData,
   };
 };

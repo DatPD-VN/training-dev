@@ -10,7 +10,7 @@ type TUseProfileProps = {
   isActiveNumber: boolean;
   isActiveEmail: boolean;
   successMessage: string;
-  handleChangeBirthday: (value: number, id: string) => void;
+  handleChangeBirthday: (value: number | string, id: string) => void;
   errorMessageUploadFile: string;
 };
 type TProfileData = {

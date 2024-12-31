@@ -236,6 +236,8 @@ const Profile: FC = () => {
                             value: i + 1,
                           }))}
                           onSelect={handleChangeBirthday}
+                          keyValue="value"
+                          selectedId={profileData.birthDay}
                         />
                         <Dropdown
                           name="birthMonth"
@@ -244,6 +246,8 @@ const Profile: FC = () => {
                             value: i + 1,
                           }))}
                           onSelect={handleChangeBirthday}
+                          keyValue="value"
+                          selectedId={profileData.birthMonth}
                         />
                         <Dropdown
                           name="birthYear"
@@ -252,6 +256,8 @@ const Profile: FC = () => {
                             value: 2024 - i,
                           }))}
                           onSelect={handleChangeBirthday}
+                          keyValue="value"
+                          selectedId={profileData.birthYear}
                         />
                       </div>
                     </td>

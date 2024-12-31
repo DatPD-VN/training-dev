@@ -4,23 +4,15 @@ import { Toast } from "../../Common/toast";
 import { validationFileUpload } from "../../Common/validation-upload-file";
 
 export const useProfile = (): TUseProfileProps => {
-  const [profileData, setProfileData] = useState<TProfileData>({
-    userName: "",
-    email: "",
-    gender: "",
-    image: "",
-    birthDay: 1,
-    birthMonth: 1,
-    birthYear: 1,
-    fullName: "",
-    numberPhone: "",
+  const [profileData, setProfileData] = useState<TProfileData>(() => {
+    const savedIsPlay = localStorage.getItem("profileData");
+    return savedIsPlay ? JSON.parse(savedIsPlay) : null;
   });
   const [isActiveNumber, setIsActiveNumber] = useState(false);
   const [isActiveEmail, setIsActiveEmail] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessageUploadFile, setErrorMessageUploadFile] = useState("");
   const user = JSON.parse(localStorage.getItem("profileData") as string);
-
   useEffect(() => {
     setSuccessMessage("");
     try {
@@ -58,23 +50,11 @@ export const useProfile = (): TUseProfileProps => {
         } else {
           setIsActiveEmail(true);
         }
-        setProfileData({
-          userName: userName || "",
-          email: email || "",
-          gender: gender || "",
-          birthDay: 1,
-          birthMonth: 1,
-          birthYear: 1,
-          fullName: fullName || "",
-          image: image || "",
-          numberPhone: numberPhone || "",
-        });
       }
     } catch (err) {
       console.error("Error parsing user data:", err);
     }
   }, []);
-
   /**
    * Handle Change Images
    * @param event: React.ChangeEvent<HTMLInputElement>
@@ -122,7 +102,7 @@ export const useProfile = (): TUseProfileProps => {
    * @param value: number @param id: string
    *
    */
-  const handleChangeBirthday = (value: number, id: string) => {
+  const handleChangeBirthday = (value: number | string, id: string) => {
     setProfileData((prevData) => ({
       ...prevData,
       [id]: value,

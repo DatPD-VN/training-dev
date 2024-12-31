@@ -9,6 +9,8 @@ const Dropdown = ({
   data,
   position = "bottom-left",
   onSelect,
+  keyValue,
+  selectedId,
 }: DropdownProps) => {
   const {
     isOpen,
@@ -17,8 +19,7 @@ const Dropdown = ({
     handleChange,
     dropdownRef,
     setIsOpen,
-  } = useDropDown(name, position, onSelect);
-
+  } = useDropDown(name, position, keyValue, onSelect, selectedId);
   return (
     <div ref={dropdownRef} className={styles.dropDownClassContainer}>
       <button
@@ -30,7 +31,7 @@ const Dropdown = ({
         onClick={() => setIsOpen(!isOpen)}
         className={` ${styles.buttonOption}`}
       >
-        <span>{selectedItem?.value || title}</span>
+        <span>{selectedId || title}</span>
         <ChevronDown
           size={20}
           className={`
@@ -51,16 +52,16 @@ const Dropdown = ({
             aria-orientation="vertical"
             className="leading-10"
           >
-            {data?.map((item) => (
+            {data?.map((item: any, index: number) => (
               <li
-                key={item.value}
+                key={index}
                 onClick={() => handleChange(item)}
                 className={`
                   ${styles.optionItem}
-                  ${selectedItem?.value === item.value && styles.bgGray300}
+                  ${selectedItem === item[keyValue] && styles.bgGray300}
                 `}
               >
-                <span>{item.value}</span>
+                <span>{item[keyValue]}</span>
               </li>
             ))}
           </ul>

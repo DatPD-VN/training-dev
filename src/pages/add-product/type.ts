@@ -1,11 +1,25 @@
-import { TCartState } from "../../recoil/type";
+import React from "react";
+import { TCategoryState } from "../../recoil/type";
 
-type TUseCartProps = {
-  isPhoneScreen: boolean;
-  totalCart: number;
-  countCart: number;
-  cart: TCartState[];
-  handleSubmit: () => void;
+type TAddProductProps = {
+  listCategories: TCategoryState[];
+  isImages: boolean;
+  setIsImages: React.Dispatch<React.SetStateAction<boolean>>;
+  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleCategory: (value: number | string, id: string) => void;
+  productData: TProductData;
 };
 
-export type { TUseCartProps };
+type TProductData = {
+  titleProduct: string;
+  priceProduct: string;
+  imgProduct: string | ArrayBuffer | null;
+  categoryName: string;
+  hashTag: string;
+  stockProduct: number;
+};
+export type { TAddProductProps, TProductData };

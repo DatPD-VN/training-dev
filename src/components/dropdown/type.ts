@@ -1,18 +1,20 @@
 type DropdownItem = {
   value: number;
+  keyValue: string;
 };
 
 type DropdownProps = {
   name: string;
   title?: string;
-  data: DropdownItem[];
+  data: any;
   position?: "bottom-right" | "bottom-left" | "top-right" | "top-left";
-  selectedId?: number;
-  onSelect?: (value: number, id: string) => void;
+  selectedId?: number | string;
+  onSelect?: (value: number | string, id: string) => void;
+  keyValue: string;
 };
 type TUseDropDown = {
   isOpen: boolean;
-  selectedItem: DropdownItem | undefined;
+  selectedItem: any;
   dropdownClass: string;
   handleChange: (item: DropdownItem) => void;
   dropdownRef: React.RefObject<HTMLDivElement>;
