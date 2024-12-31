@@ -374,26 +374,41 @@ function DetailProduct() {
                       <div className={styles.detailProductStars}>
                         <span>4.1</span>
                         <div className={styles.detailProductStar}>
-                          <img
-                            src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
-                            alt=""
+                          <input
+                            value="5"
+                            name="rating"
+                            id="star5"
+                            type="radio"
                           />
-                          <img
-                            src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
-                            alt=""
+                          <label htmlFor="star5"></label>
+                          <input
+                            value="4"
+                            name="rating"
+                            id="star4"
+                            type="radio"
                           />
-                          <img
-                            src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
-                            alt=""
+                          <label htmlFor="star4"></label>
+                          <input
+                            value="3"
+                            name="rating"
+                            id="star3"
+                            type="radio"
                           />
-                          <img
-                            src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
-                            alt=""
+                          <label htmlFor="star3"></label>
+                          <input
+                            value="2"
+                            name="rating"
+                            id="star2"
+                            type="radio"
                           />
-                          <img
-                            src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/fb6d53c6a2749e183033.svg"
-                            alt=""
+                          <label htmlFor="star2"></label>
+                          <input
+                            value="1"
+                            name="rating"
+                            id="star1"
+                            type="radio"
                           />
+                          <label htmlFor="star1"></label>
                         </div>
                       </div>
                       <div className={styles.detailProductFeedback}>

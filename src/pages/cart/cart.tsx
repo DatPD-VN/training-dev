@@ -182,39 +182,20 @@ const Cart: FC = () => {
                 </div>
                 <div className={styles.footerWrapBottomMobile}>
                   <div className={styles.footerWrapBottomLeftMobile}>
-                    {isSelectId.length > 0 &&
-                    isSelectId.length == listProduct.length ? (
-                      <>
-                        <input
-                          type="checkbox"
-                          checked
-                          onChange={() => handleCheckAll()}
-                          id="checkAll"
-                        />
-                        <label
-                          htmlFor="delCheckAll"
-                          className={styles.footerWrapBottomLeftAll}
-                          onClick={() => handleCheckAll()}
-                        >
-                          Bỏ chọn Tất Cả
-                        </label>
-                      </>
-                    ) : (
-                      <>
-                        <input
-                          type="checkbox"
-                          onChange={() => handleCheckAll()}
-                          id="delCheckAll"
-                        />
-                        <label
-                          htmlFor="checkAll"
-                          className={styles.footerWrapBottomLeftAll}
-                          onClick={() => handleCheckAll()}
-                        >
-                          Chọn Tất Cả
-                        </label>
-                      </>
-                    )}
+                    <input
+                      type="checkbox"
+                      onChange={() => handleCheckAll()}
+                      checked={isSelectId.length == listProduct.length}
+                      id="CheckAll"
+                    />
+                    <label
+                      htmlFor="CheckAll"
+                      className={styles.footerWrapBottomLeftAll}
+                    >
+                      {isSelectId.length == listProduct.length
+                        ? "Bỏ chọn Tất Cả"
+                        : "Chọn Tất Cả"}
+                    </label>
                   </div>
                   <div className={styles.footerWrapBottomRightMobile}>
                     <span className={styles.footerWrapBottomRightTotalMobile}>
@@ -444,7 +425,9 @@ const Cart: FC = () => {
                       htmlFor="CheckAll"
                       className={styles.footerWrapBottomLeftAll}
                     >
-                      Bỏ chọn Tất Cả
+                      {isSelectId.length == listProduct.length
+                        ? "Bỏ chọn Tất Cả"
+                        : "Chọn Tất Cả"}
                     </label>
                     <span
                       className={styles.footerWrapBottomLeftHandleDel}

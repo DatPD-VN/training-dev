@@ -13,6 +13,7 @@ import { Profile } from "../pages/profile";
 import { DataProducts } from "../pages/data-products";
 import { Order } from "../pages/order";
 import { HistoryOrder } from "../pages/history-order";
+import { AddProduct } from "../pages/add-product";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -81,6 +82,11 @@ const appRoutes: {
     path: baseRoute("order-history"),
     title: `${baseTitle} | Order History`,
     Component: HistoryOrder,
+  },
+  {
+    path: baseRoute("add-product"),
+    title: `${baseTitle} | Add Product`,
+    Component: AddProduct,
   },
 ];
 

@@ -10,6 +10,7 @@ export const ROUTE_CONFIG = {
   DATA: "/data-products",
   ORDER: "/order",
   HISTORY: "/order-history",
+  ADD_PRODUCT: "/add-product",
 };
 
 export const appCheck: {

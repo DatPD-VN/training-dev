@@ -2,7 +2,8 @@ import { atom, RecoilState, selector } from "recoil";
 import { categoryState, dataState } from "../mock/mock-api";
 import { TCategoryState, TDataState } from "./type";
 
-const defaultData = dataState;
+const dataProducts = JSON.parse(localStorage.getItem("Data") as string);
+const defaultData = dataProducts ? dataProducts : dataState;
 
 const listTodoState: any = atom<TDataState[]>({
   key: "listTodo",
