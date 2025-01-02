@@ -3,15 +3,16 @@ import styles from "./styles.module.scss";
 import { DropdownProps } from "./type";
 import useDropDown from "./hook";
 
-const Dropdown = ({
-  name,
-  title = "Select",
-  data,
-  position = "bottom-left",
-  onSelect,
-  keyValue,
-  selectedId,
-}: DropdownProps) => {
+const Dropdown = <T extends Record<string, any>>(pops: DropdownProps<T>) => {
+  const {
+    name,
+    title = "Select",
+    data,
+    position = "bottom-left",
+    onSelect,
+    keyValue,
+    selectedId,
+  } = pops;
   const {
     isOpen,
     selectedItem,
@@ -19,7 +20,7 @@ const Dropdown = ({
     handleChange,
     dropdownRef,
     setIsOpen,
-  } = useDropDown(name, position, keyValue, onSelect, selectedId);
+  } = useDropDown(name, position, keyValue as string, onSelect, selectedId);
   return (
     <div ref={dropdownRef} className={styles.dropDownClassContainer}>
       <button

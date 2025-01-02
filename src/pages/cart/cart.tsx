@@ -297,21 +297,21 @@ const Cart: FC = () => {
                       alt=""
                       className={styles.itemWrapInfoImg}
                       onClick={() => {
-                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
-                          state: {
-                            id: item.id,
-                          },
-                        });
+                        navigate(
+                          Route(
+                            `${ROUTE_CONFIG.DETAIL_PRODUCT}?productId=${item.id}`
+                          )
+                        );
                       }}
                     />
                     <div
                       className={styles.itemWrapInfoTitle}
                       onClick={() => {
-                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
-                          state: {
-                            id: item.id,
-                          },
-                        });
+                        navigate(
+                          Route(
+                            `${ROUTE_CONFIG.DETAIL_PRODUCT}?productId=${item.id}`
+                          )
+                        );
                       }}
                     >
                       <span>{item.titleProduct}</span>

@@ -11,6 +11,10 @@ import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { Toast } from "../../Common/toast";
 import { v4 as uuidv4 } from "uuid";
+import {
+  MESSAGE_ERROR_ORDER_PRODUCT,
+  MESSAGE_SUCCESS_ORDER_PRODUCT,
+} from "../../const";
 
 export const useOrder = (): TUseCartProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
@@ -46,9 +50,9 @@ export const useOrder = (): TUseCartProps => {
       }
       handleDeleteAfterSubmit(cart);
       navigate(Route(ROUTE_CONFIG.PRODUCT));
-      Toast("success", "Đặt hàng thành công!!!");
+      Toast("success", MESSAGE_SUCCESS_ORDER_PRODUCT);
     } else {
-      Toast("error", "Vui lòng chọn sản phẩm để đặt hàng");
+      Toast("error", MESSAGE_ERROR_ORDER_PRODUCT);
     }
   };
 

@@ -3,6 +3,9 @@ import { TBottomBanner, TSrcFakeBanner } from "./type";
 export const DELAY_DEFAULT = 1000;
 export const FLASH_SALE = 10000;
 export const MAX_SIZE_UPLOAD = 102400;
+export const MESSAGE_SUCCESS_ADD_PRODUCT = "Thêm sản phẩm thành công";
+export const MESSAGE_SUCCESS_ORDER_PRODUCT = "Đặt hàng thành công!!!";
+export const MESSAGE_ERROR_ORDER_PRODUCT = "Vui lòng chọn sản phẩm để đặt hàng";
 export const ALLOWED_EXTENSIONS =
   /(\.jpg|\.jpeg|\.png|\.jfif|\.jif|\.jpe)|\.jfif-tbnl$/i;
 export const BANNER_RIGHT_TOP =

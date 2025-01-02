@@ -3,14 +3,14 @@ type DropdownItem = {
   keyValue: string;
 };
 
-type DropdownProps = {
+type DropdownProps<T extends Record<string, any>> = {
   name: string;
   title?: string;
-  data: any;
+  data: Array<T>;
   position?: "bottom-right" | "bottom-left" | "top-right" | "top-left";
   selectedId?: number | string;
-  onSelect?: (value: number | string, id: string) => void;
-  keyValue: string;
+  onSelect?: (value: string | number, id: string) => void;
+  keyValue: keyof T;
 };
 type TUseDropDown = {
   isOpen: boolean;

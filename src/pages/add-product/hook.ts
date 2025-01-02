@@ -4,6 +4,7 @@ import { TCategoryState } from "../../recoil/type";
 import { Toast } from "../../Common/toast";
 import { useState } from "react";
 import { validationFileUpload } from "../../Common/validation-upload-file";
+import { MESSAGE_SUCCESS_ADD_PRODUCT } from "../../const";
 
 export const useAddProduct = (): TAddProductProps => {
   const listCategories: TCategoryState[] = useListCategory();
@@ -105,7 +106,7 @@ export const useAddProduct = (): TAddProductProps => {
     if (inputImage) {
       inputImage.value = "";
     }
-    Toast("success", "Thêm sản phẩm thành công");
+    Toast("success", MESSAGE_SUCCESS_ADD_PRODUCT);
   };
 
   return {
