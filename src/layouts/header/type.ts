@@ -20,6 +20,7 @@ type THeaderProps = {
   handleDrop: (event: React.DragEvent<HTMLDivElement>) => void;
   handleDragOver: (event: React.DragEvent<HTMLDivElement>) => void;
   isSearch: boolean;
+  isAdmin: boolean;
 };
 
 export type { THeaderProps };

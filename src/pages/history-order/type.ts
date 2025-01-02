@@ -1,8 +1,7 @@
 import { TListProductChange } from "../product/type";
 
 type TOrderProductProps = {
-  newList: Array<TListProductChange>;
-  isLoading: boolean;
+  list: Array<TListProductChange>;
   currentItems: Array<TListProductChange>;
   paginate: (pageNumber: number) => void;
   totalPages: number;

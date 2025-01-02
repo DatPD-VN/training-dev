@@ -10,6 +10,7 @@ import { TCartState } from "../../recoil/type";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { Toast } from "../../Common/toast";
+import { v4 as uuidv4 } from "uuid";
 
 export const useOrder = (): TUseCartProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
@@ -29,10 +30,13 @@ export const useOrder = (): TUseCartProps => {
       const valueOld = JSON.parse(
         localStorage.getItem("CartHistory") as string
       );
-      const value = cart.map((item) => ({
-        ...item,
-        idUser: profile.id,
-      }));
+      const value = cart.map((item) => {
+        return {
+          ...item,
+          idUser: profile.id,
+          idOrder: uuidv4(),
+        };
+      });
       if (valueOld) {
         const valueNew = [...valueOld, ...value];
         localStorage.setItem("CartHistory", JSON.stringify(valueNew));

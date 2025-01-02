@@ -23,6 +23,7 @@ type TProfileData = {
   birthYear: number;
   fullName: string;
   numberPhone: string;
+  idUser?: number;
 };
 
 export type { TUseProfileProps, TProfileData };

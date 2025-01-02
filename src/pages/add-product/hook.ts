@@ -9,14 +9,13 @@ export const useAddProduct = (): TAddProductProps => {
   const listCategories: TCategoryState[] = useListCategory();
   const [isImages, setIsImages] = useState(false);
   const [productData, setProductData] = useState<TProductData>({
-    titleProduct: "",
     imgProduct: "",
+    titleProduct: "",
     priceProduct: "",
     categoryName: "",
     hashTag: "",
-    stockProduct: 0,
+    stockProduct: "",
   });
-  console.log("productData", productData);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) {
@@ -30,11 +29,15 @@ export const useAddProduct = (): TAddProductProps => {
         reader.onloadend = () => {
           setProductData((prevData) => ({
             ...prevData,
-            image: reader.result as string,
+            imgProduct: reader.result as string,
           }));
         };
         reader.readAsDataURL(file);
+        Toast("success", validation?.message);
       } else {
+        if (validation?.message) {
+          Toast("error", validation?.message);
+        }
       }
     }
   };
@@ -78,7 +81,11 @@ export const useAddProduct = (): TAddProductProps => {
       return;
     }
     const valueOld = JSON.parse(localStorage.getItem("Data") as string);
-    const value = [productData, ...valueOld];
+    const resultData = {
+      id: valueOld.length + 1,
+      ...productData,
+    };
+    const value = [resultData, ...valueOld];
     localStorage.setItem("Data", JSON.stringify(value));
     setProductData({
       titleProduct: "",
@@ -86,8 +93,18 @@ export const useAddProduct = (): TAddProductProps => {
       priceProduct: "",
       categoryName: "",
       hashTag: "",
-      stockProduct: 0,
+      stockProduct: "",
     });
+    const inputFile = document.querySelector("#inputFile") as HTMLInputElement;
+    const inputImage = document.querySelector(
+      "#inputImage"
+    ) as HTMLInputElement;
+    if (inputFile) {
+      inputFile.value = "";
+    }
+    if (inputImage) {
+      inputImage.value = "";
+    }
     Toast("success", "Thêm sản phẩm thành công");
   };
 

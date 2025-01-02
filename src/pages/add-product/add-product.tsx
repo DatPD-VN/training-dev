@@ -12,7 +12,7 @@ const AddProduct: FC = () => {
     handleChange,
     handleSubmit,
     handleCategory,
-    productData
+    productData,
   } = useAddProduct();
   return (
     <>
@@ -35,6 +35,7 @@ const AddProduct: FC = () => {
                 placeholder="Nhập tên sản phẩm"
                 onChange={handleChange}
                 autoComplete="off"
+                value={productData.titleProduct}
               />
             </div>
             <div className={styles.formGroup}>
@@ -42,15 +43,20 @@ const AddProduct: FC = () => {
               {!isImages ? (
                 <input
                   type="text"
-                  id="name"
                   name="imgProduct"
                   required
                   placeholder="Link image..."
                   onChange={handleChange}
                   autoComplete="off"
+                  id="inputImage"
+
                 />
               ) : (
-                <input type="file" onChange={handleImageChange} />
+                <input
+                  type="file"
+                  onChange={handleImageChange}
+                  id="inputFile"
+                />
               )}
 
               <label className={styles.switchContainer}>
@@ -74,6 +80,7 @@ const AddProduct: FC = () => {
                 placeholder="244.000đ..."
                 onChange={handleChange}
                 autoComplete="off"
+                value={productData.priceProduct}
               />
             </div>
             <div className={styles.formGroup}>
@@ -97,6 +104,7 @@ const AddProduct: FC = () => {
                 placeholder="#xemay , aodep , ..."
                 onChange={handleChange}
                 autoComplete="off"
+                value={productData.hashTag}
               />
             </div>
             <div className={styles.formGroup}>
@@ -110,6 +118,7 @@ const AddProduct: FC = () => {
                 placeholder="23..."
                 onChange={handleChange}
                 autoComplete="off"
+                value={productData.stockProduct}
               />
             </div>
             <div className={styles.submitDiv}>

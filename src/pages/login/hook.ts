@@ -64,15 +64,15 @@ export const useLogin = (): TUseLoginProps => {
    *
    */
   const handleSubmit = () => {
-    if (
-      USER_LOGIN.findIndex(
-        (item) => item.email === from.email && item.password === from.password
-      ) !== -1
-    ) {
+    const result = USER_LOGIN.find(
+      (item) => item.email === from.email && item.password === from.password
+    );
+    if (result) {
       setForm({ ...from, password: "" });
       const profileData = {
         ...from,
-        id: 1,
+        type: result.type,
+        id: result.id,
       };
       localStorage.setItem("profileData", JSON.stringify(profileData));
       navigator(Route(ROUTE_CONFIG.PRODUCT));

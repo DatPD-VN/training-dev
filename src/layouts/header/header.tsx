@@ -37,6 +37,7 @@ const Header: FC = () => {
     isSearch,
     handleDrop,
     handleDragOver,
+    isAdmin,
   } = useHeader();
 
   return (
@@ -82,15 +83,29 @@ const Header: FC = () => {
                     <a href={Route(ROUTE_CONFIG.PROFILE)}>Tài Khoản Của Tôi</a>
                   </li>
                   <li>
-                    <a onClick={() => navigate(Route(ROUTE_CONFIG.DATA))}>
-                      Thông Tin Sản Phẩm
-                    </a>
-                  </li>
-                  <li>
                     <a onClick={() => navigate(Route(ROUTE_CONFIG.HISTORY))}>
                       Thông tin đơn hàng
                     </a>
                   </li>
+                  {isAdmin && (
+                    <>
+                      <li>
+                        <a onClick={() => navigate(Route(ROUTE_CONFIG.DATA))}>
+                          Thông Tin Sản Phẩm
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          onClick={() =>
+                            navigate(Route(ROUTE_CONFIG.ADD_PRODUCT))
+                          }
+                        >
+                          Thêm sản phẩm
+                        </a>
+                      </li>
+                    </>
+                  )}
+
                   <li>
                     <a onClick={() => navigate(Route(ROUTE_CONFIG.CART))}>
                       Giỏ hàng

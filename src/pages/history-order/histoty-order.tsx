@@ -14,7 +14,7 @@ const HistoryOrder: FC = () => {
     totalPages,
     currentPage,
     itemsPerPage,
-    newList,
+    list,
   } = useHistoryOrder();
   return (
     <>
@@ -32,7 +32,7 @@ const HistoryOrder: FC = () => {
             <li className={styles.theadDataProductCategory}>Danh Mục</li>
           </ul>
           <div className={styles.listWrapper}>
-            {newList ? (
+            {list ? (
               currentItems?.map((item: TListProduct, index: number) => (
                 <ul key={index}>
                   <li className={styles.tbodyDataProductStt}>
@@ -76,7 +76,7 @@ const HistoryOrder: FC = () => {
             )}
           </div>
         </div>
-        {newList && (
+        {list && (
           <div className={styles.containerPatination}>
             <button
               onClick={() => paginate(currentPage - 1)}

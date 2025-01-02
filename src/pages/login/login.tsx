@@ -61,7 +61,7 @@ const Login: FC = () => {
                 <label>Remember me </label>
               </div>
               <a
-                href={Route(ROUTE_CONFIG.RESETPASS)}
+                href={Route(ROUTE_CONFIG.RESET_PASS)}
                 className={styles.spanText}
               >
                 Forgot password?

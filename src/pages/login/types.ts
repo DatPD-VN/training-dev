@@ -3,8 +3,10 @@ type TLoginProps = {
 };
 
 type TLoginConfig = {
+  id: number;
   email: string;
   password: string;
+  type: string;
 };
 type TLogin = {
   email: string;

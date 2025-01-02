@@ -1,29 +1,48 @@
 import { TOrderProductProps } from "./type";
 import { useEffect, useState } from "react";
-import { DELAY_DEFAULT } from "../../const";
+import { TProfileData } from "../profile/types";
 
 export const useHistoryOrder = (): TOrderProductProps => {
-  const newList = JSON.parse(localStorage.getItem("CartHistory") as string);
-  const [isLoading, setIsLoading] = useState(true);
+  const [list, setList] = useState(() => {
+    const newList = JSON.parse(localStorage.getItem("CartHistory") as string);
+    return newList ? newList : null;
+  });
+  const user = JSON.parse(localStorage.getItem("profileData") as string);
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => {
+    if (user.type == "admin") return true;
+    return false;
+  });
 
+  /**
+   * Handle Check Type Account
+   *
+   */
+  const isCheckType = () => {
+    if (user) {
+      const value = user.type;
+      if (value == "admin") setIsAdmin(true);
+    }
+  };
   useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, DELAY_DEFAULT);
-  }, [newList]);
+    isCheckType();
+    if (!isAdmin) {
+      const result = list.filter(
+        (item: TProfileData) => item.idUser == user.id
+      );
+      setList(result);
+    }
+  }, [isAdmin]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = newList?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = list?.slice(indexOfFirstItem, indexOfLastItem);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const totalPages = Math.ceil(newList?.length / itemsPerPage);
+  const totalPages = Math.ceil(list?.length / itemsPerPage);
 
   return {
-    newList,
-    isLoading,
+    list,
     currentItems,
     paginate,
     totalPages,

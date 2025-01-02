@@ -20,6 +20,6 @@ type TProductData = {
   imgProduct: string | ArrayBuffer | null;
   categoryName: string;
   hashTag: string;
-  stockProduct: number;
+  stockProduct: number | string;
 };
 export type { TAddProductProps, TProductData };

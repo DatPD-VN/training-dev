@@ -5,7 +5,7 @@ export const ROUTE_CONFIG = {
   PRODUCT: "/products",
   DETAIL_PRODUCT: "/products/detail-Product",
   LOGIN: "/login",
-  RESETPASS: "/reset-Pass",
+  RESET_PASS: "/reset-Pass",
   PROFILE: "/profile",
   DATA: "/data-products",
   ORDER: "/order",
