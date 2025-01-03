@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useHeader } from "./hook";
 import { TCategoryState } from "../../recoil/type";
+import { Notification } from "../../components/notification";
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -44,11 +45,17 @@ const Header: FC = () => {
     <>
       <header className={styles.header}>
         <div className={styles.headerTop}>
-          <div className={styles.divTagTop}>
+          <div className={styles.divNotification}>
             <a href="" className={styles.divTagTopA}>
               <Bell className={styles.divTagTopIcon} />
               <p className={styles.divTagTopATitle}>Thông Báo </p>
             </a>
+            <div className={styles.divProfileInfo}>
+              <p>Thông báo mới nhận</p>
+              <Notification />
+              <span>Xem tất cả</span>
+            </div>
+            <div className={styles.divProfileOverHidden}> </div>
           </div>
           <div className={styles.divTagTop}>
             <a href="" className={styles.divTagTopA}>
