@@ -45,7 +45,7 @@ export const useHeader = (): THeaderProps => {
    * Handle Check Type Account
    *
    */
-  const isCheckType = () => {
+  const handleCheckType = () => {
     const result = localStorage.getItem("profileData");
     if (result) {
       const value = JSON.parse(result).type;
@@ -187,7 +187,7 @@ export const useHeader = (): THeaderProps => {
   };
 
   useEffect(() => {
-    isCheckType();
+    handleCheckType();
     const handleClickOutside = (event: MouseEvent) => {
       if (
         inputRef.current &&

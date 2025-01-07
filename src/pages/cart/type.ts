@@ -13,7 +13,7 @@ type TUseCartProps = {
   handleCheckAll: () => void;
   handleChangeQuality: (event: React.ChangeEvent<HTMLInputElement>) => void;
   inputRef: React.RefObject<HTMLInputElement>;
-  isSelectId: Array<number>;
+  selectIds: Array<number>;
   handleAddCategory: (item: TCartState) => void;
   handleSubmit: () => void;
 };

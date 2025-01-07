@@ -114,7 +114,7 @@ export const handleCartState = selector({
     const list: Array<TCartState> = get(listCartState);
 
     switch (handle) {
-      case "tang":
+      case "up":
         const newTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
             ? { ...itemDetail, quantity: Number(itemDetail.quantity) + 1 }
@@ -122,7 +122,7 @@ export const handleCartState = selector({
         );
         set(listCartState, [...newTodo]);
         break;
-      case "giam":
+      case "down":
         let reduceTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
             ? {

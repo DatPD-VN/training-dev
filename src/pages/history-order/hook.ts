@@ -17,14 +17,14 @@ export const useHistoryOrder = (): TOrderProductProps => {
    * Handle Check Type Account
    *
    */
-  const isCheckType = () => {
+  const handleCheckType = () => {
     if (user) {
       const value = user.type;
       if (value == "admin") setIsAdmin(true);
     }
   };
   useEffect(() => {
-    isCheckType();
+    handleCheckType();
     if (!isAdmin) {
       const result = list.filter(
         (item: TProfileData) => item.idUser == user.id

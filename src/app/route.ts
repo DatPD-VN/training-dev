@@ -3,9 +3,9 @@ const path: string = "/training-dev/ec";
 export const ROUTE_CONFIG = {
   CART: "/cart",
   PRODUCT: "/products",
-  DETAIL_PRODUCT: "/products/detail-Product",
+  DETAIL_PRODUCT: "/products/detail-product",
   LOGIN: "/login",
-  RESET_PASS: "/reset-Pass",
+  RESET_PASS: "/reset-pass",
   PROFILE: "/profile",
   DATA: "/data-products",
   ORDER: "/order",

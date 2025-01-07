@@ -28,7 +28,7 @@ const Cart: FC = () => {
     inputRef,
     handleCheck,
     handleCheckAll,
-    isSelectId,
+    selectIds,
     handleDelAll,
     handleChangeQuality,
     handleAddCategory,
@@ -78,7 +78,7 @@ const Cart: FC = () => {
                   <div
                     className={`${styles.itemWrapInputMobile} ${styles.div5}`}
                   >
-                    {isSelectId.includes(item.id) ? (
+                    {selectIds.includes(item.id) ? (
                       <input
                         type="checkbox"
                         checked
@@ -107,7 +107,7 @@ const Cart: FC = () => {
                           alt=""
                         />
                       </div>
-                      <div className={`${styles.itemWrapSelectMobile}`}>
+                      <div className={styles.itemWrapSelectMobile}>
                         <span>Phân Loại Hàng:</span>
                         <select>
                           <option value="M">M1 MIC DẢI BOX</option>
@@ -126,7 +126,7 @@ const Cart: FC = () => {
                       className={`${styles.itemWrapAmountMobile} ${styles.div13}`}
                     >
                       <div className={styles.DetailProductDivAmountMobile}>
-                        <button onClick={() => handleCase("giam", item)}>
+                        <button onClick={() => handleCase("down", item)}>
                           <NoPlus />
                         </button>
                         <input
@@ -139,7 +139,7 @@ const Cart: FC = () => {
                           id={String(item.id)}
                           className="textbox_id"
                         />
-                        <button onClick={() => handleCase("tang", item)}>
+                        <button onClick={() => handleCase("up", item)}>
                           <Plus />
                         </button>
                       </div>
@@ -185,14 +185,14 @@ const Cart: FC = () => {
                     <input
                       type="checkbox"
                       onChange={() => handleCheckAll()}
-                      checked={isSelectId.length == listProduct.length}
+                      checked={selectIds.length == listProduct.length}
                       id="CheckAll"
                     />
                     <label
                       htmlFor="CheckAll"
                       className={styles.footerWrapBottomLeftAll}
                     >
-                      {isSelectId.length == listProduct.length
+                      {selectIds.length == listProduct.length
                         ? "Bỏ chọn Tất Cả"
                         : "Chọn Tất Cả"}
                     </label>
@@ -287,7 +287,7 @@ const Cart: FC = () => {
                     <input
                       type="checkbox"
                       className="check"
-                      checked={isSelectId.includes(item.id)}
+                      checked={selectIds.includes(item.id)}
                       onChange={() => handleCheck(item.id)}
                     />
                   </div>
@@ -341,7 +341,7 @@ const Cart: FC = () => {
                   </div>
                   <div className={`${styles.itemWrapAmount} ${styles.div13}`}>
                     <div className={styles.DetailProductDivAmount}>
-                      <button onClick={() => handleCase("giam", item)}>
+                      <button onClick={() => handleCase("down", item)}>
                         <NoPlus />
                       </button>
                       <input
@@ -354,7 +354,7 @@ const Cart: FC = () => {
                         id={String(item.id)}
                         className="textbox_id"
                       />
-                      <button onClick={() => handleCase("tang", item)}>
+                      <button onClick={() => handleCase("up", item)}>
                         <Plus />
                       </button>
                     </div>
@@ -418,14 +418,14 @@ const Cart: FC = () => {
                     <input
                       type="checkbox"
                       onChange={() => handleCheckAll()}
-                      checked={isSelectId.length == listProduct.length}
+                      checked={selectIds.length == listProduct.length}
                       id="CheckAll"
                     />
                     <label
                       htmlFor="CheckAll"
                       className={styles.footerWrapBottomLeftAll}
                     >
-                      {isSelectId.length == listProduct.length
+                      {selectIds.length == listProduct.length
                         ? "Bỏ chọn Tất Cả"
                         : "Chọn Tất Cả"}
                     </label>
