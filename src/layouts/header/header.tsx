@@ -94,6 +94,11 @@ const Header: FC = () => {
                       Thông tin đơn hàng
                     </a>
                   </li>
+                  <li>
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.CHAT))}>
+                      Chat Live
+                    </a>
+                  </li>
                   {isAdmin && (
                     <>
                       <li>
@@ -130,7 +135,7 @@ const Header: FC = () => {
             <>
               <div className={styles.divTagTop}>
                 <a
-                  href={Route(ROUTE_CONFIG.LOGIN)}
+                  href={Route(ROUTE_CONFIG.REGISTER)}
                   className={styles.divTagTopA}
                 >
                   <p className={styles.divTagTopATitle}>Đăng Ký </p>

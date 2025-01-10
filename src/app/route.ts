@@ -5,12 +5,14 @@ export const ROUTE_CONFIG = {
   PRODUCT: "/products",
   DETAIL_PRODUCT: "/products/detail-product",
   LOGIN: "/login",
+  REGISTER: "/register",
   RESET_PASS: "/reset-pass",
   PROFILE: "/profile",
   DATA: "/data-products",
   ORDER: "/order",
   HISTORY: "/order-history",
   ADD_PRODUCT: "/add-product",
+  CHAT: "/chat",
 };
 
 export const appCheck: {
@@ -20,7 +22,18 @@ export const appCheck: {
     path: "training-dev/ec/login",
   },
   {
+    path: "training-dev/ec/register",
+  },
+  {
     path: "training-dev/ec/reset-Pass",
+  },
+];
+
+export const hiddenFooter: {
+  path: string;
+}[] = [
+  {
+    path: "training-dev/ec/chat",
   },
 ];
 

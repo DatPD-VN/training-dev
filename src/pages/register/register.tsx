@@ -1,23 +1,42 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import { useLogin } from "./hook";
+import { useRegister } from "./hook";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import Apple from "../../icon/apple";
 import Google from "../../icon/google";
 import Lock from "../../icon/lock";
 import User from "../../icon/user";
 
-const Login: FC = () => {
-  const { isDisabled, error, handleChange, handleSubmit } = useLogin();
+const Register: FC = () => {
+  const { isDisabled, error, handleChange, handleSubmit } = useRegister();
   return (
     <>
       <section className={styles.container}>
         <div className={styles.header}>
-          <div className={styles.text2xl}>Đăng Nhập</div>
+          <div className={styles.text2xl}>Đăng Ký</div>
           <div className={styles.headerRight}>Bạn cần giúp đỡ ? </div>
         </div>
         <section className={styles.content}>
           <form className={styles.form}>
+            <div className={styles.flexColumn}>
+              <label>Username </label>
+            </div>
+            <div className={styles.inputForm}>
+              <User />
+              <input
+                placeholder="Enter your Username"
+                className={styles.inputField}
+                autoComplete="off"
+                type="text"
+                name="username"
+                onChange={(e) => {
+                  handleChange("username", e.target.value);
+                }}
+              />
+            </div>
+            {!!error && (
+              <div className={styles.errorInput}>{error.username}</div>
+            )}
             <div className={styles.flexColumn}>
               <label>Email </label>
             </div>
@@ -55,18 +74,26 @@ const Login: FC = () => {
             {!!error && (
               <div className={styles.errorInput}>{error.password}</div>
             )}
-            <div className={styles.flexRow}>
-              <div>
-                <input type="radio" />
-                <label>Remember me </label>
-              </div>
-              <a
-                href={Route(ROUTE_CONFIG.RESET_PASS)}
-                className={styles.spanText}
-              >
-                Forgot password?
-              </a>
+            <div className={styles.flexColumn}>
+              <label>Repeat Password </label>
             </div>
+            <div className={styles.inputForm}>
+              <Lock />
+              <input
+                placeholder="Enter your repeat Password"
+                className={styles.inputField}
+                autoComplete="off"
+                type="password"
+                name="repeat_password"
+                onChange={(e) => {
+                  handleChange("repeat_password", e.target.value);
+                }}
+              />
+            </div>
+            {!!error && (
+              <div className={styles.errorInput}>{error.repeat_password}</div>
+            )}
+            
             <button
               type="button"
               onClick={handleSubmit}
@@ -75,12 +102,12 @@ const Login: FC = () => {
                 !isDisabled ? styles.buttonSubmit : styles.buttonNoSubmit
               }
             >
-              Sign In
+              Sign Up
             </button>
             {!!error && <div className={styles.error}>{error.Error}</div>}
             <p className={styles.description}>
-              Don't have an account?{" "}
-              <a href={Route(ROUTE_CONFIG.REGISTER)} className={styles.spanText} >Sign Up</a>
+              Do have an account?{" "}
+              <a href={Route(ROUTE_CONFIG.LOGIN)} className={styles.spanText}>Sign In</a>
             </p>
             <p className={styles.description}>Or With</p>
 
@@ -101,4 +128,4 @@ const Login: FC = () => {
   );
 };
 
-export { Login };
+export { Register };

@@ -14,6 +14,8 @@ import { DataProducts } from "../pages/data-products";
 import { Order } from "../pages/order";
 import { HistoryOrder } from "../pages/history-order";
 import { AddProduct } from "../pages/add-product";
+import MessagingApp from "../pages/messaging-app/messaging-app";
+import { Register } from "../pages/register/register";
 
 const baseRoute = (page: string): string => `training-dev/ec/${page}`;
 
@@ -32,6 +34,11 @@ const appRoutes: {
     path: baseRoute("login"),
     title: `${baseTitle} | Login`,
     Component: Login,
+  },
+  {
+    path: baseRoute("register"),
+    title: `${baseTitle} | Register`,
+    Component: Register,
   },
   {
     path: baseRoute("reset-Pass"),
@@ -87,6 +94,11 @@ const appRoutes: {
     path: baseRoute("add-product"),
     title: `${baseTitle} | Add Product`,
     Component: AddProduct,
+  },
+  {
+    path: baseRoute("chat"),
+    title: `${baseTitle} | Chat`,
+    Component: MessagingApp,
   },
 ];
 
