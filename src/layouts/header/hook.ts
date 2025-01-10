@@ -39,6 +39,19 @@ export const useHeader = (): THeaderProps => {
   const nameCategory: number = keyword ? keyword : -1;
   const [isSearch, setIsSearch] = useState<boolean>(false);
   const addCart = setListCartState();
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  /**
+   * Handle Check Type Account
+   *
+   */
+  const handleCheckType = () => {
+    const result = localStorage.getItem("profileData");
+    if (result) {
+      const value = JSON.parse(result).type;
+      if (value == "admin") setIsAdmin(true);
+    }
+  };
 
   /**
    * Handle Drop Product
@@ -50,7 +63,6 @@ export const useHeader = (): THeaderProps => {
     const productData = event.dataTransfer.getData("product");
     if (productData) {
       const product = JSON.parse(productData);
-      console.log(product);
       handleAddProduct(product);
     }
   };
@@ -175,6 +187,7 @@ export const useHeader = (): THeaderProps => {
   };
 
   useEffect(() => {
+    handleCheckType();
     const handleClickOutside = (event: MouseEvent) => {
       if (
         inputRef.current &&
@@ -212,5 +225,6 @@ export const useHeader = (): THeaderProps => {
     isSearch,
     handleDrop,
     handleDragOver,
+    isAdmin
   };
 };

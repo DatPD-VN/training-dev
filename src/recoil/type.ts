@@ -42,6 +42,7 @@ type TCartState = {
   categoryName: string;
   categoryID: number;
   quantity: number;
+  choice?: boolean;
 };
 
 export type {

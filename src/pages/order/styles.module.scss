@@ -1,0 +1,1125 @@
+@use "abstracts/index" as *;
+
+.textItem {
+  color: $textDefault;
+}
+.container {
+  height: auto;
+  width: 100%;
+  background-color: $backgroundGray;
+}
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 56px;
+  background-color: $whiteColor;
+}
+.headerWrapLeft {
+  color: $primary;
+  border-left: 1px;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: $primary;
+  border-style: solid;
+  flex: 1 1 0;
+  div {
+    width: max-content;
+    text-align: left;
+    margin-left: 30px;
+    font-size: 18px;
+  }
+}
+.headerWrapRight {
+  flex: 1 1 0;
+  width: 100%;
+  border: 1px solid $primary;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 37px;
+  input {
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    border: none;
+  }
+  .headerWrapRigthSearchDiv {
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background: $primary;
+    color: $whiteColor;
+    height: 100%;
+    cursor: pointer;
+  }
+  .headerWrapRigthSearchDiv:hover {
+    opacity: 0.8;
+  }
+}
+.bodyWrap {
+  padding: 20px 56px;
+}
+.div5 {
+  width: 5%;
+}
+.div40 {
+  width: 40%;
+}
+.div13 {
+  width: 13.75%;
+}
+.navWrap {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: $whiteColor;
+  font-size: 15px;
+
+  .navWrapInput {
+    input {
+    }
+  }
+  .navWrapTitleProduct {
+    text-align: left;
+  }
+  .navWrapTitle {
+    color: $grayColor;
+  }
+}
+.itemWrap {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px;
+  background-color: $whiteColor;
+  font-size: 15px;
+  margin: 10px 0;
+  .itemWrapper {
+    padding: 5px;
+    border: 1px solid $whiteColor;
+    display: flex;
+    align-items: center;
+  }
+  .itemWrapInfo {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      border-radius: 5px;
+    }
+    .itemWrapInfoTitle {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      span {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        padding-right: 20px;
+        text-align: left;
+        width: 90%;
+        overflow: hidden;
+      }
+      img {
+        width: 200px;
+        height: 20px;
+        margin: 10px 0;
+      }
+    }
+    .itemWrapSelect {
+      font-size: 13px;
+      color: $grayColor;
+      select {
+        font-size: 13px;
+        outline: none;
+        border: none;
+        color: $grayColor;
+      }
+    }
+  }
+}
+
+.itemWrapInfoPrice {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .itemWrapInfoPriceOld {
+    color: $grayColor;
+    text-decoration: line-through;
+    margin: 0 5px;
+    display: flex;
+    align-items: start;
+    span {
+      font-size: 10px;
+    }
+  }
+  .itemWrapInfoPriceNew {
+    display: flex;
+    align-items: start;
+    span {
+      font-size: 10px;
+    }
+  }
+}
+.itemWrapAmount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .DetailProductDivAmount {
+    display: flex;
+    align-items: center;
+    input {
+      outline: none;
+    }
+  }
+  .DetailProductDivAmount button {
+    width: 32px;
+    height: 32px;
+    outline: none;
+    padding: 0px 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid $borderColor;
+    cursor: pointer;
+  }
+  .DetailProductDivAmount input {
+    width: 50px;
+    height: 30px;
+    padding: 0px;
+    border: 1px solid $borderColor;
+    text-align: center;
+  }
+}
+.itemWrapTotalPrice {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  font-size: 14px;
+  color: $primary;
+  span {
+    font-size: 10px;
+  }
+}
+.itemWrapHandle {
+  font-size: 14px;
+  cursor: pointer;
+  .itemWrapHandleDiv {
+    color: $primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  span:hover {
+    color: $primary;
+  }
+}
+
+.footerWrap {
+  padding: 25px 0;
+  background-color: $whiteColor;
+  font-size: 15px;
+  margin: 10px 0;
+  .footerWrapTop {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    padding: 0 30px;
+    padding-bottom: 20px;
+    .footerWrapTopVoucher {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      margin-right: 200px;
+      span {
+        margin: 0 10px;
+      }
+    }
+    a {
+      font-size: 14px;
+      text-decoration: none;
+      color: $blueColor;
+    }
+  }
+  .footerWrapMiddle {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 10px 30px;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: dashed;
+    border-color: $borderColor;
+    .footerWrapMiddleWrap {
+      display: flex;
+      align-items: center;
+      margin-right: 200px;
+      .footerWrapMiddleInput {
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        outline: none;
+      }
+      .footerWrapMiddleIcon {
+        opacity: 0.5;
+      }
+      .footerWrapMiddleShoppe {
+        font-size: 14px;
+        margin: 0 5px;
+        color: $grayColor;
+      }
+      .footerWrapMiddleSelect {
+        margin: 0 10px;
+        color: $grayColor;
+      }
+    }
+    .footerWrapMiddlePriceVoucher {
+      display: flex;
+      align-items: start;
+      opacity: 0.5;
+      span {
+        font-size: 10px;
+      }
+    }
+  }
+  .footerWrapBottomShip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-style: dashed;
+    border-color: $borderColor;
+    padding: 30px 30px;
+  }
+  .footerWrapBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    padding-top: 50px;
+    .footerWrapBottomLeft {
+      display: flex;
+      align-items: center;
+      input {
+        margin: 0 10px;
+      }
+      span {
+        margin: 0 15px;
+        cursor: pointer;
+      }
+    }
+    .footerWrapBottomRight {
+      display: flex;
+      align-items: center;
+      .footerWrapBottomRightPriceTotal {
+        font-size: 20px;
+        display: flex;
+        align-items: start;
+        margin: 0 15px;
+        color: $primary;
+        span {
+          font-size: 12px;
+        }
+      }
+      .footerWrapBottomRightButton {
+        color: $whiteColor;
+        background-color: $primary;
+        border: none;
+        padding: 10px 50px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .footerWrapBottomRightButton:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .headerWrapLeft div {
+    font-size: 16px;
+  }
+  .headerWrapRight input {
+    padding: 7px;
+    font-size: 13px;
+  }
+  .headerWrapRight {
+    height: 30px;
+  }
+  .headerWrapRigthSearchDiv svg {
+    width: 18px;
+    height: 18px;
+  }
+  .navWrapTitleProduct {
+    font-size: 13px;
+  }
+  .navWrapTitle {
+    font-size: 13px;
+  }
+  .footerWrapTopVoucher span {
+    font-size: 12px;
+  }
+  .footerWrapTop a {
+    font-size: 12px;
+  }
+  .footerWrapMiddle {
+    font-size: 13px;
+  }
+  .footerWrapMiddleShoppe {
+    font-size: 12px;
+  }
+  .footerWrapBottom {
+    font-size: 12px;
+  }
+  .footerWrap
+    .footerWrapBottom
+    .footerWrapBottomRight
+    .footerWrapBottomRightPriceTotal {
+    font-size: 16px;
+  }
+  .footerWrap
+    .footerWrapBottom
+    .footerWrapBottomRight
+    .footerWrapBottomRightButton {
+    padding: 7px 23px;
+    font-size: 12px;
+  }
+
+  .footerWrap .footerWrapMiddle .footerWrapMiddleWrap .footerWrapMiddleInput {
+    width: 15px;
+    height: 15px;
+  }
+  .itemWrap .itemWrapInfo {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+  }
+  .itemWrap .itemWrapInfo .itemWrapInfoTitle img {
+    width: 124px;
+    height: 16px;
+    margin: 10px 0;
+  }
+  .itemWrap .itemWrapInfo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 8px;
+  }
+  .itemWrap .itemWrapInfo .itemWrapSelect {
+    font-size: 10px;
+    color: $grayColor;
+  }
+  .itemWrap .itemWrapInfo .itemWrapSelect select {
+    font-size: 10px;
+  }
+  .itemWrapInfoPrice {
+    font-size: 11px;
+  }
+  .itemWrapHandle {
+    font-size: 11px;
+  }
+
+  .itemWrapTotalPrice {
+    font-size: 11px;
+  }
+  .itemWrapAmount .DetailProductDivAmount button {
+    width: 21px;
+    height: 21px;
+    padding: 0px 5px;
+  }
+  .itemWrapAmount .DetailProductDivAmount input {
+    width: 31px;
+    height: 19px;
+    font-size: 11px;
+  }
+  .bodyWrap {
+    padding: 20px 11px;
+  }
+}
+
+// Mobile
+.containerCart {
+  box-sizing: border-box;
+  background-color: $backgroundGray;
+}
+.headerWrapMobile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: $whiteColor;
+}
+.headerWrapLeftMobile {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  padding-left: 15px;
+  color: $primary;
+}
+.headerWrapMiddleMobile {
+  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  font-size: 18px;
+  padding: 0 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.headerWrapRightMobile {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 25px;
+}
+.bodyWrapMobile {
+  padding: 10px 0;
+  .navWrapMobile {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+  }
+  .itemWrapMobile {
+    padding: 10px 15px;
+  }
+  .navWrapTitleMobile {
+    color: $grayColor;
+    font-size: 14px;
+  }
+  .navWrapInputMobile {
+    margin-right: 15px;
+  }
+  .navWrapInputMobile input {
+    width: 18px;
+    height: 18px;
+  }
+  .navWrapperMobile {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-right: auto;
+  }
+  .navWrapTitleProductIconMobile {
+    display: flex;
+    align-items: center;
+  }
+  .navWrapFauvoriteMobile {
+    color: $whiteColor;
+    background-color: $primary;
+    font-size: 12px;
+    padding: 3px 5px;
+    border-radius: 4px;
+    margin-right: 10px;
+    $whiteColor-space: nowrap;
+  }
+  .navWrapTitleProductMobile {
+    $whiteColor-space: nowrap;
+  }
+}
+
+.footerWrapMobile {
+  padding: 20px 0;
+  margin: 10px;
+  background-color: $whiteColor;
+  border-radius: 10px;
+  // position: fixed;
+  // bottom: 0px;
+  // width: 100%;
+  .footerWrapTopMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    padding-bottom: 15px;
+  }
+  .footerWrapTopVoucherMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapTopVoucherMobile span {
+    margin-left: 5px;
+    font-size: 15px;
+  }
+  .footerWrapTopRightMobile {
+    display: flex;
+    align-items: center;
+    color: $grayColor;
+  }
+  .footerWrapTopRightMobile a {
+    text-decoration: none;
+    color: $grayColor;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .footerWrapTopRightMobile a:hover {
+    text-decoration: underline;
+  }
+}
+.footerWrapMobileTotal {
+  padding: 20px 0;
+  margin: 10px;
+  background-color: $whiteColor;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  .footerWrapBottomRightMobile {
+    margin-right: 20px;
+  }
+  .footerWrapTopMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    padding-bottom: 35px;
+  }
+  .footerWrapTopVoucherMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapTopVoucherMobile span {
+    margin-left: 5px;
+    font-size: 15px;
+  }
+  .footerWrapTopRightMobile {
+    display: flex;
+    align-items: center;
+    color: $grayColor;
+  }
+  .footerWrapTopRightMobile a {
+    text-decoration: none;
+    color: $grayColor;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .footerWrapTopRightMobile a:hover {
+    text-decoration: underline;
+  }
+}
+.footerWrapMiddleMobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0px;
+  border-top: 1px;
+  border-right: 0px;
+  border-left: 0px;
+  border-color: $borderColorGray;
+  border-style: solid;
+  padding: 10px 15px;
+  .footerWrapMiddleWrapMobile {
+    display: flex;
+    align-items: start;
+    gap: 5px;
+  }
+  .footerWrapMiddlePriceVoucherMobile {
+    color: $grayColor;
+  }
+  .footerWrapMiddleButtonMobile {
+    font-size: 11px;
+    padding: 3px 6px;
+    color: $primary;
+    border-radius: 5px;
+    border: 1px solid $primary;
+    cursor: pointer;
+  }
+  .footerWrapMiddleInputMobile {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+  .footerWrapMiddleIconMobile {
+    margin: 0 5px;
+  }
+  .footerWrapMiddleSelectMobile {
+    font-size: 13px;
+    text-align: left;
+    margin-right: 10px;
+    span {
+      font-size: 12px;
+      color: $textTitleGray;
+    }
+  }
+}
+.footerWrapBottomMobile {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .footerWrapBottomLeftMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapBottomLeftMobile input {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+  .footerWrapBottomLeftMobile span {
+    font-size: 14px;
+  }
+  .footerWrapBottomRightMobile {
+    display: flex;
+    align-items: center;
+  }
+  .footerWrapBottomRightMobile span {
+    font-size: 14px;
+  }
+  .footerWrapBottomRightPriceTotalMobile {
+    display: flex;
+    align-items: start;
+    margin: 0 5px;
+    color: $primary;
+  }
+  .footerWrapBottomRightPriceTotalMobile span {
+    font-size: 12px;
+  }
+  .footerWrapBottomRightButtonMobile {
+    color: $whiteColor;
+    border-radius: 4px;
+    background-color: $primary;
+    padding: 10px;
+    border: none;
+    margin-left: 10px;
+  }
+}
+// Cart
+.itemWrapMobile {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px;
+  background-color: $whiteColor;
+  font-size: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  .itemWrapperMobile {
+    padding: 5px;
+    border: 1px solid $whiteColor;
+    display: flex;
+    align-items: center;
+  }
+  .itemWrapInfoMobile {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    img {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+      border-radius: 5px;
+    }
+    .itemWrapInfoTitleMobile {
+      p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        padding-right: 20px;
+        text-align: left;
+        width: 90%;
+        overflow: hidden;
+      }
+      img {
+        width: 200px;
+        height: 20px;
+        margin: 10px 0;
+      }
+    }
+    .itemWrapSelectMobile {
+      font-size: 13px;
+      color: $grayColor;
+      select {
+        font-size: 13px;
+        outline: none;
+        border: none;
+        color: $grayColor;
+      }
+    }
+  }
+}
+
+.div5 {
+  width: 5%;
+}
+.div40 {
+  width: 60%;
+}
+.div13 {
+  width: 13.75%;
+}
+
+.itemWrapInfoMobile {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+  }
+  .itemWrapInfoTitleMobile {
+    text-align: left;
+
+    span {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      padding-right: 20px;
+      text-align: left;
+      width: 90%;
+      overflow: hidden;
+    }
+    img {
+      width: 200px;
+      height: 20px;
+      margin: 10px 0;
+    }
+  }
+  .itemWrapSelectMobile {
+    font-size: 13px;
+    color: $grayColor;
+    select {
+      font-size: 13px;
+      outline: none;
+      border: none;
+      color: $grayColor;
+    }
+  }
+}
+.itemWrapInfoPriceMobile {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .itemWrapInfoPriceOldMobile {
+    color: $grayColor;
+    text-decoration: line-through;
+    margin: 0 5px;
+    display: flex;
+    align-items: start;
+
+    span {
+      font-size: 10px;
+    }
+  }
+  .itemWrapInfoPriceNewMobile {
+    display: flex;
+    align-items: start;
+    color: $primary;
+    margin-left: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+
+    span {
+      font-size: 10px;
+    }
+  }
+}
+
+.itemWrapAmountMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  .DetailProductDivAmountMobile {
+    display: flex;
+    align-items: center;
+    input {
+      outline: none;
+    }
+  }
+  .DetailProductDivAmountMobile button {
+    width: 32px;
+    height: 32px;
+    outline: none;
+    padding: 0px 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid $borderColor;
+    cursor: pointer;
+  }
+  .DetailProductDivAmountMobile input {
+    width: 50px;
+    height: 30px;
+    padding: 0px;
+    border: 1px solid $borderColor;
+    text-align: center;
+  }
+}
+
+.itemWrapInputMobile input {
+  width: 18px;
+  height: 18px;
+}
+.itemWrapInformationMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  width: 100%;
+}
+.itemWrapInfoImg {
+  cursor: pointer;
+}
+.headerWrapInformationUser {
+  background-color: $whiteColor;
+  margin: 10px 60px;
+}
+.headerWrapBorder {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #6fa6d6,
+    #6fa6d6 33px,
+    transparent 0,
+    transparent 41px,
+    #f18d9b 0,
+    #f18d9b 74px,
+    transparent 0,
+    transparent 82px
+  );
+  background-position-x: -30px;
+  background-size: 116px 3px;
+  height: 3px;
+  width: 100%;
+}
+.headerWrapContent {
+  padding: 25px 40px;
+  text-align: left;
+  .headerWrapContentTitle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: $primary;
+    margin-bottom: 20px;
+  }
+  .headerWrapContentMain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 14px;
+    button {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: $blueColor;
+      cursor: pointer;
+    }
+    .headerWrapContentName,
+    .headerWrapContentPhone {
+      font-weight: 500;
+      margin-right: 5px;
+    }
+    .headerWrapContentSelect {
+      color: $primary;
+      border: 1px solid $primary;
+      font-size: 12px;
+      padding: 3px;
+      border-radius: 3px;
+      margin-left: 10px;
+    }
+  }
+}
+.footerShipWrapper {
+  display: flex;
+  align-items: start;
+  border-bottom: 1px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-color: rgba(128, 128, 128, 0.24);
+  border-style: dashed;
+  height: 115px;
+  box-sizing: border-box;
+  .footerShipWrapperText {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 20px;
+    font-size: 14px;
+    color: $grayColor;
+    white-space: nowrap;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-right: 1px;
+    border-left: 0px;
+    border-color: rgba(128, 128, 128, 0.24);
+    border-style: dashed;
+    box-sizing: border-box;
+    span {
+      transform: translateY(7px);
+    }
+    input {
+      padding: 7px 12px;
+      border: 1px solid $borderColor;
+      color: $grayColor;
+      outline: none;
+      width: 100%;
+    }
+  }
+}
+.footerShipWrapperContent {
+  width: 60%;
+  padding: 20px;
+  display: flex;
+  align-items: start;
+  font-size: 14px;
+}
+.footerShipWrapperTitle {
+  white-space: nowrap;
+  padding-right: 10px;
+}
+.footerShipWrapperMain {
+  text-align: left;
+  font-size: 13px;
+}
+.footerShipWrapperSelect {
+  display: flex;
+  justify-content: space-between;
+  .footerShipWrapperSelectChange {
+    color: $blueColor;
+    cursor: pointer;
+  }
+}
+.footerShipWrapperMainDescription {
+  margin: 7px 0;
+  color: $greenPrimary;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footerShipWrapperMainHelper {
+  color: $grayColor;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footerWrapBottomTitle {
+  font-size: 18px;
+}
+.footerWrapBottomContent {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: $blueColor;
+    cursor: pointer;
+  }
+}
+
+.footerWrapBottomLeft {
+  font-size: 14px;
+  span {
+    color: $blueColor;
+  }
+}
+.footerWrapBottomTotal {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+  padding: 20px 40px;
+  gap: 20px;
+  color: $textTitleGray;
+  .footerWrapBottomTotalWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    h2 {
+      margin: 0;
+      color: $primary;
+    }
+  }
+}
+@media (max-width: 1100px) {
+  .headerWrapInformationUser {
+    margin: 10px;
+  }
+}
+.headerWrapInformationUserMobile {
+  background-color: $whiteColor;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  .headerWrapContentMobile {
+    display: flex;
+    gap: 10px;
+  }
+  .headerWrapContentMainMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 14px;
+    width: 100%;
+  }
+  .headerWrapContentWrapperMobile {
+    text-align: left;
+  }
+  .headerWrapContentTitleMobile {
+    transform: translateY(2px);
+  }
+  .headerWrapContentPhoneMobile {
+    color: $grayColor;
+  }
+  .headerWrapContentAddressMobile {
+    color: $textTitleGray;
+    width: 80%;
+  }
+}
+.itemWrapInfoTitleMobileWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+.itemWrapInfoPriceNewMobileWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footerDescription {
+  margin-bottom: 70px;
+  color: $grayColor;
+  font-size: 12px;
+  padding: 10px 15px;
+  span {
+    color: $blueColor;
+  }
+}
+.footerWrapBottomWrapMobile {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  justify-content: space-between;
+  font-size: 12px;
+  color: $textTitleGray;
+}
+.footerWrapBottomWrapMobileMain {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  justify-content: space-between;
+  font-size: 12px;
+  color: $textDefault;
+}

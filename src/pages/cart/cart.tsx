@@ -28,10 +28,11 @@ const Cart: FC = () => {
     inputRef,
     handleCheck,
     handleCheckAll,
-    isSelectId,
+    selectIds,
     handleDelAll,
     handleChangeQuality,
     handleAddCategory,
+    handleSubmit,
   } = useCart();
   return (
     <>
@@ -49,143 +50,187 @@ const Cart: FC = () => {
             <div className={styles.headerWrapMiddleMobile}>Giỏ Hàng</div>
             <div className={styles.headerWrapRightMobile}>Sửa</div>
           </header>
-          <div className={styles.bodyWrapMobile}>
-            <div className={styles.navWrapMobile}>
-              <div className={`${styles.navWrapInputMobile} ${styles.div5}`}>
-                <input type="checkbox" name="" id="" />
-              </div>
-              <div className={styles.navWrapperMobile}>
-                <div className={`${styles.navWrapFauvoriteMobile}`}>
-                  Yêu Thích
+          {listProduct && listProduct.length > 0 ? (
+            <div className={styles.bodyWrapMobile}>
+              <div className={styles.navWrapMobile}>
+                <div className={`${styles.navWrapInputMobile} ${styles.div5}`}>
+                  <input type="checkbox" name="" id="" hidden />
                 </div>
-                <div className={`${styles.navWrapTitleProductMobile}`}>
-                  Sản Phẩm
-                </div>
-                <div
-                  className={`${styles.navWrapTitleProductIconMobile} ${styles.div40}`}
-                >
-                  <ChevronRight size={19} />
-                </div>
-              </div>
-              <div className={`${styles.navWrapTitleMobile} ${styles.div13}`}>
-                Sửa
-              </div>
-            </div>
-            {listProduct.map((item: TCartState, index: number) => (
-              <section key={index} className={styles.itemWrapMobile}>
-                <div className={`${styles.itemWrapInputMobile} ${styles.div5}`}>
-                  <input type="checkbox" />
-                </div>
-                <div className={styles.itemWrapInformationMobile}>
-                  <div
-                    className={`${styles.itemWrapInfoMobile} ${styles.div40}`}
-                  >
-                    <img
-                      src={item.imgProduct}
-                      alt=""
-                      className={styles.itemWrapInfoImgMobile}
-                    />
-                    <div className={styles.itemWrapInfoTitleMobile}>
-                      <span>{item.titleProduct}</span>
-                      <img
-                        src="https://down-vn.img.susercontent.com/file/vn-11134258-7ras8-m2waud2e3pbk8b"
-                        alt=""
-                      />
-                    </div>
-                    <div className={`${styles.itemWrapSelectMobile}`}>
-                      <span>Phân Loại Hàng:</span>
-                      <select>
-                        <option value="M">M1 MIC DẢI BOX</option>
-                      </select>
-                    </div>
+                <div className={styles.navWrapperMobile}>
+                  <div className={`${styles.navWrapFauvoriteMobile}`}>
+                    Yêu Thích
+                  </div>
+                  <div className={`${styles.navWrapTitleProductMobile}`}>
+                    Sản Phẩm
                   </div>
                   <div
-                    className={`${styles.itemWrapInfoPriceMobile} ${styles.div13}`}
+                    className={`${styles.navWrapTitleProductIconMobile} ${styles.div40}`}
                   >
-                    <div className={styles.itemWrapInfoPriceNewMobile}>
-                      <span>₫</span>
-                      {item.priceProduct.toLocaleString("it-IT")}
-                    </div>
+                    <ChevronRight size={19} />
                   </div>
+                </div>
+                <div className={`${styles.navWrapTitleMobile} ${styles.div13}`}>
+                  Sửa
+                </div>
+              </div>
+              {listProduct.map((item: TCartState, index: number) => (
+                <section key={index} className={styles.itemWrapMobile}>
                   <div
-                    className={`${styles.itemWrapAmountMobile} ${styles.div13}`}
+                    className={`${styles.itemWrapInputMobile} ${styles.div5}`}
                   >
-                    <div className={styles.DetailProductDivAmountMobile}>
-                      <button onClick={() => handleCase("giam", item)}>
-                        <NoPlus />
-                      </button>
+                    {selectIds.includes(item.id) ? (
                       <input
-                        type="number"
-                        min={1}
-                        value={item.quantity}
-                        name=""
-                        id=""
+                        type="checkbox"
+                        checked
+                        onChange={() => handleCheck(item.id)}
                       />
-                      <button onClick={() => handleCase("tang", item)}>
-                        <Plus />
-                      </button>
+                    ) : (
+                      <input
+                        type="checkbox"
+                        onChange={() => handleCheck(item.id)}
+                      />
+                    )}
+                  </div>
+                  <div className={styles.itemWrapInformationMobile}>
+                    <div
+                      className={`${styles.itemWrapInfoMobile} ${styles.div40}`}
+                    >
+                      <img
+                        src={item.imgProduct}
+                        alt=""
+                        className={styles.itemWrapInfoImgMobile}
+                      />
+                      <div className={styles.itemWrapInfoTitleMobile}>
+                        <span>{item.titleProduct}</span>
+                        <img
+                          src="https://down-vn.img.susercontent.com/file/vn-11134258-7ras8-m2waud2e3pbk8b"
+                          alt=""
+                        />
+                      </div>
+                      <div className={styles.itemWrapSelectMobile}>
+                        <span>Phân Loại Hàng:</span>
+                        <select>
+                          <option value="M">M1 MIC DẢI BOX</option>
+                        </select>
+                      </div>
                     </div>
+                    <div
+                      className={`${styles.itemWrapInfoPriceMobile} ${styles.div13}`}
+                    >
+                      <div className={styles.itemWrapInfoPriceNewMobile}>
+                        <span>₫</span>
+                        {item.priceProduct.toLocaleString("it-IT")}
+                      </div>
+                    </div>
+                    <div
+                      className={`${styles.itemWrapAmountMobile} ${styles.div13}`}
+                    >
+                      <div className={styles.DetailProductDivAmountMobile}>
+                        <button onClick={() => handleCase("down", item)}>
+                          <NoPlus />
+                        </button>
+                        <input
+                          type="number"
+                          min={1}
+                          max={999}
+                          onChange={handleChangeQuality}
+                          value={item.quantity}
+                          name={item.titleProduct}
+                          id={String(item.id)}
+                          className="textbox_id"
+                        />
+                        <button onClick={() => handleCase("up", item)}>
+                          <Plus />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ))}
+              <section className={styles.footerWrapMobile}>
+                <div className={styles.footerWrapTopMobile}>
+                  <div className={styles.footerWrapTopVoucherMobile}>
+                    <Ticket color="#ff4807" size={20} />
+                    <span>Riche Voucher</span>
+                  </div>
+                  <div className={styles.footerWrapTopRightMobile}>
+                    <a href="">Chọn hoặc nhập mã</a>
+                    <ChevronRight size={20} />
+                  </div>
+                </div>
+                <div className={styles.footerWrapMiddleMobile}>
+                  <div className={styles.footerWrapMiddleWrapMobile}>
+                    <input
+                      type="checkbox"
+                      className={styles.footerWrapMiddleInputMobile}
+                    />
+                    <BadgeDollarSign
+                      size={17}
+                      className={styles.footerWrapMiddleIconMobile}
+                    />
+                    <span className={styles.footerWrapMiddleSelectMobile}>
+                      Bạn chưa chọn sản phẩm
+                    </span>
+                    <img
+                      src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/be6f27f93268c0f88ded.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div className={styles.footerWrapMiddlePriceVoucherMobile}>
+                    <ChevronRight size={19} />
+                  </div>
+                </div>
+                <div className={styles.footerWrapBottomMobile}>
+                  <div className={styles.footerWrapBottomLeftMobile}>
+                    <input
+                      type="checkbox"
+                      onChange={() => handleCheckAll()}
+                      checked={selectIds.length == listProduct.length}
+                      id="CheckAll"
+                    />
+                    <label
+                      htmlFor="CheckAll"
+                      className={styles.footerWrapBottomLeftAll}
+                    >
+                      {selectIds.length == listProduct.length
+                        ? "Bỏ chọn Tất Cả"
+                        : "Chọn Tất Cả"}
+                    </label>
+                  </div>
+                  <div className={styles.footerWrapBottomRightMobile}>
+                    <span className={styles.footerWrapBottomRightTotalMobile}>
+                      Tổng số tiền ({countCart}) :
+                    </span>
+                    <div
+                      className={styles.footerWrapBottomRightPriceTotalMobile}
+                    >
+                      <span>₫</span> {totalCart.toLocaleString("it-IT")}
+                    </div>
+                    <button
+                      type="button"
+                      className={styles.footerWrapBottomRightButtonMobile}
+                      onClick={handleSubmit}
+                    >
+                      Thanh Toán
+                    </button>
                   </div>
                 </div>
               </section>
-            ))}
-            <section className={styles.footerWrapMobile}>
-              <div className={styles.footerWrapTopMobile}>
-                <div className={styles.footerWrapTopVoucherMobile}>
-                  <Ticket color="#ff4807" size={20} />
-                  <span>Shoppe Voucher</span>
-                </div>
-                <div className={styles.footerWrapTopRightMobile}>
-                  <a href="">Chọn hoặc nhập mã</a>
-                  <ChevronRight size={20} />
-                </div>
-              </div>
-              <div className={styles.footerWrapMiddleMobile}>
-                <div className={styles.footerWrapMiddleWrapMobile}>
-                  <input
-                    type="checkbox"
-                    className={styles.footerWrapMiddleInputMobile}
-                  />
-                  <BadgeDollarSign
-                    size={17}
-                    className={styles.footerWrapMiddleIconMobile}
-                  />
-                  <span className={styles.footerWrapMiddleSelectMobile}>
-                    Bạn chưa chọn sản phẩm
-                  </span>
-                  <img
-                    src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/productdetailspage/be6f27f93268c0f88ded.svg"
-                    alt=""
-                  />
-                </div>
-                <div className={styles.footerWrapMiddlePriceVoucherMobile}>
-                  <ChevronRight size={19} />
-                </div>
-              </div>
-              <div className={styles.footerWrapBottomMobile}>
-                <div className={styles.footerWrapBottomLeftMobile}>
-                  <input type="checkbox" name="" id="" />
-                  <span className={styles.footerWrapBottomLeftAllMobile}>
-                    Chọn Tất Cả
-                  </span>
-                </div>
-                <div className={styles.footerWrapBottomRightMobile}>
-                  <span className={styles.footerWrapBottomRightTotalMobile}>
-                    Tổng số tiền :
-                  </span>
-                  <div className={styles.footerWrapBottomRightPriceTotalMobile}>
-                    <span>₫</span> {totalCart.toLocaleString("it-IT")}
-                  </div>
-                  <button
-                    type="button"
-                    className={styles.footerWrapBottomRightButtonMobile}
-                  >
-                    Thanh Toán
-                  </button>
-                </div>
-              </div>
-            </section>
-          </div>
+            </div>
+          ) : (
+            <div className={styles.footerWrapEmptyCart}>
+              <img src="/src/images/empty-cart.png" alt="" />
+              <p className={styles.footerWrapEmptyCartTitle}>
+                "Hổng" có gì trong giỏ hết
+              </p>
+              <p className={styles.footerWrapEmptyCartDescription}>
+                Lướt Riche, lựa hàng ngay đi
+              </p>
+              <button onClick={() => navigate(Route(ROUTE_CONFIG.PRODUCT))}>
+                Mua sắm ngay!
+              </button>
+            </div>
+          )}
         </section>
       )}
       {!isPhoneScreen && (
@@ -239,18 +284,12 @@ const Cart: FC = () => {
               {listProduct.map((item: TCartState, index: number) => (
                 <section key={index} className={styles.itemWrap}>
                   <div className={`${styles.itemWrapInput} ${styles.div5}`}>
-                    {isSelectId.includes(item.id) ? (
-                      <input
-                        type="checkbox"
-                        checked
-                        onChange={() => handleCheck(item.id)}
-                      />
-                    ) : (
-                      <input
-                        type="checkbox"
-                        onChange={() => handleCheck(item.id)}
-                      />
-                    )}
+                    <input
+                      type="checkbox"
+                      className="check"
+                      checked={selectIds.includes(item.id)}
+                      onChange={() => handleCheck(item.id)}
+                    />
                   </div>
                   <div className={`${styles.itemWrapInfo} ${styles.div40}`}>
                     <img
@@ -258,21 +297,21 @@ const Cart: FC = () => {
                       alt=""
                       className={styles.itemWrapInfoImg}
                       onClick={() => {
-                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
-                          state: {
-                            id: item.id,
-                          },
-                        });
+                        navigate(
+                          Route(
+                            `${ROUTE_CONFIG.DETAIL_PRODUCT}?productId=${item.id}`
+                          )
+                        );
                       }}
                     />
                     <div
                       className={styles.itemWrapInfoTitle}
                       onClick={() => {
-                        navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
-                          state: {
-                            id: item.id,
-                          },
-                        });
+                        navigate(
+                          Route(
+                            `${ROUTE_CONFIG.DETAIL_PRODUCT}?productId=${item.id}`
+                          )
+                        );
                       }}
                     >
                       <span>{item.titleProduct}</span>
@@ -302,7 +341,7 @@ const Cart: FC = () => {
                   </div>
                   <div className={`${styles.itemWrapAmount} ${styles.div13}`}>
                     <div className={styles.DetailProductDivAmount}>
-                      <button onClick={() => handleCase("giam", item)}>
+                      <button onClick={() => handleCase("down", item)}>
                         <NoPlus />
                       </button>
                       <input
@@ -315,7 +354,7 @@ const Cart: FC = () => {
                         id={String(item.id)}
                         className="textbox_id"
                       />
-                      <button onClick={() => handleCase("tang", item)}>
+                      <button onClick={() => handleCase("up", item)}>
                         <Plus />
                       </button>
                     </div>
@@ -345,7 +384,7 @@ const Cart: FC = () => {
                 <div className={styles.footerWrapTop}>
                   <div className={styles.footerWrapTopVoucher}>
                     <Ticket color="#ff4807" size={15} />
-                    <span>Shoppe Voucher</span>
+                    <span>Riche Voucher</span>
                   </div>
                   <a href="">Chọn hoặc nhập mã</a>
                 </div>
@@ -360,7 +399,7 @@ const Cart: FC = () => {
                       className={styles.footerWrapMiddleIcon}
                     />
                     <span className={styles.footerWrapMiddleShoppe}>
-                      Shopee Xu
+                      Riche Xu
                     </span>
                     <span className={styles.footerWrapMiddleSelect}>
                       Bạn chưa chọn sản phẩm
@@ -376,39 +415,20 @@ const Cart: FC = () => {
                 </div>
                 <div className={styles.footerWrapBottom}>
                   <div className={styles.footerWrapBottomLeft}>
-                    {isSelectId.length > 0 &&
-                    isSelectId.length == listProduct.length ? (
-                      <>
-                        <input
-                          type="checkbox"
-                          checked
-                          onChange={() => handleCheckAll()}
-                          id="checkAll"
-                        />
-                        <label
-                          htmlFor="delCheckAll"
-                          className={styles.footerWrapBottomLeftAll}
-                          onClick={() => handleCheckAll()}
-                        >
-                          Bỏ chọn Tất Cả
-                        </label>
-                      </>
-                    ) : (
-                      <>
-                        <input
-                          type="checkbox"
-                          onChange={() => handleCheckAll()}
-                          id="delCheckAll"
-                        />
-                        <label
-                          htmlFor="checkAll"
-                          className={styles.footerWrapBottomLeftAll}
-                          onClick={() => handleCheckAll()}
-                        >
-                          Chọn Tất Cả
-                        </label>
-                      </>
-                    )}
+                    <input
+                      type="checkbox"
+                      onChange={() => handleCheckAll()}
+                      checked={selectIds.length == listProduct.length}
+                      id="CheckAll"
+                    />
+                    <label
+                      htmlFor="CheckAll"
+                      className={styles.footerWrapBottomLeftAll}
+                    >
+                      {selectIds.length == listProduct.length
+                        ? "Bỏ chọn Tất Cả"
+                        : "Chọn Tất Cả"}
+                    </label>
                     <span
                       className={styles.footerWrapBottomLeftHandleDel}
                       onClick={() => handleDelAll()}
@@ -429,6 +449,7 @@ const Cart: FC = () => {
                     <button
                       type="button"
                       className={styles.footerWrapBottomRightButton}
+                      onClick={handleSubmit}
                     >
                       Mua Hàng
                     </button>

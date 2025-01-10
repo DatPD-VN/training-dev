@@ -22,6 +22,8 @@ type TListProduct = {
   hashTag: Array<string>;
   categoryName: string;
   categoryID: number;
+  quantity?: number;
+  idUser?: number;
 };
 type TListProductChange = {
   displayOrder: number;

@@ -1,18 +1,20 @@
 type DropdownItem = {
   value: number;
+  keyValue: string;
 };
 
-type DropdownProps = {
+type DropdownProps<T extends Record<string, any>> = {
   name: string;
   title?: string;
-  data: DropdownItem[];
+  data: Array<T>;
   position?: "bottom-right" | "bottom-left" | "top-right" | "top-left";
-  selectedId?: number;
-  onSelect?: (value: number, id: string) => void;
+  selectedId?: number | string;
+  onSelect?: (value: string | number, id: string) => void;
+  keyValue: keyof T;
 };
 type TUseDropDown = {
   isOpen: boolean;
-  selectedItem: DropdownItem | undefined;
+  selectedItem: any;
   dropdownClass: string;
   handleChange: (item: DropdownItem) => void;
   dropdownRef: React.RefObject<HTMLDivElement>;

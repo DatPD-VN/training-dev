@@ -30,11 +30,18 @@
     }
     .bannerRightBottom {
       margin-top: 5px;
+      cursor: pointer;
+    }
+    .bannerRightTop {
+      cursor: pointer;
     }
   }
 }
 @media (max-width: 800px) {
   .containerBanner {
+    display: none;
+  }
+  .containerBannerBottom {
     display: none;
   }
 }

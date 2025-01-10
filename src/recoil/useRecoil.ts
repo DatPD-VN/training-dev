@@ -9,6 +9,8 @@ import {
 import {
   addCartState,
   countCartState,
+  countChoiceCart,
+  listCartChoiceProduct,
   searchCartState,
   totalCartState,
 } from "./listCart";
@@ -36,9 +38,15 @@ export const useListCartState = () => {
 export const useCountCartState = () => {
   return useRecoilValue(countCartState);
 };
+export const useCountChoiceCartState = () => {
+  return useRecoilValue(countChoiceCart);
+};
 export const useTotalCartState = () => {
   return useRecoilValue(totalCartState);
 };
 export const useListSearchCartState = () => {
   return useRecoilValue(searchCartState);
+};
+export const useListCartChoiceProduct = () => {
+  return useRecoilValue(listCartChoiceProduct);
 };

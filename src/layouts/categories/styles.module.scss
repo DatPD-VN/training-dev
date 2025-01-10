@@ -62,7 +62,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-left: 20px;  
+  margin-left: 20px;
   cursor: pointer;
   a {
     position: relative;
@@ -140,5 +140,10 @@
   }
   .activeDetailCategory {
     color: $redColor;
+  }
+}
+@media (max-width: 800px) {
+  .containerCategories {
+    display: none;
   }
 }

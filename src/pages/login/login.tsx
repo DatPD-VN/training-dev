@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { Facebook } from "lucide-react";
-import { Volleyball } from "lucide-react";
 import styles from "./styles.module.scss";
 import { useLogin } from "./hook";
 import Route, { ROUTE_CONFIG } from "../../app/route";
+import Apple from "../../icon/apple";
+import Google from "../../icon/google";
+import Lock from "../../icon/lock";
+import User from "../../icon/user";
 
 const Login: FC = () => {
   const { isDisabled, error, handleChange, handleSubmit } = useLogin();
@@ -15,68 +17,82 @@ const Login: FC = () => {
           <div className={styles.headerRight}>Bạn cần giúp đỡ ? </div>
         </div>
         <section className={styles.content}>
-          <form>
-            <div className={styles.wapper}>
-              <h1 className={styles.text2xl}>Đăng nhập </h1>
+          <form className={styles.form}>
+            <div className={styles.flexColumn}>
+              <label>Email </label>
+            </div>
+            <div className={styles.inputForm}>
+              <User />
               <input
-                type="text"
-                placeholder="Email/Số Điện Thoại/Tên Đăng Nhập"
-                name="email"
-                className={styles.input}
+                placeholder="Enter your Email"
+                className={styles.inputField}
                 autoComplete="off"
+                type="text"
+                name="email"
                 onChange={(e) => {
                   handleChange("email", e.target.value);
                 }}
               />
-              {!!error && (
-                <div className={styles.errorInput}>{error.email}</div>
-              )}
+            </div>
+            {!!error && <div className={styles.errorInput}>{error.email}</div>}
 
+            <div className={styles.flexColumn}>
+              <label>Password </label>
+            </div>
+            <div className={styles.inputForm}>
+              <Lock />
               <input
-                placeholder="Mật Khẩu"
+                placeholder="Enter your Password"
+                className={styles.inputField}
+                autoComplete="off"
                 type="password"
                 name="password"
-                className={styles.input}
-                autoComplete="off"
                 onChange={(e) => {
                   handleChange("password", e.target.value);
                 }}
               />
-              {!!error && (
-                <div className={styles.errorInput}>{error.password}</div>
-              )}
-              <div className={styles.wapperTTT}>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  disabled={isDisabled}
-                  className={
-                    !isDisabled ? styles.buttonSubmit : styles.buttonNoSubmit
-                  }
-                >
-                  ĐĂNG NHẬP
-                </button>
-                {!!error && <div className={styles.error}>{error.Error}</div>}
-                <p className={styles.buttonSubmitPass}>
-                  <a href={Route(ROUTE_CONFIG.RESETPASS)}>Quên mật khẩu</a>
-                </p>
+            </div>
+            {!!error && (
+              <div className={styles.errorInput}>{error.password}</div>
+            )}
+            <div className={styles.flexRow}>
+              <div>
+                <input type="radio" />
+                <label>Remember me </label>
               </div>
-              <div className={styles.wapperBlock}>
-                <hr className={styles.wFull} />
-                <span className={styles.wapprerStyleSpan}>Hoặc</span>
-                <hr className={styles.wFull} />
-              </div>
-              <div className={styles.wapprerStyle}>
-                <div className={styles.wapperButton}>
-                  <Facebook size={20} className={styles.styleIcon} />{" "}
-                  <span>FaceBook</span>
-                </div>
-                <div className={styles.wapperButton}>
-                  <Volleyball size={20} className={styles.styleIcon} />
-                  <span>Google</span>
-                </div>
-              </div>
-              <div className={styles.button}>Đăng ký</div>
+              <a
+                href={Route(ROUTE_CONFIG.RESET_PASS)}
+                className={styles.spanText}
+              >
+                Forgot password?
+              </a>
+            </div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={isDisabled}
+              className={
+                !isDisabled ? styles.buttonSubmit : styles.buttonNoSubmit
+              }
+            >
+              Sign In
+            </button>
+            {!!error && <div className={styles.error}>{error.Error}</div>}
+            <p className={styles.description}>
+              Don't have an account?{" "}
+              <a href={Route(ROUTE_CONFIG.REGISTER)} className={styles.spanText} >Sign Up</a>
+            </p>
+            <p className={styles.description}>Or With</p>
+
+            <div className={styles.flexRow}>
+              <button className={styles.buttonIcon}>
+                <Google />
+                Google
+              </button>
+              <button className={styles.buttonIcon}>
+                <Apple />
+                Apple
+              </button>
             </div>
           </form>
         </section>

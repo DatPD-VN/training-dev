@@ -1,8 +1,8 @@
-import { USER_LOGIN } from "../../config/index";
 import { useState } from "react";
 import { TError, TLogin, TUseLoginProps } from "./types";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
+import { loginUser } from "../../services/api-service";
 
 export const useLogin = (): TUseLoginProps => {
   const [from, setForm] = useState<TLogin>({
@@ -63,24 +63,54 @@ export const useLogin = (): TUseLoginProps => {
    * Handle Check Value After Submit
    *
    */
-  const handleSubmit = () => {
-    if (
-      USER_LOGIN.findIndex(
-        (item) => item.email === from.email && item.password === from.password
-      ) !== -1
-    ) {
-      setForm({ ...from, password: "" });
-      localStorage.setItem("profileData", JSON.stringify(from));
-      navigator(Route(ROUTE_CONFIG.PRODUCT));
-    } else {
-      setForm({ ...from, password: "" });
-      setError({
-        email: "",
-        password: "",
-        Error: "Lỗi email or password không đúng",
-      });
-      setIsDisabled(true);
-    }
+  const handleSubmit = async () => {
+    try {
+      const value = {
+        email: from.email,
+        password: from.password,
+      };
+      const response = await loginUser(value);
+      if (response?.status == 200) {
+        setForm({ ...from, password: "" });
+        const profileData = {
+          id: response.data.data.id,
+          email: from.email,
+          image: from.image,
+          type: response.data.data.type,
+        };
+        localStorage.setItem("profileData", JSON.stringify(profileData));
+        navigator(Route(ROUTE_CONFIG.PRODUCT));
+      } else {
+        setForm({ ...from, password: "" });
+        setError({
+          email: "",
+          password: "",
+          Error: "Lỗi email or password không đúng",
+        });
+        setIsDisabled(true);
+      }
+    } catch (err) {}
+    // const result = USER_LOGIN.find(
+    //   (item) => item.email === from.email && item.password === from.password
+    // );
+    // if (result) {
+    //   setForm({ ...from, password: "" });
+    //   const profileData = {
+    //     ...from,
+    //     type: result.type,
+    //     id: result.id,
+    //   };
+    //   localStorage.setItem("profileData", JSON.stringify(profileData));
+    //   navigator(Route(ROUTE_CONFIG.PRODUCT));
+    // } else {
+    //   setForm({ ...from, password: "" });
+    //   setError({
+    //     email: "",
+    //     password: "",
+    //     Error: "Lỗi email or password không đúng",
+    //   });
+    //   setIsDisabled(true);
+    // }
   };
   return {
     email: from.email,

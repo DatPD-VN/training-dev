@@ -1,30 +1,26 @@
 import { useRef, useState } from "react";
-import { DropdownItem, TUseDropDown } from "./type";
+import { TUseDropDown } from "./type";
 import useOutsideClick from "../outSideClick/hook";
 import styles from "./styles.module.scss";
 
 const useDropDown = (
   name: string,
   position = "bottom-left",
-  onSelect?: (value: number, id: string) => void
+  keyValue: string,
+  onSelect?: (value: number | string, id: string) => void,
+  selectedId?: number | string
 ): TUseDropDown => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const user = JSON.parse(localStorage.getItem("profileData") as string);
-  const dataUser = {
-    value: user[name],
-  };
-  const [selectedItem, setSelectedItem] = useState<DropdownItem | undefined>(
-    user ? dataUser : undefined
-  );
+  const [selectedItem, setSelectedItem] = useState(selectedId);
 
   /**
    * Function Handle Change Item
-   * @param item: DropdownItem
+   * @param item: any
    *
    */
-  const handleChange = (item: DropdownItem) => {
-    setSelectedItem(item);
-    onSelect && onSelect(item.value, name);
+  const handleChange = (item: any) => {
+    setSelectedItem(item[keyValue]);
+    onSelect && onSelect(item[keyValue], name);
     setIsOpen(false);
   };
 

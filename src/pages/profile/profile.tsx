@@ -86,7 +86,7 @@ const Profile: FC = () => {
                   <li>Cập nhật đơn hàng</li>
                   <li>Khuyến mãi</li>
                   <li>Cập nhật Ví</li>
-                  <li>Cập nhật Shopee</li>
+                  <li>Cập nhật Riche</li>
                 </ul>
               </li>
               <li>
@@ -95,7 +95,7 @@ const Profile: FC = () => {
               </li>
               <li>
                 <BadgeDollarSign color="yellow" size={20} />
-                <label htmlFor="">Shopee Xu</label>
+                <label htmlFor="">Riche Xu</label>
               </li>
             </ul>
           </div>
@@ -207,7 +207,7 @@ const Profile: FC = () => {
                         <div key={label}>
                           <input
                             key={label}
-                            type="checkbox"
+                            type="radio"
                             name=""
                             id="male"
                             checked={profileData.gender === label}
@@ -236,6 +236,8 @@ const Profile: FC = () => {
                             value: i + 1,
                           }))}
                           onSelect={handleChangeBirthday}
+                          keyValue="value"
+                          selectedId={profileData.birthDay}
                         />
                         <Dropdown
                           name="birthMonth"
@@ -244,6 +246,8 @@ const Profile: FC = () => {
                             value: i + 1,
                           }))}
                           onSelect={handleChangeBirthday}
+                          keyValue="value"
+                          selectedId={profileData.birthMonth}
                         />
                         <Dropdown
                           name="birthYear"
@@ -252,6 +256,8 @@ const Profile: FC = () => {
                             value: 2024 - i,
                           }))}
                           onSelect={handleChangeBirthday}
+                          keyValue="value"
+                          selectedId={profileData.birthYear}
                         />
                       </div>
                     </td>

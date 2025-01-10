@@ -3,6 +3,10 @@ import { TBottomBanner, TSrcFakeBanner } from "./type";
 export const DELAY_DEFAULT = 1000;
 export const FLASH_SALE = 10000;
 export const MAX_SIZE_UPLOAD = 102400;
+export const MESSAGE_SUCCESS_REGISTER_SUCCESS = "Đăng ký thành công!";
+export const MESSAGE_SUCCESS_ADD_PRODUCT = "Thêm sản phẩm thành công";
+export const MESSAGE_SUCCESS_ORDER_PRODUCT = "Đặt hàng thành công!!!";
+export const MESSAGE_ERROR_ORDER_PRODUCT = "Vui lòng chọn sản phẩm để đặt hàng";
 export const ALLOWED_EXTENSIONS =
   /(\.jpg|\.jpeg|\.png|\.jfif|\.jif|\.jpe)|\.jfif-tbnl$/i;
 export const BANNER_RIGHT_TOP =
@@ -43,11 +47,11 @@ export const BOTTOM_BANNER: Array<TBottomBanner> = [
   },
   {
     src: "https://cf.shopee.vn/file/vn-50009109-c7a2e1ae720f9704f92f72c9ef1a494a_xhdpi",
-    title: "Miễn Phí Ship - Có Shopee",
+    title: "Miễn Phí Ship - Có Riche",
   },
   {
     src: "	https://cf.shopee.vn/file/vn-50009109-c02353c969d19918c53deaa4ea15bdbe_xhdpi",
-    title: "Shopee Style Voucher 30%",
+    title: "Riche Style Voucher 30%",
   },
   {
     src: "https://cf.shopee.vn/file/vn-50009109-f6c34d719c3e4d33857371458e7a7059_xhdpi",

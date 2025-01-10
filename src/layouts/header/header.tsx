@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
 import { useHeader } from "./hook";
 import { TCategoryState } from "../../recoil/type";
+import { Notification } from "../../components/notification";
 
 const Header: FC = () => {
   const navigate = useNavigate();
@@ -37,17 +38,24 @@ const Header: FC = () => {
     isSearch,
     handleDrop,
     handleDragOver,
+    isAdmin,
   } = useHeader();
 
   return (
     <>
       <header className={styles.header}>
         <div className={styles.headerTop}>
-          <div className={styles.divTagTop}>
+          <div className={styles.divNotification}>
             <a href="" className={styles.divTagTopA}>
               <Bell className={styles.divTagTopIcon} />
               <p className={styles.divTagTopATitle}>Thông Báo </p>
             </a>
+            <div className={styles.divProfileInfo}>
+              <p>Thông báo mới nhận</p>
+              <Notification />
+              <span>Xem tất cả</span>
+            </div>
+            <div className={styles.divProfileOverHidden}> </div>
           </div>
           <div className={styles.divTagTop}>
             <a href="" className={styles.divTagTopA}>
@@ -82,13 +90,40 @@ const Header: FC = () => {
                     <a href={Route(ROUTE_CONFIG.PROFILE)}>Tài Khoản Của Tôi</a>
                   </li>
                   <li>
-                    <a onClick={() => navigate(Route(ROUTE_CONFIG.DATA))}>
-                      Thông Tin Sản Phẩm
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.HISTORY))}>
+                      Thông tin đơn hàng
                     </a>
                   </li>
                   <li>
-                    <a href={Route(ROUTE_CONFIG.CART)}>Đơn Mua</a>
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.CHAT))}>
+                      Chat Live
+                    </a>
                   </li>
+                  {isAdmin && (
+                    <>
+                      <li>
+                        <a onClick={() => navigate(Route(ROUTE_CONFIG.DATA))}>
+                          Thông Tin Sản Phẩm
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          onClick={() =>
+                            navigate(Route(ROUTE_CONFIG.ADD_PRODUCT))
+                          }
+                        >
+                          Thêm sản phẩm
+                        </a>
+                      </li>
+                    </>
+                  )}
+
+                  <li>
+                    <a onClick={() => navigate(Route(ROUTE_CONFIG.CART))}>
+                      Giỏ hàng
+                    </a>
+                  </li>
+
                   <li>
                     <a onClick={handleLogOut}>Đăng Xuất</a>
                   </li>
@@ -100,7 +135,7 @@ const Header: FC = () => {
             <>
               <div className={styles.divTagTop}>
                 <a
-                  href={Route(ROUTE_CONFIG.LOGIN)}
+                  href={Route(ROUTE_CONFIG.REGISTER)}
                   className={styles.divTagTopA}
                 >
                   <p className={styles.divTagTopATitle}>Đăng Ký </p>

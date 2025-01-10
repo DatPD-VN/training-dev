@@ -1,34 +1,37 @@
 import { TUseCartProps } from "./type";
 import {
   useListCartState,
-  useCountCartState,
   setDelCartState,
   useTotalCartState,
   setHandleCartState,
   setSearchCartState,
   useListSearchCartState,
   setDelAllCartState,
+  useCountChoiceCartState,
+  setHandleChoiceProductState,
 } from "../../recoil";
 import { useMediaQuery } from "react-responsive";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TCartState } from "../../recoil/type";
 import { useNavigate } from "react-router-dom";
 import Route, { ROUTE_CONFIG } from "../../app/route";
+import { Toast } from "../../Common/toast";
 
 export const useCart = (): TUseCartProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
   const cart: Array<TCartState> = useListCartState();
   const listSearchCart: Array<TCartState> = useListSearchCartState();
   const totalCart: number = useTotalCartState();
-  const countCart: number = useCountCartState();
+  const countCart: number = useCountChoiceCartState();
   const setSearchCart = setSearchCartState();
   const delCart = setDelCartState();
   const delCartAll = setDelAllCartState();
   const handleCart = setHandleCartState();
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isSelectId, setIsSelectIds] = useState<number[]>([]);
+  const [selectIds, setSelectIds] = useState<number[]>([]);
   const listProduct = listSearchCart.length > 0 ? listSearchCart : cart;
   const navigate = useNavigate();
+  const handleChoiProduct = setHandleChoiceProductState();
 
   /**
    * Delete Product by ID
@@ -44,7 +47,7 @@ export const useCart = (): TUseCartProps => {
    *
    */
   const handleDelAll = () => {
-    delCartAll(isSelectId);
+    delCartAll(selectIds);
   };
   /**
    * Handle Select Product
@@ -52,15 +55,15 @@ export const useCart = (): TUseCartProps => {
    *
    */
   const handleCheck = (id: number) => {
-    if (isSelectId.length > 0) {
-      if (isSelectId.includes(id)) {
-        const values = isSelectId.filter((item: number) => item !== id);
-        setIsSelectIds([...values]);
+    if (selectIds.length > 0) {
+      if (selectIds.includes(id)) {
+        const values = selectIds.filter((item: number) => item !== id);
+        setSelectIds([...values]);
       } else {
-        setIsSelectIds([...isSelectId, id]);
+        setSelectIds([...selectIds, id]);
       }
     } else {
-      setIsSelectIds([id]);
+      setSelectIds([id]);
     }
   };
 
@@ -80,10 +83,10 @@ export const useCart = (): TUseCartProps => {
    */
   const handleCheckAll = () => {
     const checkAll = listProduct.flatMap((item: TCartState) => item.id);
-    if (JSON.stringify(checkAll) === JSON.stringify(isSelectId)) {
-      setIsSelectIds([]);
+    if (JSON.stringify(checkAll) === JSON.stringify(selectIds)) {
+      setSelectIds([]);
     } else {
-      setIsSelectIds(checkAll);
+      setSelectIds(checkAll);
     }
   };
 
@@ -145,6 +148,22 @@ export const useCart = (): TUseCartProps => {
     );
   };
 
+  /**
+   * Function Submit
+   *
+   */
+  const handleSubmit = () => {
+    if (countCart > 0) {
+      navigate(Route(ROUTE_CONFIG.ORDER));
+    } else {
+      Toast("error", "Vui lòng chọn sản phẩm để mua hàng");
+    }
+  };
+
+  useEffect(() => {
+    handleChoiProduct(selectIds);
+  }, [selectIds]);
+
   return {
     isPhoneScreen,
     listProduct,
@@ -156,9 +175,10 @@ export const useCart = (): TUseCartProps => {
     inputRef,
     handleCheck,
     handleCheckAll,
-    isSelectId,
+    selectIds,
     handleDelAll,
     handleChangeQuality,
     handleAddCategory,
+    handleSubmit,
   };
 };

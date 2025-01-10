@@ -29,7 +29,10 @@ export const addCartState = selector({
       if (quantity === 1) {
         const newTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
-            ? { ...itemDetail, quantity: itemDetail.quantity + 1 }
+            ? {
+                ...itemDetail,
+                quantity: itemDetail.quantity + 1,
+              }
             : itemDetail
         );
         set(listCartState, [...newTodo]);
@@ -47,7 +50,7 @@ export const addCartState = selector({
         return;
       }
     } else {
-      const newTodo = item;
+      const newTodo = { ...item, choice: false };
       set(listCartState, [...list, newTodo]);
     }
   },
@@ -83,6 +86,22 @@ export const delCartStateAll = selector({
     set(listCartState, [...newTodo]);
   },
 });
+export const handleDelCartAfterSubmit = selector({
+  key: "handleDelCartAfterSubmit",
+  get: ({ get }) => {
+    const list = get(listCartState);
+    return list;
+  },
+  set: ({ get, set }, data: any) => {
+    const list: Array<TCartState> = get(listCartState);
+    const idProducts = data.flatMap((item: TCartState) => item.id);
+    const Fitter = [...new Set(idProducts)];
+    const newTodo = list.filter(
+      (item: TCartState) => !Fitter.includes(item.id)
+    );
+    set(listCartState, [...newTodo]);
+  },
+});
 
 export const handleCartState = selector({
   key: "handleCart",
@@ -95,7 +114,7 @@ export const handleCartState = selector({
     const list: Array<TCartState> = get(listCartState);
 
     switch (handle) {
-      case "tang":
+      case "up":
         const newTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
             ? { ...itemDetail, quantity: Number(itemDetail.quantity) + 1 }
@@ -103,7 +122,7 @@ export const handleCartState = selector({
         );
         set(listCartState, [...newTodo]);
         break;
-      case "giam":
+      case "down":
         let reduceTodo = list.map((itemDetail: TCartState) =>
           itemDetail.id === item.id
             ? {
@@ -142,10 +161,26 @@ export const totalCartState = selector({
   key: "totalcart",
   get: ({ get }) => {
     const list: Array<TCartState> = get(listCartState);
-    const totalCart = list.reduce((total: number, item: TCartState) => {
-      return total + item.priceProduct * item.quantity;
-    }, 0);
+    const listCartChoice = list.filter(
+      (item: TCartState) => item.choice == true
+    );
+    const totalCart = listCartChoice.reduce(
+      (total: number, item: TCartState) => {
+        return total + item.priceProduct * item.quantity;
+      },
+      0
+    );
     return totalCart;
+  },
+});
+export const countChoiceCart = selector({
+  key: "choicecart",
+  get: ({ get }) => {
+    const list: Array<TCartState> = get(listCartState);
+    const listCartChoice = list.filter(
+      (item: TCartState) => item.choice == true
+    );
+    return listCartChoice.length;
   },
 });
 export const searchCartState = selector({
@@ -161,5 +196,30 @@ export const searchCartState = selector({
       regex.test(item.titleProduct)
     );
     set(listSearchState, [...value]);
+  },
+});
+export const handleChoiceProduct = selector({
+  key: "handleChoiceProductCart",
+  get: ({ get }) => {
+    const list: Array<TCartState> = get(listSearchState);
+    return list;
+  },
+  set: ({ get, set }, data: any) => {
+    const list: Array<TCartState> = get(listCartState);
+    const value = list.map((item) => ({
+      ...item,
+      choice: data.includes(item.id),
+    }));
+    set(listCartState, [...value]);
+  },
+});
+export const listCartChoiceProduct = selector({
+  key: "listCartChoice",
+  get: ({ get }) => {
+    const list: Array<TCartState> = get(listCartState);
+    const listCartChoice = list.filter(
+      (item: TCartState) => item.choice == true
+    );
+    return listCartChoice;
   },
 });

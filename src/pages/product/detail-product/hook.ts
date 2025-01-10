@@ -12,12 +12,14 @@ import { Toast } from "../../../Common/toast";
 export const useDetailProduct = (): TUseDetailProductProps => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
   const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const detailProduct = Number(searchParams.get("productId"));
   const newList: Array<TDataState> = useNewListState();
   const addCart = setListCartState();
-  const { id } = location.state;
-  const product = newList.filter((item: TDataState) => item.id === id);
+  const product = newList.filter(
+    (item: TDataState) => item.id === detailProduct
+  );
   const countCart: number = useCountCartState();
-
   /**
    * Handle Add Product When Click Cart Icon
    * @param item: TDataState

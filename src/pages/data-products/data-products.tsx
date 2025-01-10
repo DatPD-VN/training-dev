@@ -51,11 +51,11 @@ const DataProducts: FC = () => {
                 <li
                   className={styles.tbodyDataProductImage}
                   onClick={() => {
-                    navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
-                      state: {
-                        id: item.id,
-                      },
-                    });
+                    navigate(
+                      Route(
+                        `${ROUTE_CONFIG.DETAIL_PRODUCT}?productId=${item.id}`
+                      )
+                    );
                   }}
                 >
                   <img src={item.imgProduct} alt="" />

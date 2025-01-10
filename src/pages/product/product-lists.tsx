@@ -40,11 +40,11 @@ const Dashboard: FC = () => {
                     key={index}
                     className={` ${styles.divItemWrapper} draggableItem`}
                     onClick={() => {
-                      navigate(Route(ROUTE_CONFIG.DETAIL_PRODUCT), {
-                        state: {
-                          id: item.id,
-                        },
-                      });
+                      navigate(
+                        Route(
+                          `${ROUTE_CONFIG.DETAIL_PRODUCT}?productId=${item.id}`
+                        )
+                      );
                     }}
                     draggable
                     onDragStart={(event) => handleDragStart(event, item)}
